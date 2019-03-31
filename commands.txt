@@ -1,0 +1,120 @@
+Docker and Kubernetes
+
+=======================================================================
+=======================================================================
+Section 2: Manipulating Containers with the Docker Client -- 03/31/2019
+=======================================================================
+=======================================================================
+
+================================
+Lecture 13: Docker Run in Detail
+================================
+docker run hello-world
+
+=======================================
+Lecture 14: Overriding Default Commands
+=======================================
+docker run busybox echo hi there -- 'echo hi there' is the override command
+docker run busybox echo bye there
+docker run busybox echo how are you
+docker run busybox ls
+docker run hello-worls ls -- Error
+docker run hello-world echo hi there -- Error
+
+======================================
+Lecture 15: Listing running containers
+======================================
+docker ps
+dockr run busybox ping google.com
+docker ps
+docker ps --all
+
+===============================
+Lecture 16: Container Lifecycle
+===============================
+docker run = docker create + docker start
+docker create hello-world -- long string of characters printed out. This is 'container id'
+docker start -a 'container id'
+docker create hello-world -- generate/output a 'container id')
+docker start 'container id'
+
+=========================================
+Lecture 17: Restarting Stopped Containers
+=========================================
+docker ps --all
+docker run busybox echo hi there
+docker ps --all (If STATUS=Exited, we can still strat it up.)
+docker start CONTAINER_ID
+docker start -a CONTAINER_ID
+
+=======================================
+Lecture 18: Removing Stopped Containers
+=======================================
+-->docker system prune
+docker ps --all
+
+==================================
+Lecture 19: Retrieving Log Outputs
+==================================
+docker create busybox echo hi there -- this will print a long 'container id'
+docker start 'container id'
+docker logs 'container id' (A log of all the records emitted by that container)
+
+===============================
+Lecture 20: Stopping Containers
+===============================
+docker create busybosy ping google.com (Will generate a 'container id')
+docker start 'container id'
+docker logs 'container id'
+docker ps
+docker stop CONTAINER ID -- (SIGTERM: graceful shutdown)
+docker start CONTAINER ID
+docker kill CONTAINER ID -- (SIGKILL: instant kill)
+
+====================================
+Lecture 21: Multi-command Containers
+====================================
+docker run redis (Last line: ready to accept connections. Keep this running and open another window)
+
+====================================================
+Lecture 22: Executing Commands in Running Containers
+====================================================
+docker exec -it CONTAINER_ID redis-cli
+set myvalue 5
+get myvalue
+
+====================================
+Lecture 23: The purpose of 'IT' Flag
+====================================
+How processes run inside a linux environment. When we run docker on our machine. Every single container that we are running 
+runs inside insidie a VM running linux. Processes are inside a linux world.
+
+Every 'process' we create in Linux is attached with three communication channels: STDIN | STDOUT | STDERR
+
+=================================================
+Lecture 24: Getting Command Prompt in a Container
+=================================================
+docker exec -it CONTAINER _ID sh
+ctrl-d or exit
+
+=================================
+Lecture 25: Starting with a Shell
+=================================
+docker run -it busybox sh
+ping google.com
+ctrl-d or exit
+
+===============================
+Lecture 26: Container Isolation
+===============================
+docker run -it busybox sh (In one window)
+touch hithere
+ls
+docker run -it busybox sh (In another window) -- You will not see this file there!!
+
+
+=====================================================================
+=====================================================================
+Section 3: Building Custom Images Through Docker Server -- 03/31/2019
+=====================================================================
+=====================================================================
