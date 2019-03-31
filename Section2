@@ -112,10 +112,3 @@ docker run -it busybox sh (In one window)
 touch hithere
 ls
 docker run -it busybox sh (In another window) -- You will not see this file there!!
-
-
-=====================================================================
-=====================================================================
-Section 3: Building Custom Images Through Docker Server -- 03/31/2019
-=====================================================================
-=====================================================================
