@@ -65,8 +65,7 @@ docker build -t <docker-id>/redis:latest .
 
 Lecture 35: Manual Image Generation with Docker Commit
 ======================================================
-
-docker run -it aloine sh 
+docker run -it alpine sh 
 [/ # apk add --update redis
 docker ps (In another window)
 docker commit -c 'CMD ["redis-server"]' container-id
