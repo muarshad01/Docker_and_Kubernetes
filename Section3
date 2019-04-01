@@ -1,0 +1,74 @@
+======================================================
+Section3: Building Custom Images Through Docker Server
+======================================================
+
+Lecture 27: Creating Docker Images
+==================================
+
+Lecture 28: Building a Dockerfile
+=================================
+Goal: Create an image that runs a redis-server
+mkdir redis-image
+cd redis-image
+code . (Visual Code Editor)
+Create a file named 'Dockerfile' containing the following:
+----------------------------------------------------------
+# Use an existing docker image as a base
+FROM alpine
+
+# Download and install a dependency
+RUN apk add --update redis
+
+# Tell the image what to do when it starts as a container
+CMD ["redis-server"]
+---------------------------------------------------------
+
+--> docker build . (Successfully built image-id)
+docker run image-id (Ready to accept connections)
+ctrl-c
+
+Lecture 29: Dockerfile Teardown
+===============================
+FROM alpine
+RUN apk add --update redis
+CMD ["redis-server"]
+
+Lecture 30: What's a Base Image
+===============================
+
+Writing a dockerfile == Being givena computer with no OS and being told to install Chrome
+
+How do you install Chrome on a computer with no operationg system?
+(a) specify a base image
+	1. Install an OS
+(b) run commands to install additional programs
+	2. Start up your default browser
+	3. Navigate to chrome.google.com
+	4. Download installer
+	5. Open file/folder explorer
+	6. Execute chrome_installer.exe
+(c) command to run on startup
+	7. Execute chrome.exe
+
+Lecture 31: The Build Process in Detail
+=======================================
+
+Lecture 32: A Brief Recap
+=========================
+
+Lecture 33: Rebuilds with Cache
+===============================
+
+Lecture 34: Tagging an Image
+============================
+docker build -t <docker-id>/redis:latest .
+
+Lecture 35: Manual Image Generation with Docker Commit
+======================================================
+
+docker run -it aloine sh 
+[/ # apk add --update redis
+docker ps (In another window)
+docker commit -c 'CMD ["redis-server"]' container-id
+docker image ls -a
+docker run iamge-id
