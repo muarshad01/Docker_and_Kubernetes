@@ -10,9 +10,7 @@ Lecture 37: Node Server Setup
 mkdir simpleweb
 cd simpleweb
 
-(a) create a file 'package.json'
-
---------------------------------
+(a) create a file named package.json with the following content:
 {
   "dependencies": {
     "express": "*"
@@ -21,13 +19,9 @@ cd simpleweb
     "start": "node index.js"
   }
 }
---------------------------------
 
-(b) crate a file 'index.js'
-
------------------------------------
+(b) crate a file named index.js with the following content:
 const express = require('express');
- 
 const app = express();
  
 app.get('/', (req, res) => {
@@ -37,11 +31,15 @@ app.get('/', (req, res) => {
 app.listen(8080, () => {
   console.log('Listening on port 8080');
 });
---------------------------------------
 
-(c) create a file 'Dockerfile'
+Lecture 38: Server Code
+=======================
 
------------------------------
+Lecture 39: A Few Planned Errors
+================================
+
+create a file named Dockerfile
+---
 # Specify a base image
 FROM aline
 
@@ -50,7 +48,7 @@ RUN npm install
 
 # Default command
 CMD ["npm", "start"]
-------------------------------
+---
 
 docker build .
 
@@ -58,9 +56,12 @@ We should see the following:
 /bin/sh: npm: not found
 The command '/bin/sh -c npm install' returned a non-zero code: 127
 
-Update the 'Dockerfile'
+Lecture 40: Base Image Issues
+=============================
 
------------------------
+Update Dockerfile file
+
+---
 # Specify a base image
 FROM node:alpine
 
@@ -69,7 +70,10 @@ RUN npm install
 
 # Default command
 CMD ["npm", "start"]
------------------------
+---
+
+Lecture 41: A Few Missing Files
+===============================
 
 docker build .
 
@@ -81,8 +85,12 @@ npm WARN !invalid#2 No repository field.
 npm WARN !invalid#2 No README data
 npm WARN !invalid#2 No license field.
 
-Update the 'Dockerfile'
------------------------
+Lecture 42: Copying Build Files
+===============================
+
+Update Dockerfile file
+
+---
 # Specify a base image
 FROM node:alpine
 
@@ -92,7 +100,7 @@ RUN npm install
 
 # Default command
 CMD ["npm", "start"]
------------------------
+---
 
 docker build . 
 
@@ -105,13 +113,36 @@ npm WARN !invalid#2 No license field.
 
 Successfully built <image-id>
 
-docker build -t marshad1/simpleweb . -- Tagging an image
+Lecture 43: Container Port Mapping
+==================================
+
+docker build -t marshad1/simpleweb . -- # Tagging an image
 docker image ls -a
-docker run marshad1/simpleweb -- Go to your browser and typle localhost:8080, nothing prints out
+docker run marshad1/simpleweb -- # Go to your browser and typle localhost:8080, nothing prints out!
 ctrl-c
+docker run -p 8080:8080 marshad1/simpleweb -- # Port mapping
+docker run -it marshad1/simpleweb sh
+
+Lecture 44: Specifying Working Directory
+========================================
+
+Update Dockerfile file
+
+---
+# Specify a base image
+FROM node:alpine
+
+WORKDIR /usr/app
+
+# Install some dependencies
+COPY ./ ./
+RUN npm install
+
+# Default command
+CMD ["npm", "start"]
+---
+
 docker run -p 8080:8080 marshad1/simpleweb
 
-
-
-
-
+Run another process inside a docker container
+docker exec -it <CONTAINER_ID> sh
