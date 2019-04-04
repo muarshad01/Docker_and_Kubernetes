@@ -51,3 +51,30 @@ docker image ls -a
 
 Lecture 51: Introducting Docker Compose
 =======================================
+
+docer run marshad1/visits -- # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+
+docker run redis -- # Ready to accept connections
+
+docer run marshad1/visits -- # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+
+
+What is Docker Compose?
+Seperate CLI that gets installed along with Docker
+Used to start up multiple Docker containers at the same time
+Automates some of the long-winded arguments we were passing to 'docker run'
+
+docker-compose
+
+Lecture 52: Docker Compose Files
+================================
+Create a file docker-compose.yml containing the following content:
+
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+    build: .
+    ports:
+      - "4001:8081"
