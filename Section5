@@ -1,0 +1,53 @@
+=======================================================
+Section5: Docker Compose with Multiple Local Containers
+=======================================================
+
+Lecture 47: App Overview
+========================
+
+Lecture 48: App Server Code
+===========================
+mkdir visits
+cd visits
+
+Create a file named package.json containing the following content:
+
+{
+    "dependencies": {
+        "express": "*",
+        "redis": "2.8.0"
+    },
+    "scripts": {
+        "start": "node index.js"
+    }
+}
+
+
+Lecture 50: Assembling a Dockerfile
+===================================
+
+Create a file Dockerfile containing the following content:
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+COPY . .
+
+CMD ["npm", "start"]
+
+docker build .
+
+You will see the following and this is tolly fine: 
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN app No description
+npm WARN app No repository field.
+npm WARN app No license field.
+
+build -t marshad1/visits:latest . -- # tag the image
+docker image ls -a
+
+Lecture 51: Introducting Docker Compose
+=======================================
