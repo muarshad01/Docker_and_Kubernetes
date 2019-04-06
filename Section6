@@ -88,3 +88,41 @@ Lecture68: Quick Note for Windows Users
 
 Lecture69: Docker Volumes
 =========================
+
+With Docker Volume we essentially set up a place holder of sorts inside our docker container. 
+Insted of copying the local files we can create reference inside the docker that poin to local files on host machines. 
+This can be though of as a kind of port mapping we did earlier, where we map a port inside a container to a port outside a container. 
+Similarly, here we map a file/directory inside a container to a file or directory outside a container.
+
+Allows us to access files in local machine
+
+
+docker build -f Dockerfile.dev .
+docker run -p 3000:3000 $(pwd):/app image-id # sh: react-scripts: not found
+
+Lecture70: Bookmarking Volumes
+==============================
+
+docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app image-id
+
+Lecture71: Shorthand with Docker Compose
+========================================
+
+Create a file docker-compose.yml
+
+---
+version: '3'
+  services:
+    web:
+-->      build: .
+        ports:
+          - "3000":"3000"
+        volumes:
+          - /app/node_modules
+          - .:/app
+---
+
+docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
+
+Lecutre72: Overriding Dockerfile Selection
+==========================================
