@@ -126,3 +126,21 @@ docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
 
 Lecutre72: Overriding Dockerfile Selection
 ==========================================
+
+Update docker-compose.yml
+
+---
+version: '3'
+services:
+  web:
+    build:
+-->      context: .
+-->      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+---
+
+docker-compose up
