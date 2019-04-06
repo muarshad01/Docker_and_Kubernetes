@@ -1,0 +1,90 @@
+==============================================
+Section6: Creating a Production-Grade Workflow
+==============================================
+
+Lecture59: Development Workflow
+===============================
+
+Lecture60: Flow Specifics
+=========================
+
+Lecture61: Docker's Purpose
+============================
+
+Lecture62: Project Generation
+=============================
+Generate a project and wrap that up within a docker container.
+
+React application/React framework
+
+$ node -v
+
+Lecture63: More on Project Generation
+=====================================
+
+Now that node.js is installed. We will install a little tool that crates an empty react project and then we will 
+wrap that project inside a container.
+
+npm install -g create-react-app
+
+create-react-app frontend # create a react prject named frontend
+
+Lecture64: Necessary Commands
+=============================
+
+How this container will interact with outside world.
+
+(a) npm run start -- Starts up a development server. For development use only
+(b) npm run test -- Runs tests associated with the project
+(c) npm run build -- Builds a production version of the application
+
+npm run test
+rpm run build
+
+~/frontend/build/index.html
+~/fontend/build/static/js/main.9ff6fae3.chunk.js
+
+We want to server the above two files from some AWS instance or AWS service
+
+npm run start # a default react application is launched in your browser http://localhost:3000/
+
+Lecture65: Creating the Dev Dockerfile
+======================================
+
+Create a file named Dockerfile.dev
+
+---
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+---
+
+docker build . # Error: Dockerfile: no such file or directory
+
+docker build -f Dockerfile.dev . 
+
+Lecture 66: Duplicating Dependencies
+====================================
+
+delete node_modules folder within frontend project 
+
+docker build -f Dockerfile.dev .
+
+Lecture 67: Starting the Container
+==================================
+docker run image-id # you will not be able to access localhost:3000
+docker run -p 3000:3000 image-id
+
+Lecture68: Quick Note for Windows Users
+=======================================
+
+Lecture69: Docker Volumes
+=========================
