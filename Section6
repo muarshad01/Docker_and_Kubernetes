@@ -144,3 +144,66 @@ services:
 ---
 
 docker-compose up
+
+Lecture73: Do We Need Copy?
+===========================
+
+Lecture74: Executing Tests
+==========================
+
+# npm run start 
+# npm run test 
+# npm run build
+
+docker build -f Dockerfile.dev . # Step 6/6 : CMD ["npm", "run", "start"]
+docker run CMD ["npm", "run", "start"]
+docker run npm run test <image-id>
+docker run -it npm run test <image-id> # interactive shell
+press Enter
+
+Lecture75: Live Updating Tests
+==============================
+
+Edit the file App.test.js and duplicate the test
+
+Docker-compose up
+docker ps # container-id
+docker exec -it <container-id> npm run test
+
+Now delete the 2nd test in App.tes.js. You will notice that only one test will pass this time.
+
+Lecture76: Docker Compose for Running Tests
+===========================================
+
+Update the docker-compose.yml file
+
+---
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+    tests:
+      build:
+        context: .
+        dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
+---
+
+docker-compose up --build
+
+Lecture77: Shortcomings on Testing
+==================================
+
+docker ps # container-id
+docker attach container-id
+docker exec it container-id sh
