@@ -1,17 +1,54 @@
 Lecture82: Services Overview
 ============================
+npm run start
+npm run test
+npm run build
+
+Github / Travis CI (Run tests automatically) / AWS
 
 Lecture83: Github Setup
 =======================
 
 Lecture84: Travis CI Setup
 ==========================
+Your Laptop --> push to GitHub --> Travis (Run tests) --> Automatically Deploy the code
+
+https://travis-ci.org/ (Sign in with GitHub) --> Authorize travis-ci
 
 Lecture85: Travis YML File Configuration
 ========================================
+How to customize travis?
+
+Run tests --> if all tests pass --> deploy to AWS!
+
+Create a file names .travis.yml
+
+---
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t marshad/docker-react -f Dockerfile.dev .
+---
+
 
 Lecture86: A Touch More Travis Setup
 ====================================
+
+Update .travis.yml
+
+---
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t marshad/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run marshad/docker-react npm run test -- --coverage
+---
 
 Lecture87: Automatic Build Creation
 ===================================
