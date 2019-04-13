@@ -207,3 +207,26 @@ Lecture77: Shortcomings on Testing
 docker ps # container-id
 docker attach container-id
 docker exec it container-id sh
+
+Lecture78: Need for Nginx
+==========================
+Nginx: Takes incoming traffile and routes it and responds with static files.
+
+Lecture79: Multi-Step Docker Builds
+===================================
+
+Lecture80: Implementing Multi-Step Builds
+=========================================
+ROM node:alpine as builder
+WORKDIR '/app'
+COPY package.json .
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx
+COPY --from=builder /app/build /user/share/nginx/html
+
+Lecture81: Running Nginx
+========================
+docker build .
