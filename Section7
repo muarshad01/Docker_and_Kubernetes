@@ -1,0 +1,47 @@
+Lecture82: Services Overview
+============================
+
+Lecture83: Github Setup
+=======================
+
+Lecture84: Travis CI Setup
+==========================
+
+Lecture85: Travis YML File Configuration
+========================================
+
+Lecture86: A Touch More Travis Setup
+====================================
+
+Lecture87: Automatic Build Creation
+===================================
+
+Lecture88: AWS Elastic Beanstalk
+================================
+
+Lecture89: More on Elastic Beanstalk
+====================================
+
+Lecture90: Travid Config for Deployment
+=======================================
+
+Lecture91: Automated Deployments
+================================
+
+Lecture92: Exposing Ports Through the Dockerfile
+================================================
+
+Lecture93: Build Still Failing
+==============================
+
+Lecture94: Workflod With Github
+===============================
+
+Lecture95: Redeploy on Pull Request Merge
+=========================================
+
+Lecture96: Deployment Wrapup
+============================
+
+Lecture97: Environment Cleanup
+==============================
