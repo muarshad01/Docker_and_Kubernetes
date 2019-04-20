@@ -59,7 +59,7 @@ Lecture88: AWS Elastic Beanstalk
 Lecture89: More on Elastic Beanstalk
 ====================================
 
-Lecture90: Travid Config for Deployment
+Lecture90: Travis Config for Deployment
 =======================================
 
 Lecture91: Automated Deployments
@@ -73,6 +73,14 @@ Lecture93: Build Still Failing
 
 Lecture94: Workflod With Github
 ===============================
+git checkout -b feature # Switched to a new branch 'feature'
+
+git status
+git add . 
+git commit -m "updated app.js"
+git push origin feature # push changes to feature branch
+
+pull/merge branc
 
 Lecture95: Redeploy on Pull Request Merge
 =========================================
