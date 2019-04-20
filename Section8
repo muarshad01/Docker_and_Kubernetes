@@ -1,0 +1,144 @@
+================================================
+Section8: Building a Multi-Container Application
+================================================
+
+Lecture98: Single Container Deployment Issues
+=============================================
+
+(a) The app was simple - no outside dependencies
+(b) Our image was built multiple times
+(c) How do we connect to a database froma a container?
+
+
+Lecutre99: APplication Overview
+===============================
+
+Lecture 100: A Quick Note
+=========================
+
+Lecture101: Application Architecture
+====================================
+User submits number --> React App --> Express Server --> Postgres
+								  |
+								  --> Express Server --> Redis --> Worker
+								  						 Redis <-- Worker
+Lecture102: Worker process Setup
+================================
+mkdir complex
+cd complex
+mkdir worker
+
+Create a file package.json
+
+---
+{
+    "dependencies": {
+        "nodemon" : "1.18.3",
+        "redis" : "2.8.0"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "dev" : "nodemon"
+    }
+}
+---
+
+create a file index.js
+
+---
+const keys = require('./keys');
+const redis = require('redis');
+
+const redisClient = redis.createClient({
+    host: keys.redisHost,
+    port: keys.redisPort,
+    retry_strategy: () => 1000
+});
+const sub = redisClient.duplicate();
+
+function fib(index) {
+    if (index < 2) return 1;
+    return fib(index - 1) + fix(index - 2);
+}
+
+sub.on('message', (channel, message) => {
+    redisClient.hset('values', message, fib(parseInt(message)));
+});
+sub.subscribe('insert');
+---
+
+Lecture103: Express API Setup
+=============================
+
+mkdir server
+
+create a file package.json
+
+---
+{
+    "dependencies": {
+        "express": "4.16.4",
+        "pg": "7.10.0",
+        "redis": "2.8.0",
+        "cors": "2.8.5",
+        "nodemon": "1.18.11" 
+    },
+    "scripts": {
+        "dev": "nodemon",
+        "start": "node index.js"
+    }
+}
+---
+
+Lecture104: Connecting to Postgres
+==================================
+
+Update index.js
+
+---
+const keys = require('./keys');
+
+// Express App Setup
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+// Postgres Client Setup
+const { Pool } = require('pg');
+const pgClient = new Pool({
+    user: keys.pgUser,
+    host: keys.pgHost,
+    database: keys.pgDatabase,
+    password: keys.pgPassword,
+    port: keys.pgPort
+});
+pgClient.on('error', () => console.log('Lost PG connection'));
+
+pgClient
+    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+    .catch(err => console.log(err));
+---
+
+
+Lecture105: More Express API Setup
+==================================
+
+Lecture106: Generating the React App
+====================================
+
+Lecture107: Fetching Data in the React App
+==========================================
+
+Lecture108: Rendering Logic in the App
+======================================
+
+Lecture109: Exporting the Fib Class
+===================================
+
+Lecture110: Routing in the React App
+====================================
+
