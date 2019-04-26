@@ -11,6 +11,21 @@ Lecture 112: Checkpoint Catchup
 Lecture 113: Dockerizing a React App - Again!
 =============================================
 
+In the comples/client filer crate a file Dockerfile.dev
+
+---
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "start"]
+---
+
+docker build -f Dockerfile.dev .
+
+docker run <IMAGE-ID>
+
 Lecture 114: Dockerizing Generic Node Apps
 ==========================================
 
