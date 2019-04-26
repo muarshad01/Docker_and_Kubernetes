@@ -1,0 +1,48 @@
+=========================================
+Section9: "Dockerizing" Multiple Services
+=========================================
+
+Lecture 111: Checkpoint Files
+=============================
+
+Lecture 112: Checkpoint Catchup
+===============================
+
+Lecture 113: Dockerizing a React App - Again!
+=============================================
+
+Lecture 114: Dockerizing Generic Node Apps
+==========================================
+
+Lecture 115: Adding Postgres as a Service
+=========================================
+
+Lecture 116: Docker-compose Config
+==================================
+
+Lecture 117: Environment Variables with Docker Compose
+======================================================
+
+Lecture 118: The Worker and Client Services
+===========================================
+
+Lecture 119: Nginx Path Routing
+===============================
+
+Lecture 120: Routing with Nginx
+===============================
+
+Lecture 121: Building a Custom Nginx Image
+==========================================
+
+Lecutre 122: Starting Up Docker Compose
+=======================================
+
+Lecture 123: Troubleshooting
+============================
+
+Lecture 124: Troubleshooting Startup Bugs
+=========================================
+
+Lecture 125: Opening Websocket Connections
+==========================================
