@@ -29,6 +29,17 @@ docker run <IMAGE-ID>
 Lecture 114: Dockerizing Generic Node Apps
 ==========================================
 
+Create a file Docker.dev in complex/server folder and also in complex/worker foleer
+
+---
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "dev"]
+---
+
 Lecture 115: Adding Postgres as a Service
 =========================================
 
