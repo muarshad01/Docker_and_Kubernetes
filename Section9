@@ -43,6 +43,17 @@ CMD ["npm", "run", "dev"]
 Lecture 115: Adding Postgres as a Service
 =========================================
 
+create a file docker-compose.yml
+
+---
+version: '3'
+services:
+  postgres:
+    image: 'postgres:latest'
+---
+
+docker-compose up
+
 Lecture 116: Docker-compose Config
 ==================================
 
