@@ -23,11 +23,63 @@ Section 10: A Continuous Integration Workflow for Multiple Images
 132. Github and Travis CI Setup
 ===============================
 
+git remote add origin https://github.com/marshad/multi-docker.git
+git remote -v 
+git push origin master
+
 133. Travis Configuration Setup
 ===============================
 
+crate a file .travis.yml
+
+---
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run marshad/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t marshad/multi-client ./client
+  - docker build -t marshad/multi-nginx ./nginx
+  - docker build -t marshad/multi-server ./server
+  - docker build -t marshad/multi-worker ./worker
+---
+
+
 134. Pushing Images to Docker Hub
 =================================
+
+---
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run marshad/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t marshad/multi-client ./client
+  - docker build -t marshad/multi-nginx ./nginx
+  - docker build -t marshad/multi-server ./server
+  - docker build -t marshad/multi-worker ./worker
+  
+  # Log in to the docker CLI
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take those images and push them to docker hub
+  - docker push marshad/multi-client
+  - docker push marshad/multi-nginx
+  - docker push marshad/multi-server
+  - docker push marshad/multi-worker
+---
 
 135. Successful Image Building
 ==============================
