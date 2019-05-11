@@ -1,0 +1,71 @@
+==================================
+Section 12: Onwards to Kubernetes!
+==================================
+
+156. The Why's and What's of Kubernetes
+=======================================
+
+What is Kubernetes? 
+System for running many different containers over multiple different machines
+
+Why use Kubernetes? 
+When you need to run many different containers with different images
+
+157. Kubernetes in Development and Production
+=============================================
+
+Development
+-- MiniKube
+
+Production
+ -- EKS: Amazon Elastic Container Service for Kubernetes (EKS)
+ -- GKE: Google Cloud Kubernetes Engine
+ 
+Local computer
+
+-- Kubectl (Both locally and in production): To tell a VM or node what set of containers it is supposed to be running
+
+-- Minikube (Local only!!): To create and run a kubernestes cluster on local machine
+ 
+
+158. Setup on MacOS
+===================
+
+1. Make sure Brew is installed --> Download brew @ brew.sh
+
+2. Install Kubectl --> brew install kubectl
+
+3. Install a VM driver virtualbox --> Download VirtualBox @ virtualbox.org
+
+4. Install minikube --> bew cas install minikube
+
+5. Start minikub --> minikube start
+
+
+$ which brew
+/usr/local/bin/brew
+
+
+159. Mapping Existing Knowledge
+===============================
+
+160. Adding Configuration Files
+===============================
+
+161. Object Types and API Versions
+==================================
+
+162. Running Containers in Pods
+===============================
+
+163. Service Config Files in Depth
+==================================
+
+164. Connecting to Running Containers
+=====================================
+
+165. The Entire Deployment Flow
+================================
+
+166. Imperative vs Declarative Deployments
+==========================================
