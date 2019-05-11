@@ -1,6 +1,5 @@
-
 ==================================
-Multi-Container Deployments to AWS
+Section 11: Multi-Container Deployments to AWS
 ==================================
 
 136. Multi-Container Definition Files
@@ -9,14 +8,98 @@ Multi-Container Deployments to AWS
 137. Finding Docs on Container Definitions
 ==========================================
 
+Google search: 
+Amazon ECS Task Definitions (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+Task Definition Parameters (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+Container Definitions (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions)
+
+
 138. Adding Container Definitions to DockerRun
 ==============================================
+
+create Dockerrun.aws.json
+
+---
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name": "client",
+            "image": "marshad1/multi-client",
+            "hostname": "client"
+        }
+    ]
+}
+---
 
 139. More Container Definitions
 ===============================
 
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name": "client",
+            "image": "marshad1/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "marshad1/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "iamge": "marshad1/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        }
+    ]
+}
+
 140. Forming Container Links
 =============================
+
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name": "client",
+            "image": "marshad1/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "marshad1/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "iamge": "marshad1/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "marshad1/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
+
+Google Search: JSON validator
 
 141. Creating the EB Environment
 ================================
