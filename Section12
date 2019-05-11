@@ -31,19 +31,24 @@ Local computer
 158. Setup on MacOS
 ===================
 
-1. Make sure Brew is installed --> Download brew @ brew.sh
+1. Make sure Brew is installed --> Download brew @ https://brew.sh (/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+)
+
+$ which brew
+/usr/local/bin/brew
 
 2. Install Kubectl --> brew install kubectl
+$ brew install kubectl
+$ which kubectl
+$ /usr/local/bin/kubectl
 
-3. Install a VM driver virtualbox --> Download VirtualBox @ virtualbox.org
+3. Install a VM driver virtualbox --> Download VirtualBox @ https://www.virtualbox.org/ (Downloads --> OS X hosts)
 
 4. Install minikube --> bew cas install minikube
 
 5. Start minikub --> minikube start
 
 
-$ which brew
-/usr/local/bin/brew
 
 
 159. Mapping Existing Knowledge
