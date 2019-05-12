@@ -39,14 +39,19 @@ $ which brew
 
 2. Install Kubectl --> brew install kubectl
 $ brew install kubectl
-$ which kubectl
-$ /usr/local/bin/kubectl
+$ which kubectl 
+/usr/local/bin/kubectl
 
 3. Install a VM driver virtualbox --> Download VirtualBox @ https://www.virtualbox.org/ (Downloads --> OS X hosts)
 
 4. Install minikube --> bew cas install minikube
+$ brew cast install minikube
+$ which minikube
+/usr/local/bin/minikube
 
-5. Start minikub --> minikube start
+5. Start minikub
+$ minikube start
+
 
 
 
