@@ -120,11 +120,61 @@ Each API version defined a different set of 'objects' we can use
 162. Running Containers in Pods
 ===============================
 
+minikube
+
+minikube start --> VM (Node)
+Node runs various types of objects such as Pod
+
+Pod is a grouping of containers with various purposes
+
 163. Service Config Files in Depth
 ==================================
 
+Object Types:
+
+Pods: Rune one of more closely related containers
+Services: Sets up networking in a Kubernetes Cluster
+	-- ClusterIP
+	-- NodePort: Exposes a container to the outside world (only good for 'dev' purposes!!!)
+	-- LoadBalancer
+	-- Ingres
+	
 164. Connecting to Running Containers
 =====================================
+
+selector and labels are used to connect objects.
+
+$ kubectl apply -f client-pod.yaml
+$ kubectl apply -f client-node-port.yaml
+
+Kubernetes create deployment unexpected  Scheme Error (https://stackoverflow.com/questions/55417410/kubernetes-create-deployment-unexpected-schemaerror)
+
+---
+In my system kubectl is running from docker which is preinstalled when we install Docker. You can check this by using below command
+
+ls -l $(which kubectl) 
+
+which returns as
+/usr/local/bin/kubectl -> /Applications/Docker.app/Contents/Resources/bin/kubectlcode.
+
+Now we have to overwrite the symlink with kubectl which is installed using brew
+
+rm /usr/local/bin/kubectl
+
+brew link --overwrite kubernetes-cli 
+
+(optinal)
+brew unlink kubernetes-cli && brew link kubernetes-cli
+
+To Verify
+ls -l $(which kubectl)
+---
+
+$ kubectl get pods
+$ kubectl get services
+
+$ minikube ip (There is no localhost!)
+
 
 165. The Entire Deployment Flow
 ================================
