@@ -59,12 +59,63 @@ $ minikube start
 159. Mapping Existing Knowledge
 ===============================
 $ minikube status
+$ kubectl cluster-info
 
 160. Adding Configuration Files
 ===============================
+Kubernetes expects all images to already be built
+
+create a file client-pod.yaml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: marshad1/multi-client
+      ports:
+        - containerPort: 3000
+---
+
+create a file client-node-port.yaml
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - ports: 3050
+      targetPort: 3000
+      nodePort: 31515
+  selector:
+    component: web
+---
 
 161. Object Types and API Versions
 ==================================
+
+In kubernetes, config files are used to crate 'Objects' (or specific types of objects), a thing that exists inside our kubernetes cluter.
+
+Example object types:
+1. StatefulSet
+2. ReplicaController
+3. Pod
+4. Service
+
+'Kind' represents the type of object that we want to make e.g., Kind=Pod or Kind=Service
+
+A Pod object is used to run a container.
+A Service object is used to set up some kind of networking.
+
+Each API version defined a different set of 'objects' we can use
 
 162. Running Containers in Pods
 ===============================
