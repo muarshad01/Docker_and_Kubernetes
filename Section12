@@ -53,8 +53,9 @@ $ brew cask install minikube
 $ which minikube
 /usr/local/bin/minikube
 
-5. Start minikub
+5. Start minikube
 $ minikube start
+$ minikube status
 
 159. Mapping Existing Knowledge
 ===============================
@@ -178,6 +179,8 @@ $ minikube ip (There is no localhost!)
 
 165. The Entire Deployment Flow
 ================================
+
+Deployment file goes to Master and not Nodes
 
 166. Imperative vs Declarative Deployments
 ==========================================
