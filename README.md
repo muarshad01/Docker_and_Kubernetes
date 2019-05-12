@@ -6,14 +6,10 @@ docker image ls -a | grep '^\<none\>' | awk '{print $3}' | xargs docker rmi
 
 ## Kubernetes commands:
 
-minikube start
+minikube start <br />
+minikube status <br />
 
-minikube status
-
-kubectl cluste-info
-
-kubectl apply -f <file-name.yaml>
-
-kubectl get pods
-
-kibectl get services
+kubectl cluste-info <br />
+kubectl apply -f <file-name.yaml> <br />
+kubectl get pods <br />
+kibectl get services <br />
