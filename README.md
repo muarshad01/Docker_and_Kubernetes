@@ -20,7 +20,7 @@ kubectl describe <object-type> <object-name> <br />
 kubectl describe pod clien-pod <br />
 
 kubectl delete -f <config file> <br />
-kubectl get deployments
+kubectl get deployments <br />
 kubectl set image <object_type>/<object_name> <container_name>=<new image to use> <br />
 kubectl set image deployment/client-deployment client=marshad1/multi-client:v5 <br />
 
