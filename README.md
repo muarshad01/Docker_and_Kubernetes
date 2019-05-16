@@ -12,4 +12,7 @@ minikube status <br />
 kubectl cluste-info <br />
 kubectl apply -f <file-name.yaml> <br />
 kubectl get pods <br />
-kibectl get services <br />
+kubectl get services <br />
+
+kubectl describe <object-type> <object-name>
+kubectl describe pod clien-pod
