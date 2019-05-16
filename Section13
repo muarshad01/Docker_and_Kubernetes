@@ -1,0 +1,53 @@
+===========================================================
+Section 13: Maintaining Sets of Containers with Deployments
+===========================================================
+
+167. Updating Existing Objects
+==============================
+
+Updated Config File -> kubectl -> Master -> Virtual Machine(Node) has POD named Name: client pod that hosts a multi-client container
+
+168. Declarative Updates in Action
+==================================
+
+169. Limitations in Config Updates
+==================================
+
+170. Running Containers with Deployments
+========================================
+
+171. Deployment Configuration Files
+===================================
+
+172. Walking Through the Deployment Config
+==========================================
+
+173. Applying a Deployment
+==========================
+
+174. Why Use Services?
+======================
+
+175. Scaling and Changing Deployments
+=====================================
+
+176. Updating Deployment Images
+===============================
+
+177. Rebuilding the Client Image
+================================
+
+178. Triggering Deployment Updates
+==================================
+
+179. Imperatively Updating a Deployment's Image
+===============================================
+
+180. Multiple Docker Installations
+==================================
+
+181. Reconfiguring Docker CLI
+=============================
+
+182. Why Mess with Docker in the Node?
+==============================
