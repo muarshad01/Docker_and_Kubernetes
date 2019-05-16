@@ -71,6 +71,11 @@ spec:
 179. Imperatively Updating a Deployment's Image
 ===============================================
 
+$ docker build -t marshad1/multi-client:v5 .
+$ docker push <tag-name>
+
+$ docker ps
+
 180. Multiple Docker Installations
 ==================================
 
