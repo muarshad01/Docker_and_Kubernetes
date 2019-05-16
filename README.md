@@ -13,6 +13,7 @@ minikube ip <br />
 kubectl cluste-info <br />
 kubectl apply -f <file-name.yaml> <br />
 kubectl get pods <br />
+kubectl get pods -o wide <br />
 kubectl get services <br />
 
 kubectl describe <object-type> <object-name> <br />
@@ -20,3 +21,7 @@ kubectl describe pod clien-pod <br />
 
 kubectl delete -f <config file> <br />
 kubectl get deployments
+kubectl set image <object_type>/<object_name> <container_name>=<new image to use> <br />
+kubectl set image deployment/client-deployment client=marshad1/multi-client:v5 <br />
+
+Configure VM to use Your Docker Server: eval $(minikube docker-env) 
