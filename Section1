@@ -1,0 +1,6 @@
+Dive into Docker
+================
+
+$ docker version
+
+$ docker run hello-world
