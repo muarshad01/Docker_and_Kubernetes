@@ -101,7 +101,8 @@ runs inside insidie a VM running linux. Processes are inside a linux world.
 Every 'process' we create in Linux is attached with three communication channels: STDIN | STDOUT | STDERR
 
 $ docker exec -it 
-$ docker exec -i -t # -i flag means attach our terminal to the STDIN channel of the new running process; -t means to show the input / output textin a nice formatted fashion
+$ docker exec -i -t # -i flag means attach our terminal to the STDIN channel of the new running process; 
+		    # -t means to show the input / output text in a nice formatted fashion
 
 
 $ docker exec -i <image id> redis-cli # Notice: we've removed -t flag
