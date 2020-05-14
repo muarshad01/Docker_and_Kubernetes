@@ -2,16 +2,20 @@
 Section5: Docker Compose with Multiple Local Containers
 =======================================================
 
-Lecture 47: App Overview
+Lecture 49: App Overview
 ========================
 
-Lecture 48: App Server Code
-===========================
-mkdir visits
-cd visits
+A webapp that simply displays the number of times this page has been visited.
 
-Create a file named package.json containing the following content:
+Webpage --> Docker Container (Node App) --> Docker Container (Redis)
 
+Lecture 50: App Server Starter Code
+===================================
+$ mkdir visits
+$ cd visits
+
+Create file 'package.json':
+---
 {
     "dependencies": {
         "express": "*",
@@ -21,13 +25,35 @@ Create a file named package.json containing the following content:
         "start": "node index.js"
     }
 }
+---
 
+Create file 'index.js':
+---
+const express = require('express');
+const redis = require('redis');
 
-Lecture 50: Assembling a Dockerfile
+const app = express();
+const client = redis.createClient();
+client.set('visits', 0);
+
+app.get('/', (req, res) => {
+	client.get('visites', (err, visits) => {
+		res.send('Number of visits is ' + visits);
+		client.set('visits', parseInt(visits) + 1);
+	});
+});
+
+app.listen(8081, ()=> {
+	console.log('Listening on port 8081');
+});
+
+---
+
+Lecture 51: Assembling a Dockerfile
 ===================================
+Create Dockerfile:
 
-Create a file Dockerfile containing the following content:
-
+---
 FROM node:alpine
 
 WORKDIR '/app'
@@ -37,8 +63,9 @@ RUN npm install
 COPY . .
 
 CMD ["npm", "start"]
+---
 
-docker build .
+$ docker build .
 
 You will see the following and this is tolly fine: 
 npm notice created a lockfile as package-lock.json. You should commit this file.
@@ -46,51 +73,50 @@ npm WARN app No description
 npm WARN app No repository field.
 npm WARN app No license field.
 
-build -t marshad1/visits:latest . -- # tag the image
-docker image ls -a
+$ build -t marshad1/visits:latest . # Tag the image
+$ docker image ls -a
 
-Lecture 51: Introducting Docker Compose
+Lecture 52: Introducting Docker Compose
 =======================================
 
-docer run marshad1/visits -- # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+$ docer run marshad1/visits # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
 
-docker run redis -- # Ready to accept connections
+$ docker run redis # Ready to accept connections
 
-docer run marshad1/visits -- # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
-
-
-What is Docker Compose?
-Seperate CLI that gets installed along with Docker
-Used to start up multiple Docker containers at the same time
-Automates some of the long-winded arguments we were passing to 'docker run'
-
-docker-compose
-
-Lecture 52: Docker Compose Files
+Lecture 53: Docker Compose Files
 ================================
-Create a file docker-compose.yml containing the following content:
+What is Docker Compose?
+	-- Seperate CLI that gets installed along with Docker
+	-- Used to start up multiple Docker containers at the same time and connect them in an automated way
+	-- Automates some of the long-winded arguments we were passing to 'docker run'
 
-version: '3'
+$ docker-compose
+
+Create a file docker-compose.yml:
+---
+version: '3' # Version of docker-compose
 services:
-  redis-server:
-    image: 'redis'
-  node-app:
-    build: .
-    ports:
-      - "4001:8081"
-	  
-Lecture 53: Networking with Docker Compose
+	redis-server: # Container
+    		image: 'redis'
+  	node-app: # Container
+    		build: . # Create this container using Dockerfile in current directory
+    		ports: # Map some ports from container of our local machines
+      		- "4001:8081" # '-' in a yml file is used to specify a port; (local machine port):(container port)
+---
+
+Lecture 54: Networking with Docker Compose
 ==========================================
 
-Update the index.js file
+Update index.js
 
+---
 const express = require('express');
 const redis = require('redis');
 
 const app = express();
 const client = redis.createClient({
--->    host: 'redis-server',
--->    port: 6379
+	host: 'redis-server',
+	port: 6379
 });
 client.set('visits', 0);
 
@@ -104,33 +130,52 @@ app.get('/', (req, res) => {
 app.listen(8081, () => {
     console.log('Listening on port 8081');
 });
+---
 
-
-Lecture 54: Docker Compose Commands
+Lecture 55: Docker Compose Commands
 ===================================
---> docker image ls -a | grep '^<none>' | awk '{print $3}' | xargs docker rmi
+$ docker image ls -a | grep '^<none>' | awk '{print $3}' | xargs docker rmi
 
-docker-compose up # We should see redis-server-1 ...'Ready to accept connection' and node-app-1 ...Listening on port 8081
+$ docker-compose up # Creating network "visits_default" with default driver. 
+		    # ...
+                    # Creating visits_node-app_1
+		    # Creating visites_redis_node-app_1
+		    # We should see redis-server-1 ...'Ready to accept connection' and node-app-1 ...Listening on port 8081
 
-Lecture 55: Stopping Docker Compose Containers
+$ docker-compose up --build
+
+Lecture 56: Stopping Docker Compose Containers
 ==============================================
-docker-compose up -d # Launch in background
-docker-compose down
+$ docker run -d redis
+$ docker ps
+$ docker stop CONTAINER_ID
 
-Lecture 56: Container Maintenance with Compose
+$ docker-compose up -d # Launch in background
+	# Creating network "visits_default" with the default driver
+	# Creating visits_redis-server_1 ... done
+	# Creating visits_node-app_a     ... done
+
+$ docker ps
+
+$ docker-compose down
+
+Lecture 57: Container Maintenance with Compose
 ==============================================
-docker-compose up --build # Rebuild the container
+$ docker-compose up --build # 'Rebuild' the container
 
-Lecture 57: Automatic Container Restarts
+Lecture 58: Automatic Container Restarts
 ========================================
 Four types of restart policies:
-(a) "no" -- Never attempt to restart this container if it stops or crashes
-(b) always -- If this container stops 'for any reason' always attempt to restart it
-(c) on-failure -- Only restart if the container stops with an error code
-(d) unless-stopped -- Always restart unless we (the developers) forcibly stop it
+	(a) "no"           -- Never attempt to restart this container if it stops or crashes
+	(b) always         -- If this container stops 'for any reason' always attempt to restart it
+	(c) on-failure     -- Only restart if the container stops with an error code
+	(d) unless-stopped -- Always restart unless we (the developers) forcibly stop it
 
-Lecture 58: Container status with Docker Compose
+Lecture 59: Container status with Docker Compose
 ================================================
-docker-compose ps
+$ docker ps
+
+$ docker-compose up
+$ docker-compose ps # Note: Run this command from the folder containing docker-compose-yml
 
 
