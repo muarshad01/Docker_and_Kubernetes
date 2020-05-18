@@ -2,56 +2,72 @@
 Section6: Creating a Production-Grade Workflow
 ==============================================
 
-Lecture59: Development Workflow
+Lecture 61: Development Workflow
 ===============================
+Author and publish an application using Docker
 
-Lecture60: Flow Specifics
+Flow:
+	1. Development
+	2. Testing
+	3. Deployment
+
+Lecture 62: Flow Specifics
 =========================
+Github Repo with two branckes: 1) feature, and 2) master; feature breanch is our development branch and master branch is a very clean copy of our working code base.
 
-Lecture61: Docker's Purpose
+We're only pulling/pushing code to the 'feature' branch. We're never going to push code directly to master. 'Pull Request' merges the code to the master branch.
+
+'Travis CI' service pulls code from master branch and runs tests and then automatically pushes the code to AWS hosting.
+
+You --> push code to feature branch --> Pull request to merge code to 'master' branch --> Travis CI --> AWS Hosting (Elastic Beanstalk)
+
+Lecture 63: Docker's Purpose
 ============================
+Docker is a took in a normal development flow. Docker makes some of these tasks a lot easier.
 
-Lecture62: Project Generation
+Lecture 64: Project Generation
 =============================
 Generate a project and wrap that up within a docker container.
 
-React application/React framework
+React application/Recat front-end/React framework
 
 $ node -v
 
-Lecture63: More on Project Generation
-=====================================
+Lecture 65: Create React App Generation
+=======================================
+$ npm install -g create-react-app
 
-Now that node.js is installed. We will install a little tool that crates an empty react project and then we will 
+Lecture 66: More on Project Generation
+=====================================
+Now that node.js is installed. We'll install a little tool that 'crates an empty-react-project' and then we'll 
 wrap that project inside a container.
 
-npm install -g create-react-app
+$ npm install -g create-react-app
 
-create-react-app frontend # create a react prject named frontend
+$ create-react-app frontend # create a react project named frontend
 
-Lecture64: Necessary Commands
+Lecture 67: Necessary Commands
 =============================
-
 How this container will interact with outside world.
 
-(a) npm run start -- Starts up a development server. For development use only
-(b) npm run test -- Runs tests associated with the project
-(c) npm run build -- Builds a production version of the application
+$ npm run start -- Starts up a development server. For development use only
+$ npm run test -- Runs tests associated with the project
+$ npm run build -- Builds a production version of the application
 
-npm run test
-rpm run build
+$ npm run test
+$ q # quit
+
+$ npm run build
+# Creating an optimized production build...
 
 ~/frontend/build/index.html
 ~/fontend/build/static/js/main.9ff6fae3.chunk.js
 
-We want to server the above two files from some AWS instance or AWS service
+$ npm run start # a default react application is launched in your browser http://localhost:3000/
 
-npm run start # a default react application is launched in your browser http://localhost:3000/
-
-Lecture65: Creating the Dev Dockerfile
+Lecture 68: Creating the Dev Dockerfile
 ======================================
-
-Create a file named Dockerfile.dev
+Create Dockerfile.dev
 
 ---
 FROM node:alpine
@@ -59,34 +75,34 @@ FROM node:alpine
 WORKDIR '/app'
 
 COPY package.json .
-
 RUN npm install
-
 COPY . .
 
 CMD ["npm", "run", "start"]
 ---
 
-docker build . # Error: Dockerfile: no such file or directory
+$ docker build . # Error: Dockerfile: no such file or directory
 
-docker build -f Dockerfile.dev . 
+$ docker build -f Dockerfile.dev . 
 
-Lecture 66: Duplicating Dependencies
+Lecture 69: Duplicating Dependencies
 ====================================
+delete node_modules folder within the frontend project 
 
-delete node_modules folder within frontend project 
+$ docker build -f Dockerfile.dev .
 
-docker build -f Dockerfile.dev .
+Lecture 70: React App Exits Immediately with Docker Run Command
+===================================================
 
-Lecture 67: Starting the Container
+Lecture 71: Starting the Container
 ==================================
-docker run image-id # you will not be able to access localhost:3000
-docker run -p 3000:3000 image-id
 
-Lecture68: Quick Note for Windows Users
-=======================================
+$ docker run IMAGE_ID
 
-Lecture69: Docker Volumes
+$ docker run -it -p 3000:3000 CONTAINER_ID # (localhost port):(container port)
+
+
+Lecture 72: Docker Volumes
 =========================
 
 With Docker Volume we essentially set up a place holder of sorts inside our docker container. 
@@ -96,35 +112,39 @@ Similarly, here we map a file/directory inside a container to a file or director
 
 Allows us to access files in local machine
 
+$ docker build -f Dockerfile.dev .
+$ docker run -p 3000:3000 -v $(pwd):/app image-id # sh: react-scripts: not found
 
-docker build -f Dockerfile.dev .
-docker run -p 3000:3000 $(pwd):/app image-id # sh: react-scripts: not found
+Lecture 73: Windows not Detecting Changes - Update
+==================================================
 
-Lecture70: Bookmarking Volumes
-==============================
+Lecture 74: Bookmarking Volumes
+===============================
+$ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app IMAGE-ID
 
-docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app image-id
+Lecture 75: React App Exited With Code 0
+========================================
 
-Lecture71: Shorthand with Docker Compose
+Lecture 76: Shorthand with Docker Compose
 ========================================
 
 Create a file docker-compose.yml
 
 ---
 version: '3'
-  services:
-    web:
--->      build: .
-        ports:
-          - "3000":"3000"
-        volumes:
-          - /app/node_modules
-          - .:/app
+services: # All service of containers
+	web:
+		build: . # '.' means dockerfile
+        	ports:
+          		- "3000":"3000" # '-' means a list
+        	volumes:
+          		- /app/node_modules
+          		- .:/app # map the current folder outside the container to /app folder inside the container
 ---
 
-docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
+$ docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
 
-Lecutre72: Overriding Dockerfile Selection
+Lecutre 77: Overriding Dockerfile Selection
 ==========================================
 
 Update docker-compose.yml
@@ -132,101 +152,121 @@ Update docker-compose.yml
 ---
 version: '3'
 services:
-  web:
-    build:
--->      context: .
--->      dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules
-      - .:/app
+	web:
+    		build:
+			context: . # where we want file and folders for this image to be pulled from
+			dockerfile: Dockerfile.dev
+    		ports:
+      			- "3000:3000"
+    		volumes:
+      			- /app/node_modules
+      			- .:/app
 ---
 
-docker-compose up
+$ docker-compose up
 
-Lecture73: Do We Need Copy?
+Lecture 78: Windows not Detecting Changes - Docker Compose
+==========================================================
+
+Lecture 79: Do We Need Copy?
 ===========================
 
-Lecture74: Executing Tests
+Lecture 80: Executing Tests
 ==========================
 
-# npm run start 
-# npm run test 
-# npm run build
+$ npm run start # Starts up a development server. For development use only
+$ npm run test # Runs tests associated with the project
+$ npm run build # Builds a production version of the application
 
-docker build -f Dockerfile.dev . # Step 6/6 : CMD ["npm", "run", "start"]
-docker run CMD ["npm", "run", "start"]
-docker run npm run test <image-id>
-docker run -it npm run test <image-id> # interactive shell
+$ docker build -f Dockerfile.dev .
+$ docker run CMD ["npm", "run", "start"]
+$ docker run npm CONTAINER_ID npm run test
+$ docker run -it CONTAINER_ID npm run test
 press Enter
 
-Lecture75: Live Updating Tests
+Lecture 81: Live Updating Tests
 ==============================
-
 Edit the file App.test.js and duplicate the test
 
-Docker-compose up
-docker ps # container-id
-docker exec -it <container-id> npm run test
+$ docker-compose up
+$ docker ps # container-id
+$ docker exec -it CONTAINER-ID npm run test
 
-Now delete the 2nd test in App.tes.js. You will notice that only one test will pass this time.
-
-Lecture76: Docker Compose for Running Tests
+Lecture 82: Docker Compose for Running Tests
 ===========================================
-
-Update the docker-compose.yml file
+Update docker-compose.yml file
 
 ---
 version: '3'
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules
-      - .:/app
-    tests:
-      build:
-        context: .
-        dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: ["npm", "run", "test"]
+	web: # Ist service
+    	build:
+      		context: .
+      		dockerfile: Dockerfile.dev
+    	ports:
+      		- "3000:3000"
+    	volumes:
+    		- /app/node_modules
+    		- .:/app
+    tests: # 2nd service
+    	build:
+        	context: .
+        	dockerfile: Dockerfile.dev
+    	volumes:
+    		- /app/node_modules
+    		- .:/app
+    	command: ["npm", "run", "test"]
 ---
 
-docker-compose up --build
+$ docker-compose up --build
 
-Lecture77: Shortcomings on Testing
+Lecutre 83. Tests Not Re-running on Windows
+===========================================
+
+Lecture 84: Shortcomings on Testing
 ==================================
+$ npm run test # start a test container
+$ npm run start # start a web container
 
-docker ps # container-id
-docker attach container-id
-docker exec it container-id sh
+$ docker ps # CONTAINER-ID
+$ docker exec CONTAINER_ID sh
+$ docker attach CONTAINER-ID # Attached our terminal (cmd line) to stdin, stdout, stderr of primary process
+$ docker exec -it CONTAINER-ID sh # attach terminal to STDIN of primary process of container
 
-Lecture78: Need for Nginx
-==========================
-Nginx: Takes incoming traffile and routes it and responds with static files.
+Lecture 85: Need for Nginx (Webserver)
+======================================
+Nginx: Takes incoming traffic and a) routes it and b) responds with static files.
 
-Lecture79: Multi-Step Docker Builds
+Lecture 86: Multi-Step Docker Builds
 ===================================
+Build Phase:
+	Use node:alpine
+	Copy the package.json file
+	Install dependencies
+	Run 'npm run build'
 
-Lecture80: Implementing Multi-Step Builds
+Run Phase:
+	Use nginx
+	Copy over the result of 'npm run build'
+	Start nginx
+
+Lecture 87: Implementing Multi-Step Builds
 =========================================
-ROM node:alpine as builder
+Create Dockerfile
+
+---
+FROM node:alpine as builder # tag the phase/stage as 'builder'
 WORKDIR '/app'
 COPY package.json .
-RUN npm install
+RUN npm install # Deps only needed to execute 'npm run build'!
 COPY . .
 RUN npm run build
 
-FROM nginx
-COPY --from=builder /app/build /user/share/nginx/html
+FROM nginx # 2nd phase
+COPY --from=builder /app/build /user/share/nginx/html # /app/build <-- all the stuff
+---
 
-Lecture81: Running Nginx
+Lecture 88: Running Nginx
 ========================
-docker build .
+$ docker build .
+$ docker run -p 8080:80 CONTAINER_ID # (local machien port):(container port)
