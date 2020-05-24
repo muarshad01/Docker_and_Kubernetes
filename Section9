@@ -1,17 +1,23 @@
 =========================================
-Section9: "Dockerizing" Multiple Services
+Section 9: "Dockerizing" Multiple Services
 =========================================
 
-Lecture 111: Checkpoint Files
+Lecture 121: Checkpoint Files
 =============================
 
-Lecture 112: Checkpoint Catchup
+Lecture 122: Checkpoint Catchup
 ===============================
 
-Lecture 113: Dockerizing a React App - Again!
+Lecture 123: Dockerizing a React App - Again!
 =============================================
+We need to make dev Dockerfile for each:
+  1. React App
+  2. Express Server API
+  3. Worker
 
-In the comples/client filer crate a file Dockerfile.dev
+$ cd complex/client
+
+Create a file Dockerfile.dev
 
 ---
 FROM node:alpine
@@ -22,14 +28,15 @@ COPY . .
 CMD ["npm", "run", "start"]
 ---
 
-docker build -f Dockerfile.dev .
+$ docker build -f Dockerfile.dev . # '.' is build context
 
-docker run <IMAGE-ID>
+$ docker run CONTAINER_ID
 
-Lecture 114: Dockerizing Generic Node Apps
+Lecture 124: Dockerizing Generic Node Apps
 ==========================================
+$ cd complex/server
 
-Create a file Docker.dev in complex/server folder and also in complex/worker foleer
+Create a file Docker.dev 
 
 ---
 FROM node:alpine
@@ -40,10 +47,28 @@ COPY . .
 CMD ["npm", "run", "dev"]
 ---
 
-Lecture 115: Adding Postgres as a Service
-=========================================
+$ docker build -f Dockerfile.dev .
+$ docker run CONTAINER_ID
 
-create a file docker-compose.yml
+$ cd complex/worker
+
+Create a file Docker.dev
+
+---
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "dev"]
+---
+
+$ docker build -f Dockerfile.dev .
+$ docker run CONTAINER_ID
+
+Lecture 125: Adding Postgres as a Service
+=========================================
+Create a file docker-compose.yml
 
 ---
 version: '3'
@@ -52,10 +77,21 @@ services:
     image: 'postgres:latest'
 ---
 
-docker-compose up
+http://hub.docker.com --> Explore --> postgres
 
-Lecture 116: Docker-compose Config
+$ cd complex # docker-compose.yml file is present here
+$ docker-compose up
+
+Lecture 126: Docker-compose Config
 ==================================
+postgres
+  What image to use?
+redis
+  What image to use?
+server
+  - Specify build
+  - Specify volumes
+  - Specify env variables
 
 ---
 version: '3'
@@ -67,15 +103,17 @@ services:
   server:
     build:
       dockerfile: Dockerfile.dev
-      context: ./server
+      context: ./server # look into this path or folder
     volumes:
       - /app/node_modules
-      - ./server:/app
+      - ./server:/app # look at the server directory and copy everything there into the app folder in the container
 ---
 
-Lecture 117: Environment Variables with Docker Compose
-======================================================
+Lecture 127: Postgres Database is uninitialized or getaddrinfor ENOTFOUND Fix
+=============================================================================
 
+Lecture 128: Environment Variables with Docker Compose
+======================================================
 ---
 version: '3'
 services:
@@ -100,11 +138,13 @@ services:
       - PGPORT=5432
 ---
 
-docker-compose up
+$ docker-compose up
 
-Lecture 118: The Worker and Client Services
+Lecutre 128: Environment Variables with Docker Compose
+======================================================
+
+Lecture 129: The Worker and Client Services
 ===========================================
-
 ---
 version: '3'
 services:
@@ -144,10 +184,10 @@ services:
 ---
 
 
-Lecture 119: Nginx Path Routing
+Lecture 130: Nginx Path Routing
 ===============================
 
-Lecture 120: Routing with Nginx
+Lecture 131: Routing with Nginx
 ===============================
 
 mkdir nginx
@@ -176,7 +216,7 @@ server {
 }
 ---
 
-Lecture 121: Building a Custom Nginx Image
+Lecture 132: Building a Custom Nginx Image
 ==========================================
 
 Dockerfile.dev within nginx folder
@@ -233,18 +273,23 @@ services:
       - ./client:/app
 ---
 
-Lecutre 122: Starting Up Docker Compose
-=======================================
-
-docker-compose up --build
-
-Lecture 123: Troubleshooting
-============================
-
-Lecture 124: Troubleshooting Startup Bugs
+Lecture 133: React App Exited With Code 0
 =========================================
 
-Lecture 125: Opening Websocket Connections
+Lecutre 134: Starting Up Docker Compose
+=======================================
+$ docker-compose up --build
+
+Lecture 135: Nginx connect() failed - Connection refused while connectin...
+===========================================================================
+
+Lecture 136: Fix for "I Calculated Nothing Yet" message
+============================
+
+Lecture 137: Troubleshooting Startup Bugs
+=========================================
+
+Lecture 138: Opening Websocket Connections
 ==========================================
 
 ---
