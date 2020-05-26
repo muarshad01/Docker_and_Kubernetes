@@ -131,20 +131,18 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
+      - PGUSER=postgres # default user
+      - PGHOST=postgres # default host
+      - PGDATABASE=postgres # default database
+      - PGPASSWORD=postgres_password # The default password for postgres is postgres_password
       - PGPORT=5432
 ---
 
 $ docker-compose up
 
-Lecutre 128: Environment Variables with Docker Compose
-======================================================
-
 Lecture 129: The Worker and Client Services
 ===========================================
+
 ---
 version: '3'
 services:
@@ -167,31 +165,54 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
-  worker:
+  worker: # service
     build:
       dockerfile: Dockerfile.dev
       context: ./worker
     volumes:
       - /app/node_modules
       - ./worker:/app
-  client:
+  client: # service
     build:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
       - /app/node_modules
-      - ./client:/app
+      - ./client:/app # Everything in the client directroy should be shared with the app folder inside the container
 ---
-
 
 Lecture 130: Nginx Path Routing
 ===============================
 
+Two Servers:
+  - React Server
+  - Express Server
+
+Files:
+  - /index.html--------> React Server
+                   |
+  - main.js---------
+
+  - /values/all ---------> Express Server
+                     |
+  - /vales/current ---
+
+
+Nginx:
+  - What's the req start with? # Looks at request path
+  - /api/ # Route to Express Server
+  - / # Route to React Server
+
 Lecture 131: Routing with Nginx
 ===============================
+$ mkdir nginx
+$ touch default.conf
 
-mkdir nginx
-touch default.conf
+- Tell Nginx that there is an 'upstream' server at client:3000
+- Tell Nginx that there is an 'upstream' server at server:5000     
+- Listen on port 80
+- If anyone comes to '/' send them to client upstream
+- If anyone comes to '/api' send them to server upstream
 
 ---
 upstream client {
@@ -203,15 +224,15 @@ upstream api {
 }
 
 server {
-    listen 80;
+    listen 80; # Nginx server listen on port 80
 
-    location / {
-        proxy_pass http://client;
+    location / { # Routing Rule
+        proxy_pass http://client; # Name of upstream 'client' above
     }
 
-    location /api {
-        rewrite /api/(.*) /$1 break;
-        proxy_pass http://api;
+    location /api { # Routing Rule
+        rewrite /api/(.*) /$1 break; # $1 is ref to whatever is matched by (.*) regex
+        proxy_pass http://api; # Name of upstream server 'api' above
     }
 }
 ---
