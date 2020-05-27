@@ -240,14 +240,15 @@ server {
 Lecture 132: Building a Custom Nginx Image
 ==========================================
 
-Dockerfile.dev within nginx folder
+$ cd nginx
+$ touch Dockerfile.dev 
 
 ---
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 ---
 
-Update docker-compose.yml
+Now add nginx as a service to our docker-compose.yml file
 
 ---
 version: '3'
@@ -260,9 +261,9 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./nginx
+      context: ./nginx # Context is nginx directory
     ports:
-      - '3050:80'
+      - '3050:80' # maps port 3050 on local machine to port 80 on container
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -296,6 +297,8 @@ services:
 
 Lecture 133: React App Exited With Code 0
 =========================================
+$ cd complex
+$ docker-compose up --build # Force a build of everything
 
 Lecutre 134: Starting Up Docker Compose
 =======================================
@@ -305,7 +308,9 @@ Lecture 135: Nginx connect() failed - Connection refused while connectin...
 ===========================================================================
 
 Lecture 136: Fix for "I Calculated Nothing Yet" message
-============================
+=======================================================
+$ docker-compose down
+$ docker-compose up --build
 
 Lecture 137: Troubleshooting Startup Bugs
 =========================================
