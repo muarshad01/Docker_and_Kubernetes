@@ -1,22 +1,20 @@
-==================================
+==============================================
 Section 11: Multi-Container Deployments to AWS
-==================================
+==============================================
 
-136. Multi-Container Definition Files
+Lecture 150. Multi-Container Definition Files
 =====================================
 
-137. Finding Docs on Container Definitions
-==========================================
-
+Lecture 151. Finding Docs on Container Definitions
+==================================================
 Google search: 
 Amazon ECS Task Definitions (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 Task Definition Parameters (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 Container Definitions (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions)
 
 
-138. Adding Container Definitions to DockerRun
-==============================================
-
+Lecture 152. Adding Container Definitions to DockerRun
+======================================================
 create Dockerrun.aws.json
 
 ---
@@ -32,9 +30,8 @@ create Dockerrun.aws.json
 }
 ---
 
-139. More Container Definitions
-===============================
-
+Lecture 153. More Container Definitions
+=======================================
 {
     "AWSEBDockerrunVersion" : 2,
     "containerDefinitions" : [
@@ -59,9 +56,8 @@ create Dockerrun.aws.json
     ]
 }
 
-140. Forming Container Links
-=============================
-
+Lecture 154. Forming Container Links
+====================================
 {
     "AWSEBDockerrunVersion" : 2,
     "containerDefinitions" : [
@@ -101,47 +97,56 @@ create Dockerrun.aws.json
 
 Google Search: JSON validator
 
-141. Creating the EB Environment
-================================
+Lecture 155. Creating the EB Environment
+=========================================
 
-142. Managed Data Service Providers
-===================================
+Lecture 156. Managed Data Service Providers
+===========================================
 
-143. Overview of AWS VPC's and Security Groups
-==============================================
+Lecture 157. Overview of AWS VPC's and Security Groups
+======================================================
 
-144. RDS Database Creation
-==========================
-
-145. ElastiCache Redis Creation
-===============================
-
-146. Creating a Custom Security Group
-=====================================
-
-147. Applying Security Groups to Resources
-==========================================
-
-148. Setting Environment Variables
+Lecture 158. RDS Database Creation
 ==================================
 
-149. IAM Keys for Deployment
-============================
+Lecture 159. ElastiCache Redis Creation
+=======================================
 
-150. Travis Deploy Script
-=========================
+Lecture 160. Creating a Custom Security Group
+=============================================
 
-151. Container Memory Allocations
+Lecture 161. Applying Security Groups to Resources
+==================================================
+
+Lecture 162. Setting Environment Variables
+==========================================
+
+Lecture 163. IAM Keys for Deployment
+====================================
+
+Lecture 164. Travis Keys Update
+===============================
+
+Lecture 165: Fix the missing bucket_name error
+==============================================
+
+Lecture 166: Travis Deploy Script
+=============================
+
+Lecture 167. Container Memory Allocations
+==========================================
+
+Lecture 168. Verifying Deployment
 =================================
 
-152. Verifying Deployment
-=========================
+Lecture 169. A Quick App Change
+================================
 
-153. A Quick App Change
-=======================
+Lecture 170. Making Changes
+===========================
 
-154. Making Changes
-===================
+Lecture 171. Cleaning Up AWS Resources
+=======================================
 
-155. Cleaning Up AWS Resources
-==============================
+Lecture 172. AWS Configuration Cheat Sheet
+==========================================
