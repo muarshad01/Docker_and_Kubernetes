@@ -2,68 +2,108 @@
 Section 12: Onwards to Kubernetes!
 ==================================
 
-156. The Why's and What's of Kubernetes
+Lecture 173. The Why's and What's of Kubernetes
 =======================================
+Q: What is Kubernetes? 
+  - System for running many different containers over multiple different machines
 
-What is Kubernetes? 
-System for running many different containers over multiple different machines
+AWS Elastic Bean Stalk (EBS) has following 4 servers / containers:
+  - nginx
+  - server
+  - client
+  - worker
 
-Why use Kubernetes? 
-When you need to run many different containers with different images
+Q: How would we scale-up this application?
 
-157. Kubernetes in Development and Production
-=============================================
+Q: Why use Kubernetes? 
+  - When you need to run many different containers with different images
 
+Node:
+  - set of containers
+
+Master
+
+Lecture 174. Kubernetes in Development and Production
+=====================================================
 Development
--- MiniKube
+-- MiniKube (cmd line tool: sets up a ting little cluster on local computer)
 
 Production
- -- EKS: Amazon Elastic Container Service for Kubernetes (EKS)
- -- GKE: Google Cloud Kubernetes Engine
+  -- Managed solutions:
+    -- EKS: Amazon Elastic Container Service for Kubernetes (EKS)
+    -- GKE: Google Cloud Kubernetes Engine
  
-Local computer
+Your Computer:
+-- minikube (Use for managing VM itself) --> Virtual Machine (Node) {Container_1, ..., Container_N}
+-- kubectl  (Use for managign containers in the node)  --> Virtual Machine (Node) {Container_1, ..., Container_N}
 
--- Kubectl (Both locally and in production): To tell a VM or node what set of containers it is supposed to be running
+minikube is local only but kubectl is both local / production env
 
--- Minikube (Local only!!): To create and run a kubernestes cluster on local machine
- 
+Local Kubernetes Development
+- Install kubectl
+- Install a VM driver virtualbox
+- Install minikube
 
-158. Setup on MacOS
-===================
+Lecture 175: New Minikube Install Instructions
+==============================================
+Instead of running $ brew cask install minikube
 
-1. Make sure Brew is installed 
-Download brew @ https://brew.sh (/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
+We only need to run $ brew install minikube
 
-$ which brew
-/usr/local/bin/brew
+Lecture 176. Minikube Setup on MacOS
+====================================
+1. Make sure Brew is installed --> Download brew @ https://brew.sh (/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
+                                  $ which brew
+                                  /usr/local/bin/brew
 
-2. Install Kubectl
-brew install kubectl
+2. Install Kubectl --> $ brew install kubectl
+                       $ which kubectl 
+                       /usr/local/bin/kubectl
 
-$ brew install kubectl
-$ which kubectl 
-/usr/local/bin/kubectl
+3. Install a VM driver virtualbox --> Download VirtualBox @ https://www.virtualbox.org/ (Downloads --> OS X hosts)
 
-3. Install a VM driver virtualbox
-Download VirtualBox @ https://www.virtualbox.org/ (Downloads --> OS X hosts)
+4. Install minikube  -->  $ brew cask install minikube
+                          $ which minikube
+                          /usr/local/bin/minikube
 
-4. Install minikube 
+Hint: sudo chown -R $(whoami) /usr/local 
 
-$ brew cask install minikube
-$ which minikube
-/usr/local/bin/minikube
+5. Start minikube --> $ minikube start
+                      $ minikube status
 
-5. Start minikube
-$ minikube start
+Lecture 177: Minikube Setup on Windows Pro/Enterprise
+=====================================================
+
+Lectur 178: Minikube Setup on Windows Home
+==========================================
+
+Lecture 179: Minikube Stup on Linux
+===================================
+
+Lecture 180: Docker Destktops's Kubernetes instead of MiniKube
+==============================================================
+
+Lecture 181: Mapping Existing Knowledge
+=======================================
 $ minikube status
+- minikube
+- type: Control Plane
+- host: Running
+- kubelet: Running
+- apiserver: Running
+- kubeconfig: Configured
 
-159. Mapping Existing Knowledge
-===============================
-$ minikube status
 $ kubectl cluster-info
+- Kubernetes master is running at https://192.168.64.2:8443
+- KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-160. Adding Configuration Files
-===============================
+- To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+Lecture 182: Quick Note to prevent an Error
+===========================================
+
+Lecture 160. Adding Configuration Files
+=======================================
 Kubernetes expects all images to already be built
 
 create a file client-pod.yaml
@@ -100,7 +140,7 @@ spec:
     component: web
 ---
 
-161. Object Types and API Versions
+184. Object Types and API Versions
 ==================================
 
 In kubernetes, config files are used to crate 'Objects' (or specific types of objects), a thing that exists inside our kubernetes cluter.
@@ -118,7 +158,7 @@ A Service object is used to set up some kind of networking.
 
 Each API version defined a different set of 'objects' we can use
 
-162. Running Containers in Pods
+Lecture 185: Running Containers in Pods
 ===============================
 
 minikube
