@@ -102,11 +102,13 @@ $ kubectl cluster-info
 Lecture 182: Quick Note to prevent an Error
 ===========================================
 
-Lecture 160. Adding Configuration Files
+Lecture 183. Adding Configuration Files
 =======================================
-Kubernetes expects all images to already be built
+Kubernetes expects ALL images to already be built
 
-create a file client-pod.yaml
+$ mkfit simpleK8s
+$ cd simple K8s
+$ touch client-pod.yaml # create a file
 
 ---
 apiVersion: v1
@@ -123,7 +125,7 @@ spec:
         - containerPort: 3000
 ---
 
-create a file client-node-port.yaml
+$ touch client-node-port.yaml # create a file
 
 ---
 apiVersion: v1
@@ -159,7 +161,7 @@ A Service object is used to set up some kind of networking.
 Each API version defined a different set of 'objects' we can use
 
 Lecture 185: Running Containers in Pods
-===============================
+=======================================
 
 minikube
 
