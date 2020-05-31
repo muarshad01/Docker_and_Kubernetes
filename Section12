@@ -106,21 +106,21 @@ Lecture 183. Adding Configuration Files
 =======================================
 Kubernetes expects ALL images to already be built
 
-$ mkfit simpleK8s
+$ mkdir simpleK8s
 $ cd simple K8s
 $ touch client-pod.yaml # create a file
 
 ---
-apiVersion: v1
+apiVersion: v1 # Scopes or limits the type of 'objects' we can create with any given configuration
 kind: Pod
 metadata:
   name: client-pod
   labels:
-    component: web
+    component: web # related or tied to other config file we will write down
 spec:
   containers:
     - name: client
-      image: marshad1/multi-client
+      image: marshad1/multi-client # image on docker hub
       ports:
         - containerPort: 3000
 ---
@@ -129,7 +129,8 @@ $ touch client-node-port.yaml # create a file
 
 ---
 apiVersion: v1
-kind: Service
+kind: Service # 'Kind' represents the type of object that we want to make e.g., Kind=Service or kind=Pod
+
 metadata:
   name: client-node-port
 spec:
@@ -145,84 +146,116 @@ spec:
 184. Object Types and API Versions
 ==================================
 
-In kubernetes, config files are used to crate 'Objects' (or specific types of objects), a thing that exists inside our kubernetes cluter.
+In kubernetes, config files are used to crate 'Objects' (or specific types of objects), 
+a thing that exists inside our kubernetes cluter.
 
 Example object types:
 1. StatefulSet
 2. ReplicaController
-3. Pod
-4. Service
+3. Pod - A Pod object is used to run a container.
+4. Service - A Service object is used to set up some kind of networking.
 
-'Kind' represents the type of object that we want to make e.g., Kind=Pod or Kind=Service
-
-A Pod object is used to run a container.
-A Service object is used to set up some kind of networking.
 
 Each API version defined a different set of 'objects' we can use
 
 Lecture 185: Running Containers in Pods
 =======================================
+$ minikube start --> Create a VM referred to as 'Node'; 
+                   Node runs various types of 'objects' such as Pod
+                   Pod is a grouping of containers with 'similar' purpose
 
-minikube
+Node{
+  Pod {
+    nginx: container
+  }
+}
 
-minikube start --> VM (Node)
-Node runs various types of objects such as Pod
-
-Pod is a grouping of containers with various purposes
-
-163. Service Config Files in Depth
-==================================
-
+Lecture 186. Service Config Files in Depth
+==========================================
 Object Types:
 
-Pods: Rune one of more closely related containers
-Services: Sets up networking in a Kubernetes Cluster
+Pods: Runes one or more closely related containers
+
+Services: Sets up networking in a Kubernetes cluster. There are 4 subtypes:
 	-- ClusterIP
 	-- NodePort: Exposes a container to the outside world (only good for 'dev' purposes!!!)
 	-- LoadBalancer
 	-- Ingres
-	
-164. Connecting to Running Containers
-=====================================
+
+apiVersion: v1
+kind: Service # 'Kind' represents the type of object that we want to make e.g., Kind=Service or kind=Pod
+
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort # Subtype of Service object
+  ports:
+    - port: 3050
+      targetPort: 3000 # same as containerPort in kind=Pod definition
+      nodePort: 31515 # We type this into our browser URL
+  selector:
+    component: web # Note the relationship with label in other service. How they are connected together.
+---
 
 selector and labels are used to connect objects.
 
-$ kubectl apply -f client-pod.yaml
+
+labels:
+    component: web
+selector:
+    component: web
+or
+
+labels:
+    tier: frontend
+selector:
+    tier: frontend
+
+Lecutre 187. Connecting to Running Containers
+=====================================
+$ cd simplek8s
+$ kubectl apply -f client-pod.yaml 
+-- pod/client-pod configured
 $ kubectl apply -f client-node-port.yaml
-
-Kubernetes create deployment unexpected  Scheme Error (https://stackoverflow.com/questions/55417410/kubernetes-create-deployment-unexpected-schemaerror)
-
----
-In my system kubectl is running from docker which is preinstalled when we install Docker. You can check this by using below command
-
-ls -l $(which kubectl) 
-
-which returns as
-/usr/local/bin/kubectl -> /Applications/Docker.app/Contents/Resources/bin/kubectlcode.
-
-Now we have to overwrite the symlink with kubectl which is installed using brew
-
-rm /usr/local/bin/kubectl
-
-brew link --overwrite kubernetes-cli 
-
-(optinal)
-brew unlink kubernetes-cli && brew link kubernetes-cli
-
-To Verify
-ls -l $(which kubectl)
----
+-- service/client-node-port configured
 
 $ kubectl get pods
-$ kubectl get services
 
-$ minikube ip (There is no localhost!)
+NAME        READY   STATUS    RESTARTS    AGE
+client-pod  1/1     Running   0           1h
 
+$ kubectl get pods
 
-165. The Entire Deployment Flow
-================================
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP     PORTS(S)        AGE
+client-node-port  NodePort    a.b.c.d         <none>          3050:31515/TCP  1h
+kubernetes        ClusterIP   p.q.r.s         <none>          443/TCP         4d
 
-Deployment file goes to Master and not Nodes
+$ minikube ip # prints the ip address of that VM
 
-166. Imperative vs Declarative Deployments
-==========================================
+Lecture 188. The Entire Deployment Flow
+=======================================
+$ kubect get pods
+
+$ docker ps
+
+$ docker kill CONTAINER_ID
+
+$ docker ps
+
+$ kubect get pods
+
+NAME        READY   STATUS    RESTARTS    AGE
+                                 1           
+
+Note: Deployment file goes to Master and not Nodes
+
+Lecture 189. Imperative vs Declarative Deployments
+==================================================
+- Kubernetes is a system to deploy containerized apps
+- Nodes are individual machines (or vm's) that run containers
+- Masters are machines (or vm's) with a set of programs to manage Nodes
+- Kubernetes didn't build our imgages - it got them from somewhere else
+- Kubernetes (the master) decided where to run each container - each node 
+  can run a dissimilar set of containers
+- To deploy something, we update the desired state of the master with a config file
+- The master works constantly to meet your desired state
