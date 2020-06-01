@@ -1,41 +1,89 @@
 ===========================================================
-Section 13: Maintaining Sets of Containers with Deployments
+Section 13: Maintaining Sets of Containers with 'Deployments'
 ===========================================================
 
-167. Updating Existing Objects
-==============================
+Lecture 190. Updating Existing Objects
+======================================
 
-Updated Config File -> kubectl -> Master -> Virtual Machine(Node) has POD named Name: client pod that hosts a multi-client container
+Find an existing 'Pod' and update the image that it is using
 
-168. Declarative Updates in Action
-==================================
+Updated the Config File
+- Name: client-pod
+- Type: pod
+- image: multi-workder
 
-169. Limitations in Config Updates
-==================================
+kubectl -> Master -> Virtual Machine (Node) {
+                                              Pod 
+                                              Name: client-pod
 
-170. Running Containers with Deployments
-========================================
+                                              multi-client container
+                                            } 
 
-Pods -> Runs one or more closely related containers
-Services -> Setups up networking in a Kubernetes Cluster
-Deployment -> Maintains a set of identical pods, ensuring that they have the correct config and that the right number exists.
+Lecture 191. Declarative Updates in Action
+==========================================
 
-171. Deployment Configuration Files
-===================================
+upate client-pod.yaml
 
-create a file client-deployment.yaml
+apiVersion: v1
+kind: Pod
+metadate:
+  name: client-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: marshad1/multi-worker # update multi-client to multi-worker image
+      ports:
+        - containerPort: 3000
+
+$ kubectl apply -f client-pod.yaml
+pod/client-pod configured
+
+$ kubectl get pods
+NAME    READY     STATUS      RESTARTS      AGE
+
+Get detailed info about an object
+$ kubectl describe <object type> <object name>
+$ kubectl describe pod client-pod
+
+Lecture 192. Limitations in Config Updates
+==========================================
+
+ports:
+  - containerPort: 9999 # update port number from 3000 to 9999
+ 
+$ kubectl apply -f client-pod.yaml
+
+Lecture 193. Quick Note to Prevent an Error
+===========================================
+
+Lecture 194. Running Containers with Deployments
+================================================
+
+Pods -> Runs a single set of containers
+Deployment -> RUns a set of identical pods (one or more)
+
+Services -> Setups up 'networking' in a Kubernetes Cluster
+
+Deployment object has a Pod Template
+
+Lecture 195. Deployment Configuration Files
+===========================================
+
+$ touch client-deployment.yaml # a a file client-deployment.yaml
 
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment # Runs a set of identical pods
 metadata:
   name: client-deployment
 spec:
-  replicas: 1
+  replicas: 1 # Number of pods this deployment is supposed to make
   selector:
     matchlabels:
       component: web
-  template:
+  template: # Configuration for every single pod using this deployment
     metadata:
       labels:
         component: web
@@ -47,40 +95,78 @@ spec:
             - containerPort: 3000
 ---
 
-172. Walking Through the Deployment Config
-==========================================
+Lecture 196. Walking Through the Deployment Config
+==================================================
 
-173. Applying a Deployment
-==========================
-
-174. Why Use Services?
-======================
-
-175. Scaling and Changing Deployments
-=====================================
-
-176. Updating Deployment Images
-===============================
-
-177. Rebuilding the Client Image
-================================
-
-178. Triggering Deployment Updates
+Lecture 197. Applying a Deployment
 ==================================
+$ kubectl get pods
 
-179. Imperatively Updating a Deployment's Image
-===============================================
+Remove an object:
+$ kubectl delete -f <config file>
+$ kubectl delete -f client-pod.yaml
+pod "client-pod" deleted
 
+$ kubectl apply -f client-deployment.yaml
+deployment.apps/client-deployment created
+
+$ kubectl get pods
+$ kubectl get deployments
+NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
+
+Lecture 198. Why Use Services?
+===============================
+$ minikube ip
+$ kubectl get pods -o wide
+
+Lecture 199. Scaling and Changing Deployments
+=============================================
+ports:
+  - containerPort: 9999 # change port from 3000 to 9999
+
+$ kubectl apply -f client.deployment.yaml
+deployment.apps/client-deployment configured # Notice 'configured' vs 'created'
+
+$ kubectl get deployments
+$ kubectl get pods
+$ kubectl describe pods
+
+$ kubectl apply -f client-deployment.yaml
+
+Lecture 200. Updating Deployment Images
+========================================
+$ minikube ip
+
+Lecture 201. Rebuilding the Client Image
+========================================
+$ cd complex/client
+
+# Crate a new Image
+$ docker buid -t muarshad01/multi-client . # '.' is build context
+
+# Push to docker hub
+$ docker push muarshad01/multi-client
+
+Lecture 202. Triggering Deployment Updates
+==========================================
+$ kubectl apply -f client-deployment.yaml
+
+deployment.apps/client-deployment unchanged # Notice 'unchanged', it means new config file is same as previous
+
+$ kubectl get pods
+
+Lecture 203. Imperatively Updating a Deployment's Image
+========================================================
 $ docker build -t marshad1/multi-client:v5 .
 $ docker push <tag-name>
 
 $ docker ps
 
-180. Multiple Docker Installations
-==================================
+Lecture 204. Multiple Docker Installations
+==========================================
 
-181. Reconfiguring Docker CLI
-=============================
+Lecture 205. Reconfiguring Docker CLI
+=====================================
 
-182. Why Mess with Docker in the Node?
-==============================
+Lecture 206. Why Mess with Docker in the Node?
+==============================================
