@@ -116,37 +116,200 @@ $ kubectl apply -f k8s # applies every config file
 $ kubectl get deployments
 $ kubectl get services
 
-
-
-
 Lecture 214: Express API Deployment Config
 ==========================================
+$ cd k8s
+$ touch server-deployment.yaml
+
+---
+apiVersion: app/v1
+kind: Deployment
+metadate:
+    name: server-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            component: server
+    template:
+        metadata:
+            labels:
+                component: server
+        spec:
+            containers:
+                - name: server
+                  image: marshad1/multi-server
+                  ports:
+                    - containerPort: 5000
+---
 
 Lecture 215: Cluter IP for Express API
 ======================================
+$ cd k8s
+$ touch server-cluster-ip-service.yaml
 
-Lecture 216: Combining COnfig Into Single Files
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: server-cluster-ip-service
+spec:
+    type: ClusterIP
+    selector:
+        component: server
+    ports:
+        - port: 5000
+          targetPort: 5000
+---
+
+Lecture 216: Combining Config Into Single Files
 ===============================================
+
+Combine all configuration files together and seperate them with '---'
 
 Lecture 217: The Worker Deployment
 ==================================
+$ cd k8s
+$ touch workder-deployment.yaml
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: worker-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: worker
+    template:
+        metadate:
+            labels:
+                component: worker
+        spec:
+            containers:
+                - name: worker
+                  image: marshad1/multi-worker
+---
 
 Lecture 218: Reapplyig a Batch of Config Files
 ==============================================
+$ cd complex
+$ cd k8s
+$ ls k8s
+- client-deployment.yaml
+- server-deployment.yaml
+- worker-deployment.yaml
+- client-cluster-ip-service.yaml
+- server-cluster-ip-service.yaml
 
-Lecture 219: Creating and APplying Redis Config
+$ kubectl apply -f k8s
+$ kubectl get pods
+$ kubectl logs <name-of-pod>
+
+Lecture 219: Creating and Applying Redis Config
 ===============================================
+$ cd k8s
+$ touch redis-deployment.yaml
+
+---
+apiVersion: app/v1
+kind: Deployment
+metadate:
+    name: redis-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: redis
+    template:
+        metadate:
+            labels:
+                component: redis
+        spec:
+            containers:
+                - name: redis
+                  image: redis
+                  ports:
+                    - containerPort: 6379
+---
+
+$ touch redis-cluster-ip-service.yaml
+
+---
+apiVersion: v1
+kind: Service
+metadate:
+    name: redis-cluster-ip-service
+spec:
+    type: ClusterIP
+    selector:
+        component: redis
+    ports:
+        - port: 6379
+          targetPort: 6379
+---
+
+$ cd k8s
+$ kubctl apply -f k8s
+
+$ kubectl get pods
+$ kubectl get services
 
 Lecture 220: Important Note about Expected Postgres Error
 =========================================================
 
 Lecture 221: Last Set of Boring Config
 ======================================
+$ postgres-deployment.yaml
 
-Lecture 222: The Need for VOlumes with Databases
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: postgres-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: postgres
+    template:
+        metadata:
+            labels:
+                component: postgres
+        spec:
+            containers
+            - name: postgres
+              image: postgres
+              ports:
+                - containerPort: 5432
+---
+
+$ touch postgres-cluster-ip-service.yaml
+
+---
+apiVersion: v1
+kind: Service
+metadate:
+    name: postgres-clustre-ip-service
+spec:
+    type: ClusterIP
+    selector:
+        component: postgres
+    ports:
+        - port: 5432
+          targetPort: 5432
+---
+
+$ cd k8s
+$ kubectl apply -f k8s
+$ kubectl get pods
+$ kubectl get service
+
+Lecture 222: The Need for Volumes with Databases
 ================================================
 
-Lecture 223: Kubernetes VOlumes
+Lecture 223: Kubernetes Volumes
 ===============================
 
 Lecture 224: Volumes vs Persistent Volumes
