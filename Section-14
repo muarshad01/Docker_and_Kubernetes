@@ -308,18 +308,51 @@ $ kubectl get service
 
 Lecture 222: The Need for Volumes with Databases
 ================================================
+Persistent Volume Claim (PVC)
 
 Lecture 223: Kubernetes Volumes
 ===============================
+- Persistent Volume Claims
+- Persistent Volume
+- Volume
+
+Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
+Volume will, however, survive the container restarts.
 
 Lecture 224: Volumes vs Persistent Volumes
 ==========================================
+Persistent volume is not tied to any 'pod' or 'container'
+
+Pod {
+    Container{...}
+}
+
+Persistent volume is outside the pod.
 
 Lecture 225: Persistent Volumes vs Persistent Volume Claims
 ===========================================================
+Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
+
+Statistically provisioed Persistent Volume
+Dynamically provisioned Persistent Volume
 
 Lecture 226:  Claim Config Files
 ================================
+$ cd k8s
+$ touch database-persistent-volume-claim.yaml
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: database-persistent-volume-claim
+spec:
+    accessModes:
+        - ReadWriteOnce
+    resources:
+        requestes:
+            storage: 2Gi
+---
 
 Lecture 227: Persistent Volume Access Modes
 ===========================================
