@@ -356,9 +356,19 @@ spec:
 
 Lecture 227: Persistent Volume Access Modes
 ===========================================
+ReadWriteOnce --> Can be used by a single node.
+ReadOnlyMany --> Multiple nodes can read from this.
+ReadWriteMany --> Can be read and written to by many nodes.
 
 Lecture 228: Where Does Kubernetes Allocate Persistent Volumes
 ==============================================================
+$ kubectl get storageclass
+
+NAME    PROVISIONER     AGE
+
+$ kubectl describe storageclass
+
+
 
 Lecture 229: Designating a PVC in a Pod Template
 ================================================
