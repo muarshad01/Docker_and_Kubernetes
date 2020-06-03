@@ -368,13 +368,46 @@ NAME    PROVISIONER     AGE
 
 $ kubectl describe storageclass
 
-
-
 Lecture 229: Designating a PVC in a Pod Template
 ================================================
 
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: postgres-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: postgres
+    template:
+        metadata:
+            labels:
+                component: postgres
+        spec:
+        volumes:
+            - name: postgres-storage
+              persistentVolumeClaim: database
+                claimName: database-persistent-volume-claim
+            containers
+            - name: postgres
+              image: postgres
+              ports:
+                - containerPort: 5432
+              volumeMounts:
+                - name: postgres-storage # Notice: volume name and volumeMount name are the same
+                  mountPath: /var/lib/postgresql/data 
+                  subPath: postgres 
+---
+
 Lecture 230: Applyng a PVC
 ==========================
+$ cd k8s
+$ kubectl apply -f k8s
+$ kubectl get pods
+$ kubectl get pv # pv: persistent volume
 
 Lecture 231: Defining Environment Variables
 ===========================================
@@ -382,14 +415,105 @@ Lecture 231: Defining Environment Variables
 Lecture 232: Adding Environment Variables to Config
 ===================================================
 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: worker-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: worker
+    template:
+        metadate:
+            labels:
+                component: worker
+        spec:
+            containers:
+                - name: worker
+                  image: marshad1/multi-worker
+                  env:
+                    - name: REDIS_HOST
+                      value: redis-cluster-ip-service
+                    - name: REDIS_PORT
+                      value: 6379
+---
+
+---
+apiVersion: app/v1
+kind: Deployment
+metadate:
+    name: server-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            component: server
+    template:
+        metadata:
+            labels:
+                component: server
+        spec:
+            containers:
+                - name: server
+                  image: marshad1/multi-server
+                  ports:
+                    - containerPort: 5000
+                  env:
+                    - name: REDIS_HOST
+                      value: redis-cluster-ip-service
+                    - name: REDIS_PORT
+                      value: 6379
+                    - name: PGUSER
+                      value: postgres
+                    - name: PGHOST
+                      value: postgres-cluster-ip-service
+                    - name: PGDATABASE
+                      value: postgres
+---
+
 Lecture 233: Creating an Encoded Secret
 =======================================
+1. Pods --> Runs one or more closely related containers
+
+2. Deployments --> Administers and manages a set of pods
+
+3. Services --> Sets up networking in a Kubernetes Cluster
+    - ClusterIP: Exposes a set of pods to other objects in the cluster
+    - NodePort: Exposes a set of pods to the outside world (only good for dev purposes!!!)
+    - LoadBalancer
+    - Ingress
+
+4. Secrets --> Securely stores a piece of information in the cluster, such as a database password
+
+Creating a Secret:
+
+$ kubectl create secret generic <secret_name> --from-literal key=value
+$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
+secret/pgpassword created
+
+$ kubectl get secrets
+
+Type of secret:
+- docker-registry
+- TLS
 
 Lecture 234: Postgres Environment Variable Fix
 ==============================================
 
 Lecture 235: Passing Secrets as Environment Variables
 =====================================================
+
+$ kubectl get secret
+
+- name: PGPASSWORD
+    valueFrom:
+        secretKeyRef:
+            name: pgpassword
+            key: PGPASSWORD
+
+$ kubectl apply -f k8s
 
 Lecture 236: Environment Variables as Strings
 ==============================================
