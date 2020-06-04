@@ -57,9 +57,30 @@ Lecture 262: Kubernetes Dashboard on Google Cloud
 
 Lecture 263: Travis Deployment Overview
 =======================================
+1. Install Google CLoud SDK CLI
+2. Configure the SDK with out Googld CLoud auth info
+3. Login to Docker CLI
+4. Build the 'test' version of multi-client
+5. Run tests 
+6. If tests are successful, run a script to deploy newest images 
+7. Build all our images, tag each one, push each to docker hub 
+8. Apply all configs in the 'k8s' folder 
+9. Imperatively set latest images on each deployment 
 
 Lecture 264: Installing the Google Cloud SDK
 ============================================
+$ touch .travis.yaml
+
+---
+sudo: required # Because we're making use of docker
+services:
+    - docker # We need docker to be pre-installed to run our images
+before_install:
+    - curl https://sdk.cloud.google.com | bash  > /dev/null;
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components update kubectl
+    - gcloud auth activate-service-account --key-file service-account.json
+---
 
 Lecture 265: Generating a Service Account
 =========================================
