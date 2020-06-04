@@ -1,3 +1,143 @@
 ============================================
 Section 16: Kubernetes Production Deployment
 ============================================
+
+Lecture 252: The Deployment Process
+===================================
+1. Create a Github Repo
+2. Tie repo to Travis CI 
+3. Create Google Cloud project
+4. Enable billing for the project
+5. Add deployment scripts to the repo
+
+Lecutre 253: Google Cloud vs AWS for Kubernetes
+===============================================
+Why Google Cloud?
+1. Google created Kubernetes!
+2. AWS only "recently" got Kubernetes support
+3. Far, far easire to poke around Kubernetes on Google Cloud
+4. Excellent documentation for beginners
+
+Lecture 254: Creating a Git Repo
+================================
+$ git remote -v
+$ git remote remove origin 
+$ git remote add origin  https://github.com/muarshad01/multi-k8s.git
+$ git remote -v
+$ git push origin master
+
+Lecture 255: Linking the Github Repo to Travis
+===============================================
+https://travis-ci.org
+
+Lecture 256: Free Google Cloud Credits
+======================================
+
+Lecture 257: Creating a Google Cloud Project
+============================================
+console.cloud.google.com
+
+Select a project --> New Project
+Project Name --> multi-k8s --> create
+
+Lecture 258: Linking a Billing Account
+======================================
+
+Lecture 259: Kubernetes Engine Init
+====================================
+
+Lecture 260: Creating a Cluster with Google Cloud
+=================================================
+
+Lecture 261: Don't Forget to Cleanup!
+=====================================
+
+Lecture 262: Kubernetes Dashboard on Google Cloud
+=================================================
+
+Lecture 263: Travis Deployment Overview
+=======================================
+
+Lecture 264: Installing the Google Cloud SDK
+============================================
+
+Lecture 265: Generating a Service Account
+=========================================
+
+Lecture 266: Ruby Version Fix
+=============================
+
+Lecture 267: Running Travis CLI in a Container
+==============================================
+
+Lecture 268: Fixes for Travis "iv undefined" or  "repository not known"
+=======================================================================
+
+Lecture 269: Encrypting a Service Account File
+==============================================
+
+Lecture 270: More Google Cloud CLI Config
+=========================================
+
+Lecture 271: Fix For Failing Travis Builds
+==========================================
+
+Lecture 272: Runnign Testes with Travis
+=======================================
+
+Lecture 273: Custom Deployment Providers
+========================================
+
+Lecture 274: Unique Deployment Images
+=====================================
+
+Lecture 275: Unique Tags for Built Images
+=========================================
+
+Lecture 276: Updating the Deployment Script
+===========================================
+
+Lecture 277: Configuring the GCloud CLI on Cloud Console
+========================================================
+
+Lecture 278: Creating a Secret on Google Cloud
+==============================================
+
+Lecture 279: Helm v3 Update
+===========================
+
+Lecutre 280: Helm v2 Update
+===========================
+
+Lecture 281: Helm Setup
+=======================
+
+Lecture 282: Kubernetes Security with RBAC
+==========================================
+
+Lecture 283: Assigning Tiller a Service Account
+===============================================
+
+Lecture 284: Ingress-Nginx with Helm
+====================================
+
+Lecture 285: The Result of Ingress-Nginx
+========================================
+
+Lecture 286: Finally - Deployment
+=================================
+
+Lecture 287: Did I really Type That?
+====================================
+
+Lecture 288: Verifying Deployment
+=================================
+
+Lecture 289: A Workflow for Chaning in Prod
+===========================================
+
+Lecture 290: Merging a PR for Deployment
+========================================
+
+Lecture 291: That's It! What's Next?
+====================================
