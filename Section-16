@@ -84,21 +84,69 @@ before_install:
 
 Lecture 265: Generating a Service Account
 =========================================
+Create a Service Account
+Download service accoutn credentials in a json file
+Download and install the Travis CLI
+Encrypt and upload the json file to our Travis account
+In travi.yml, add code to unencrypt the json file and load it into GCloud SDK
 
 Lecture 266: Ruby Version Fix
 =============================
+$ docker run -it -v $(pwd):/app ruby:2.4 sh
 
 Lecture 267: Running Travis CLI in a Container
 ==============================================
+github.com/travis-ci/travis.rb
+
+Installing Ruby is a pain!
+Let's get a Docker image that has Ruby pre-installed, then we can install travis CLI in there!
+
+$ docker run -it -v $(pwd):/app ruby:2.3 sh # '-v' volume
+$ gem install travis --no-rdoc --no-ri  # Don't install documentation
+$ gem install travis
+$ travin login 
+Copy json file into the 'volumed' directory so we can use it in the container 
+$ travis encrypt-file <file-name> -r muarshad01/multi-k8s # '-r' repository 
+$ travis encrypt-file service-account.json -r muarshad01/multi-k8s
 
 Lecture 268: Fixes for Travis "iv undefined" or  "repository not known"
 =======================================================================
 
 Lecture 269: Encrypting a Service Account File
 ==============================================
+# travis login
+
+Username: muarshad01
+Pasword: Github-password
+
+$ travis encrypt-file <file-name> -r muarshad01/multi-k8s # '-r' repository 
+$ travis encrypt-file service-account.json -r muarshad01/multi-k8s
+
+service-account.json.enc
+$ rm -f service-account.json 
+# exit 
 
 Lecture 270: More Google Cloud CLI Config
 =========================================
+
+---
+sudo: required # Because we're making use of docker
+services:
+    - docker # We need docker to be pre-installed to run our images
+before_install:
+    - curl https://sdk.cloud.google.com | bash  > /dev/null;
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components update kubectl
+    - gcloud auth activate-service-account --key-file service-account.json
+    - gcloud config set project skilful-berm-214822
+    - gcloud config set compute/zone us-central1-a 
+    - gcloud container clusters get-credentials multi-cluster  
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t muarshad01/react-test -f ./client/Dockerfile.dev 
+
+script:
+    - docker run muarshad01/react-test npm test -- --coverage 
+---
 
 Lecture 271: Fix For Failing Travis Builds
 ==========================================
@@ -109,8 +157,35 @@ Lecture 272: Runnign Testes with Travis
 Lecture 273: Custom Deployment Providers
 ========================================
 
+In .travis.yaml file add the following:
+
+---
+deploy:
+    provider: script 
+    script: bash ./deploy.sh 
+    on:
+        branch: master
+---
+
+$ touch deploy.sh 
+
 Lecture 274: Unique Deployment Images
 =====================================
+
+deploy.sh
+
+---
+$ docker build -t muarshad01/multi-client -f ./client/Dockerfile ./client
+$ docker build -t muarshad01/multi-server -f ./server/Dockerfile ./server 
+$ docker build -t muarshad01/mulit-worker -f ./worker/Dockerfile ./worker 
+
+$ docker push muarshad01/multi-client
+$ docker push muarshad01/multi-server 
+$ docker push muarshad01/multi-worker
+
+$ kubectl apply -f k8s 
+$ kubectl set image deployments/server-deployment server=muarshad01/multi-server 
+---
 
 Lecture 275: Unique Tags for Built Images
 =========================================
