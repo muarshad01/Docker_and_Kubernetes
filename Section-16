@@ -187,17 +187,41 @@ $ kubectl apply -f k8s
 $ kubectl set image deployments/server-deployment server=muarshad01/multi-server 
 ---
 
+=========================================
+=========================================
 Lecture 275: Unique Tags for Built Images
 =========================================
+=========================================
+$ docker buid 
+-t docker_id/multi-client:latest
+-t docker_id/multi-client:$GIT_SHA
+-f ./client/Dockerfile ./client
 
 Lecture 276: Updating the Deployment Script
 ===========================================
+In .travis.yaml
+
+---
+services:
+    - docker
+env:
+    global:
+        - SHA=$(git rev-parse HEAD) # get the latest revision or commit id
+        - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+---
 
 Lecture 277: Configuring the GCloud CLI on Cloud Console
 ========================================================
+$ gcloud config set project <ID>
+$ gcloud config set compute/zone us-central-account
+$ gcloud container clusters get-credentials multi-cluster 
 
 Lecture 278: Creating a Secret on Google Cloud
 ==============================================
+$ kubectl get pods 
+
+$ kubectl create secret generic <secret_name> --from-literal PGPASSWORD=password123
+$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpassword123 
 
 Lecture 279: Helm v3 Update
 ===========================
@@ -207,12 +231,22 @@ Lecutre 280: Helm v2 Update
 
 Lecture 281: Helm Setup
 =======================
+$ github.com/helm/helm 
+
+Helm Client --> Tiller Server # runs inside a kubernetes server; Tiller is a pod 
+
+
 
 Lecture 282: Kubernetes Security with RBAC
 ==========================================
+$ kubectl get namespces 
 
 Lecture 283: Assigning Tiller a Service Account
 ===============================================
+$ kubectl create serviceaccount --namespace kube-system tiller 
+$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+
+$ helm --service-account tiller --upgrade
 
 Lecture 284: Ingress-Nginx with Helm
 ====================================
