@@ -250,12 +250,15 @@ $ helm --service-account tiller --upgrade
 
 Lecture 284: Ingress-Nginx with Helm
 ====================================
+$ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
 Lecture 285: The Result of Ingress-Nginx
 ========================================
 
 Lecture 286: Finally - Deployment
 =================================
+https://github.com/StephenGrider/DockerCasts
+
 
 Lecture 287: Did I really Type That?
 ====================================
@@ -265,6 +268,23 @@ Lecture 288: Verifying Deployment
 
 Lecture 289: A Workflow for Chaning in Prod
 ===========================================
+Check out a branch 
+Make changes 
+Commit changes 
+Push to github branch 
+Create a PR (Pull Request)
+Wait for tests to show up 'green' 
+Merge the PR (Pull Request)
+See changes appear on prod 
+
+$ git checkout branch -b devel 
+$ git status 
+$ git add .
+$ git commit -m "updated header" 
+$ git push origin devel 
+
+Create a pull-request manually 
+
 
 Lecture 290: Merging a PR for Deployment
 ========================================
