@@ -1,3 +1,11 @@
+#############
+#Installation
+#############
+
+1. Goto http://www.docker.com/get-started --> Get Started --> Download for Mac --> Install
+
+
+
 ## Docker and Kubernetes: The Complete Guide  
 https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
