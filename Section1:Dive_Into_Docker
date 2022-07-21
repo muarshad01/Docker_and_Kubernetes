@@ -2,6 +2,58 @@
 Section1: Dive into Docker
 ##########################
 
+===========================
+Lecture #3: Why use Docker?
+===========================
+
+Docker makes it really easy to "install and run software" without worrying about setup or dependencies
+
+===========================
+Lecture #4: What is Docker?
+===========================
+
+Docker is a platform or ecosystem around creating and running containers
+
+Image: Single file with all the deps and config required to run a program
+
+Container: Instance of an image. Runs a program. A container is a program with its own isolated set of hardware resources.
+
+===========================
+Lecture #4: Docker for Mac
+===========================
+
+Docker Client (Docker CLI) --> Docker Server (Docker Daemon)
+
+=====================================
+Lecture #6: Installign Docker on MacOS
+======================================
+
+Goto http://www.docker.com/get-started --> Get Started --> Download for Mac --> Install
+
 $ docker version
 
 $ docker run hello-world
+
+
+====================================
+Lecture #12: Using the Docker Client
+====================================
+
+$ docker run hello-world 
+
+Docker client --> docker server (deamon) --> docker HuB --> publl the image --> Create a new Container which runs the executable--> stream the output to Docker client
+
+
+=============================================
+Lecture #13: But Really...What's a Container?
+=============================================
+
+OS: Process --> System Call --> Kernel --> Hardware resources
+
+OS feature: Name Spacing
+
+Namespacing: Isolating resources per process (or group of processes)
+
+Control Groups (cgroups): Limit amout of resources used per process
+
+A CONTAINER is a process or a set of processes that have a grouping of resources specifically assigned to it.
