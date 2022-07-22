@@ -1,46 +1,53 @@
 
-Docker and Kubernetes
+=================================
+Lecture #15: Docker Run in Detail
+=================================
 
-=======================================================================
-Section 2: Manipulating Containers with the Docker Client -- 05/09/2020
-=======================================================================
-
-Lecture 13: Docker Run in Detail
-================================
 $ docker run <image name>
 $ docker run hello-world
 
-Lecture 14: Overriding Default Commands
 =======================================
+Lecture #16: Overriding Default Commands
+=======================================
+
 $ docker run <image name> command!
 $ docker run busybox echo hi there -- 'echo hi there' is the override command
 $ docker run busybox echo bye there
 $ docker run busybox echo how are you
 $ docker run busybox ls
 
+busybox image as FS Snapshot = {bin, dev, etc, home, proc, root}
+
 $ docker run hello-world ls -- Error
 $ docker run hello-world echo hi there -- Error
 
 Note: The hello-world image doesn't have the executbles for 'ls' and 'echo' commands.
 
-Lecture 15: Listing running containers
-======================================
-$ docker ps # What containers are currently running and their Id?
+=======================================
+Lecture #17: Listing running containers
+=======================================
+
+$ docker ps				# What containers are currently running and their Id?
 $ docker run busybox ping google.com
 $ docker ps
-$ docker ps --all # List of all containers that we have ever created.
+$ docker ps --all 			# List of all containers that we have ever created.
 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
 
-Lecture 16: Container Lifecycle
-===============================
+================================
+Lecture #18: Container Lifecycle
+================================
+
 docker run = docker create + docker start
-$ docker create hello-world # A long string of characters printed out. This is CONTAINER_ID.
-$ docker start -a CONTAINER_ID # -a makes docker watch for output container from the container and print it out to ur terminal
+
+$ docker create hello-world		#A long string of characters printed out. This is CONTAINER_ID.
+$ docker start -a CONTAINER_ID 		# -a makes docker watch for output container from the container and print it out to your terminal
 $ docker start CONTAINER_ID
 
-Lecture 17: Restarting Stopped Containers
 =========================================
+Lecture #19: Restarting Stopped Containers
+=========================================
+
 $ docker ps --all # List of all containers that we've ever created
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
@@ -51,8 +58,10 @@ $ docker ps --all # If STATUS=Exited, we can still strat it up.
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID
 
-Lecture 18: Removing Stopped Containers
 =======================================
+Lecture #20: Removing Stopped Containers
+=======================================
+
 $ docker ps --all # # List of all containers that we've ever created
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
@@ -64,8 +73,11 @@ WARNING! This will remove:
 	- all dangling images
 	- all build cache
 
-Lecture 19: Retrieving Log Outputs
-==================================
+
+===================================
+Lecture #21: Retrieving Log Outputs
+===================================
+
 $ docker create <image name> command
 $ docker create busybox echo hi there # This will print a long CONTAINER_ID
 $ docker start CONTAINER_ID

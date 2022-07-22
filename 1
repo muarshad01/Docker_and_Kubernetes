@@ -1,0 +1,127 @@
+
+=================================
+Lecture #13: Docker Run in Detail
+=================================
+
+$ docker run <image name>
+$ docker run hello-world
+
+=======================================
+Lecture #14: Overriding Default Commands
+=======================================
+
+$ docker run <image name> command!
+$ docker run busybox echo hi there -- 'echo hi there' is the override command
+$ docker run busybox echo bye there
+$ docker run busybox echo how are you
+$ docker run busybox ls
+
+Busybox image as FS Snapshot {bin, dev, etc, home, proc, root}
+
+$ docker run hello-world ls -- Error
+$ docker run hello-world echo hi there -- Error
+
+Note: The hello-world image doesn't have the executbles for 'ls' and 'echo' commands.
+
+Lecture 15: Listing running containers
+======================================
+$ docker ps # What containers are currently running and their Id?
+$ docker run busybox ping google.com
+$ docker ps
+$ docker ps --all # List of all containers that we have ever created.
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Lecture 16: Container Lifecycle
+===============================
+docker run = docker create + docker start
+$ docker create hello-world # A long string of characters printed out. This is CONTAINER_ID.
+$ docker start -a CONTAINER_ID # -a makes docker watch for output container from the container and print it out to ur terminal
+$ docker start CONTAINER_ID
+
+Lecture 17: Restarting Stopped Containers
+=========================================
+$ docker ps --all # List of all containers that we've ever created
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+$ docker run <image name> command
+$ docker run busybox echo hi there
+
+$ docker ps --all # If STATUS=Exited, we can still strat it up.
+$ docker start CONTAINER_ID
+$ docker start -a CONTAINER_ID
+
+Lecture 18: Removing Stopped Containers
+=======================================
+$ docker ps --all # # List of all containers that we've ever created
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+$ docker system prune
+
+WARNING! This will remove:
+	- all stopped containers
+	- all networks not used by at least one conainer
+	- all dangling images
+	- all build cache
+
+Lecture 19: Retrieving Log Outputs
+==================================
+$ docker create <image name> command
+$ docker create busybox echo hi there # This will print a long CONTAINER_ID
+$ docker start CONTAINER_ID
+$ docker start -a CONTAINER_ID
+$ docker logs CONTAINER_ID # A log of all the records emitted by that container)
+
+Lecture 20: Stopping Containers
+===============================
+$ docker create busybox ping google.com # This will generate a CONTAINER_ID
+$ docker start CONTAINER_ID
+$ docker logs CONTAINER_ID
+$ docker ps
+$ docker stop CONTAINER_ID # SIGTERM: Graceful shutdown
+$ docker start CONTAINER_ID
+$ docker kill CONTAINER_ID # SIGKILL: Instant kill
+
+Lecture 21: Multi-command Containers
+====================================
+$ docker run redis # Ready to accept connections. 
+
+Lecture 22: Executing Commands in Running Containers
+====================================================
+$ docker exec -it CONTAINER_ID <command> # it: input to container
+$ docker exec -it CONTAINER_ID redis-cli
+$ set myvalue 5
+$ get myvalue
+
+Lecture 23: The purpose of 'IT' Flag
+====================================
+How processes run inside a linux environment? When we run docker on our machine. Every single container that we are running 
+runs inside insidie a VM running linux. Processes are inside a linux world.
+
+Every 'process' we create in Linux is attached with three communication channels: STDIN | STDOUT | STDERR
+
+$ docker exec -it 
+$ docker exec -i -t # -i flag means attach our terminal to the STDIN channel of the new running process; 
+		    # -t means to show the input / output text in a nice formatted fashion
+
+
+$ docker exec -i <image id> redis-cli # Notice: we've removed -t flag
+
+Lecture 24: Getting Command Prompt in a Container
+=================================================
+$ docker exec -it CONTAINER _ID sh
+$ ctrl-d or exit
+
+Lecture 25: Starting with a Shell
+=================================
+$ docker run -it busybox sh
+$ ping google.com
+$ ctrl-c / ctrl-d / exit
+
+Lecture 26: Container Isolation
+===============================
+$ docker run -it busybox sh (In one window)
+$ touch hithere
+$ ls
+$ docker run -it busybox sh (In another window)
+$ ls # Notice, you will not see this file there.
