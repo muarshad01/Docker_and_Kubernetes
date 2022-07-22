@@ -16,7 +16,7 @@ Docker is a platform or ecosystem around creating and running containers
 
 Image: Single file with all the deps and config required to run a program
 
-Container: Instance of an image. Runs a program. A container is a program with its own isolated set of hardware resources.
+Container: Instance of an image. Runs a program. A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.
 
 ===========================
 Lecture #4: Docker for Mac
@@ -56,4 +56,4 @@ Namespacing: Isolating resources per process (or group of processes)
 
 Control Groups (cgroups): Limit amout of resources used per process
 
-A CONTAINER is a process or a set of processes that have a grouping of resources specifically assigned to it.
+A CONTAINER IS A PROCESS OR SET OF PROCESSES THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
