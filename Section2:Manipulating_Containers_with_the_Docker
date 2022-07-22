@@ -41,7 +41,7 @@ Lecture #18: Container Lifecycle
 docker run = docker create + docker start
 
 $ docker create hello-world		#A long string of characters printed out. This is CONTAINER_ID.
-$ docker start -a CONTAINER_ID 		# -a makes docker watch for output container from the container and print it out to your terminal
+$ docker start -a CONTAINER_ID 		# -a (attach) makes docker watch for output coming from "container" and print it to your terminal
 $ docker start CONTAINER_ID
 
 =========================================
@@ -57,7 +57,7 @@ $ docker run busybox echo hi there
 
 $ docker ps --all 			# If STATUS = Exited, we can still strat it up.
 $ docker start CONTAINER_ID
-$ docker start -a CONTAINER_ID
+$ docker start -a CONTAINER_ID		# -a (attach)
 
 =======================================
 Lecture #20: Removing Stopped Containers
@@ -75,7 +75,6 @@ WARNING! This will remove:
 	- all dangling images
 	- all build cache
 
-
 ===================================
 Lecture #21: Retrieving Log Outputs
 ===================================
@@ -84,11 +83,11 @@ $ docker create <image name> command
 $ docker create busybox echo hi there # This will print a long CONTAINER_ID
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID
-$ docker logs CONTAINER_ID # A log of all the records emitted by that container)
+$ docker logs CONTAINER_ID 			# A log of all the records emitted by that container)
 
-===============================
+================================
 Lecture #22: Stopping Containers
-===============================
+================================
 
 $ docker create busybox ping google.com 	# This will generate a CONTAINER_ID
 $ docker start CONTAINER_ID
@@ -144,9 +143,9 @@ $ docker run -it busybox sh
 $ ping google.com
 $ ctrl-c / ctrl-d / exit
 
-===============================
+================================
 Lecture #28: Container Isolation
-===============================
+================================
 
 $ docker run -it busybox sh (In one window)
 $ touch hithere
