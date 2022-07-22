@@ -149,5 +149,8 @@ Lecture #28: Container Isolation
 $ docker run -it busybox sh 			# In one window
 $ touch hithere
 $ ls
+
+Two different containsers have seperate file systems and are isolated to each other unless connected through channel.
+
 $ docker run -it busybox sh 			# In another window
-$ ls 						# Notice, you will not see this file there.
+$ ls 						# Notice, you will "not" see this file there.
