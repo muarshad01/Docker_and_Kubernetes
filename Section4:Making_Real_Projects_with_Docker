@@ -1,19 +1,24 @@
-==========================================
-Section4: Making Real Projects with Docker
-==========================================
-The goal of this porject is to create a tiny 'Node JS Web App', wrap it inside a Docker Container and then be able to access it from a browser running on a local machine
+The GOAL of this porject is:
+1. to CREATE a tiny 'Node JS Web App',
+2. WRAP it inside a Docker Container, and 
+3. be able to access it from a browser running on a local machine
 
-Lecture 37: Project Outline
 ===========================
-Steps:
-	1. Crete Node JS web app
-	2. Create a Dockerfile
-	3. Build image from Dockerfile
-	4. Run image as container
-	5. Connect to web app from a browser
+Lecture #37: Project Outline
+===========================
 
-Lecture 38: Node Server Setup
+Steps:
+
+1. Crete Node JS web app
+2. Create a Dockerfile
+3. Build image from Dockerfile
+4. Run image as container
+5. Connect to Web-app from a browser
+
 =============================
+Lecture #38: Node Server Setup
+=============================
+
 $ mkdir simpleweb
 $ cd simpleweb
 
@@ -42,8 +47,8 @@ app.listen(8080, () => {
   console.log('Listening on port 8080');
 });
 
-
-Lecture 39: A Few Planned Errors
+================================
+Lecture #39: A Few Planned Errors
 ================================
 
 1. create a file named Dockerfile
@@ -65,8 +70,10 @@ We should see the following:
 /bin/sh: npm: not found
 The command '/bin/sh -c npm install' returned a non-zero code: 127
 
-Lecture 40: Base Image Issues
 =============================
+Lecture #40: Base Image Issues
+=============================
+
 Update Dockerfile file
 
 ---
@@ -82,8 +89,10 @@ CMD ["npm", "start"] # Start server by running 'npm start'
 
 $ docker build .
 
-Lecture 41: A Few Missing Files
 ===============================
+Lecture #41: A Few Missing Files
+===============================
+
 $ docker build .
 
 npm WARN saveError ENOENT: no such file or directory, open '/package.json'
@@ -94,7 +103,8 @@ npm WARN !invalid#2 No repository field.
 npm WARN !invalid#2 No README data
 npm WARN !invalid#2 No license field.
 
-Lecture 42: Copying Build Files
+===============================
+Lecture #42: Copying Build Files
 ===============================
 
 Update Dockerfile file
@@ -128,8 +138,10 @@ Listening on port 8080
 
 localhost:8080 # The sige can't be reached
 
-Lecture 43: Container Port Mapping
 ==================================
+Lecture #43: Container Port Mapping
+==================================
+
 $ docker build -t marshad1/simpleweb . -- # Tagging an image
 $ docker image ls -a
 $ docker run marshad1/simpleweb -- # Go to your browser and typle localhost:8080, nothing prints out!
@@ -139,7 +151,8 @@ $ docker run -p (Route incoming requests to this port on local host to...):(...t
 $ docker run -p 8080:8080 marshad1/simpleweb -- # Port mapping
 $ docker run -it marshad1/simpleweb sh
 
-Lecture 44: Specifying Working Directory
+========================================
+Lecture #44: Specifying Working Directory
 ========================================
 
 Update Dockerfile file
@@ -164,8 +177,10 @@ $ docker run -p 8080:8080 marshad1/simpleweb
 Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
 
-Lecture 45: Specifying a Working Directory
 ==========================================
+Lecture #45: Specifying a Working Directory
+==========================================
+
 WORKDIR /usr/app # Any following command will be executed relative to this path in the container
 
 ---
@@ -189,12 +204,16 @@ $ docker ps # Get CONTAINER_ID
 $ docker exec -it CONTAINER_ID
 /usr/app #
 
-Lecture 46. Unnecessary Rebuilds
 ================================
+Lecture #46. Unnecessary Rebuilds
+================================
+
 $ docker build -t marshad1/simpleweb . # '.' specify the build context
 
-Lecture 47. Minimizing Cache Busting and Rebuilds
 =================================================
+Lecture #47. Minimizing Cache Busting and Rebuilds
+=================================================
+
 Update Dockerfile
 
 ---
