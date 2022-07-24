@@ -99,34 +99,33 @@ Lecture #36: Rebuilds with Cache
 ===============================
 
 # Use an existing docker image as a base
-	FROM alpine
+FROM alpine
 
 # Download and install a dependency
-	RUN apk add --update redis # apk is a program called apache package manager that comes pre-installed with alpine
-	RUN apk add --update gcc
+RUN apk add --update redis 					# apk is a program called apache package manager that comes pre-installed with alpine
+RUN apk add --update gcc
 
 # Tell the image what to do when it starts as a container
-	CMD ["redis-server"]
+CMD ["redis-server"]
 
 ============================
 Lecture #37: Tagging an Image
 ============================
 
-$ docker build -t <docker-id>/redis:latest . 			# '.' is th build context
+$ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 
 ======================================================
 Lecture #39: Manual Image Generation with Docker Commit
 ======================================================
 
-1. $ docker run -it alpine sh # -i: flag means attach our terminal to the STDIN channel of the new running process; -t: show text in readable form 
+1. $ docker run -it alpine sh 					# -i: attach our terminal to the STDIN channel of the new running process
+								# -t: show text in readable form 
 
-# The above command with start up a shell / #
+2. $ apk add --update redis 					# Inside the container manually install redis
 
-2. / # apk add --update redis # Inside the container manually install redis
+3. $ docker ps 							# Get CONTAINER_ID
 
-3. $ docker ps # Get CONTAINER_ID
-
-4. $ docker commit -c 'CMD ["redis-server"]' CONTAINER_ID # -CONTAINER_ID # CONTAINER_ID # CONTAINER_ID # CONTAINER_ID # CONTAINER_ID # -c: command
+4. $ docker commit -c 'CMD ["redis-server"]' CONTAINER_ID 	# -CONTAINER_ID
 
 5. $ docker image ls -a
 
