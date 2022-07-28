@@ -1,16 +1,16 @@
-=======================================================
-Section5: Docker Compose with Multiple Local Containers
-=======================================================
 
-Lecture 49: App Overview
-========================
+=========================
+Lecture #51: App Overview
+===============-=========
 
-A webapp that simply displays the number of times this page has been visited.
+A WebApp that simply displays the number of times this page has been visited.
 
 Webpage --> Docker Container (Node App) --> Docker Container (Redis)
 
-Lecture 50: App Server Starter Code
 ===================================
+Lecture #52: App Server Starter Code
+===================================
+
 $ mkdir visits
 $ cd visits
 
@@ -49,8 +49,10 @@ app.listen(8081, ()=> {
 
 ---
 
-Lecture 51: Assembling a Dockerfile
 ===================================
+Lecture #53: Assembling a Dockerfile
+===================================
+
 Create Dockerfile:
 
 ---
@@ -73,18 +75,22 @@ npm WARN app No description
 npm WARN app No repository field.
 npm WARN app No license field.
 
-$ build -t marshad1/visits:latest . # Tag the image
+$ build -t marshad1/visits:latest . 			# Tag the image
 $ docker image ls -a
 
-Lecture 52: Introducting Docker Compose
-=======================================
+========================================
+Lecture #54: Introducting Docker Compose
+========================================
 
-$ docer run marshad1/visits # Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+$ docer run marshad1/visits 				# Error: Redis connection to 127.0.0.1:6379 failed 
+							# - connect ECONNREFUSED 127.0.0.1:6379
 
-$ docker run redis # Ready to accept connections
+$ docker run redis 					# Ready to accept connections
 
-Lecture 53: Docker Compose Files
 ================================
+Lecture #55: Docker Compose Files
+================================
+
 What is Docker Compose?
 	-- Seperate CLI that gets installed along with Docker
 	-- Used to start up multiple Docker containers at the same time and connect them in an automated way
@@ -94,18 +100,20 @@ $ docker-compose
 
 Create a file docker-compose.yml:
 ---
-version: '3' # Version of docker-compose
+version: '3' 						# Version of docker-compose
 services:
-	redis-server: # Container
+	redis-server: 					# Container
     		image: 'redis'
-  	node-app: # Container
-    		build: . # Create this container using Dockerfile in current directory
-    		ports: # Map some ports from container of our local machines
-      		- "4001:8081" # '-' in a yml file is used to specify a port; (local machine port):(container port)
+  	node-app: 					# Container
+    		build: . 				# Create this container using Dockerfile in current directory
+    		ports: 					# Map some ports from container of our local machines
+      		- "4001:8081" 				# '-' in a yml file is used to specify a port; 
+							# (local machine port):(container port)
 ---
 
-Lecture 54: Networking with Docker Compose
-==========================================
+===========================================
+Lecture #56: Networking with Docker Compose
+===========================================
 
 Update index.js
 
@@ -132,8 +140,10 @@ app.listen(8081, () => {
 });
 ---
 
-Lecture 55: Docker Compose Commands
 ===================================
+Lecture #57: Docker Compose Commands
+===================================
+
 $ docker image ls -a | grep '^<none>' | awk '{print $3}' | xargs docker rmi
 
 $ docker-compose up # Creating network "visits_default" with default driver. 
@@ -144,13 +154,15 @@ $ docker-compose up # Creating network "visits_default" with default driver.
 
 $ docker-compose up --build
 
-Lecture 56: Stopping Docker Compose Containers
 ==============================================
+Lecture #58: Stopping Docker Compose Containers
+==============================================
+
 $ docker run -d redis
 $ docker ps
 $ docker stop CONTAINER_ID
 
-$ docker-compose up -d # Launch in background
+$ docker-compose up -d 				# Launch in background
 	# Creating network "visits_default" with the default driver
 	# Creating visits_redis-server_1 ... done
 	# Creating visits_node-app_a     ... done
@@ -159,23 +171,27 @@ $ docker ps
 
 $ docker-compose down
 
-Lecture 57: Container Maintenance with Compose
 ==============================================
-$ docker-compose up --build # 'Rebuild' the container
+Lecture #59: Container Maintenance with Compose
+==============================================
 
-Lecture 58: Automatic Container Restarts
+$ docker-compose up --build 			# 'Rebuild' the container
+
 ========================================
+Lecture #60: Automatic Container Restarts
+========================================
+
 Four types of restart policies:
 	(a) "no"           -- Never attempt to restart this container if it stops or crashes
 	(b) always         -- If this container stops 'for any reason' always attempt to restart it
 	(c) on-failure     -- Only restart if the container stops with an error code
 	(d) unless-stopped -- Always restart unless we (the developers) forcibly stop it
 
-Lecture 59: Container status with Docker Compose
 ================================================
+Lecture #61: Container status with Docker Compose
+================================================
+
 $ docker ps
 
 $ docker-compose up
-$ docker-compose ps # Note: Run this command from the folder containing docker-compose-yml
-
-
+$ docker-compose ps 				# Note: Run this command from the folder containing docker-compose-yml

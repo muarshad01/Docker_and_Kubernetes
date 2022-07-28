@@ -207,7 +207,7 @@ $ docker run -p 8080:8080 marshad1/simpleweb
 
 Start another process inside a running container 'docker exec'
 
-$ docker ps 					# Get CONTAINER_ID
+$ docker ps 							# Get CONTAINER_ID
 $ docker exec -it CONTAINER_ID
 /usr/app #
 
@@ -215,7 +215,7 @@ $ docker exec -it CONTAINER_ID
 Lecture #49. Unnecessary Rebuilds
 ================================
 
-$ docker build -t marshad1/simpleweb . # '.' specify the build context
+$ docker build -t marshad1/simpleweb . 				# '.' specify the build context
 
 =================================================
 Lecture #50. Minimizing Cache Busting and Rebuilds
@@ -225,7 +225,7 @@ Update Dockerfile
 
 ---
 # Specify a base image
-FROM node:alpine
+FROM node:14-alpine
 
 WORKDIR /usr/app
 
