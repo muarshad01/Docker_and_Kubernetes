@@ -4,19 +4,19 @@ The GOAL of this porject is:
 3. be able to access it from a browser running on a local machine
 
 ===========================
-Lecture #37: Project Outline
+Lecture #40: Project Outline
 ===========================
 
 Steps:
-
-1. Crete Node JS web app
+-----
+1. Crete a "Node JS Web App"
 2. Create a Dockerfile
 3. Build image from Dockerfile
 4. Run image as container
-5. Connect to Web-app from a browser
+5. Connect to Web Aapp from a browser
 
 =============================
-Lecture #38: Node Server Setup
+Lecture #41: Node Server Setup
 =============================
 
 $ mkdir simpleweb
@@ -48,7 +48,7 @@ app.listen(8080, () => {
 });
 
 ================================
-Lecture #39: A Few Planned Errors
+Lecture #42: A Few Planned Errors
 ================================
 
 1. create a file named Dockerfile
@@ -64,33 +64,37 @@ RUN npm install
 CMD ["npm", "start"]
 ---
 
-2. $ docker build . # '.' is the build context
+2. $ docker build . 				# '.' is the build context
 
 We should see the following: 
 /bin/sh: npm: not found
 The command '/bin/sh -c npm install' returned a non-zero code: 127
 
+=============================================
+Lecture #43: Required Node Base Image Version
+=============================================
+
 =============================
-Lecture #40: Base Image Issues
+Lecture #44: Base Image Issues
 =============================
 
 Update Dockerfile file
 
 ---
 # Specify a base image
-FROM node:alpine # Notice: We're now using node:alpine and not alpine
+FROM node:14-alpine 				# Notice: We're now using node:alpine and not alpine
 
 # Install some dependencies
-RUN npm install # Install deps by running 'npm install'. Node Package Manager (npm)
+RUN npm install 				# Install deps by running 'npm install'. Node Package Manager (npm)
 
 # Default command
-CMD ["npm", "start"] # Start server by running 'npm start'
+CMD ["npm", "start"] 				# Start server by running 'npm start'
 ---
 
 $ docker build .
 
 ===============================
-Lecture #41: A Few Missing Files
+Lecture #45: A Few Missing Files
 ===============================
 
 $ docker build .
@@ -104,17 +108,18 @@ npm WARN !invalid#2 No README data
 npm WARN !invalid#2 No license field.
 
 ===============================
-Lecture #42: Copying Build Files
+Lecture #46: Copying Build Files
 ===============================
 
 Update Dockerfile file
 
 ---
 # Specify a base image
-FROM node:alpine
+FROM node:14-alpine
 
 # Install some dependencies
-COPY ./ ./ # COPY (current working directory of simpleweb) (current working directory inside the container)
+COPY ./ ./ 						# COPY (current working directory of simpleweb) 
+							#      (current working directory inside the container)
 RUN npm install
 
 # Default command
@@ -130,25 +135,25 @@ npm WARN !invalid#2 No repository field.
 npm WARN !invalid#2 No license field.
 Successfully built IMAGE_ID
 
-$ docker build -t marshad1/simpleweb .
-Successfully tagged marshad1/simpleweb:latest
+$ docker build -t marshad1/simpleweb .			# Successfully tagged marshad1/simpleweb:latest
+							# <docker-id>/<project-name>:latest
 
 $ docker run marshad1/simpleweb
-Listening on port 8080
+>> Listening on port 8080
 
-localhost:8080 # The sige can't be reached
+localhost:8080 						# The sige can't be reached
 
-==================================
-Lecture #43: Container Port Mapping
-==================================
+=============================================
+Lecture #48: Container Port Mapping at RUNTIME
+==============================================
 
-$ docker build -t marshad1/simpleweb . -- # Tagging an image
+$ docker build -t marshad1/simpleweb .			# Tagging an image <docker-id>/<project-id>
 $ docker image ls -a
-$ docker run marshad1/simpleweb -- # Go to your browser and typle localhost:8080, nothing prints out!
+$ docker run marshad1/simpleweb				# https://localhost:8080, nothing prints out!
 $ ctrl-c
 
-$ docker run -p (Route incoming requests to this port on local host to...):(...this port inside the container) IMAGE_ID
-$ docker run -p 8080:8080 marshad1/simpleweb -- # Port mapping
+$ docker run -p (Route incoming requests to this port on local-host to...):(...this port inside the container) IMAGE_ID
+$ docker run -p 8080:8080 marshad1/simpleweb		# Port mapping
 $ docker run -it marshad1/simpleweb sh
 
 ========================================
@@ -178,14 +183,15 @@ Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
 
 ==========================================
-Lecture #45: Specifying a Working Directory
+Lecture #48: Specifying a Working Directory
 ==========================================
 
-WORKDIR /usr/app # Any following command will be executed relative to this path in the container
+WORKDIR /usr/app 					# Any following command will be executed relative 
+							# to this path in the container
 
 ---
 # Specify a base image
-FROM node:alpine # Notice node:apline
+FROM node:14-alpine 					# Notice node:apline
 
 WORKDIR /usr/app
 
@@ -200,18 +206,19 @@ $ docker build -t marshad1/simpleweb .
 $ docker run -p 8080:8080 marshad1/simpleweb
 
 Start another process inside a running container 'docker exec'
-$ docker ps # Get CONTAINER_ID
+
+$ docker ps 					# Get CONTAINER_ID
 $ docker exec -it CONTAINER_ID
 /usr/app #
 
 ================================
-Lecture #46. Unnecessary Rebuilds
+Lecture #49. Unnecessary Rebuilds
 ================================
 
 $ docker build -t marshad1/simpleweb . # '.' specify the build context
 
 =================================================
-Lecture #47. Minimizing Cache Busting and Rebuilds
+Lecture #50. Minimizing Cache Busting and Rebuilds
 =================================================
 
 Update Dockerfile
