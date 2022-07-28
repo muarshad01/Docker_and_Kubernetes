@@ -1,9 +1,7 @@
-==================================
-Section 12: Onwards to Kubernetes!
-==================================
+===============================================
+Lecture 173: The Why's and What's of Kubernetes
+===============================================
 
-Lecture 173. The Why's and What's of Kubernetes
-=======================================
 Q: What is Kubernetes? 
   - System for running many different containers over multiple different machines
 
@@ -23,8 +21,10 @@ Node:
 
 Master
 
-Lecture 174. Kubernetes in Development and Production
 =====================================================
+Lecture 174: Kubernetes in Development and Production
+=====================================================
+
 Development
 -- MiniKube (cmd line tool: sets up a ting little cluster on local computer)
 
@@ -44,14 +44,18 @@ Local Kubernetes Development
 - Install a VM driver virtualbox
 - Install minikube
 
+==============================================
 Lecture 175: New Minikube Install Instructions
 ==============================================
+
 Instead of running $ brew cask install minikube
 
 We only need to run $ brew install minikube
 
-Lecture 176. Minikube Setup on MacOS
 ====================================
+Lecture 176: Minikube Setup on MacOS
+====================================
+
 1. Make sure Brew is installed --> Download brew @ https://brew.sh (/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
                                   $ which brew
                                   /usr/local/bin/brew
@@ -71,20 +75,26 @@ Hint: sudo chown -R $(whoami) /usr/local
 5. Start minikube --> $ minikube start
                       $ minikube status
 
+=====================================================
 Lecture 177: Minikube Setup on Windows Pro/Enterprise
 =====================================================
 
+==========================================
 Lectur 178: Minikube Setup on Windows Home
 ==========================================
 
+===================================
 Lecture 179: Minikube Stup on Linux
 ===================================
 
+==============================================================
 Lecture 180: Docker Destktops's Kubernetes instead of MiniKube
 ==============================================================
 
+=======================================
 Lecture 181: Mapping Existing Knowledge
 =======================================
+
 $ minikube status
 - minikube
 - type: Control Plane
@@ -99,11 +109,14 @@ $ kubectl cluster-info
 
 - To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
+===========================================
 Lecture 182: Quick Note to prevent an Error
 ===========================================
 
+=======================================
 Lecture 183. Adding Configuration Files
 =======================================
+
 Kubernetes expects ALL images to already be built
 
 $ mkdir simpleK8s
@@ -143,7 +156,8 @@ spec:
     component: web
 ---
 
-184. Object Types and API Versions
+==================================
+Lecture 184: Object Types and API Versions
 ==================================
 
 In kubernetes, config files are used to crate 'Objects' (or specific types of objects), 
@@ -158,8 +172,10 @@ Example object types:
 
 Each API version defined a different set of 'objects' we can use
 
+=======================================
 Lecture 185: Running Containers in Pods
 =======================================
+
 $ minikube start --> Create a VM referred to as 'Node'; 
                    Node runs various types of 'objects' such as Pod
                    Pod is a grouping of containers with 'similar' purpose
@@ -170,8 +186,10 @@ Node{
   }
 }
 
-Lecture 186. Service Config Files in Depth
 ==========================================
+Lecture 186: Service Config Files in Depth
+==========================================
+
 Object Types:
 
 Pods: Runes one or more closely related containers
@@ -211,8 +229,10 @@ labels:
 selector:
     tier: frontend
 
-Lecutre 187. Connecting to Running Containers
-=====================================
+=============================================
+Lecutre 187: Connecting to Running Containers
+=============================================
+
 $ cd simplek8s
 $ kubectl apply -f client-pod.yaml 
 -- pod/client-pod configured
@@ -232,8 +252,10 @@ kubernetes        ClusterIP   p.q.r.s         <none>          443/TCP         4d
 
 $ minikube ip # prints the ip address of that VM
 
-Lecture 188. The Entire Deployment Flow
 =======================================
+Lecture 188: The Entire Deployment Flow
+=======================================
+
 $ kubect get pods
 
 $ docker ps
@@ -249,8 +271,10 @@ NAME        READY   STATUS    RESTARTS    AGE
 
 Note: Deployment file goes to Master and not Nodes
 
-Lecture 189. Imperative vs Declarative Deployments
 ==================================================
+Lecture 189: Imperative vs Declarative Deployments
+==================================================
+
 - Kubernetes is a system to deploy containerized apps
 - Nodes are individual machines (or vm's) that run containers
 - Masters are machines (or vm's) with a set of programs to manage Nodes
