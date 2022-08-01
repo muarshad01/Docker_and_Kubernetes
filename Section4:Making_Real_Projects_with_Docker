@@ -164,12 +164,13 @@ Update Dockerfile file
 
 ---
 # Specify a base image
-FROM node:alpine
+FROM node:14-alpine
 
 WORKDIR /usr/app
 
 # Install some dependencies
-COPY ./ ./ # COPY (current working directory of simpleweb) (current working directory inside the container)
+COPY ./ ./ 							# COPY (current working directory of simpleweb) (current working directory inside the container)
+
 RUN npm install
 
 # Default command
@@ -179,36 +180,41 @@ CMD ["npm", "start"]
 $ docker run -p (Route incoming requests to this port on local host to...):(...this port inside the container) IMAGE_ID
 $ docker run -p 8080:8080 marshad1/simpleweb
 
-Run another process inside a docker container
+# Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
 
 ==========================================
 Lecture #48: Specifying a Working Directory
 ==========================================
 
+$ docker run -it marshad1/simpleweb sh
+/ # ls
+/ # exit
+
 WORKDIR /usr/app 					# Any following command will be executed relative 
 							# to this path in the container
 
 ---
 # Specify a base image
-FROM node:14-alpine 					# Notice node:apline
+FROM node:14-alpine 					# Notice node:14- apline
 
 WORKDIR /usr/app
 
 # Install some dependencies
+COPY ./ ./
 RUN npm install
 
 # Default command
 CMD ["npm", "start"]
 ---
 
-$ docker build -t marshad1/simpleweb .
-$ docker run -p 8080:8080 marshad1/simpleweb
+$ docker build -t marshad1/simpleweb .				# tag the image
+$ docker run -p 8080:8080 marshad1/simpleweb			# docker run -p <port>:<port> dockerId/projectName
 
 Start another process inside a running container 'docker exec'
 
 $ docker ps 							# Get CONTAINER_ID
-$ docker exec -it CONTAINER_ID
+$ docker exec -it CONTAINER_ID sh
 /usr/app #
 
 ================================
@@ -231,9 +237,12 @@ WORKDIR /usr/app
 
 # Install some depenendencies
 COPY ./package.json ./
+
 RUN npm install
 COPY ./ ./
 
 # Default command
 CMD ["npm", "start"]
 ---
+
+$ docker build -d marshad1/simpleweb .
