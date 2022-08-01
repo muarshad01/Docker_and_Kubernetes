@@ -3,9 +3,15 @@
 Lecture #51: App Overview
 ===============-=========
 
+https://localhost:4001
+
+Number of visits: 10
+
+---
+
 A WebApp that simply displays the number of times this page has been visited.
 
-Webpage --> Docker Container (Node App) --> Docker Container (Redis)
+Webpage --> Docker Container {Node App} --> Docker Container {Redis Server}
 
 ===================================
 Lecture #52: App Server Starter Code
@@ -53,10 +59,11 @@ app.listen(8081, ()=> {
 Lecture #53: Assembling a Dockerfile
 ===================================
 
-Create Dockerfile:
+$ touch Dockerfile
+$ vim Dockerfile
 
 ---
-FROM node:alpine
+FROM node:14-alpine
 
 WORKDIR '/app'
 
@@ -75,12 +82,14 @@ npm WARN app No description
 npm WARN app No repository field.
 npm WARN app No license field.
 
-$ build -t marshad1/visits:latest . 			# Tag the image
+$ build -t marshad1/visits:latest . 			# Tag the image dockerID/projectName:latest
 $ docker image ls -a
 
 ========================================
 Lecture #54: Introducting Docker Compose
 ========================================
+
+===========================
 
 $ docer run marshad1/visits 				# Error: Redis connection to 127.0.0.1:6379 failed 
 							# - connect ECONNREFUSED 127.0.0.1:6379
