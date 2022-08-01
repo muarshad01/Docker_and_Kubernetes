@@ -9,7 +9,8 @@
 ## Docker and Kubernetes: The Complete Guide  
 https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
-docker system prune -a <br />
+$ docker system prune -a <br />
+$ docker image ls -a <br />
 
 ## How to remove images with '\<none\>'?
 docker image ls -a | grep '^\<none\>' | awk '{print $3}' | xargs docker rmi
