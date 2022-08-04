@@ -165,7 +165,7 @@ Lecture 205: Rebuilding the Client Image
 $ cd complex/client
 
 # Crate a new Image
-$ docker buid -t muarshad01/multi-client . # '.' is build context
+$ docker buid -t muarshad01/multi-client . 		# '.' is build context
 
 # Push to docker hub
 $ docker push muarshad01/multi-client
@@ -174,11 +174,13 @@ $ docker push muarshad01/multi-client
 Lecture 206: Triggering Deployment Updates
 ==========================================
 
-$ kubectl apply -f client-deployment.yaml
+https://github.com/kubernetes/kubernetes/issues/33664
 
-deployment.apps/client-deployment unchanged # Notice 'unchanged', it means new config file is same as previous
+$ kubectl apply -f client-deployment.yaml
+deployment.apps/client-deployment unchanged 		# Notice 'unchanged', it means new config file is same as previous
 
 $ kubectl get pods
+$ kubectl get deployments
 
 =======================================================
 Lecture 207: Imperatively Updating a Deployment's Image
@@ -194,30 +196,35 @@ $ docker build -t marshad1/multi-client:v5 .
 $ docker push <tag-name>
 $ docker push marshad1/multi-client:v5
 
-$ kubect set image <object_type>/<object_name> <container_name>=<new image to use>
-$ kubect set image deployment/client-deployment client=marshad1/multi-client:v5
+$ kubectl set image <object_type>/<object_name> <container_name>=<new image to use>
+$ kubectl set image deployment/client-deployment client=marshad1/multi-client:v5
+deployment.extensions/client-deployment image updated
 
 $ kubect get pods
 $ minikube ip
 
+==========================================================
+Lecture 208: Reminder for Docker Desktop's Kubernetes Users
+===========================================================
+
 ==========================================
-Lecture 208: Multiple Docker Installations
+Lecture 209: Multiple Docker Installations
 ==========================================
 
 $ docker ps
 
 =====================================
-Lecture 209: Reconfiguring Docker CLI
+Lecture 210: Reconfiguring Docker CLI
 =====================================
 
 $ cd simplek8s
 $ docker ps
-$ eval $(minikube docker-env) # Temprarily, reconfigures local copy of docker client to 
-                                connect to the docker server inside the kubernetes node
+$ eval $(minikube docker-env) 			# Temprarily, reconfigures local copy of docker client to 
+                                		# connect to the docker server inside the kubernetes node
 $ docker ps
 
 =============================================
-Lecture 210: Why Mess with Docker in the Node?
+Lecture 211: Why Mess with Docker in the Node?
 =============================================
 
 -- Use all the same debugging techniques we learned with Docker CLI
@@ -225,7 +232,7 @@ Lecture 210: Why Mess with Docker in the Node?
 -- Deleted cached images in the node
 
 $ docker logs CONTAINER-ID  
-$ docker exect -it CONTAINER-ID sh # 'i' STDIN of process; -t: 
+$ docker exec -it CONTAINER-ID sh 			# 'i' STDIN of process; -t: readable format 
 
 $ kubectl get pods
 $ kubect logs <pod-name>
