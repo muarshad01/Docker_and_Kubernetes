@@ -1,9 +1,5 @@
-#================================================
-Section 14: A Multi-Container App with Kubernetes
-#================================================
-
 ===================================
-Lecture 207: The Path to Production
+Lecture 212: The Path to Production
 ===================================
 
 $ cd simplek8s
@@ -25,11 +21,11 @@ Services:
  - Postgres pod 
 
 =============================
-Lecture 208: Checkpoint Files
+Lecture 213: Checkpoint Files
 =============================
 
 ===============================
-Lecture 209: A Quick Checkpoint
+Lecture 214: A Quick Checkpoint
 ===============================
 
 $ cd complex
@@ -42,7 +38,7 @@ localhost:3050
 Next: Take all images and migreate them in the world of kubernetes
 
 ======================================
-Lecture 210: Recreating the Deployment
+Lecture 215: Recreating the Deployment
 ======================================
 
 $ cd complex
@@ -78,7 +74,7 @@ spec:
 ---
 
 ===========================================
-Lecutre 211: NodePort vs ClusterIP Services
+Lecutre 216: NodePort vs ClusterIP Services
 ===========================================
 
 Pods: # Runs one or more closeley related containers 
@@ -90,7 +86,7 @@ Services: # Sets up 'networking' in a Kubernetes Cluster
 - Ingress
 
 =================================
-Lecture 212: The ClusterIP Config
+Lecture 217: The ClusterIP Config
 =================================
 
 $ cd k8s
@@ -110,7 +106,7 @@ spec:
 ---
 
 =================================================
-Lecture 213: Applying Multiple Files with Kubectl
+Lecture 218: Applying Multiple Files with Kubectl
 =================================================
 
 $ kubectl get deployments
@@ -129,7 +125,7 @@ $ kubectl get deployments
 $ kubectl get services
 
 ==========================================
-Lecture 214: Express API Deployment Config
+Lecture 219: Express API Deployment Config
 ==========================================
 
 $ cd k8s
@@ -158,7 +154,7 @@ spec:
 ---
 
 ======================================
-Lecture 215: Cluter IP for Express API
+Lecture 220: Cluter IP for Express API
 ======================================
 
 $ cd k8s
@@ -179,13 +175,13 @@ spec:
 ---
 
 ===============================================
-Lecture 216: Combining Config Into Single Files
+Lecture 221: Combining Config Into Single Files
 ===============================================
 
 Combine all configuration files together and seperate them with '---'
 
 ==================================
-Lecture 217: The Worker Deployment
+Lecture 222: The Worker Deployment
 ==================================
 
 $ cd k8s
@@ -212,7 +208,7 @@ spec:
 ---
 
 ==============================================
-Lecture 218: Reapplyig a Batch of Config Files
+Lecture 223: Reapplyig a Batch of Config Files
 ==============================================
 
 $ cd complex
@@ -229,7 +225,7 @@ $ kubectl get pods
 $ kubectl logs <name-of-pod>
 
 ===============================================
-Lecture 219: Creating and Applying Redis Config
+Lecture 224: Creating and Applying Redis Config
 ===============================================
 
 $ cd k8s
@@ -280,11 +276,11 @@ $ kubectl get pods
 $ kubectl get services
 
 =========================================================
-Lecture 220: Important Note about Expected Postgres Error
+Lecture 225: Important Note about Expected Postgres Error
 =========================================================
 
 ======================================
-Lecture 221: Last Set of Boring Config
+Lecture 226: Last Set of Boring Config
 ======================================
 
 $ postgres-deployment.yaml
@@ -333,13 +329,13 @@ $ kubectl get pods
 $ kubectl get service
 
 ================================================
-Lecture 222: The Need for Volumes with Databases
+Lecture 227: The Need for Volumes with Databases
 ================================================
 
 Persistent Volume Claim (PVC)
 
 ===============================
-Lecture 223: Kubernetes Volumes
+Lecture 228: Kubernetes Volumes
 ===============================
 
 - Persistent Volume Claims
@@ -350,7 +346,7 @@ Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes aw
 Volume will, however, survive the container restarts.
 
 ==========================================
-Lecture 224: Volumes vs Persistent Volumes
+Lecture 229: Volumes vs Persistent Volumes
 ==========================================
 
 Persistent volume is not tied to any 'pod' or 'container'
@@ -362,7 +358,7 @@ Pod {
 Persistent volume is outside the pod.
 
 ===========================================================
-Lecture 225: Persistent Volumes vs Persistent Volume Claims
+Lecture 230: Persistent Volumes vs Persistent Volume Claims
 ===========================================================
 
 Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
@@ -371,7 +367,7 @@ Statistically provisioed Persistent Volume
 Dynamically provisioned Persistent Volume
 
 ================================
-Lecture 226:  Claim Config Files
+Lecture 231:  Claim Config Files
 ================================
 
 $ cd k8s
@@ -391,7 +387,7 @@ spec:
 ---
 
 ===========================================
-Lecture 227: Persistent Volume Access Modes
+Lecture 232: Persistent Volume Access Modes
 ===========================================
 
 ReadWriteOnce --> Can be used by a single node.
@@ -399,7 +395,7 @@ ReadOnlyMany --> Multiple nodes can read from this.
 ReadWriteMany --> Can be read and written to by many nodes.
 
 ==============================================================
-Lecture 228: Where Does Kubernetes Allocate Persistent Volumes
+Lecture 233: Where Does Kubernetes Allocate Persistent Volumes
 ==============================================================
 
 $ kubectl get storageclass
@@ -409,7 +405,7 @@ NAME    PROVISIONER     AGE
 $ kubectl describe storageclass
 
 ================================================
-Lecture 229: Designating a PVC in a Pod Template
+Lecture 234: Designating a PVC in a Pod Template
 ================================================
 
 ---
@@ -443,7 +439,7 @@ spec:
 ---
 
 ==========================
-Lecture 230: Applyng a PVC
+Lecture 235: Applyng a PVC
 ==========================
 
 $ cd k8s
@@ -452,11 +448,11 @@ $ kubectl get pods
 $ kubectl get pv # pv: persistent volume
 
 ===========================================
-Lecture 231: Defining Environment Variables
+Lecture 236: Defining Environment Variables
 ===========================================
 
 ===================================================
-Lecture 232: Adding Environment Variables to Config
+Lecture 237: Adding Environment Variables to Config
 ===================================================
 
 ---
@@ -518,7 +514,7 @@ spec:
 ---
 
 =======================================
-Lecture 233: Creating an Encoded Secret
+Lecture 238: Creating an Encoded Secret
 =======================================
 
 1. Pods --> Runs one or more closely related containers
@@ -546,11 +542,11 @@ Type of secret:
 - TLS
 
 ==============================================
-Lecture 234: Postgres Environment Variable Fix
+Lecture 239: Postgres Environment Variable Fix
 ==============================================
 
 =====================================================
-Lecture 235: Passing Secrets as Environment Variables
+Lecture 240: Passing Secrets as Environment Variables
 =====================================================
 
 $ kubectl get secret
@@ -564,5 +560,5 @@ $ kubectl get secret
 $ kubectl apply -f k8s
 
 =============================================
-Lecture 236: Environment Variables as Strings
+Lecture 241: Environment Variables as Strings
 ==============================================
