@@ -2,48 +2,46 @@
 Lecture 194: Updating Existing Objects
 ======================================
 
-Find an existing Pod and update the image that it is using
+Find an existing 'Pod' and update the image that it is using
 
-Update the Config file
-
+Updated the Config File
 - Name: client-pod
-- Kind: Pod
+- Type: pod
 - image: multi-worker
 
 kubectl -> Master -> Virtual Machine (Node) {
-                                            	Pod Name: client-pod
-                                              	multi-client container
-                                            } 
+                                              Pod 
+                                              Name: client-pod
 
+                                              multi-client container
+                                            } 
 ==========================================
 Lecture 195: Declarative Updates in Action
 ==========================================
 
 update client-pod.yaml
 
----
 apiVersion: v1
 kind: Pod
-metadata:
+metadate:
   name: client-pod
   labels:
     component: web
 spec:
   containers:
     - name: client
-      image: marshad1/multi-worker 			# update multi-client to multi-worker image
+      image: marshad1/multi-worker # update multi-client to multi-worker image
       ports:
         - containerPort: 3000
----
 
 $ kubectl apply -f client-pod.yaml
-pod/client-pod "configured"
+pod/client-pod configured
 
 $ kubectl get pods
 NAME    READY     STATUS      RESTARTS      AGE
 
-How to get detailed info about an object
-# kubectl describe <object type> <object name>
+Get detailed info about an object
+$ kubectl describe <object type> <object name>
 $ kubectl describe pod client-pod
 
 ==========================================
@@ -55,37 +53,38 @@ ports:
  
 $ kubectl apply -f client-pod.yaml
 
+===========================================
+Lecture 197: Quick Note to Prevent an Error
+===========================================
+
 ================================================
-Lecture 197: Running Containers with Deployments
+Lecture 198: Running Containers with Deployments
 ================================================
 
-Pods 		-> Runs a single set of containers
-Services 	-> Setups up 'networking' in a Kubernetes Cluster
-Deployment 	-> Runs a set of identical pods (one or more)
+Pods -> Runs a single set of containers
+Deployment -> RUns a set of identical pods (one or more)
+
+Services -> Setups up 'networking' in a Kubernetes Cluster
 
 Deployment object has a Pod Template
-
-===========================================
-Lecture 198: Quick Note to Prevent an Error
-===========================================
 
 ===========================================
 Lecture 199: Deployment Configuration Files
 ===========================================
 
-$ touch client-deployment.yaml 				
+$ touch client-deployment.yaml # a a file client-deployment.yaml
 
 ---
 apiVersion: apps/v1
-kind: Deployment 					# Obejct typeRuns a set of identical pods
+kind: Deployment # Runs a set of identical pods
 metadata:
   name: client-deployment
 spec:
-  replicas: 1 						# Number of pods this deployment is supposed to make
+  replicas: 1 # Number of pods this deployment is supposed to make
   selector:
     matchlabels:
       component: web
-  template: 						# Configuration for every single pod using this deployment
+  template: # Configuration for every single pod using this deployment
     metadata:
       labels:
         component: web
@@ -107,7 +106,7 @@ Lecture 201: Applying a Deployment
 
 $ kubectl get pods
 
-Remove an object
+Remove an object:
 $ kubectl delete -f <config file>
 $ kubectl delete -f client-pod.yaml
 pod "client-pod" deleted

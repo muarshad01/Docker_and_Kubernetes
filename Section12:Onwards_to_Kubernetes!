@@ -263,7 +263,7 @@ Lecutre #191: Connecting to Running Containers
 
 $ cd simplek8s
 
-# kubectl appli -f <file-name>
+# kubectl apply -f <file-name>
 $ kubectl apply -f client-pod.yaml 
 -- pod/client-pod configured
 
@@ -276,7 +276,6 @@ NAME        READY   STATUS    RESTARTS    AGE
 client-pod  1/1     Running   0           1h
 
 READY x/y = READY Number-pods/Number of copies runnies
-
 
 $ kubectl get services
 
