@@ -4,14 +4,14 @@ Lecture 212: The Path to Production
 
 $ cd simplek8s
 
-- Create config files for each service and Deployment
+- Crate config files for each Service and Deployment
 - Test locally on minikube
 - Create a Github/Travis flow to build images and deploy 
-- Deploy app to a cloud provider 
+- Deploy app to a cloud provider
 
 Services:
  - Ingress Service
- - ClusterIP Service 
+ - ClusterIP Service
 
  Deployment:
  - multi-client
@@ -19,6 +19,8 @@ Services:
  - multi-Worker
  - Redis pod 
  - Postgres pod 
+
+Postgres Persistent Volume Claim: PVC
 
 =============================
 Lecture 213: Checkpoint Files
@@ -30,7 +32,7 @@ Lecture 214: A Quick Checkpoint
 
 $ cd complex
 $ docker ps 
-$ docker-compose up --build # rebuild all images
+$ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
 
 localhost:3050
@@ -50,7 +52,7 @@ delete:
 - nginx foldr and we'll be usign IngresServer for routing
 
 $ mkdir k8s
-
+$ cd k8s
 $ touch client-deployment.yaml
 
 ---
@@ -63,7 +65,7 @@ spec:
     selector:
         matchLabels: 
             component: web
-    template: # Node template
+    template: 						# Node template
         matadata:
             label:
                 component: web
@@ -71,17 +73,18 @@ spec:
             containers:
                 - name: client
                   image: marshad1/multi-client
+			- containerPort: 3000
 ---
 
 ===========================================
 Lecutre 216: NodePort vs ClusterIP Services
 ===========================================
 
-Pods: # Runs one or more closeley related containers 
+Pods:			# Runs one or more closeley related containers 
 
-Services: # Sets up 'networking' in a Kubernetes Cluster
-- ClusterIP # Exposes a set of pods to other objects in the cluster
-- NodePort # Expose a set of pods to the outside world (only good for dev purposes!!!)
+Services: 		# Sets up 'networking' in a Kubernetes Cluster
+- ClusterIP 		# Exposes a set of pods to other objects in the cluster
+- NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
 - LoadBalancer
 - Ingress
 
@@ -91,6 +94,7 @@ Lecture 217: The ClusterIP Config
 
 $ cd k8s
 $ touch client-cluster-ip-service.yaml
+
 ---
 apiVersion: v1
 kind: Service
@@ -112,6 +116,7 @@ Lecture 218: Applying Multiple Files with Kubectl
 $ kubectl get deployments
 $ kubectl deleted deployment client-deployment
 $ kubectl get deployments
+
 -- No resources found.
 
 $ kubectl get services
@@ -220,7 +225,7 @@ $ ls k8s
 - client-cluster-ip-service.yaml
 - server-cluster-ip-service.yaml
 
-$ kubectl apply -f k8s
+$ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl logs <name-of-pod>
 
@@ -242,7 +247,7 @@ spec:
         matchLabels:
             component: redis
     template:
-        metadate:
+        metadata:
             labels:
                 component: redis
         spec:
@@ -270,7 +275,7 @@ spec:
 ---
 
 $ cd k8s
-$ kubctl apply -f k8s
+$ kubctl apply -f k8s/
 
 $ kubectl get pods
 $ kubectl get services
@@ -324,7 +329,7 @@ spec:
 ---
 
 $ cd k8s
-$ kubectl apply -f k8s
+$ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl get service
 
@@ -390,9 +395,9 @@ spec:
 Lecture 232: Persistent Volume Access Modes
 ===========================================
 
-ReadWriteOnce --> Can be used by a single node.
-ReadOnlyMany --> Multiple nodes can read from this.
-ReadWriteMany --> Can be read and written to by many nodes.
+ReadWriteOnce			# Can be used by a single node.
+ReadOnlyMany			# Multiple nodes can read from this.
+ReadWriteMany			# Can be read and written to by many nodes.
 
 ==============================================================
 Lecture 233: Where Does Kubernetes Allocate Persistent Volumes
@@ -433,7 +438,7 @@ spec:
               ports:
                 - containerPort: 5432
               volumeMounts:
-                - name: postgres-storage # Notice: volume name and volumeMount name are the same
+                - name: postgres-storage 				# Notice: volume name and volumeMount name are the same
                   mountPath: /var/lib/postgresql/data 
                   subPath: postgres 
 ---
@@ -445,7 +450,7 @@ Lecture 235: Applyng a PVC
 $ cd k8s
 $ kubectl apply -f k8s
 $ kubectl get pods
-$ kubectl get pv # pv: persistent volume
+$ kubectl get pv 						# pv: persistent volume
 
 ===========================================
 Lecture 236: Defining Environment Variables
@@ -466,7 +471,7 @@ spec:
         matchLabels:
             component: worker
     template:
-        metadate:
+        metadata:
             labels:
                 component: worker
         spec:
@@ -517,20 +522,20 @@ spec:
 Lecture 238: Creating an Encoded Secret
 =======================================
 
-1. Pods --> Runs one or more closely related containers
+1. Pods 					# Runs one or more closely related containers
 
-2. Deployments --> Administers and manages a set of pods
+2. Deployments 					# Administers and manages a set of pods
 
-3. Services --> Sets up networking in a Kubernetes Cluster
+3. Services 					# Sets up networking in a Kubernetes Cluster
     - ClusterIP: Exposes a set of pods to other objects in the cluster
     - NodePort: Exposes a set of pods to the outside world (only good for dev purposes!!!)
     - LoadBalancer
     - Ingress
 
-4. Secrets --> Securely stores a piece of information in the cluster, such as a database password
+4. Secrets 					# Securely stores a piece of information in the cluster, such as a database password
 
-Creating a Secret:
-
+Creating a Secret
+------------------
 $ kubectl create secret generic <secret_name> --from-literal key=value
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
 secret/pgpassword created
@@ -561,4 +566,17 @@ $ kubectl apply -f k8s
 
 =============================================
 Lecture 241: Environment Variables as Strings
-==============================================
+=============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
