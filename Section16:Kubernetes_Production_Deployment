@@ -1,9 +1,5 @@
-============================================
-Section 16: Kubernetes Production Deployment
-============================================
-
 ===================================
-Lecture 252: The Deployment Process
+Lecture 256: The Deployment Process
 ===================================
 
 1. Create a Github Repo
@@ -13,7 +9,7 @@ Lecture 252: The Deployment Process
 5. Add deployment scripts to the repo
 
 ===============================================
-Lecutre 253: Google Cloud vs AWS for Kubernetes
+Lecutre 257: Google Cloud vs AWS for Kubernetes
 ===============================================
 
 Why Google Cloud?
@@ -23,7 +19,7 @@ Why Google Cloud?
 4. Excellent documentation for beginners
 
 ================================
-Lecture 254: Creating a Git Repo
+Lecture 258: Creating a Git Repo
 ================================
 
 $ git remote -v
@@ -33,17 +29,17 @@ $ git remote -v
 $ git push origin master
 
 ==============================================
-Lecture 255: Linking the Github Repo to Travis
+Lecture 259: Linking the Github Repo to Travis
 ==============================================
 
 https://travis-ci.org
 
 ======================================
-Lecture 256: Free Google Cloud Credits
+Lecture 260: Free Google Cloud Credits
 ======================================
 
 ============================================
-Lecture 257: Creating a Google Cloud Project
+Lecture 261: Creating a Google Cloud Project
 ============================================
 
 console.cloud.google.com
@@ -52,27 +48,27 @@ Select a project --> New Project
 Project Name --> multi-k8s --> create
 
 ======================================
-Lecture 258: Linking a Billing Account
+Lecture 262: Linking a Billing Account
 ======================================
 
 ===================================
-Lecture 259: Kubernetes Engine Init
+Lecture 264: Kubernetes Engine Init
 ===================================
 
 =================================================
-Lecture 260: Creating a Cluster with Google Cloud
+Lecture 265: Creating a Cluster with Google Cloud
 =================================================
 
 =====================================
-Lecture 261: Don't Forget to Cleanup!
+Lecture 266: Don't Forget to Cleanup!
 =====================================
 
 =================================================
-Lecture 262: Kubernetes Dashboard on Google Cloud
+Lecture 267: Kubernetes Dashboard on Google Cloud
 =================================================
 
 =======================================
-Lecture 263: Travis Deployment Overview
+Lecture 268: Travis Deployment Overview
 =======================================
 
 1. Install Google CLoud SDK CLI
@@ -86,7 +82,7 @@ Lecture 263: Travis Deployment Overview
 9. Imperatively set latest images on each deployment 
 
 ============================================
-Lecture 264: Installing the Google Cloud SDK
+Lecture 269: Installing the Google Cloud SDK
 ============================================
 
 $ touch .travis.yaml
@@ -103,7 +99,7 @@ before_install:
 ---
 
 =========================================
-Lecture 265: Generating a Service Account
+Lecture 271: Generating a Service Account
 =========================================
 
 Create a Service Account
@@ -113,13 +109,13 @@ Encrypt and upload the json file to our Travis account
 In travi.yml, add code to unencrypt the json file and load it into GCloud SDK
 
 =============================
-Lecture 266: Ruby Version Fix
+Lecture 272: Ruby Version Fix
 =============================
 
 $ docker run -it -v $(pwd):/app ruby:2.4 sh
 
 ==============================================
-Lecture 267: Running Travis CLI in a Container
+Lecture 273: Running Travis CLI in a Container
 ==============================================
 
 github.com/travis-ci/travis.rb
@@ -140,7 +136,7 @@ Lecture 268: Fixes for Travis "iv undefined" or  "repository not known"
 =======================================================================
 
 ==============================================
-Lecture 269: Encrypting a Service Account File
+Lecture 275: Encrypting a Service Account File
 ==============================================
 
 # travis login
@@ -156,7 +152,7 @@ $ rm -f service-account.json
 # exit 
 
 =========================================
-Lecture 270: More Google Cloud CLI Config
+Lecture 276: More Google Cloud CLI Config
 =========================================
 
 ---
@@ -179,15 +175,15 @@ script:
 ---
 
 ==========================================
-Lecture 271: Fix For Failing Travis Builds
+Lecture 277: Fix For Failing Travis Builds
 ==========================================
 
 =======================================
-Lecture 272: Runnign Testes with Travis
+Lecture 278: Runnign Testes with Travis
 =======================================
 
 ========================================
-Lecture 273: Custom Deployment Providers
+Lecture 279: Custom Deployment Providers
 ========================================
 
 In .travis.yaml file add the following:
@@ -203,7 +199,7 @@ deploy:
 $ touch deploy.sh 
 
 =====================================
-Lecture 274: Unique Deployment Images
+Lecture 280: Unique Deployment Images
 =====================================
 
 deploy.sh
@@ -222,7 +218,7 @@ $ kubectl set image deployments/server-deployment server=muarshad01/multi-server
 ---
 
 =========================================
-Lecture 275: Unique Tags for Built Images
+Lecture 281: Unique Tags for Built Images
 =========================================
 
 $ docker buid 
@@ -231,7 +227,7 @@ $ docker buid
 -f ./client/Dockerfile ./client
 
 ===========================================
-Lecture 276: Updating the Deployment Script
+Lecture 282: Updating the Deployment Script
 ===========================================
 
 In .travis.yaml
@@ -246,7 +242,7 @@ env:
 ---
 
 ========================================================
-Lecture 277: Configuring the GCloud CLI on Cloud Console
+Lecture 283: Configuring the GCloud CLI on Cloud Console
 ========================================================
 
 $ gcloud config set project <ID>
@@ -254,7 +250,7 @@ $ gcloud config set compute/zone us-central-account
 $ gcloud container clusters get-credentials multi-cluster 
 
 ==============================================
-Lecture 278: Creating a Secret on Google Cloud
+Lecture 284: Creating a Secret on Google Cloud
 ==============================================
 
 $ kubectl get pods 
@@ -263,15 +259,11 @@ $ kubectl create secret generic <secret_name> --from-literal PGPASSWORD=password
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpassword123 
 
 ===========================
-Lecture 279: Helm v3 Update
-===========================
-
-===========================
-Lecutre 280: Helm v2 Update
+Lecture 285: Helm v3 Update
 ===========================
 
 =======================
-Lecture 281: Helm Setup
+Lecture 286: Helm Setup
 =======================
 
 $ github.com/helm/helm 
@@ -279,13 +271,13 @@ $ github.com/helm/helm
 Helm Client --> Tiller Server # runs inside a kubernetes server; Tiller is a pod 
 
 ==========================================
-Lecture 282: Kubernetes Security with RBAC
+Lecture 287: Kubernetes Security with RBAC
 ==========================================
 
 $ kubectl get namespces 
 
 ===============================================
-Lecture 283: Assigning Tiller a Service Account
+Lecture 288: Assigning Tiller a Service Account
 ===============================================
 
 $ kubectl create serviceaccount --namespace kube-system tiller 
@@ -294,31 +286,31 @@ $ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-ad
 $ helm --service-account tiller --upgrade
 
 ====================================
-Lecture 284: Ingress-Nginx with Helm
+Lecture 289: Ingress-Nginx with Helm
 ====================================
 
 $ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
 ========================================
-Lecture 285: The Result of Ingress-Nginx
+Lecture 291: The Result of Ingress-Nginx
 ========================================
 
 =================================
-Lecture 286: Finally - Deployment
+Lecture 292: Finally - Deployment
 =================================
 
 https://github.com/StephenGrider/DockerCasts
 
 ====================================
-Lecture 287: Did I really Type That?
+Lecture 293: Did I really Type That?
 ====================================
 
 =================================
-Lecture 288: Verifying Deployment
+Lecture 294: Verifying Deployment
 =================================
 
 ===========================================
-Lecture 289: A Workflow for Chaning in Prod
+Lecture 295: A Workflow for Chaning in Prod
 ===========================================
 
 Check out a branch 
@@ -339,9 +331,13 @@ $ git push origin devel
 Create a pull-request manually 
 
 =======================================================
-Lecture 290: Merging a PR (Pull Request) for Deployment
+Lecture 296: Merging a PR (Pull Request) for Deployment
 =======================================================
 
 ====================================
-Lecture 291: That's It! What's Next?
+Lecture 297: That's It! What's Next?
 ====================================
+
+======================================================
+Lecture 298: Completed Code For Google Cloud Deployment
+=======================================================
