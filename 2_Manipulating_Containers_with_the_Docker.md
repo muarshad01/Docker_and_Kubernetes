@@ -42,14 +42,14 @@ docker run = docker create + docker start
 
 ```
 $ docker create hello-world         # A long string of characters printed out. This is CONTAINER_ID.
-$ docker start -a CONTAINER_ID 		# -a (attach) makes docker watch for output coming from "container" and print it to your terminal
+$ docker start -a CONTAINER_ID      # -a (attach) makes docker watch for output coming from "container" and print it to your terminal
 $ docker start CONTAINER_ID
 ```
 
 ## 16: Restarting Stopped Containers
 
 ```
-$ docker ps --all 			        # List of all containers that we've ever created
+$ docker ps --all                   # List of all containers that we've ever created
 ```
 
 CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
@@ -62,7 +62,7 @@ $ docker run busybox echo hi there
 ```
 $ docker ps --all                   # If STATUS = Exited, we can still start it up.
 $ docker start CONTAINER_ID
-$ docker start -a CONTAINER_ID		# -a (attach)
+$ docker start -a CONTAINER_ID      # -a (attach)
 ```
 
 ## 17: Removing Stopped Containers
@@ -77,11 +77,11 @@ CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
 $ docker system prune
 ```
 
-WARNING! This will remove:
-	- all stopped containers
-	- all networks not used by at least one container
-	- all dangling images
-	- all build cache
+* WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all build cache
 
 # 18: Retrieving Log Outputs
 
@@ -90,7 +90,7 @@ $ docker create <image-name> <command>
 $ docker create busybox echo hi there       # This will print a long CONTAINER_ID
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID
-$ docker logs CONTAINER_ID 			        # A log of all the records emitted by that container)
+$ docker logs CONTAINER_ID                  # A log of all the records emitted by that container)
 ```
 
 ## 19: Stopping Containers
@@ -100,21 +100,21 @@ $ docker create busybox ping google.com 	# This will generate a CONTAINER_ID
 $ docker start CONTAINER_ID
 $ docker logs CONTAINER_ID
 $ docker ps
-$ docker stop CONTAINER_ID 			        # SIGTERM: Graceful shutdown
+$ docker stop CONTAINER_ID                  # SIGTERM: Graceful shutdown
 $ docker start CONTAINER_ID
-$ docker kill CONTAINER_ID 			        # SIGKILL: Instant kill
+$ docker kill CONTAINER_ID                  # SIGKILL: Instant kill
 ```
 
 ## 20: Multi-command Containers
 
 ```
-$ docker run redis 				            # Ready to accept connections. 
+$ docker run redis                          # Ready to accept connections. 
 ```
 
 ## 21: Executing Commands in Running Containers
 
 ```
-$ docker exec -it CONTAINER_ID <command> 	# it: "input" to container
+$ docker exec -it CONTAINER_ID <command>    # it: "input" to container
 $ docker exec -it CONTAINER_ID redis-cli
 $ set myvalue 5
 $ get myvalue
@@ -122,16 +122,16 @@ $ get myvalue
 
 ## 22: The purpose of `IT` Flag
 
-* How processes run inside a Linux environment? When we run Docker on our machine. Every single container that we are running 
-runs inside inside a VM running Linux. Processes are inside a Linux world.
+* How processes run inside a Linux environment? 
+  - When we run Docker on our machine. Every single container that we are running runs inside inside a VM running Linux. Processes are inside a Linux world.
 
 * Every 'process' we create in Linux is attached with three communication channels: `STDIN | STDOUT | STDERR`
 
 ```
 $ docker exec -it 
-$ docker exec -i -t # -i flag means attach our terminal to the STDIN channel of the new running process; 
-		    # -t means to show the input / output text in a nice formatted fashion
-$ docker exec -i <image id> redis-cli # Notice: we've removed -t flag
+$ docker exec -i -t                     # -i flag means attach our terminal to the STDIN channel of the new running process; 
+		                                # -t means to show the input / output text in a nice formatted fashion
+$ docker exec -i <image id> redis-cli   # Notice: we've removed -t flag
 ```
 
 ## 23: Getting Command Prompt in a Container
@@ -152,12 +152,16 @@ $ ctrl-c / ctrl-d / exit
 ## 25: Container Isolation
 
 ```
-$ docker run -it busybox sh 			# In one window
+$ docker run -it busybox sh         # In one window
 $ touch hithere
 $ ls
 ```
 
 * Two different containers have separate file systems and are isolated to each other unless connected through channel.
 
-$ docker run -it busybox sh 			# In another window
-$ ls 						            # Notice, you will "not" see this file there.
+```
+$ docker run -it busybox sh             # In another window
+$ ls                                    # Notice, you will "not" see this file there.
+```
+
+***
