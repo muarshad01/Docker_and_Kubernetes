@@ -1,31 +1,33 @@
-=================================
-Lecture #15: Docker Run in Detail
-=================================
+## 15: Docker Run in Detail
 
+```
 $ docker run <image name>
 $ docker run hello-world
+```
 
-=======================================
-Lecture #16: Overriding Default Commands
-=======================================
+## 16: Overriding Default Commands
 
+```
 $ docker run <image name> command!
 $ docker run busybox echo hi there -- 'echo hi there' is the override command
 $ docker run busybox echo bye there
 $ docker run busybox echo how are you
 $ docker run busybox ls
+```
 
 busybox image as FS Snapshot = {bin, dev, etc, home, proc, root}
 
+```
 $ docker run hello-world ls -- Error
 $ docker run hello-world echo hi there -- Error
+```
 
 Note: The hello-world image doesn't have the executbles for 'ls' and 'echo' commands.
 
-=======================================
-Lecture #17: Listing running containers
-=======================================
 
+## 17: Listing running containers
+
+```
 $ docker ps				# What containers are currently running and their Id?
 $ docker run busybox ping google.com
 $ docker ps
@@ -33,30 +35,34 @@ $ docker ps --all 			# List of all containers that we have ever created.
 
 CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
 
-================================
-Lecture #18: Container Lifecycle
-================================
+## 18: Container Lifecycle
 
 docker run = docker create + docker start
 
+```
 $ docker create hello-world		#A long string of characters printed out. This is CONTAINER_ID.
 $ docker start -a CONTAINER_ID 		# -a (attach) makes docker watch for output coming from "container" and print it to your terminal
 $ docker start CONTAINER_ID
+```
 
-=========================================
-Lecture #19: Restarting Stopped Containers
-=========================================
+## 19: Restarting Stopped Containers
 
+```
 $ docker ps --all 			# List of all containers that we've ever created
+```
 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
+```
 $ docker run <image name> command
 $ docker run busybox echo hi there
+```
 
+```
 $ docker ps --all 			# If STATUS = Exited, we can still strat it up.
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID		# -a (attach)
+```
 
 =======================================
 Lecture #20: Removing Stopped Containers
