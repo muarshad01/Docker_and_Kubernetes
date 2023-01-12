@@ -8,21 +8,21 @@ $ docker run hello-world
 ## 13: Overriding Default Commands
 
 ```
-$ docker run <image name> command!
-$ docker run busybox echo hi there -- 'echo hi there' is the override command
+$ docker run <image-name> <command>
+$ docker run busybox echo hi there      # 'echo hi there' is the override command
 $ docker run busybox echo bye there
 $ docker run busybox echo how are you
 $ docker run busybox ls
 ```
 
-busybox image as FS Snapshot = {bin, dev, etc, home, proc, root}
+`busybox` image as FS Snapshot = {bin, dev, etc, home, proc, root}
 
 ```
-$ docker run hello-world ls -- Error
-$ docker run hello-world echo hi there -- Error
+$ docker run hello-world ls            # Error
+$ docker run hello-world echo hi there # Error
 ```
 
-Note: The hello-world image doesn't have the executbles for 'ls' and 'echo' commands.
+Note: The `hello-world` image doesn't have the executables for `ls` and `echo` commands.
 
 ## 14: Listing running containers
 
