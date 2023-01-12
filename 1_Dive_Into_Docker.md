@@ -45,12 +45,17 @@ $ docker run hello-world
 
 ## 10: But Really...What's a Container?
 
-* OS: Process --> System Call --> Kernel --> Hardware resources
-* Namespacing: 
+* OS
+  - Process 
+  - System Call 
+  - Kernel 
+  - Hardware resources
+
+* Namespacing 
   - OS feature
   - Isolating resources per process (or group of processes)
   - Control Groups (`cgroups`): Limit amount of resources used per process
-* A CONTAINER IS A "PROCESS OR SET OF PROCESSES" (PROGRAM) THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
+* $\color{red}{A container is a process-or-set-of-processes (program) that have a grouping of resources specifically assigned to it.}$
 
 ## 11: How's Docker Running on Your Computer
 
