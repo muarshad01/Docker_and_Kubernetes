@@ -55,7 +55,7 @@ $ docker run hello-world
   - OS feature
   - Isolating resources per process (or group of processes)
   - Control Groups (`cgroups`): Limit amount of resources used per process
-* $\color{red}{A container is a process-or-set-of-processes (program) that have a grouping of resources specifically assigned to it.}$
+* $\color{red}{A\ container\ is\ a\ process-or-set-of-processes\ (program)\ that\ have\ a\ grouping\ of\ resources\ specifically\ assigned\ to\ it.}$
 
 ## 11: How's Docker Running on Your Computer
 
