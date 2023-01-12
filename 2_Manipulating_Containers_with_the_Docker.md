@@ -122,17 +122,17 @@ $ get myvalue
 
 ## 22: The purpose of `IT` Flag
 
-How processes run inside a Linux environment? When we run Docker on our machine. Every single container that we are running 
-runs inside insidie a VM running Linux. Processes are inside a linux world.
+* How processes run inside a Linux environment? When we run Docker on our machine. Every single container that we are running 
+runs inside inside a VM running Linux. Processes are inside a Linux world.
 
-Every 'process' we create in Linux is attached with three communication channels: STDIN | STDOUT | STDERR
+* Every 'process' we create in Linux is attached with three communication channels: `STDIN | STDOUT | STDERR`
 
+```
 $ docker exec -it 
 $ docker exec -i -t # -i flag means attach our terminal to the STDIN channel of the new running process; 
 		    # -t means to show the input / output text in a nice formatted fashion
-
-
 $ docker exec -i <image id> redis-cli # Notice: we've removed -t flag
+```
 
 ## 23: Getting Command Prompt in a Container
 
@@ -157,7 +157,7 @@ $ touch hithere
 $ ls
 ```
 
-Two different containsers have seperate file systems and are isolated to each other unless connected through channel.
+* Two different containers have separate file systems and are isolated to each other unless connected through channel.
 
 $ docker run -it busybox sh 			# In another window
-$ ls 						# Notice, you will "not" see this file there.
+$ ls 						            # Notice, you will "not" see this file there.
