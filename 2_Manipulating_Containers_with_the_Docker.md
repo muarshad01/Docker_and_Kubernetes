@@ -27,10 +27,11 @@ Note: The `hello-world` image doesn't have the executables for `ls` and `echo` c
 ## 14: Listing running containers
 
 ```
-$ docker ps				# What containers are currently running and their Id?
+$ docker ps                             # What containers are currently running and their id?
+$ docker rub <image-name> <command>
 $ docker run busybox ping google.com
 $ docker ps
-$ docker ps --all 			# List of all containers that we have ever created.
+$ docker ps --all 			            # List of all containers that we have ever created.
 ```
 
 CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
@@ -40,7 +41,7 @@ CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
 docker run = docker create + docker start
 
 ```
-$ docker create hello-world		#A long string of characters printed out. This is CONTAINER_ID.
+$ docker create hello-world         # A long string of characters printed out. This is CONTAINER_ID.
 $ docker start -a CONTAINER_ID 		# -a (attach) makes docker watch for output coming from "container" and print it to your terminal
 $ docker start CONTAINER_ID
 ```
@@ -48,45 +49,48 @@ $ docker start CONTAINER_ID
 ## 16: Restarting Stopped Containers
 
 ```
-$ docker ps --all 			# List of all containers that we've ever created
+$ docker ps --all 			        # List of all containers that we've ever created
 ```
 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
 
 ```
-$ docker run <image name> command
+$ docker run <image-name> <command>
 $ docker run busybox echo hi there
 ```
 
 ```
-$ docker ps --all 			# If STATUS = Exited, we can still strat it up.
+$ docker ps --all                   # If STATUS = Exited, we can still start it up.
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID		# -a (attach)
 ```
 
 ## 17: Removing Stopped Containers
 
-$ docker ps --all			# List of all containers that we've ever created
+```
+$ docker ps --all			        # List of all containers that we've ever created
+```
 
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
 
+```
 $ docker system prune
+```
 
 WARNING! This will remove:
 	- all stopped containers
-	- all networks not used by at least one conainer
+	- all networks not used by at least one container
 	- all dangling images
 	- all build cache
-
 
 # 18: Retrieving Log Outputs
 
 ```
-$ docker create <image name> command
-$ docker create busybox echo hi there # This will print a long CONTAINER_ID
+$ docker create <image-name> <command>
+$ docker create busybox echo hi there       # This will print a long CONTAINER_ID
 $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID
-$ docker logs CONTAINER_ID 			# A log of all the records emitted by that container)
+$ docker logs CONTAINER_ID 			        # A log of all the records emitted by that container)
 ```
 
 ## 19: Stopping Containers
@@ -96,15 +100,15 @@ $ docker create busybox ping google.com 	# This will generate a CONTAINER_ID
 $ docker start CONTAINER_ID
 $ docker logs CONTAINER_ID
 $ docker ps
-$ docker stop CONTAINER_ID 			# SIGTERM: Graceful shutdown
+$ docker stop CONTAINER_ID 			        # SIGTERM: Graceful shutdown
 $ docker start CONTAINER_ID
-$ docker kill CONTAINER_ID 			# SIGKILL: Instant kill
+$ docker kill CONTAINER_ID 			        # SIGKILL: Instant kill
 ```
 
 ## 20: Multi-command Containers
 
 ```
-$ docker run redis 				# Ready to accept connections. 
+$ docker run redis 				            # Ready to accept connections. 
 ```
 
 ## 21: Executing Commands in Running Containers
