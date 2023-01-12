@@ -1,25 +1,26 @@
-The GOAL of this porject is:
-1. to CREATE a tiny 'Node JS Web App',
-2. WRAP it inside a Docker Container, and 
-3. be able to access it from a browser running on a local machine
+* The GOAL of this porject is:
+  - CREATE a tiny `Node JS WebApp`
+  - WRAP it inside a Docker Container, and 
+  - be able to access it from a browser running on a local-machine
 
 ## 37: Project Outline
 
-Steps:
------
-1. Crete a "Node JS Web App"
-2. Create a Dockerfile
-3. Build image from Dockerfile
-4. Run image as container
-5. Connect to Web Aapp from a browser
+* Steps:
+  - 1. Crete a `Node JS WebApp`
+  - 2. Create a Dockerfile
+  - 3. Build image from Dockerfile
+  - 4. Run image as container
+  - 5. Connect to WebApp from a browser
 
 ## 38: Node Server Setup
 
+```
 $ mkdir simpleweb
 $ cd simpleweb
+```
 
-(a) create a file named package.json with the following content:
-
+* (a) create a file named `package.json` with the following content:
+```
 {
   "dependencies": {
     "express": "*"
@@ -28,9 +29,10 @@ $ cd simpleweb
     "start": "node index.js"
   }
 }
+```
 
-(b) crate a file named index.js with the following content:
-
+* (b) crate a file named `index.js` with the following content:
+```
 const express = require('express');
 
 const app = express();
@@ -42,12 +44,13 @@ app.get('/', (req, res) => {
 app.listen(8080, () => {
   console.log('Listening on port 8080');
 });
+```
 
 ## 39: A Few Planned Errors
 
-1. create a file named Dockerfile
+* 1. create a file named `Dockerfile`
 
----
+```
 # Specify a base image
 FROM alpine
 
@@ -56,13 +59,15 @@ RUN npm install
 
 # Default command
 CMD ["npm", "start"]
----
+```
 
-2. $ docker build . 				# '.' is the build context
+```
+* 2. $ docker build . 				# '.' is the build context
+```
 
-We should see the following: 
-/bin/sh: npm: not found
-The command '/bin/sh -c npm install' returned a non-zero code: 127
+* We should see the following: 
+  - /bin/sh: npm: not found
+  - The command '/bin/sh -c npm install' returned a non-zero code: 127
 
 ## 43: Required Node Base Image Version
 
@@ -120,12 +125,12 @@ CMD ["npm", "start"]
 $ docker build . 
 ```
 
-The following is fine. No issue:
-npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN !invalid#2 No description
-npm WARN !invalid#2 No repository field.
-npm WARN !invalid#2 No license field.
-Successfully built IMAGE_ID
+* The following is fine. No issue:
+  - npm notice created a lockfile as package-lock.json. You should commit this file.
+  - npm WARN !invalid#2 No description
+  - npm WARN !invalid#2 No repository field.
+  - npm WARN !invalid#2 No license field.
+  - Successfully built IMAGE_ID
 
 ```
 $ docker build -t marshad1/simpleweb .			# Successfully tagged marshad1/simpleweb:latest
