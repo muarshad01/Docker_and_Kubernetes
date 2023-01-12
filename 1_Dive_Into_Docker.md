@@ -1,50 +1,58 @@
-# Section 1: Dive into Docker
+# Dive into Docker
 
-## Lecture 3: Why use Docker?
-Docker makes it really easy to "install and run software" without worrying about setup or dependencies
+## 3: Why use Docker?
+
+* Docker makes it really easy to "install and run software" without worrying about setup or dependencies
 
 ***
 
-## Lecture 4: What is Docker?
+## 4: What is Docker?
+
 * Docker is a platform or ecosystem around creating and running containers
 * Image: Single file with all the deps and config required to run a program
 * Container: Instance of an image. Runs a program. A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.
 
 ***
 
-## Lecture 5: Docker for Mac
-Docker Client (Docker CLI) --> Docker Server (Docker Daemon)
+## 5: Docker for Mac
+
+* Docker Client (Docker CLI) --> Docker Server (Docker Daemon)
 
 ***
 
-## Lecture 6: Installign Docker on MacOS
-Goto http://www.docker.com/get-started --> Get Started --> Download for Mac --> Install
+## 6: Installing Docker on MacOS
+
+* Goto http://www.docker.com/get-started --> Get Started --> Download for Mac --> Install
 
 ```
 $ docker version
 $ docker run hello-world
 ```
-
 ***
 
-## Lecture12: Using the Docker Client
+## 9: Using the Docker Client
 
 ```
 $ docker run hello-world 
 ```
 
-Docker client --> docker server (deamon) --> docker HuB --> publl the image --> Create a new Container which runs the executable--> stream the output to Docker client
+* Docker client --> docker server (deamon) --> docker HuB --> publl the image --> Create a new Container which runs the executable--> stream the output to Docker client
 
 ***
 
-## Lecture 13: But Really...What's a Container?
+## 10: But Really...What's a Container?
 
-OS: Process --> System Call --> Kernel --> Hardware resources
+* OS: Process --> System Call --> Kernel --> Hardware resources
 
-OS feature: Name Spacing
+* OS feature: Name Spacing
 
-Namespacing: Isolating resources per process (or group of processes)
+* Namespacing: Isolating resources per process (or group of processes)
 
-Control Groups (cgroups): Limit amout of resources used per process
+* Control Groups (cgroups): Limit amout of resources used per process
 
-A CONTAINER IS A PROCESS OR SET OF PROCESSES THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
+* A CONTAINER IS A PROCESS OR SET OF PROCESSES THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
+
+***
+
+## 11: How's Docker Running on Your Computer
+
