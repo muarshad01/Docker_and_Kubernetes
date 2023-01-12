@@ -14,6 +14,7 @@
   - ==A container is a PROGRAM with its own isolated set of hardware resources.==
   - <mark>XXX</mark>
   - <span style="color:red">YYY</span>
+  - $${\color{red}Red}$$
 
 ## 5: Docker for Mac
 
