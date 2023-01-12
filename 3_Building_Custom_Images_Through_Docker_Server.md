@@ -83,9 +83,9 @@ $ docker build . 				# Giving our 'Dockerfile' to docker CLI
 * Digest: ...
 * Status: Downloaded newer image for alpine:latest
 
-Lecture #32: A Brief Recap
+## 32: A Brief Recap
 
-Lecture #33: Rebuilds with Cache
+## 33: Rebuilds with Cache
 
 ```
 # Use an existing docker image as a base
@@ -105,7 +105,7 @@ CMD ["redis-server"]
 $ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 ```
 
-Lecture #36: Manual Image Generation with Docker Commit
+## 36: Manual Image Generation with Docker Commit
 
 ```
 1. $ docker run -it alpine sh 					# -i: attach our terminal to the STDIN channel of the new running process
