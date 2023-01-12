@@ -1,4 +1,4 @@
-## 29: Creating Docker Images
+## 26: Creating Docker Images
 
 * `hello-world`, `redis`, and `busybox` images
 
@@ -13,9 +13,9 @@
   - (b) Run some commands to install additional programs
   - (c) Specify a command to run on container startup
 
-## 30: Buildkit for Docker Desktop
+## 27: `Buildkit` for Docker Desktop
 
-## 31: Building a Dockerfile
+## 28: Building a `Dockerfile`
 
 Goal: Create an image that runs a redis-server
 
@@ -42,7 +42,7 @@ CMD ["redis-server"]
 5. $ docker run IMAGE_ID 			# Ready to accept connections
 ```
 
-## 32: Dockerfile Teardown
+## 29: `Dockerfile` Teardown
 
 ```
 FROM alpine				        	# Use an existing docker image as a base
@@ -52,7 +52,7 @@ RUN apk add --update redis 			# Download and install a dependency
 CMD ["redis-server"] 				# Tell the image what to do when it starts as a container
 ```
 
-## 33: What's a Base Image
+## 30: What's a Base Image
 
 Writing a `Dockerfile` == Being given a computer with no OS and being told to install Google Chrome
 
@@ -72,7 +72,7 @@ How do you install Chrome on a computer with no operating system?
 	7. Execute chrome.exe
 
 
-## 34: The Build Process in Detail
+## 31: The Build Process in Detail
 
 $ docker build . 				# Giving our 'Dockerfile' to docker CLI 
 						# '.' specifies the build-context
@@ -83,9 +83,9 @@ latest: Pulling from library/apline
 Digest: ...
 Status: Downloaded newer image for alpine:latest
 
-Lecture #35: A Brief Recap
+Lecture #32: A Brief Recap
 
-Lecture #36: Rebuilds with Cache
+Lecture #33: Rebuilds with Cache
 
 ```
 # Use an existing docker image as a base
@@ -99,13 +99,13 @@ RUN apk add --update gcc
 CMD ["redis-server"]
 ```
 
-## 37: Tagging an Image
+## 34: Tagging an Image
 
 ```
 $ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 ```
 
-Lecture #39: Manual Image Generation with Docker Commit
+Lecture #36: Manual Image Generation with Docker Commit
 
 ```
 1. $ docker run -it alpine sh 					# -i: attach our terminal to the STDIN channel of the new running process
