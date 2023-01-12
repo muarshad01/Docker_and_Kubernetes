@@ -31,6 +31,7 @@ $ docker ps				# What containers are currently running and their Id?
 $ docker run busybox ping google.com
 $ docker ps
 $ docker ps --all 			# List of all containers that we have ever created.
+```
 
 CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
 
