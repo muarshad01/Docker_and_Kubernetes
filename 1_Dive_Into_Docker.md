@@ -1,26 +1,18 @@
-##########################
-Section1: Dive into Docker
-##########################
+# Section 1: Dive into Docker
 
-===========================
-Lecture #3: Why use Docker?
-===========================
-
+## Lecture 3: Why use Docker?
 Docker makes it really easy to "install and run software" without worrying about setup or dependencies
 
-===========================
-Lecture #4: What is Docker?
-===========================
+***
 
-Docker is a platform or ecosystem around creating and running containers
+## Lecture 4: What is Docker?
+* Docker is a platform or ecosystem around creating and running containers
+* Image: Single file with all the deps and config required to run a program
+* Container: Instance of an image. Runs a program. A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.
 
-Image: Single file with all the deps and config required to run a program
+***
 
-Container: Instance of an image. Runs a program. A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.
-
-===========================
-Lecture #4: Docker for Mac
-===========================
+## Lecture 4: Docker for Mac
 
 Docker Client (Docker CLI) --> Docker Server (Docker Daemon)
 
