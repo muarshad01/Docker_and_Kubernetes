@@ -11,8 +11,7 @@
 * Container: 
   - Instance of an image. 
   - Runs a program. 
-  - $${\color{red}A container is a PROGRAM with its own isolated set of hardware resources.}$$
-  - $${\color{red}Red}$$
+  - ${\color{red}A container is a PROGRAM with its own isolated set of hardware resources.}$
 
 ## 5: Docker for Mac
 
