@@ -6,9 +6,12 @@
 
 ## 4: What is Docker?
 
-* Docker is a platform or ecosystem around creating and running containers.
-* Image: Single file with all the dependencies and configurations required to run a program.
-* Container: Instance of an image. Runs a program. **A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.**
+* **Docker**: is a platform or ecosystem around creating and running containers.
+* **Image**: A single file with all the dependencies and configurations required to run a program.
+* **Container**: 
+  - Instance of an image. 
+  - Runs a program. 
+  - **A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.**
 
 ## 5: Docker for Mac
 
