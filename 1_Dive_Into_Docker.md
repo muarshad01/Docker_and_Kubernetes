@@ -37,8 +37,8 @@ $ docker run hello-world
 ```
 
 * Docker client 
-* docker server (deamon) 
-* docker HuB
+* docker server (daemon) 
+* docker Hub
 * pull the image 
 * create a new Container which runs the executable 
 * stream the output to Docker client
@@ -46,10 +46,11 @@ $ docker run hello-world
 ## 10: But Really...What's a Container?
 
 * OS: Process --> System Call --> Kernel --> Hardware resources
-* OS feature: Name Spacing
-* Namespacing: Isolating resources per process (or group of processes)
-* Control Groups (`cgroups`): Limit amount of resources used per process
-* A CONTAINER IS A PROCESS OR SET OF PROCESSES THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
+* Namespacing: 
+  - OS feature
+  - Isolating resources per process (or group of processes)
+  - Control Groups (`cgroups`): Limit amount of resources used per process
+* A CONTAINER IS A "PROCESS OR SET OF PROCESSES" (PROGRAM) THAT HAVE A GROUPING OF RESOURCES SPECIFICALLY ASSIGNED TO IT.
 
 ## 11: How's Docker Running on Your Computer
 
