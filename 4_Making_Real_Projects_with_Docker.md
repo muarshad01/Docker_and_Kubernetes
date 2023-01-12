@@ -69,8 +69,6 @@ $ docker build . 				# '.' is the build context
   - `/bin/sh: npm` not found
   - The command `/bin/sh -c npm install` returned a non-zero code: 127
 
-## 43: Required Node Base Image Version
-
 ## 40: Base Image Issues
 
 * Update Dockerfile file
