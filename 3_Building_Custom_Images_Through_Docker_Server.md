@@ -1,11 +1,8 @@
+## 29: Creating Docker Images
 
-===================================
-Lecture #29: Creating Docker Images
-===================================
-
--- Hello-world image
--- Redis image
--- Busybox image
+* `hello-world` image
+* `redis` image
+* `busybox` image
 
 Steps: Docker file --> Docker client --> Docker Server --> Usable Image!
 
@@ -15,13 +12,9 @@ Creating a Dockerfile Flow:
 (b) Run some commands to install additional programs
 (c) Specify a command to run on container startup
 
-=======================================
-Lecture #30: Buildkit for Docker Desktop
-=======================================
+## 30: Buildkit for Docker Desktop
 
-=================================
-Lecture #31: Building a Dockerfile
-=================================
+## 31: Building a Dockerfile
 
 Goal: Create an image that runs a redis-server
 
@@ -29,7 +22,7 @@ Goal: Create an image that runs a redis-server
 2. $ cd redis-image
 3. touch Dockerfile 				# Create a file named 'Dockerfile' containing the following
 
-------------------------
+```
 # Use an existing docker image as a "base"
 FROM alpine
 
@@ -39,14 +32,12 @@ RUN apk add --update redis 			# apk is a program called "APACHE PACKAGE MANAGER"
 
 # Tell the image what to do when it starts as a container
 CMD ["redis-server"]
--------------------------
+```
 
 4. $ docker build . 				# Successfully built IMAGE_ID
 5. $ docker run IMAGE_ID 			# Ready to accept connections
 
-=================================
-Lecture #32: Dockerfile Teardown
-=================================
+## 32: Dockerfile Teardown
 
 FROM alpine					# Use an existing docker image as a base
 
@@ -54,9 +45,7 @@ RUN apk add --update redis 			# Download and install a dependency
 
 CMD ["redis-server"] 				# Tell the image what to do when it starts as a container
 
-===============================
-Lecture #33: What's a Base Image
-===============================
+## 33: What's a Base Image
 
 Writing a Dockerfile == Being given a computer with no OS and being told to install Google Chrome
 
@@ -75,11 +64,8 @@ How do you install Chrome on a computer with no operationg system?
 (c) command to run on startup (CMD)
 	7. Execute chrome.exe
 
-=======================================
-Lecture #34: The Build Process in Detail
-=======================================
 
-
+## 34: The Build Process in Detail
 
 $ docker build . 				# Giving our 'Dockerfile' to docker CLI 
 						# '.' specifies the build-context
@@ -90,13 +76,9 @@ latest: Pulling from library/apline
 Digest: ...
 Status: Downloaded newer image for alpine:latest
 
-=========================
 Lecture #35: A Brief Recap
-=========================
 
-===============================
 Lecture #36: Rebuilds with Cache
-===============================
 
 # Use an existing docker image as a base
 FROM alpine
@@ -108,15 +90,11 @@ RUN apk add --update gcc
 # Tell the image what to do when it starts as a container
 CMD ["redis-server"]
 
-============================
-Lecture #37: Tagging an Image
-============================
+## 37: Tagging an Image
 
 $ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 
-======================================================
 Lecture #39: Manual Image Generation with Docker Commit
-======================================================
 
 1. $ docker run -it alpine sh 					# -i: attach our terminal to the STDIN channel of the new running process
 								# -t: show text in readable form 
