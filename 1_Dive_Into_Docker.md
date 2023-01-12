@@ -2,14 +2,14 @@
 
 ## 3: Why use Docker?
 
-* Docker makes it really easy to "install and run software" without worrying about setup or dependencies
+* Docker makes it really easy to **install and run software** without worrying about **setup or dependencies**.
 
 ***
 
 ## 4: What is Docker?
 
 * Docker is a platform or ecosystem around creating and running containers
-* Image: Single file with all the deps and config required to run a program
+* Image: Single file with all the dependencies and configs required to run a program
 * Container: Instance of an image. Runs a program. A CONTAINER IS A PROGRAM WITH ITS OWN ISOLATED SET OF HARDWARE RESOURCES.
 
 ***
