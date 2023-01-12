@@ -20,7 +20,7 @@
 
 ## 6: Installing Docker on MacOS
 
-* Goto `http://www.docker.com/get-started` 
+* `http://www.docker.com/get-started` 
 * Get Started
 * Download for Mac 
 * Install
@@ -59,3 +59,4 @@ $ docker run hello-world
 
 ## 11: How's Docker Running on Your Computer
 
+***
