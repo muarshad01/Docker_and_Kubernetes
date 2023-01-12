@@ -3,9 +3,7 @@ The GOAL of this porject is:
 2. WRAP it inside a Docker Container, and 
 3. be able to access it from a browser running on a local machine
 
-===========================
-Lecture #40: Project Outline
-===========================
+## 40: Project Outline
 
 Steps:
 -----
@@ -15,9 +13,7 @@ Steps:
 4. Run image as container
 5. Connect to Web Aapp from a browser
 
-=============================
-Lecture #41: Node Server Setup
-=============================
+## 41: Node Server Setup
 
 $ mkdir simpleweb
 $ cd simpleweb
@@ -47,9 +43,7 @@ app.listen(8080, () => {
   console.log('Listening on port 8080');
 });
 
-================================
-Lecture #42: A Few Planned Errors
-================================
+## 42: A Few Planned Errors
 
 1. create a file named Dockerfile
 
@@ -70,13 +64,9 @@ We should see the following:
 /bin/sh: npm: not found
 The command '/bin/sh -c npm install' returned a non-zero code: 127
 
-=============================================
-Lecture #43: Required Node Base Image Version
-=============================================
+## 43: Required Node Base Image Version
 
-=============================
-Lecture #44: Base Image Issues
-=============================
+# 44: Base Image Issues
 
 Update Dockerfile file
 
@@ -93,9 +83,7 @@ CMD ["npm", "start"] 				# Start server by running 'npm start'
 
 $ docker build .
 
-===============================
-Lecture #45: A Few Missing Files
-===============================
+## 45: A Few Missing Files
 
 $ docker build .
 
@@ -107,9 +95,7 @@ npm WARN !invalid#2 No repository field.
 npm WARN !invalid#2 No README data
 npm WARN !invalid#2 No license field.
 
-===============================
-Lecture #46: Copying Build Files
-===============================
+## 46: Copying Build Files
 
 Update Dockerfile file
 
@@ -143,9 +129,7 @@ $ docker run marshad1/simpleweb
 
 localhost:8080 						# The sige can't be reached
 
-=============================================
-Lecture #48: Container Port Mapping at RUNTIME
-==============================================
+## 48: Container Port Mapping at RUNTIME
 
 $ docker build -t marshad1/simpleweb .			# Tagging an image <docker-id>/<project-id>
 $ docker image ls -a
@@ -156,9 +140,7 @@ $ docker run -p (Route incoming requests to this port on local-host to...):(...t
 $ docker run -p 8080:8080 marshad1/simpleweb		# Port mapping
 $ docker run -it marshad1/simpleweb sh
 
-========================================
-Lecture #44: Specifying Working Directory
-========================================
+## 44: Specifying Working Directory
 
 Update Dockerfile file
 
@@ -183,9 +165,7 @@ $ docker run -p 8080:8080 marshad1/simpleweb
 # Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
 
-==========================================
-Lecture #48: Specifying a Working Directory
-==========================================
+## 48: Specifying a Working Directory
 
 $ docker run -it marshad1/simpleweb sh
 / # ls
@@ -217,15 +197,11 @@ $ docker ps 							# Get CONTAINER_ID
 $ docker exec -it CONTAINER_ID sh
 /usr/app #
 
-================================
-Lecture #49. Unnecessary Rebuilds
-================================
+## 49. Unnecessary Rebuilds
 
 $ docker build -t marshad1/simpleweb . 				# '.' specify the build context
 
-=================================================
-Lecture #50. Minimizing Cache Busting and Rebuilds
-=================================================
+## 50. Minimizing Cache Busting and Rebuilds
 
 Update Dockerfile
 
