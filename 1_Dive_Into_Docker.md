@@ -13,6 +13,7 @@
   - Runs a program. 
   - ==A container is a PROGRAM with its own isolated set of hardware resources.==
   - <mark>XXX</mark>
+  - <span style="color:red">YYY</span>
 
 ## 5: Docker for Mac
 
