@@ -12,33 +12,32 @@ Docker makes it really easy to "install and run software" without worrying about
 
 ***
 
-## Lecture 4: Docker for Mac
-
+## Lecture 5: Docker for Mac
 Docker Client (Docker CLI) --> Docker Server (Docker Daemon)
 
-=====================================
-Lecture #6: Installign Docker on MacOS
-======================================
+***
 
+## Lecture 6: Installign Docker on MacOS
 Goto http://www.docker.com/get-started --> Get Started --> Download for Mac --> Install
 
+```
 $ docker version
-
 $ docker run hello-world
+```
 
+***
 
-====================================
-Lecture #12: Using the Docker Client
-====================================
+## Lecture12: Using the Docker Client
 
+```
 $ docker run hello-world 
+```
 
 Docker client --> docker server (deamon) --> docker HuB --> publl the image --> Create a new Container which runs the executable--> stream the output to Docker client
 
+***
 
-=============================================
-Lecture #13: But Really...What's a Container?
-=============================================
+## Lecture 13: But Really...What's a Container?
 
 OS: Process --> System Call --> Kernel --> Hardware resources
 
