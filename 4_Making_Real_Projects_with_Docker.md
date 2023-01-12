@@ -140,7 +140,7 @@ $ docker run marshad1/simpleweb
 >> Listening on port 8080
 ```
 
-localhost:8080 						# The sige can't be reached
+`localhost:8080` 						# The sige can't be reached
 
 ## 43: Container Port Mapping at RUNTIME
 
