@@ -3,13 +3,11 @@
 `https://localhost:4001`
 
 * Number of visits: 10
-
-
-* A WebApp that simply displays the number of times this page has been visited.
+  - A WebApp that simply displays the number of times this page has been visited.
 
 * Webpage
-  - Docker Container {Node App} 
-  - Docker Container {Redis Server}
+* Docker Container {Node App} 
+* Docker Container {Redis Server}
 
 ## 48: App Server Starter Code
 
@@ -90,19 +88,21 @@ $ docker image ls -a
 
 ```
 $ docker run marshad1/visits 				# Error: Redis connection to 127.0.0.1:6379 failed 
-							# - connect ECONNREFUSED 127.0.0.1:6379
-$ docker run redis 					# Ready to accept connections
+                							# - connect ECONNREFUSED 127.0.0.1:6379
+$ docker run redis 				        	# Ready to accept connections
 ```
 
 ## 51: Docker Compose Files
 
 * Docker Container {Node App} and Docker Container {Redis} don't have a communication channel between them.
 
-* We need a networking infrastructure and there are two options: 1) Docker CLI, 2) Docker Compose
+* We need a networking infrastructure and there are two options: 
+  - 1) Docker CLI
+  - 2) Docker Compose
 
 * What is Docker Compose?
   - A tool that gets installed along with Docker
-  - Seperate CLI
+  - Separate CLI
   - Used to start up multiple Docker containers at the same time and connect them in an automated way
   - Automates some of the long-winded arguments we were passing to 'docker run'
 
