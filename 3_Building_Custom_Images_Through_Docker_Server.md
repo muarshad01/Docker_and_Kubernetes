@@ -3,13 +3,13 @@
 * `hello-world`, `redis`, and `busybox` images
 
 * Steps: 
-  - Docker file 
-  - Docker client 
+  - `Dockerfile` 
+  - Docker Client
   - Docker Server 
   - Usable Image
 
 * Creating a `Dockerfile` Flow:
-  - (a) Specify a base image
+  - (a) Specify a BASE image
   - (b) Run some commands to install additional programs
   - (c) Specify a command to run on container startup
 
@@ -17,21 +17,21 @@
 
 ## 28: Building a `Dockerfile`
 
-Goal: Create an image that runs a redis-server
+* Create an image that runs a `redis-server`
 
 ```
 $ mkdir redis-image
 $ cd redis-image
-touch Dockerfile 				# Create a file named `Dockerfile` containing the following
+$ touch Dockerfile 				# Create a file named `Dockerfile` containing the following
 ```
 
 ```
-# Use an existing docker image as a "base"
+# Use an existing docker image as a "BASE"
 FROM alpine
 
 # Download and install a dependency
-RUN apk add --update redis 			# apk is a program called "APACHE PACKAGE MANAGER" that 
-					   	            # comes pre-installed with alpine
+RUN apk add --update redis              # apk is a program called "APACHE PACKAGE MANAGER" that 
+					   	                # comes pre-installed with alpine
 
 # Tell the image what to do when it starts as a container
 CMD ["redis-server"]
@@ -45,10 +45,8 @@ CMD ["redis-server"]
 ## 29: `Dockerfile` Teardown
 
 ```
-FROM alpine				        	# Use an existing docker image as a base
-
+FROM alpine                         # Use an existing docker image as a base
 RUN apk add --update redis 			# Download and install a dependency
-
 CMD ["redis-server"] 				# Tell the image what to do when it starts as a container
 ```
 
@@ -56,32 +54,34 @@ CMD ["redis-server"] 				# Tell the image what to do when it starts as a contain
 
 Writing a `Dockerfile` == Being given a computer with no OS and being told to install Google Chrome
 
-How do you install Chrome on a computer with no operating system?
+How do you install `Chrome` on a computer with no OS?
 
-(a) specify a base image (FROM)
-	1. Install an OS
+* Specify a base image (`FROM`)
+  - Install an OS
 
-(b) run commands to install additional programs (RUN)
-	2. Start up your default browser
-	3. Navigate to chrome.google.com
-	4. Download installer
-	5. Open file/folder explorer
-	6. Execute chrome_installer.exe
+* Run commands to install additional programs (`RUN`)
+  - Start up your default browser
+  - Navigate to chrome.google.com
+  - Download installer
+  - Open file/folder explorer
+  - Execute chrome_installer.exe
 
-(c) command to run on startup (CMD)
-	7. Execute chrome.exe
+* Command to run on startup (`CMD`)
+  - Execute chrome.exe
 
 
 ## 31: The Build Process in Detail
 
+```
 $ docker build . 				# Giving our 'Dockerfile' to docker CLI 
-						# '.' specifies the build-context
-						# The set of files/folder that we want in a docker image
-FROM alpine
+						        # '.' specifies the build-context
+						        # The set of files/folder that we want in a docker image
+```
 
-latest: Pulling from library/apline
-Digest: ...
-Status: Downloaded newer image for alpine:latest
+* FROM alpine
+* latest: Pulling from library/apline
+* Digest: ...
+* Status: Downloaded newer image for alpine:latest
 
 Lecture #32: A Brief Recap
 
