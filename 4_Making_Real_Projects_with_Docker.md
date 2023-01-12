@@ -1,7 +1,7 @@
 * The GOAL of this porject is:
   - CREATE a tiny `Node JS WebApp`
   - WRAP it inside a Docker Container, and 
-  - be able to access it from a browser running on a local-machine
+  - be able to ACCESS it from a browser running on a local-machine
 
 ## 37: Project Outline
 
@@ -48,7 +48,7 @@ app.listen(8080, () => {
 
 ## 39: A Few Planned Errors
 
-* 1. create a file named `Dockerfile`
+* Create a file named `Dockerfile`
 
 ```
 # Specify a base image
@@ -62,18 +62,18 @@ CMD ["npm", "start"]
 ```
 
 ```
-* 2. $ docker build . 				# '.' is the build context
+$ docker build . 				# '.' is the build context
 ```
 
 * We should see the following: 
-  - /bin/sh: npm: not found
-  - The command '/bin/sh -c npm install' returned a non-zero code: 127
+  - `/bin/sh: npm` not found
+  - The command `/bin/sh -c npm install` returned a non-zero code: 127
 
 ## 43: Required Node Base Image Version
 
 ## 40: Base Image Issues
 
-Update Dockerfile file
+* Update Dockerfile file
 
 ```
 # Specify a base image
@@ -106,7 +106,7 @@ $ docker build .
 
 ## 42: Copying Build Files
 
-Update Dockerfile file
+* Update Dockerfile file
 
 ```
 # Specify a base image
@@ -163,7 +163,7 @@ $ docker run -it marshad1/simpleweb sh
 
 Update Dockerfile file
 
----
+```
 # Specify a base image
 FROM node:14-alpine
 
@@ -176,13 +176,15 @@ RUN npm install
 
 # Default command
 CMD ["npm", "start"]
----
+```
 
+```
 $ docker run -p (Route incoming requests to this port on local host to...):(...this port inside the container) IMAGE_ID
 $ docker run -p 8080:8080 marshad1/simpleweb
 
 # Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
+```
 
 ## 44: Specifying a Working Directory
 
