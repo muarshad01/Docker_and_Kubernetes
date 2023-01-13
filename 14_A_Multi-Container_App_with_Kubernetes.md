@@ -1,22 +1,24 @@
 ## 212: The Path to Production
 
+```
 $ cd simplek8s
+```
 
-- Crate config files for each Service and Deployment
-- Test locally on minikube
-- Create a Github/Travis flow to build images and deploy 
-- Deploy app to a cloud provider
+* Crate config files for each Service and Deployment
+* Test locally on minikube
+* Create a Github/Travis flow to build images and deploy 
+* Deploy app to a cloud provider
 
-Services:
- - Ingress Service
- - ClusterIP Service
+* Services:
+  - Ingress Service
+  - ClusterIP Service
 
- Deployment:
- - multi-client
- - multi-server
- - multi-Worker
- - Redis pod 
- - Postgres pod 
+* Deployment:
+  - multi-client
+  - multi-server
+  - multi-Worker
+  - Redis pod 
+  - Postgres pod 
 
 Postgres Persistent Volume Claim: PVC
 
@@ -24,30 +26,36 @@ Postgres Persistent Volume Claim: PVC
 
 ## 214: A Quick Checkpoint
 
+```
 $ cd complex
 $ docker ps 
 $ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
 
 localhost:3050
+```
 
-Next: Take all images and migreate them in the world of kubernetes
+Next: Take all images and migrate them in the world of kubernetes
 
 ## 215: Recreating the Deployment
 
+```
 $ cd complex
+```
 
-delete:
-- .travis.yml
-- docker-compose.yml
-- Dockerrun.aws.json
-- nginx foldr and we'll be usign IngresServer for routing
+* delete:
+  - .travis.yml
+  - docker-compose.yml
+  - Dockerrun.aws.json
+  - nginx foldr and we'll be usign IngresServer for routing
 
+```
 $ mkdir k8s
 $ cd k8s
 $ touch client-deployment.yaml
+```
 
----
+```
 apiVersion: app/v1
 kind: Deployment
 metadata:
@@ -66,24 +74,26 @@ spec:
                 - name: client
                   image: marshad1/multi-client
 			- containerPort: 3000
----
+```
 
 Lecutre 216: NodePort vs ClusterIP Services
 
-Pods:			# Runs one or more closeley related containers 
+* Pods:			# Runs one or more closeley related containers 
 
-Services: 		# Sets up 'networking' in a Kubernetes Cluster
-- ClusterIP 		# Exposes a set of pods to other objects in the cluster
-- NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
-- LoadBalancer
-- Ingress
+* Services: 		# Sets up 'networking' in a Kubernetes Cluster
+  - ClusterIP 		# Exposes a set of pods to other objects in the cluster
+  - NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
+  - LoadBalancer
+  - Ingress
 
 ## 217: The ClusterIP Config
 
+```
 $ cd k8s
 $ touch client-cluster-ip-service.yaml
+```
 
----
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -95,16 +105,19 @@ spec:
     ports:
         - port: 3000
           targetPort: 3000
----
+```
 
 ## 218: Applying Multiple Files with Kubectl
 
+```
 $ kubectl get deployments
 $ kubectl deleted deployment client-deployment
 $ kubectl get deployments
+```
 
 -- No resources found.
 
+```
 $ kubectl get services
 $ kubectl delete service client-node-port
 $ kubectl get services
@@ -114,13 +127,16 @@ $ kubectl apply -f k8s # applies every config file
 
 $ kubectl get deployments
 $ kubectl get services
+```
 
 ## 219: Express API Deployment Config
 
+```
 $ cd k8s
 $ touch server-deployment.yaml
+```
 
----
+```
 apiVersion: app/v1
 kind: Deployment
 metadate:
@@ -140,14 +156,16 @@ spec:
                   image: marshad1/multi-server
                   ports:
                     - containerPort: 5000
----
+```
 
 ## 220: Cluter IP for Express API
 
+```
 $ cd k8s
 $ touch server-cluster-ip-service.yaml
+```
 
----
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -159,18 +177,20 @@ spec:
     ports:
         - port: 5000
           targetPort: 5000
----
+```
 
 ## 221: Combining Config Into Single Files
 
-Combine all configuration files together and seperate them with '---'
+* Combine all configuration files together and seperate them with '---'
 
 ## 222: The Worker Deployment
 
+```
 $ cd k8s
 $ touch workder-deployment.yaml
+```
 
----
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
@@ -188,29 +208,36 @@ spec:
             containers:
                 - name: worker
                   image: marshad1/multi-worker
----
+```
 
 ## 223: Reapplyig a Batch of Config Files
 
+```
 $ cd complex
 $ cd k8s
 $ ls k8s
-- client-deployment.yaml
-- server-deployment.yaml
-- worker-deployment.yaml
-- client-cluster-ip-service.yaml
-- server-cluster-ip-service.yaml
+```
 
+* client-deployment.yaml
+* server-deployment.yaml
+* worker-deployment.yaml
+* client-cluster-ip-service.yaml
+* server-cluster-ip-service.yaml
+
+```
 $ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl logs <name-of-pod>
+```
 
 ## 224: Creating and Applying Redis Config
 
+```
 $ cd k8s
 $ touch redis-deployment.yaml
+```
 
----
+```
 apiVersion: app/v1
 kind: Deployment
 metadate:
@@ -230,11 +257,13 @@ spec:
                   image: redis
                   ports:
                     - containerPort: 6379
----
+```
 
+```
 $ touch redis-cluster-ip-service.yaml
+```
 
----
+```
 apiVersion: v1
 kind: Service
 metadate:
@@ -246,21 +275,25 @@ spec:
     ports:
         - port: 6379
           targetPort: 6379
----
+```
 
+```
 $ cd k8s
 $ kubctl apply -f k8s/
 
 $ kubectl get pods
 $ kubectl get services
+```
 
 ## 225: Important Note about Expected Postgres Error
 
 ## 226: Last Set of Boring Config
 
+```
 $ postgres-deployment.yaml
+```
 
----
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -280,11 +313,13 @@ spec:
               image: postgres
               ports:
                 - containerPort: 5432
----
+```
 
+```
 $ touch postgres-cluster-ip-service.yaml
+```
 
----
+```
 apiVersion: v1
 kind: Service
 metadate:
@@ -296,22 +331,23 @@ spec:
     ports:
         - port: 5432
           targetPort: 5432
----
+```
 
+```
 $ cd k8s
 $ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl get service
-
+```
 ## 227: The Need for Volumes with Databases
 
 Persistent Volume Claim (PVC)
 
 ## 228: Kubernetes Volumes
 
-- Persistent Volume Claims
-- Persistent Volume
-- Volume
+* Persistent Volume Claims
+* Persistent Volume
+* Volume
 
 Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
 Volume will, however, survive the container restarts.
@@ -357,9 +393,9 @@ spec:
 ## 232: Persistent Volume Access Modes
 ==
 
-ReadWriteOnce			# Can be used by a single node.
-ReadOnlyMany			# Multiple nodes can read from this.
-ReadWriteMany			# Can be read and written to by many nodes.
+* ReadWriteOnce			# Can be used by a single node.
+* ReadOnlyMany			# Multiple nodes can read from this.
+* ReadWriteMany			# Can be read and written to by many nodes.
 
 ## 233: Where Does Kubernetes Allocate Persistent Volumes
 
