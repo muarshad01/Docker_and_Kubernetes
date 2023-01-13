@@ -254,16 +254,16 @@ $ docker exec -it CONTAINER-ID sh # attach terminal to STDIN of primary process 
 
 ## 86: Multi-Step Docker Builds
 
-Build Phase:
-	Use node:alpine
-	Copy the `package.json` file
-	Install dependencies
-	Run 'npm run build'
+* Build Phase
+  - Use node:alpine
+  - Copy the `package.json` file
+  - Install dependencies
+  - Run 'npm run build'
 
-Run Phase:
-	Use nginx
-	Copy over the result of 'npm run build'
-	Start nginx
+* Run Phase
+  - Use nginx
+  - Copy over the result of 'npm run build'
+  - Start nginx
 
 ## 87: Implementing Multi-Step Builds
 
