@@ -1,9 +1,5 @@
-==============================================
-Section 6: Creating a Production-Grade Workflow
-==============================================
+## 61: Development Workflow
 
-Lecture 61: Development Workflow
-===============================
 Author and publish an application using Docker
 
 Flow:
@@ -11,45 +7,52 @@ Flow:
 	2. Testing
 	3. Deployment
 
-Lecture 62: Flow Specifics
-=========================
-Github Repo with two branckes: 1) feature, and 2) master; feature breanch is our development branch and master branch is a very clean copy of our working code base.
+## 62: Flow Specifics
 
-We're only pulling/pushing code to the 'feature' branch. We're never going to push code directly to master. 'Pull Request' merges the code to the master branch.
+* Github Repo with two branckes: 
+  - 1) feature, and 
+  - 2) master; feature breanch is our development branch and master branch is a very clean copy of our working code base.
 
-'Travis CI' service pulls code from master branch and runs tests and then automatically pushes the code to AWS hosting.
+* We're only pulling/pushing code to the 'feature' branch. We're never going to push code directly to master. 'Pull Request' merges the code to the master branch.
+
+* `Travis CI` service pulls code from master branch and runs tests and then automatically pushes the code to AWS hosting.
 
 You --> push code to feature branch --> Pull request to merge code to 'master' branch --> Travis CI --> AWS Hosting (Elastic Beanstalk)
 
-Lecture 63: Docker's Purpose
-============================
-Docker is a took in a normal development flow. Docker makes some of these tasks a lot easier.
+## 63: Docker's Purpose
 
-Lecture 64: Project Generation
-=============================
-Generate a project and wrap that up within a docker container.
+* Docker is a took in a normal development flow. Docker makes some of these tasks a lot easier.
 
-React application/Recat front-end/React framework
+## 64: Project Generation
 
+* Generate a project and wrap that up within a docker container.
+* React application/Recat front-end/React framework
+
+```
 $ node -v
+```
 
-Lecture 65: Create React App Generation
-=======================================
+## 65: Create React App Generation
+
+```
 $ npm install -g create-react-app
+```
 
-Lecture 66: More on Project Generation
-=====================================
+## 66: More on Project Generation
+
 Now that node.js is installed. We'll install a little tool that 'crates an empty-react-project' and then we'll 
 wrap that project inside a container.
 
+```
 $ npm install -g create-react-app
-
 $ create-react-app frontend # create a react project named frontend
+```
 
-Lecture 67: Necessary Commands
-=============================
+## 67: Necessary Commands
+
 How this container will interact with outside world.
 
+```
 $ npm run start -- Starts up a development server. For development use only
 $ npm run test -- Runs tests associated with the project
 $ npm run build -- Builds a production version of the application
@@ -59,17 +62,20 @@ $ q # quit
 
 $ npm run build
 # Creating an optimized production build...
+```
 
 ~/frontend/build/index.html
 ~/fontend/build/static/js/main.9ff6fae3.chunk.js
 
+```
 $ npm run start # a default react application is launched in your browser http://localhost:3000/
+```
 
-Lecture 68: Creating the Dev Dockerfile
-======================================
+## 68: Creating the Dev Dockerfile
+
 Create Dockerfile.dev
 
----
+```
 FROM node:alpine
 
 WORKDIR '/app'
@@ -79,58 +85,58 @@ RUN npm install
 COPY . .
 
 CMD ["npm", "run", "start"]
----
+```
 
+```
 $ docker build . # Error: Dockerfile: no such file or directory
-
 $ docker build -f Dockerfile.dev . 
+```
 
-Lecture 69: Duplicating Dependencies
-====================================
+## 69: Duplicating Dependencies
+
 delete node_modules folder within the frontend project 
 
+```
 $ docker build -f Dockerfile.dev .
+```
 
-Lecture 70: React App Exits Immediately with Docker Run Command
-===================================================
+## 70: React App Exits Immediately with Docker Run Command
 
-Lecture 71: Starting the Container
-==================================
+## 71: Starting the Container
 
+```
 $ docker run IMAGE_ID
-
 $ docker run -it -p 3000:3000 CONTAINER_ID # (localhost port):(container port)
+```
 
+## 72: Docker Volumes
 
-Lecture 72: Docker Volumes
-=========================
+* With Docker Volume we essentially set up a place holder of sorts inside our docker container. 
+* Instead of copying the local files we can create reference inside the docker that point to local files on host machines. 
+* This can be though of as a kind of port mapping we did earlier, where we map a port inside a container to a port outside a container. 
+* Similarly, here we map a file/directory inside a container to a file or directory outside a container.
+* Allows us to access files in local machine
 
-With Docker Volume we essentially set up a place holder of sorts inside our docker container. 
-Insted of copying the local files we can create reference inside the docker that poin to local files on host machines. 
-This can be though of as a kind of port mapping we did earlier, where we map a port inside a container to a port outside a container. 
-Similarly, here we map a file/directory inside a container to a file or directory outside a container.
-
-Allows us to access files in local machine
-
+```
 $ docker build -f Dockerfile.dev .
 $ docker run -p 3000:3000 -v $(pwd):/app image-id # sh: react-scripts: not found
+```
 
-Lecture 73: Windows not Detecting Changes - Update
-==================================================
+## 73: Windows not Detecting Changes - Update
 
-Lecture 74: Bookmarking Volumes
-===============================
+## 74: Bookmarking Volumes
+
+```
 $ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app IMAGE-ID
+```
 
-Lecture 75: React App Exited With Code 0
-========================================
+## 75: React App Exited With Code 0
 
-Lecture 76: Shorthand with Docker Compose
-========================================
+## 76: Shorthand with Docker Compose
 
-Create a file docker-compose.yml
+Create a file `docker-compose.yml`
 
----
+```
 version: '3'
 services: # All service of containers
 	web:
@@ -140,16 +146,17 @@ services: # All service of containers
         	volumes:
           		- /app/node_modules
           		- .:/app # map the current folder outside the container to /app folder inside the container
----
+```
 
+```
 $ docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
+```
 
-Lecutre 77: Overriding Dockerfile Selection
-==========================================
+## 77: Overriding Dockerfile Selection
 
-Update docker-compose.yml
+Update `docker-compose.yml`
 
----
+```
 version: '3'
 services:
 	web:
@@ -161,19 +168,19 @@ services:
     		volumes:
       			- /app/node_modules
       			- .:/app
----
+```
 
+```
 $ docker-compose up
+```
 
-Lecture 78: Windows not Detecting Changes - Docker Compose
-==========================================================
+## 78: Windows not Detecting Changes - Docker Compose
 
-Lecture 79: Do We Need Copy?
-===========================
+## 79: Do We Need Copy?
 
-Lecture 80: Executing Tests
-==========================
+## 80: Executing Tests
 
+```
 $ npm run start # Starts up a development server. For development use only
 $ npm run test # Runs tests associated with the project
 $ npm run build # Builds a production version of the application
@@ -183,20 +190,23 @@ $ docker run CMD ["npm", "run", "start"]
 $ docker run npm CONTAINER_ID npm run test
 $ docker run -it CONTAINER_ID npm run test
 press Enter
+```
 
-Lecture 81: Live Updating Tests
-==============================
+## 81: Live Updating Tests
+
 Edit the file App.test.js and duplicate the test
 
+```
 $ docker-compose up
 $ docker ps # container-id
 $ docker exec -it CONTAINER-ID npm run test
+```
 
-Lecture 82: Docker Compose for Running Tests
-===========================================
-Update docker-compose.yml file
+## 82: Docker Compose for Running Tests
 
----
+Update `docker-compose.yml` file
+
+```
 version: '3'
 services:
 	web: # Ist service
@@ -216,15 +226,17 @@ services:
     		- /app/node_modules
     		- .:/app
     	command: ["npm", "run", "test"]
----
+```
 
+```
 $ docker-compose up --build
+```
 
-Lecutre 83. Tests Not Re-running on Windows
-===========================================
+## 83. Tests Not Re-running on Windows
 
-Lecture 84: Shortcomings on Testing
-==================================
+## 84: Shortcomings on Testing
+
+```
 $ npm run test # start a test container
 $ npm run start # start a web container
 
@@ -232,16 +244,19 @@ $ docker ps # CONTAINER-ID
 $ docker exec CONTAINER_ID sh
 $ docker attach CONTAINER-ID # Attached our terminal (cmd line) to stdin, stdout, stderr of primary process
 $ docker exec -it CONTAINER-ID sh # attach terminal to STDIN of primary process of container
+```
 
-Lecture 85: Need for Nginx (Webserver)
-======================================
-Nginx: Takes incoming traffic and a) routes it and b) responds with static files.
+## 85: Need for Nginx (Webserver)
 
-Lecture 86: Multi-Step Docker Builds
-===================================
+* Nginx: Takes incoming traffic and
+  - a) routes it and 
+  - b) responds with static files.
+
+## 86: Multi-Step Docker Builds
+
 Build Phase:
 	Use node:alpine
-	Copy the package.json file
+	Copy the `package.json` file
 	Install dependencies
 	Run 'npm run build'
 
@@ -250,11 +265,11 @@ Run Phase:
 	Copy over the result of 'npm run build'
 	Start nginx
 
-Lecture 87: Implementing Multi-Step Builds
-=========================================
+## 87: Implementing Multi-Step Builds
+
 Create Dockerfile
 
----
+```
 FROM node:alpine as builder # tag the phase/stage as 'builder'
 WORKDIR '/app'
 COPY package.json .
@@ -264,9 +279,11 @@ RUN npm run build
 
 FROM nginx # 2nd phase
 COPY --from=builder /app/build /user/share/nginx/html # /app/build <-- all the stuff
----
+```
 
-Lecture 88: Running Nginx
-========================
+## 88: Running Nginx
+
+```
 $ docker build .
 $ docker run -p 8080:80 CONTAINER_ID # (local machien port):(container port)
+```
