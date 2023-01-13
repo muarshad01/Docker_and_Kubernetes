@@ -2,7 +2,8 @@
 
 * [Docker and Kubernetes: The Complete Guide](https://www.udemy.com/docker-and-kubernetes-the-complete-guide/)
 
-* [1_Dive_Into_Docker](1_Dive_Into_Docker.md)
+## Lectures
+* [1_Dive_Into_Docker](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/1_Dive_Into_Docker.md)
 * [2_Manipulating_Containers_with_the_Docker](2_Manipulating_Containers_with_the_Docker.md)
 * [3_Building_Custom_Images_Through_Docker_Server](3_Building_Custom_Images_Through_Docker_Server.md)
 * [4_Making_Real_Projects_with_Docker](4_Making_Real_Projects_with_Docker.md)
