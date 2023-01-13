@@ -1,21 +1,15 @@
-================================================
-Section 8: Building a Multi-Container Application
-================================================
+## 107: Single Container Deployment Issues
 
-Lecture 107: Single Container Deployment Issues
-=============================================
-1. The app was simple - no outside dependencies
-2. Our image was built multiple times
-3. How do we connect to a database froma a container?
+* The app was simple - no outside dependencies
+* Our image was built multiple times
+* How do we connect to a database from a a container?
 
-Lecutre 108: Application Overview
-=================================
+## 108: Application Overview
 
-Lecture 109: A Quick Note
-=========================
+## 109: A Quick Note
 
-Lecture 110: Application Architecture
-====================================
+## 110: Application Architecture
+
 Browser<-- Nginx --> React Server (Frontend: html of javascitips )
           |              |
           |              V
@@ -23,14 +17,17 @@ Browser<-- Nginx --> React Server (Frontend: html of javascitips )
                              |
                              --> Postgres    
 
-Lecture 111: Worker process Setup
-================================
+## 111: Worker process Setup
+
+```
 $ mkdir complex
 $ cd complex
 $ mkdir worker
+```
 
 Create file package.json
----
+
+```
 {
     "dependencies": {
         "nodemon" : "1.18.3", # live reload of code anytime we change the src of our project
@@ -41,10 +38,11 @@ Create file package.json
         "dev" : "nodemon"
     }
 }
----
+```
 
 create a file index.js # all primary logic for connecting to Redix
----
+
+```
 const keys = require('./keys');
 const redis = require('redis');
 
@@ -64,26 +62,32 @@ sub.on('message', (channel, message) => { # anythime we get a new 'message' run 
     redisClient.hset('values', message, fib(parseInt(message))); # hashset key:value pair
 });
 sub.subscribe('insert');
----
+```
 
 Create file keys.js
----
+
+```
 module.exports = {
     redisHost: process.env.REDIS_HOST,
     redisPort: process.env.REDIS_PORT
 };
----
+```
 
+```
 $ cd workder
 $ node index.js
+```
 
-Lecture 112: Express API Setup
-=============================
+## 112: Express API Setup
+
+```
 $ mkdir server
 $ cd server
+```
 
 create file package.json
----
+
+```
 {
     "dependencies": {
         "express": "4.16.4",
@@ -98,10 +102,11 @@ create file package.json
         "start": "node index.js"
     }
 }
----
+```
 
 create keys.js
----
+
+```
 module.exports = {
     redisHost: process.env.REDIS_HOST,
     redisPort: process.env.REDIS_PORT,
@@ -111,13 +116,13 @@ module.exports = {
     pgPassword: process.env.PGPASSWORD,
     pgPort: process.env.PGPORT
 }
----
+```
 
-Lecture 113: Connecting to Postgres
-===================================
+## 113: Connecting to Postgres
+
 Update index.js
 
----
+```
 const keys = require('./keys');
 
 // Express App Setup
@@ -143,11 +148,11 @@ pgClient.on('error', () => console.log('Lost PG connection'));
 pgClient
     .query('CREATE TABLE IF NOT EXISTS values (number INT)')
     .catch(err => console.log(err));
----
+```
 
-Lecture 114: More Express API Setup
-==================================
+## 114: More Express API Setup
 
+```
 // Redis Client Setup
 const redis = require('redis');
 const redisClient = redis.createClient({
@@ -193,30 +198,39 @@ app.post('/values', async (req, res) => {
 app.listen(5000, err => {
     console.log('Listening');
 });
+```
 
+```
 $ cd server
 $ node index.js
+```
 
-Lecture 115: Generating the React App
-=====================================
+## 115: Generating the React App
+
 Instead of this:
+```
 $ npm install -g create-react-app
 $ craete-react-app client
+```
 
 Just do this:
+```
 $ npx create-react-app client
+```
 
-Lecture 116: Fetching Data in the React App
-==========================================
+## 116: Fetching Data in the React App
+
+```
 $ cd complex
 $ create-react-app
 $ create-react-app client
+```
 
-Lecture 117: Rendering Logic in the App
-======================================
+## 117: Rendering Logic in the App
 
 create file OtherPage.js
----
+
+```
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -228,10 +242,10 @@ export default () => {
         </div>
     );
 };
----
+```
 
 create file Fib.js
----
+```
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -309,13 +323,10 @@ render(){
 }
 
 export default Fib;
----
+```
 
-Lecture 118: Rendering Logic in the App
-=======================================
+## 118: Rendering Logic in the App
 
-Lecture 119: Exporting the Fib Class
-====================================
+## 119: Exporting the Fib Class
 
-Lecture 120: Routing in the React App
-====================================
+## 120: Routing in the React App
