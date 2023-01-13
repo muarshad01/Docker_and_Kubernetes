@@ -1,29 +1,25 @@
-===============================================
-Lecture #177: The Why's and What's of Kubernetes
-===============================================
+## 177: The Why's and What's of Kubernetes
 
-AWS Elastic Bean Stalk (EBS) has following 4 servers / containers:
+* AWS Elastic Bean Stalk (EBS) has following 4 servers / containers:
   - nginx
   - server
   - client
   - worker
 
-Q: How would we SCALE-UP this application?
+* Q: How would we SCALE-UP this application?
 
-Q: What is Kubernetes? 
+* Q: What is Kubernetes? 
   - System for running many different-containers over multiple-different machines
 
-Q: Why use Kubernetes? 
+* Q: Why use Kubernetes? 
   - When you need to run many different-containers with different-images
 
 
-A CLUSTER in k8s world is ONE set of MASTER and a bunch of other NODES {A VM or Physical machine that runs one or more containers!}
+* A CLUSTER in k8s world is ONE set of MASTER and a bunch of other NODES {A VM or Physical machine that runs one or more containers!}
 
-Load Balancer --> Master --> {Node1, Node2, ...}
+* Load Balancer --> Master --> {Node1, Node2, ...}
 
-=====================================================
-Lecture #178: Kubernetes in Development and Production
-=====================================================
+## 178: Kubernetes in Development and Production
 
 Kubernetes:
 -- Development:
@@ -42,27 +38,25 @@ Local Kubernetes Development:
 - Install a VM driver virtualbox
 - Install minikube
 
-=========================================================================
-Lecture #179: Docker Desktop's Kubernetes Setup and Installation - macOS
-=========================================================================
+## 179: Docker Desktop's Kubernetes Setup and Installation - macOS
 
-Docker Icon --> Preferences --> Kubernetes --> Apply & Restart
+* Docker Icon --> Preferences --> Kubernetes --> Apply & Restart
 
-=========================================================================
-Lecture #180: Docker Desktop's Kubernetes Setup and Installation - Windows
-=========================================================================
+## 180: Docker Desktop's Kubernetes Setup and Installation - Windows
 
-=========================================================
-Lecture #181: Updated Minikube Install and Setup -- MacOS
-=========================================================
+## 181: Updated Minikube Install and Setup -- MacOS
 
+```
 $ which brew
 /usr/local/bin/brew
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
+```
 $ brew install minikube
 $ which minikube
 /usr/local/bin/minikube
+```
 
 Starting Minikube and Testing Installation:
 ------------------------------------------
@@ -77,16 +71,15 @@ $ minikube status
 3. Check kubectl
 $ kubectl version
 
-=====================================
-Lecture #182: Minikube Setup on MacOS
-=====================================
+## 182: Minikube Setup on MacOS
 
-1. Make sure Brew is installed			# https://brew.sh	
-2. Install Kubecel				# brew install kubectl
-3. Install a VM driver virtualbox		# Download VirtualBox @virtualbox.org
-4. Install minikube				# brew cast install minikube
-5. Start minikube				# minikube start
+* 1. Make sure Brew is installed			# https://brew.sh	
+* 2. Install Kubecel				# brew install kubectl
+* 3. Install a VM driver virtualbox		# Download VirtualBox @virtualbox.org
+* 4. Install minikube				# brew cast install minikube
+* 5. Start minikube				# minikube start
 
+```
 1.
 $ which brew
 /usr/local/bin/brew
@@ -107,19 +100,15 @@ $ which minikube
 5. 
 Start minikube --> $ minikube start
                       $ minikube status
+```
 
-======================================
-Lecture #183: Minikube Stup on Windows
-======================================
+## 183: Minikube Stup on Windows
 
-====================================
-Lecture #184: Minikube Stup on Linux
-====================================
+## 184: Minikube Stup on Linux
 
-========================================
-Lecture #185: Mapping Existing Knowledge
-========================================
+## 185: Mapping Existing Knowledge
 
+```
 $ minikube status
 
 - minikube
@@ -135,24 +124,23 @@ $ kubectl cluster-info
 - KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 - To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+```
 
-===========================================
-Lecture #186: Quick Note to prevent an Error
-===========================================
+## 186: Quick Note to prevent an Error
 
-=======================================
-Lecture #187: Adding Configuration Files
-=======================================
+## 187: Adding Configuration Files
 
-https://hub.docker.com
+`https://hub.docker.com`
 
 Kubernetes expects ALL images to already be built
 
+```
 $ mkdir simpleK8s
 $ cd simpleK8s
 $ touch client-pod.yaml 		# create a file
+```
 
----
+```
 apiVersion: v1			 	# Scopes or limits the type of 'objects' we can create with any given configuration
 kind: Pod
 metadata:
@@ -165,11 +153,13 @@ spec:
       image: marshad1/multi-client 	# image on docker hub
       ports:
         - containerPort: 3000
----
+```
 
+```
 $ touch client-node-port.yaml 		# create a file
+```
 
----
+```
 apiVersion: v1
 kind: Service 			# 'Kind' represents the type of object that we want to make e.g., Kind=Service or kind=Pod
 metadata:
@@ -182,11 +172,9 @@ spec:
       nodePort: 31515
   selector:
     component: web
----
+```
 
-==========================================
-Lecture #188: Object Types and API Versions
-=========================================
+## 188: Object Types and API Versions
 
 In kubernetes, config files are used to crate 'Objects' (or specific types of objects), 
 a thing that exists inside our kubernetes cluter.
@@ -199,10 +187,9 @@ Example object types:
 
 Each API version defines a different set of 'objects' we can use
 
-=======================================
-Lecture #189: Running Containers in Pods
-=======================================
+## 189: Running Containers in Pods
 
+```
 $ minikube start 			# Create a VM referred to as 'Node'; 
                    			# Node runs various types of 'objects' such as Pod
                    			# Pod is a "grouping of containers" with similar purpose
@@ -212,10 +199,9 @@ Node{
     nginx: container
   }
 }
+```
 
-==========================================
-Lecture #190: Service Config Files in Depth
-==========================================
+## 190: Service Config Files in Depth
 
 Object Types:
 
@@ -227,8 +213,7 @@ Kind: Services: Sets up networking in a Kubernetes cluster. There are 4 subtypes
 	-- LoadBalancer
 	-- Ingres
 
-
----
+```
 apiVersion: v1
 kind: Service 			# 'Kind' represents the type of object that we want to make e.g., Kind=Service or kind=Pod
 metadata:
@@ -241,10 +226,11 @@ spec:
       nodePort: 31515 		# We type this into our browser URL [30,000 -- 32,767]
   selector:
     component: web 		# Note the relationship with label in other service. How they are connected together.
----
+```
 
 Port Forwarding: "label" and "selector" with key:value approach. labels and selectors are used to connect objects.
 
+```
 labels:
     component: web
 selector:
@@ -256,10 +242,9 @@ labels:
     tier: frontend
 selector:
     tier: frontend
+```
 
-=============================================
-Lecutre #191: Connecting to Running Containers
-=============================================
+## 191: Connecting to Running Containers
 
 $ cd simplek8s
 
@@ -289,35 +274,27 @@ $ minikube ip 					# prints the ip address of that VM
 
 https://<VM ip-address>:port
 
-=======================================
-Lecture #192: The Entire Deployment Flow
-=======================================
+## 192: The Entire Deployment Flow
 
+```
 $ kubectl get pods
-
 $ docker ps
-
 $ docker kill CONTAINER_ID
-
 $ docker ps
-
 $ kubect get pods
+```
 
 NAME        READY   STATUS    RESTARTS    AGE
                                  1           
-Note: Deployment file goes to Master and not Nodes
+* Note: Deployment file goes to Master and not Nodes
 
-==================================================
-Lecture #193: Imperative vs Declarative Deployments
-==================================================
+## 193: Imperative vs Declarative Deployments
 
-- Kubernetes is a system to deploy containerized apps
-- Nodes are individual machines (or vm's) that run containers
-- Masters are machines (or vm's) with a set of programs to manage Nodes
-- Kubernetes didn't build our imgages - it got them from somewhere else
-- Kubernetes (the master) decided where to run each container - each node 
+* Kubernetes is a system to deploy containerized apps
+* Nodes are individual machines (or vm's) that run containers
+* Masters are machines (or vm's) with a set of programs to manage Nodes
+* Kubernetes didn't build our imgages - it got them from somewhere else
+* Kubernetes (the master) decided where to run each container - each node 
   can run a dissimilar set of containers
-- To deploy something, we update the desired state of the master with a config file
-- The master works constantly to meet your desired state
-
-
+* To deploy something, we update the desired state of the master with a config file
+* The master works constantly to meet your desired state
