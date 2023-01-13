@@ -1,11 +1,11 @@
 ## 61: Development Workflow
 
-Author and publish an application using Docker
+* Author and publish an application using Docker
 
-Flow:
-	1. Development
-	2. Testing
-	3. Deployment
+* Flow
+  - Development
+  - Testing
+  - Deployment
 
 ## 62: Flow Specifics
 
