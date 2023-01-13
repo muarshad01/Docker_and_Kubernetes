@@ -6,7 +6,7 @@ $ npm run test # Runs tests associated with the project.
 $ npm run build # Builds a production version of the application.
 ```
 
-Github / Travis CI (Run tests automatically) / AWS
+* Github / Travis CI (Run tests automatically) / AWS
 
 ## 90: Github Setup
 
@@ -17,22 +17,24 @@ $ git push origin master
 
 ## 91: Travis CI Setup
 
-Your Laptop --> push to GitHub --> Travis (Run tests)
-                               --> Travis (Automatically deploy the code to AWS)
+* Your Laptop 
+* push to GitHub 
+* Travis (Run tests)
+* Travis (Automatically deploy the code to AWS)
 
 https://travis-ci.org/ (Sign in with GitHub) --> Authorize travis-ci
 
 ## 92: Travis YML File Configuration
 
-Flow:
-  Tell Travis we need a copy of docker running  
-  Build our image using Dockerfile.dev
-  Tell Travis how to run our test suite
-  Tell Travis how to deploy our code to AWS
+* Flow
+  - Tell Travis we need a copy of docker running  
+  - Build our image using Dockerfile.dev
+  - Tell Travis how to run our test suite
+  - Tell Travis how to deploy our code to AWS
 
-Run tests --> If all tests pass --> Deploy to AWS
+* Run tests --> If all tests pass --> Deploy to AWS
 
-Create a file .travis.yml # Notice there is a leading '.'
+* Create a file `.travis.yml`           # Notice there is a leading '.'
 
 ```
 sudo: required # super user level permission
@@ -46,7 +48,8 @@ before_install:
 ## 93: Required Travis Updates
 
 ## 94: A Touch More Travis Setup
-Update .travis.yml
+
+Update `.travis.yml`
 
 ```
 sudo: required
