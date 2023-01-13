@@ -1,26 +1,28 @@
-Lecture 89: Services Overview
-=============================
+## 89: Services Overview
+
+```
 $ npm run start # Starts up a development server.
 $ npm run test # Runs tests associated with the project.
 $ npm run build # Builds a production version of the application.
+```
 
 Github / Travis CI (Run tests automatically) / AWS
 
-Lecture 90: Github Setup
-========================
+## 90: Github Setup
+
+```
 $ git remote add origin git@github.com:<user-id>/<repo-name>.git
 $ git push origin master
+```
 
+## 91: Travis CI Setup
 
-Lecture 91: Travis CI Setup
-===========================
 Your Laptop --> push to GitHub --> Travis (Run tests)
                                --> Travis (Automatically deploy the code to AWS)
 
 https://travis-ci.org/ (Sign in with GitHub) --> Authorize travis-ci
 
-Lecture 92: Travis YML File Configuration
-=========================================
+## 92: Travis YML File Configuration
 
 Flow:
   Tell Travis we need a copy of docker running  
@@ -32,23 +34,21 @@ Run tests --> If all tests pass --> Deploy to AWS
 
 Create a file .travis.yml # Notice there is a leading '.'
 
----
+```
 sudo: required # super user level permission
 services:
   - docker # Tell Travis we need a copy of docker running
 
 before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev . # Build our image using Dockerfile.dev
----
+```
 
-Lecture 93: Required Travis Updates
-===================================
+## 93: Required Travis Updates
 
-Lecture 94: A Touch More Travis Setup
-=====================================
+## 94: A Touch More Travis Setup
 Update .travis.yml
 
----
+```
 sudo: required
 services:
   - docker
@@ -59,24 +59,23 @@ before_install:
 script:
   - docker run muarshad01/docker-react npm run test -- --coverage # -- --coverage is for 'npm run test' 
                                                                   # command to exit automatically
----
+```
 
-Lecture 95: Automatic Build Creation
-====================================
+## 95: Automatic Build Creation
+
+```
 $ git add .
 $ git commit -m "added travis file"
 $ git push origin master
+```
 
-Lecture 96: AWS Elastic Beanstalk
-================================
+## 96: AWS Elastic Beanstalk
 
-Lecture 97: More on Elastic Beanstalk
-=====================================
+## 97: More on Elastic Beanstalk
 
-Lecture 98: Travis Config for Deployment
-========================================
+## 98: Travis Config for Deployment
 
----
+```
 sudo: required
 services:
   - docker
@@ -97,16 +96,18 @@ deploy:
   bucket_path: "docker-react" # same as app name
   on:
     branch: master
----
+```
 
-Lecture 99: Travis Keys Update
-==============================
+## 99: Travis Keys Update
+
+```
 access_key_id: $AWS_ACCESS_KEY
 secret_access_key: $AWS_SECRET_KEY
+```
 
-Lecture 100: Automated Deployments
-==================================
----
+## 100: Automated Deployments
+
+```
 sudo: required
 services:
   - docker
@@ -130,13 +131,13 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
----
+```
+
 access_key_id: $AWS_ACCESS_KEY
 
-Lecture 101: Exposing Ports Through the Dockerfile
-===================================================
+## 101: Exposing Ports Through the Dockerfile
 
----
+```
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY package.json .
@@ -147,13 +148,13 @@ RUN npm run build
 FROM nginx
 EXPOSE 80 # elasticbeanstalk will look at EXPOSE
 COPY --from=builder /app/build /usr/share/nginx/html
----
+```
 
-Lecture 102: AWS Build Still Failing
-====================================
+## 102: AWS Build Still Failing
 
-Lecture 103: Workflod With Github
-=================================
+## 103: Workflod With Github
+
+```
 $ git checkout -b feature # switched to a new branch 'feature'
 
 $ git status
@@ -162,12 +163,10 @@ $ git commit -m "updated app.js"
 $ git push origin feature # push changes to feature branch
 
 pull/merge branch
+```
 
-Lecture 104: Redeploy on Pull Request Merge
-===========================================
+## 104: Redeploy on Pull Request Merge
 
-Lecture 105: Deployment Wrapup
-==============================
+## 105: Deployment Wrapup
 
-Lecture 106: Environment Cleanup
-================================
+## 106: Environment Cleanup
