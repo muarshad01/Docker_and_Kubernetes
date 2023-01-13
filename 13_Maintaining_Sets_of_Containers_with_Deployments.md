@@ -177,11 +177,11 @@ $ kubectl get deployments
 
 ## 207: Imperatively Updating a Deployment's Image
 
-```
-- Update the multi-client image
-- Tag the image with a version number, push to docker hub
-- Run a 'kubectl' command forcing the deployment to user the new image version
+* Update the multi-client image
+* Tag the image with a version number, push to docker hub
+* Run a 'kubectl' command forcing the deployment to user the new image version
 
+```
 $ cd complex/client
 
 $ docker build -t marshad1/multi-client:v5 .
@@ -200,7 +200,9 @@ $ minikube ip
 
 ## 209: Multiple Docker Installations
 
+```
 $ docker ps
+```
 
 ## 210: Reconfiguring Docker CLI
 
@@ -214,11 +216,11 @@ $ docker ps
 
 ## 211: Why Mess with Docker in the Node?
 
-```
--- Use all the same debugging techniques we learned with Docker CLI
--- Manually kill containers to test Kubernetes ability to 'self-heal'
--- Deleted cached images in the node
+* Use all the same debugging techniques we learned with Docker CLI
+* Manually kill containers to test Kubernetes ability to 'self-heal'
+* Deleted cached images in the node
 
+```
 $ docker logs CONTAINER-ID  
 $ docker exec -it CONTAINER-ID sh 			# 'i' STDIN of process; -t: readable format 
 
