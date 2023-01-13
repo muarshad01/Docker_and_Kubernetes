@@ -195,19 +195,19 @@ Two Servers:
   - Express Server
 
 Files:
-  - /index.html--------> React Server
+  - `/index.html`--------> React Server
                    |
-  - main.js---------
+  - `main.js`---------
 
   - /values/all ---------> Express Server
                      |
   - /vales/current ---
 
 
-Nginx:
-  - What's the req start with? # Looks at request path
-  - /api/ # Route to Express Server
-  - / # Route to React Server
+* Nginx
+  - What's the req start with?          # Looks at request path
+  - /api/                               # Route to Express Server
+  - /                                   # Route to React Server
 
 ## 131: Routing with Nginx
 
