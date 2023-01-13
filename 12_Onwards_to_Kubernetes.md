@@ -246,9 +246,10 @@ selector:
 
 ## 191: Connecting to Running Containers
 
+```
 $ cd simplek8s
 
-# kubectl apply -f <file-name>
+$ kubectl apply -f <file-name>
 $ kubectl apply -f client-pod.yaml 
 -- pod/client-pod configured
 
@@ -273,6 +274,7 @@ PORTS port:NodePort
 $ minikube ip 					# prints the ip address of that VM
 
 https://<VM ip-address>:port
+```
 
 ## 192: The Entire Deployment Flow
 
