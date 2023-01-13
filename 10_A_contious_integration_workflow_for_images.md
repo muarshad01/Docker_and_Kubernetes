@@ -1,68 +1,72 @@
+## 139. Production Multi-Container Deployments
 
-=================================================================
-Section 10: A Continuous Integration Workflow for Multiple Images
-=================================================================
+* Push code to github
+* Travis automatically pulls repo
+* Trais builds an image, test code
+* Travis pushed code to AWS EB
+* EB builds image, deploys it
 
-Lecture 139. Production Multi-Container Deployments
-===================================================
-Push code to github
-Travis automatically pulls repo
-Trais builsd an image, test code
-Travis pushed code to AWS EB
-EB builds image, deploys it
+* Services:
+  - client
+  - nginx
+  - server
+  - worker
 
-Services:
-  client
-  nginx
-  server
-  worker
+## 140. Production Dockerfiles
 
-Lecture 140. Production Dockerfiles
-====================================
+```
 $ cd worker
 $ touch Dockerfile
+```
 
----
+```
 FROM node:alpine
 WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
 COPY . .
 CMD ["npm", "run", "start"] # "dev" is for devlopment mode; "start" is for production mode
----
+```
 
+```
 $ cd server
 $ touch Dockerfile
+```
 
----
+```
 FROM node:alpine
 WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
 COPY . .
 CMD ["npm", "run", "start"] # "dev" is for devlopment mode; "start" is for production mode
----
+```
 
+```
 $ cd nginx
 $ touch Dockerfile
+```
 
----
+```
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+```
 
-Lecture 141. Multiple Nginx Instances
-=====================================
-One nginx server a routing job
-Another ngix serving the react
+## 141. Multiple Nginx Instances
 
-Lecture 142. Altering Nginx's Listen Port
-=========================================
+* One nginx server a routing job
+* Another ngix serving the react
+
+## 142. Altering Nginx's Listen Port
+
+```
 $ cd client
 $ mkdir nginx
 $ cd nginx
 $ default.conf
+```
 
----
+```
 server {
   listen 3000;
 
@@ -71,11 +75,13 @@ server {
     index index.html index.htm;
   }
 }
----
+```
 
+```
 $ touch Dockerfile
+```
 
----
+```
 FROM node:alpine as buildr
 WORKDIR '/app'
 COPY ./package.json ./
@@ -87,16 +93,14 @@ FROM nginx
 EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html # copy from previous build
----
+```
 
-Lecture 143: Nginx fix for react Router
-=======================================
+## 143: Nginx fix for react Router
 
-Lecture 144. Cleaning Up Tests
-==============================
+## 144. Cleaning Up Tests
 
-Lecture 145. Github and Travis CI Setup
-========================================
+## 145. Github and Travis CI Setup
+
 Steps:
   push code to github
   Travis automatically pulls repo
@@ -106,25 +110,28 @@ Steps:
   Travis pushed project to AWS EB
   EB pulls images from Docker Hub, deploys
 
-
+```
 $ cd complex
 $ git init
 $ git add .
 $ git commit -m "initial commit"
+```
 
 Before this, we need to create a repo on github.com and then
 
+```
 $ git remote add origin git@github.com:muarshad01/<repo-name>.git
 $ git remote add origin git@github.com/muarshad01/multi-docker.git
 $ git remote -v 
 $ git push origin master
+```
 
 Next step is to create a link b/w github and Travis-cs
 
 http://travis-ci.org --> profile --> sync account --> 
 
-Lecture 146. Fix for Failing Travis Builds
-==========================================
+## 146. Fix for Failing Travis Builds
+
 script:
   - docker run USERNAME/react-test npm test -- --coverage
 
@@ -133,13 +140,15 @@ instead should be:
 script:
   - docker run -e CI=true USERNAME/react-test npm test
 
-Lecture 147: Travis Configuration Setup
-=======================================
+## 147: Travis Configuration Setup
+
 creat file .travis.yml
 
+```
 $ touch .travis.yml
+```
 
----
+```
 sudo: required
 services:
   - docker
@@ -155,12 +164,11 @@ after_success:
   - docker build -t marshad1/multi-nginx ./nginx
   - docker build -t marshad1/multi-server ./server
   - docker build -t marshad1/multi-worker ./worker
----
+```
 
-Lecture 148. Pushing Images to Docker Hub
-=========================================
+## 148. Pushing Images to Docker Hub
 
----
+```
 sudo: required
 services:
   - docker
@@ -195,7 +203,6 @@ after_success:
   - docker push marshad1/multi-nginx
   - docker push marshad1/multi-server
   - docker push marshad1/multi-worker
----
+```
 
-Lecture 149. Successful Image Building
-======================================
+## 149. Successful Image Building
