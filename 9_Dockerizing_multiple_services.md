@@ -1,89 +1,96 @@
-=========================================
-Section 9: "Dockerizing" Multiple Services
-=========================================
+## 121: Checkpoint Files
 
-Lecture 121: Checkpoint Files
-=============================
+## 122: Checkpoint Catchup
 
-Lecture 122: Checkpoint Catchup
-===============================
+## 123: Dockerizing a React App - Again!
 
-Lecture 123: Dockerizing a React App - Again!
-=============================================
-We need to make dev Dockerfile for each:
-  1. React App
-  2. Express Server API
-  3. Worker
+* We need to make dev Dockerfile for each:
+  - React App
+  - Express Server API
+  - Worker
 
+```
 $ cd complex/client
+```
 
 Create a file Dockerfile.dev
 
----
+```
 FROM node:alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 COPY . .
 CMD ["npm", "run", "start"]
----
+```
 
+```
 $ docker build -f Dockerfile.dev . # '.' is build context
-
 $ docker run CONTAINER_ID
+```
 
-Lecture 124: Dockerizing Generic Node Apps
-==========================================
+## 124: Dockerizing Generic Node Apps
+
+```
 $ cd complex/server
+```
 
 Create a file Docker.dev 
 
----
+```
 FROM node:alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 COPY . .
 CMD ["npm", "run", "dev"]
----
+```
 
+```
 $ docker build -f Dockerfile.dev .
 $ docker run CONTAINER_ID
+```
 
+```
 $ cd complex/worker
+```
 
 Create a file Docker.dev
 
----
+```
 FROM node:alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 COPY . .
 CMD ["npm", "run", "dev"]
----
+```
 
+```
 $ docker build -f Dockerfile.dev .
 $ docker run CONTAINER_ID
+```
 
-Lecture 125: Adding Postgres as a Service
-=========================================
+## 125: Adding Postgres as a Service
+
 Create a file docker-compose.yml
 
----
+```
 version: '3'
 services:
   postgres:
     image: 'postgres:latest'
----
+```
 
 http://hub.docker.com --> Explore --> postgres
 
+```
 $ cd complex # docker-compose.yml file is present here
 $ docker-compose up
+```
 
-Lecture 126: Docker-compose Config
-==================================
+## 126: Docker-compose Config
+
 postgres
   What image to use?
 redis
@@ -93,7 +100,7 @@ server
   - Specify volumes
   - Specify env variables
 
----
+```
 version: '3'
 services:
   postgres:
@@ -107,14 +114,13 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app # look at the server directory and copy everything there into the app folder in the container
----
+```
 
-Lecture 127: Postgres Database is uninitialized or getaddrinfor ENOTFOUND Fix
-=============================================================================
+## 127: Postgres Database is uninitialized or getaddrinfo NOTFOUND Fix
 
-Lecture 128: Environment Variables with Docker Compose
-======================================================
----
+## 128: Environment Variables with Docker Compose
+
+```
 version: '3'
 services:
   postgres:
@@ -136,14 +142,15 @@ services:
       - PGDATABASE=postgres # default database
       - PGPASSWORD=postgres_password # The default password for postgres is postgres_password
       - PGPORT=5432
----
+```
 
+```
 $ docker-compose up
+```
 
-Lecture 129: The Worker and Client Services
-===========================================
+## 129: The Worker and Client Services
 
----
+```
 version: '3'
 services:
   postgres:
@@ -179,10 +186,9 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app # Everything in the client directroy should be shared with the app folder inside the container
----
+```
 
-Lecture 130: Nginx Path Routing
-===============================
+## 130: Nginx Path Routing
 
 Two Servers:
   - React Server
@@ -203,18 +209,20 @@ Nginx:
   - /api/ # Route to Express Server
   - / # Route to React Server
 
-Lecture 131: Routing with Nginx
-===============================
+## 131: Routing with Nginx
+
+```
 $ mkdir nginx
 $ touch default.conf
+```
 
-- Tell Nginx that there is an 'upstream' server at client:3000
-- Tell Nginx that there is an 'upstream' server at server:5000     
-- Listen on port 80
-- If anyone comes to '/' send them to client upstream
-- If anyone comes to '/api' send them to server upstream
+* Tell Nginx that there is an 'upstream' server at client:3000
+* Tell Nginx that there is an 'upstream' server at server:5000     
+* Listen on port 80
+* If anyone comes to '/' send them to client upstream
+* If anyone comes to '/api' send them to server upstream
 
----
+```
 upstream client {
     server client:3000;
 }
@@ -235,22 +243,23 @@ server {
         proxy_pass http://api; # Name of upstream server 'api' above
     }
 }
----
+```
 
-Lecture 132: Building a Custom Nginx Image
-==========================================
+## 132: Building a Custom Nginx Image
 
+```
 $ cd nginx
 $ touch Dockerfile.dev 
+```
 
----
+```
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
----
+```
 
 Now add nginx as a service to our docker-compose.yml file
 
----
+```
 version: '3'
 services:
   postgres:
@@ -293,32 +302,35 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
----
+```
 
-Lecture 133: React App Exited With Code 0
-=========================================
+## 133: React App Exited With Code 0
+
+```
 $ cd complex
 $ docker-compose up --build # Force a build of everything
+```
 
-Lecutre 134: Starting Up Docker Compose
-=======================================
+## 134: Starting Up Docker Compose
+
+```
 $ docker-compose up --build
+```
 
-Lecture 135: Nginx connect() failed - Connection refused while connectin...
-===========================================================================
+## 135: Nginx connect() failed - Connection refused while connectin...
 
-Lecture 136: Fix for "I Calculated Nothing Yet" message
-=======================================================
+## 136: Fix for "I Calculated Nothing Yet" message
+
+```
 $ docker-compose down
 $ docker-compose up --build
+```
 
-Lecture 137: Troubleshooting Startup Bugs
-=========================================
+## 137: Troubleshooting Startup Bugs
 
-Lecture 138: Opening Websocket Connections
-==========================================
+## 138: Opening WebSocket Connections
 
----
+```
 upstream client {
     server client:3000;
 }
@@ -346,5 +358,5 @@ server {
         proxy_pass http://api;
     }
 }
----
+```
 
