@@ -4,6 +4,7 @@
 
 ## Lectures
 
+### Docker
 * [1_Dive_Into_Docker](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/1_Dive_Into_Docker.md)
 * [2_Manipulating_Containers_with_the_Docker](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/2_Manipulating_Containers_with_the_Docker.md)
 * [3_Building_Custom_Images_Through_Docker_Server](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/3_Building_Custom_Images_Through_Docker_Server.md)
@@ -15,6 +16,9 @@
 * [9_Dockerizing_multiple_services](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/9_Dockerizing_multiple_services.md)
 * [10_A_continuous_integration_workflow_for_images](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/10_A_contious_integration_workflow_for_images.md)
 * [11_Multi-Container_Deployments_to_AWS](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/11_Multi-Container_Deployments_to_AWS.md)
+
+### Kubernetes
+
 * [12_Onwards_to_Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/12_Onwards_to_Kubernetes.md)
 * [13_Maintaining_Sets_of_Containers_with_Deployments](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/13_Maintaining_Sets_of_Containers_with_Deployments.md)
 * [14_A_Multi-Container_App_with_Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/14_A_Multi-Container_App_with_Kubernetes.md)
