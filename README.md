@@ -47,4 +47,8 @@ $ kubectl set image <object_type> / <object_name> <container_name> = <new_image_
 $ kubectl set image deployment/client-deployment client=marshad1/multi-client:v5
 ```
 
-Configure VM to use Your Docker Server `eval $(minikube docker-env)`
+* Configure VM to use Your Docker Server 
+
+```
+$ eval $(minikube docker-env)
+```
