@@ -150,8 +150,8 @@ $ get myvalue
 ```
 $ docker exec -it 
 $ docker exec -i -t                     # -i flag means attach our terminal to the STDIN channel of the new running process; 
-		                                # -t means to show the input / output text in a nice formatted fashion
-$ docker exec -i <image id> redis-cli   # Notice: we've removed -t flag
+                                        # -t means to show the input / output text in a nice formatted fashion
+$ docker exec -i <image-id> redis-cli   # Notice: we've removed -t flag
 ```
 
 ***
@@ -159,7 +159,7 @@ $ docker exec -i <image id> redis-cli   # Notice: we've removed -t flag
 ## 23: Getting Command Prompt in a Container
 
 ```
-$ docker exec -it CONTAINER _ID sh
+$ docker exec -it CONTAINER_ID sh
 $ ctrl-d or exit
 ```
 
