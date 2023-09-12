@@ -10,8 +10,8 @@
 
 * Creating a `Dockerfile` Flow:
   - (a) Specify a BASE image
-  - (b) Run some commands to install additional programs
-  - (c) Specify a command to run on container startup
+  - (b) Run some commands to install ADDITIONAL programs
+  - (c) Specify a command to RUN on container startup
 
 ***
 
@@ -81,12 +81,12 @@ How do you install `Chrome` on a computer with no OS?
 ## 31: The Build Process in Detail
 
 ```
-$ docker build . 				# Giving our 'Dockerfile' to docker CLI 
+$ docker build .                # Giving our 'Dockerfile' to docker CLI 
                                 # '.' specifies the build-context
                                 # The set of files/folder that we want in a docker image
 ```
 
-* FROM alpine
+* [1/2] FROM docker.io/library/alpine@sha256:7144f7bab3d4c2648d7e59409f15ec52a18006a128c733fcff20d3a4a54ba44a
 * latest: Pulling from library/apline
 * Digest: ...
 * Status: Downloaded newer image for alpine:latest
@@ -104,12 +104,14 @@ $ docker build . 				# Giving our 'Dockerfile' to docker CLI
 FROM alpine
 
 # Download and install a dependency
-RUN apk add --update redis 					# apk is a program called apache package manager that comes pre-installed with alpine
+RUN apk add --update redis 					# apk is a program called Apache Package Manager that comes pre-installed with alpine
 RUN apk add --update gcc
 
 # Tell the image what to do when it starts as a container
 CMD ["redis-server"]
 ```
+
+* CACHED [2/3] RUN apk add --update redis
 
 ***
 
