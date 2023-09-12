@@ -5,6 +5,8 @@ $ docker run <image name>
 $ docker run hello-world
 ```
 
+***
+
 ## 13: Overriding Default Commands
 
 ```
@@ -24,7 +26,9 @@ $ docker run hello-world echo hi there # Error
 
 Note: The `hello-world` image doesn't have the executables for `ls` and `echo` commands.
 
-## 14: Listing running containers
+***
+
+## 14: Listing Running Containers
 
 ```
 $ docker ps                              # What containers are currently running and their id?
@@ -36,6 +40,8 @@ $ docker ps --all                        # List of all containers that we have e
 
 CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
 
+***
+
 ## 15: Container Lifecycle
 
 docker run = docker create + docker start
@@ -45,6 +51,7 @@ $ docker create hello-world         # A long string of characters printed out. T
 $ docker start -a CONTAINER_ID      # -a (attach) makes docker watch for output coming from "container" and print it to your terminal
 $ docker start CONTAINER_ID
 ```
+***
 
 ## 16: Restarting Stopped Containers
 
@@ -65,6 +72,8 @@ $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID      # -a (attach)
 ```
 
+***
+
 ## 17: Removing Stopped Containers
 
 ```
@@ -83,6 +92,8 @@ $ docker system prune
   - all dangling images
   - all build cache
 
+***
+
 # 18: Retrieving Log Outputs
 
 ```
@@ -92,6 +103,8 @@ $ docker start CONTAINER_ID
 $ docker start -a CONTAINER_ID
 $ docker logs CONTAINER_ID                  # A log of all the records emitted by that container)
 ```
+
+***
 
 ## 19: Stopping Containers
 
@@ -105,11 +118,15 @@ $ docker start CONTAINER_ID
 $ docker kill CONTAINER_ID                  # SIGKILL: Instant kill
 ```
 
+***
+
 ## 20: Multi-command Containers
 
 ```
 $ docker run redis                          # Ready to accept connections. 
 ```
+
+***
 
 ## 21: Executing Commands in Running Containers
 
@@ -120,7 +137,9 @@ $ set myvalue 5
 $ get myvalue
 ```
 
-## 22: The purpose of `IT` Flag
+***
+
+## 22: The Purpose of `IT` Flag
 
 * How processes run inside a Linux environment? 
   - When we run Docker on our machine. Every single container that we are running runs inside inside a VM running Linux. Processes are inside a Linux world.
@@ -134,12 +153,16 @@ $ docker exec -i -t                     # -i flag means attach our terminal to t
 $ docker exec -i <image id> redis-cli   # Notice: we've removed -t flag
 ```
 
+***
+
 ## 23: Getting Command Prompt in a Container
 
 ```
 $ docker exec -it CONTAINER _ID sh
 $ ctrl-d or exit
 ```
+
+***
 
 ## 24: Starting with a Shell
 
@@ -148,6 +171,8 @@ $ docker run -it busybox sh
 $ ping google.com
 $ ctrl-c / ctrl-d / exit
 ```
+
+***
 
 ## 25: Container Isolation
 
