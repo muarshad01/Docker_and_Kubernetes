@@ -1,5 +1,5 @@
 # The GOAL of this porject is:
-  - CREATE a tiny `Node JS WebApp`
+  - CREATE a tiny `Node.js WebApp`
   - WRAP it inside a Docker Container, and 
   - be able to ACCESS it from a browser running on a local-machine
 
@@ -8,7 +8,7 @@
 ## 37: Project Outline
 
 * Steps:
-  - 1. Crete a `Node JS WebApp`
+  - 1. Crete a `Node.js WebApp`
   - 2. Create a Dockerfile
   - 3. Build image from Dockerfile
   - 4. Run image as container
