@@ -48,15 +48,16 @@ docker run = docker create + docker start
 
 ```
 $ docker create hello-world         # A long string of characters printed out. This is CONTAINER_ID.
-$ docker start -a CONTAINER_ID      # -a (attach) makes docker watch for output coming from "container" and print it to your terminal
-$ docker start CONTAINER_ID
+$ docker start    CONTAINER_ID
+$ docker start -a CONTAINER_ID      # -a (attach) makes docker watch for output coming from "container" and print it to your terminal.
 ```
+
 ***
 
 ## 16: Restarting Stopped Containers
 
 ```
-$ docker ps --all                   # List of all containers that we've ever created
+$ docker ps --all                   # List of ALL containers that we've ever created
 ```
 
 CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
