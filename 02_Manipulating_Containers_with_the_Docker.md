@@ -159,7 +159,7 @@ $ docker exec -i <image-id> redis-cli   # Notice: we've removed -t flag
 ## 23: Getting Command Prompt in a Container
 
 ```
-$ docker exec -it CONTAINER_ID sh
+$ docker exec -it CONTAINER_ID sh      # check this command ?? exec or run ??
 $ ctrl-d or exit
 ```
 
@@ -183,7 +183,7 @@ $ touch hithere
 $ ls
 ```
 
-* Two different containers have separate file systems and are isolated to each other unless connected through channel.
+* Two DIFFERENT containers have separate file systems and are ISOLATED to each other unless CONNECTED through channel.
 
 ```
 $ docker run -it busybox sh             # In another window
