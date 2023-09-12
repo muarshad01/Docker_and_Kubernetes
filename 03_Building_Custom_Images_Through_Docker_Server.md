@@ -51,8 +51,8 @@ CMD ["redis-server"]
 
 ```
 FROM alpine                         # Use an existing docker image as a base
-RUN apk add --update redis 			# Download and install a dependency
-CMD ["redis-server"] 				# Tell the image what to do when it starts as a container
+RUN apk add --update redis          # Download and install a dependency
+CMD ["redis-server"]                # Tell the image what to do when it starts as a container
 ```
 
 ***
@@ -82,8 +82,8 @@ How do you install `Chrome` on a computer with no OS?
 
 ```
 $ docker build . 				# Giving our 'Dockerfile' to docker CLI 
-						        # '.' specifies the build-context
-						        # The set of files/folder that we want in a docker image
+                                # '.' specifies the build-context
+                                # The set of files/folder that we want in a docker image
 ```
 
 * FROM alpine
