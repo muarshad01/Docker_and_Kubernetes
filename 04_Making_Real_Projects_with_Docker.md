@@ -1,7 +1,9 @@
-* The GOAL of this porject is:
+# The GOAL of this porject is:
   - CREATE a tiny `Node JS WebApp`
   - WRAP it inside a Docker Container, and 
   - be able to ACCESS it from a browser running on a local-machine
+
+***
 
 ## 37: Project Outline
 
@@ -11,6 +13,8 @@
   - 3. Build image from Dockerfile
   - 4. Run image as container
   - 5. Connect to WebApp from a browser
+
+***
 
 ## 38: Node Server Setup
 
@@ -46,6 +50,8 @@ app.listen(8080, () => {
 });
 ```
 
+***
+
 ## 39: A Few Planned Errors
 
 * Create a file named `Dockerfile`
@@ -69,6 +75,8 @@ $ docker build . 				# '.' is the build context
   - `/bin/sh: npm` not found
   - The command `/bin/sh -c npm install` returned a non-zero code: 127
 
+***
+
 ## 40: Base Image Issues
 
 * Update Dockerfile file
@@ -88,6 +96,8 @@ CMD ["npm", "start"] 				# Start server by running 'npm start'
 $ docker build .
 ```
 
+***
+
 ## 41: A Few Missing Files
 
 ```
@@ -101,6 +111,8 @@ $ docker build .
 * npm WARN !invalid#2 No repository field.
 * npm WARN !invalid#2 No README data
 * npm WARN !invalid#2 No license field.
+
+***
 
 ## 42: Copying Build Files
 
@@ -142,6 +154,8 @@ $ docker run marshad1/simpleweb
 
 `localhost:8080` 						# The sige can't be reached
 
+***
+
 ## 43: Container Port Mapping at RUNTIME
 
 ```
@@ -156,6 +170,8 @@ $ docker run -p (Route incoming requests to this port on local-host to...):(...t
 $ docker run -p 8080:8080 marshad1/simpleweb		# Port mapping
 $ docker run -it marshad1/simpleweb sh
 ```
+
+***
 
 ## 44: Specifying Working Directory
 
@@ -183,6 +199,8 @@ $ docker run -p 8080:8080 marshad1/simpleweb
 # Run another process inside a docker container
 $ docker exec -it CONTAINER_ID sh
 ```
+
+***
 
 ## 44: Specifying a Working Directory
 
@@ -222,11 +240,15 @@ $ docker exec -it CONTAINER_ID sh
 /usr/app #
 ```
 
+***
+
 ## 45. Unnecessary Rebuilds
 
 ```
 $ docker build -t marshad1/simpleweb . 				# '.' specify the build context
 ```
+
+***
 
 ## 46: Minimizing Cache Busting and Rebuilds
 
