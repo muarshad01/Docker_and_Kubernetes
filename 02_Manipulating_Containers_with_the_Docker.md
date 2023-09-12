@@ -81,7 +81,7 @@ $ docker start -a CONTAINER_ID      # -a (attach)
 $ docker ps --all			        # List of all containers that we've ever created
 ```
 
-CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
+CONTAINER_ID -- IMAGE -- COMMAND -- CREATED -- STATUS -- PORTS -- NAMES
 
 ```
 $ docker system prune
