@@ -126,11 +126,10 @@ $ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 ## 36: Manual Image Generation with Docker Commit
 
 ```
-1. $ docker run -it alpine sh                               # -i: attach our terminal to the STDIN channel of the new running process
-								                            # -t: show text in readable form 
+1. $ docker run -it alpine sh                               # -i: attach our terminal to the STDIN channel of the new running process; # -t: show text in readable form 
 2. $ apk add --update redis 				                # Inside the container manually install redis
 3. $ docker ps 							                    # Get CONTAINER_ID
-4. $ docker commit -c 'CMD ["redis-server"]' CONTAINER_ID 	# -CONTAINER_ID
+4. $ docker commit -c 'CMD ["redis-server"]' CONTAINER_ID 	# CONTAINER_ID ??
 5. $ docker image ls -a
 6. $ docker run IMAGE_ID
 ```
