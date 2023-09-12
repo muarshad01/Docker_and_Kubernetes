@@ -32,10 +32,10 @@ Note: The `hello-world` image doesn't have the executables for `ls` and `echo` c
 
 ```
 $ docker ps                              # What containers are currently running and their id?
-$ docker rub <image-name> <command>
+$ docker run <image-name> <command>
 $ docker run busybox ping google.com
 $ docker ps
-$ docker ps --all                        # List of all containers that we have ever created.
+$ docker ps --all                        # List of ALL containers that we have ever created.
 ```
 
 CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
