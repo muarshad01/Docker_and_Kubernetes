@@ -5,7 +5,7 @@
 * Steps: 
   - `Dockerfile` 
   - Docker Client
-  - Docker Server 
+  - Docker Server (daemon) 
   - Usable Image
 
 * Creating a `Dockerfile` Flow:
@@ -13,7 +13,11 @@
   - (b) Run some commands to install additional programs
   - (c) Specify a command to run on container startup
 
+***
+
 ## 27: `Buildkit` for Docker Desktop
+
+***
 
 ## 28: Building a `Dockerfile`
 
@@ -42,6 +46,8 @@ CMD ["redis-server"]
 5. $ docker run IMAGE_ID 			# Ready to accept connections
 ```
 
+***
+
 ## 29: `Dockerfile` Teardown
 
 ```
@@ -49,6 +55,8 @@ FROM alpine                         # Use an existing docker image as a base
 RUN apk add --update redis 			# Download and install a dependency
 CMD ["redis-server"] 				# Tell the image what to do when it starts as a container
 ```
+
+***
 
 ## 30: What's a Base Image
 
@@ -69,6 +77,7 @@ How do you install `Chrome` on a computer with no OS?
 * Command to run on startup (`CMD`)
   - Execute chrome.exe
 
+***
 
 ## 31: The Build Process in Detail
 
@@ -83,7 +92,11 @@ $ docker build . 				# Giving our 'Dockerfile' to docker CLI
 * Digest: ...
 * Status: Downloaded newer image for alpine:latest
 
+***
+
 ## 32: A Brief Recap
+
+***
 
 ## 33: Rebuilds with Cache
 
@@ -99,11 +112,15 @@ RUN apk add --update gcc
 CMD ["redis-server"]
 ```
 
+***
+
 ## 34: Tagging an Image
 
 ```
 $ docker build -t <docker-id>/redis:latest . 			# '.' is the build context
 ```
+
+***
 
 ## 36: Manual Image Generation with Docker Commit
 
