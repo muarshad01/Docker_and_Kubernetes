@@ -60,7 +60,7 @@ $ docker start -a CONTAINER_ID      # -a (attach) makes docker watch for output 
 $ docker ps --all                   # List of ALL containers that we've ever created
 ```
 
-CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
+**CONTAINER_ID        IMAGE       COMMAND     CREATED     STATUS      PORTS   NAMES**
 
 ```
 $ docker run <image-name> <command>
