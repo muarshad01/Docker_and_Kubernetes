@@ -110,13 +110,13 @@ $ docker logs CONTAINER_ID                  # A log of all the records emitted b
 ## 19: Stopping Containers
 
 ```
-$ docker create busybox ping google.com 	# This will generate a CONTAINER_ID
+$ docker create busybox ping google.com 	 # This will generate a CONTAINER_ID
 $ docker start CONTAINER_ID
-$ docker logs CONTAINER_ID
+$ docker logs  CONTAINER_ID
 $ docker ps
-$ docker stop CONTAINER_ID                  # SIGTERM: Graceful shutdown
+$ docker stop  CONTAINER_ID                  # SIGTERM: Graceful shutdown
 $ docker start CONTAINER_ID
-$ docker kill CONTAINER_ID                  # SIGKILL: Instant kill
+$ docker kill  CONTAINER_ID                  # SIGKILL: Instant kill
 ```
 
 ***
