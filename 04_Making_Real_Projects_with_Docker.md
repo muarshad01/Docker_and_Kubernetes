@@ -1,7 +1,7 @@
 # The GOAL of this porject is:
-  - CREATE a tiny `Node.js WebApp`
-  - WRAP it inside a Docker Container, and 
-  - be able to ACCESS it from a browser running on a local-machine
+  - 1.  REATE a tiny `Node.js WebApp`
+  - 2. WRAP it inside a Docker Container, and 
+  - 3. be able to ACCESS it from a browser running on a local-machine
 
 ***
 
