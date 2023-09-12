@@ -38,7 +38,7 @@ $ docker ps
 $ docker ps --all                        # List of ALL containers that we have ever created.
 ```
 
-CONTAINER_ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
+CONTAINER_ID -- IMAGE -- COMMAND -- CREATED -- STATUS -- PORTS -- NAMES
 
 ***
 
