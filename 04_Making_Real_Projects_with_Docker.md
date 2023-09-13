@@ -195,9 +195,9 @@ FROM node:14-alpine
 
 WORKDIR /usr/app
 
-# Install some dependencies
 COPY ./ ./ 							# COPY (current working directory of simpleweb) (current working directory inside the container)
 
+# Install some dependencies
 RUN npm install
 
 # Default command
@@ -231,8 +231,9 @@ FROM node:14-alpine 					# Notice node:14-apline
 
 WORKDIR /usr/app
 
-# Install some dependencies
 COPY ./ ./
+
+# Install some dependencies
 RUN npm install
 
 # Default command
