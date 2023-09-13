@@ -277,5 +277,5 @@ CMD ["npm", "start"]
 ```
 
 ```
-$ docker build -d marshad1/simpleweb .
+$ docker build -t marshad1/simpleweb .
 ```
