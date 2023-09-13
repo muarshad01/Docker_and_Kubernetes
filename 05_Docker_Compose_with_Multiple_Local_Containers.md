@@ -81,7 +81,7 @@ $ docker build .
   - npm WARN app No license field.
 
 ```
-$ build -t marshad1/visits:latest . 			# Tag the image <docker-id>/<project-name>:latest
+$ docker build -t marshad1/visits:latest . 			# Tag the image <docker-id>/<project-name>:latest
 $ docker image ls -a
 ```
 
