@@ -227,7 +227,7 @@ WORKDIR /usr/app 					# Any following command will be executed relative
 
 ```
 # Specify a base image
-FROM node:14-alpine 					# Notice node:14- apline
+FROM node:14-alpine 					# Notice node:14-apline
 
 WORKDIR /usr/app
 
