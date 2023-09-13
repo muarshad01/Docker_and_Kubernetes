@@ -115,29 +115,30 @@ $ docker run redis 				        	# Ready to accept connections
 $ docker-compose
 ```
 
+## 52: Networking with `Docker-Compose`
 
 ```
-$ touch docker-compose.yml
-$ vim docker-compose.yml
-
-$ docker build -t marshad1/visits:latest
+$ docker build -t marshad1/visits:latest .
 $ docker run -p 8080:8080 marshad1/visits
 ```
+
+Create a file `docker-compose.yml`
 
 ```
 version: '3' 						# Version of docker-compose
 services:
-	redis-server: 					# Container
-    		image: 'redis'			# -- Make it usE the 'redis' image
-  	node-app: 					    # Container
-    		build: . 				# -- Make it using the Dockerfile in current directory
+	redis-server: 					# Container redis
+    		image: 'redis'			# -- Make it use the 'redis' image
+  	node-app: 					    # Container node-app
+    		build: . 				# -- Make it use the `Dockerfile` in current directory
     		ports: 					# -- Map port 4001 to 8081
-      		- "4001:8081" 				# '-' in a yml file is used to specify an arry; or one port here 
+      		- "4001:8081" 			# '-' in a yml file is used to specify an arry; or one port here 
 ```
 
 ***
 
-## 52: Networking with `Docker-Compose`
+
+## 53: `Docker-Compose` Commands
 
 Update `index.js`
 
@@ -166,7 +167,6 @@ app.listen(8081, () => {
 
 ***
 
-## 53: `Docker-Compose` Commands
 
 ```
 $ docker run myimage                  <==> docker-compose up
