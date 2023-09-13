@@ -1,13 +1,9 @@
 ## 47: App Overview
 
-`https://localhost:4001`
+* A WebApp that simply displays the number of times this page (`https://localhost:4001`) has been visited.
 
-* Number of visits: 10
-  - A WebApp that simply displays the number of times this page has been visited.
-
-* Webpage
-* Docker Container {Node App} 
-* Docker Container {Redis Server}
+* Docker Container - `NodeApp` 
+* Docker Container - `RedisServer`
 
 ***
 
@@ -58,7 +54,6 @@ app.listen(8081, ()=> {
 
 ```
 $ touch Dockerfile
-$ vim Dockerfile
 ```
 
 ```
@@ -66,8 +61,10 @@ FROM node:14-alpine
 
 WORKDIR '/app'
 
-COPY package.json .
+COPY ./package.json .
+
 RUN npm install
+
 COPY . .
 
 CMD ["npm", "start"]
@@ -84,7 +81,7 @@ $ docker build .
   - npm WARN app No license field.
 
 ```
-$ build -t marshad1/visits:latest . 			# Tag the image dockerID/projectName:latest
+$ build -t marshad1/visits:latest . 			# Tag the image <docker-id>/<project-name>:latest
 $ docker image ls -a
 ```
 
@@ -102,7 +99,7 @@ $ docker run redis 				        	# Ready to accept connections
 
 ## 51: Docker Compose Files
 
-* Docker Container {Node App} and Docker Container {Redis} don't have a communication channel between them.
+* Docker Container `NodeApp` and Docker Container `Redis` don't have a communication channel between them.
 
 * We need a networking infrastructure and there are two options: 
   - 1) Docker CLI
@@ -111,7 +108,7 @@ $ docker run redis 				        	# Ready to accept connections
 * What is Docker Compose?
   - A tool that gets installed along with Docker
   - Separate CLI
-  - Used to start up multiple Docker containers at the same time and connect them in an automated way
+  - Used to start-up multiple Docker containers at the same time and connect them in an automated way
   - Automates some of the long-winded arguments we were passing to 'docker run'
 
 ```
