@@ -9,6 +9,8 @@
 * Docker Container {Node App} 
 * Docker Container {Redis Server}
 
+***
+
 ## 48: App Server Starter Code
 
 ```
@@ -50,6 +52,8 @@ app.listen(8081, ()=> {
 });
 ```
 
+***
+
 ## 49: Assembling a `Dockerfile`
 
 ```
@@ -84,6 +88,8 @@ $ build -t marshad1/visits:latest . 			# Tag the image dockerID/projectName:late
 $ docker image ls -a
 ```
 
+***
+
 ## 50: Introducing Docker Compose
 
 ```
@@ -91,6 +97,8 @@ $ docker run marshad1/visits 				# Error: Redis connection to 127.0.0.1:6379 fai
                 							# - connect ECONNREFUSED 127.0.0.1:6379
 $ docker run redis 				        	# Ready to accept connections
 ```
+
+***
 
 ## 51: Docker Compose Files
 
@@ -128,6 +136,8 @@ services:
       		- "4001:8081" 				# '-' in a yml file is used to specify an arry; or one port here 
 ```
 
+***
+
 ## 52: Networking with Docker Compose
 
 Update `index.js`
@@ -155,6 +165,8 @@ app.listen(8081, () => {
 });
 ```
 
+***
+
 ## 53: Docker Compose Commands
 
 ```
@@ -173,6 +185,8 @@ $ docker-compose up 							# Creating network "visits_default" with default driv
 $ docker-compose up --build
 ```
 
+***
+
 ## 54: Stopping Docker Compose Containers
 
 ```
@@ -188,11 +202,15 @@ $ docker ps
 $ docker-compose down
 ```
 
+***
+
 ## 55: Container Maintenance with Compose
 
 ```
 $ docker-compose up --build 			# 'Rebuild' the container
 ```
+
+***
 
 ## 56: Automatic Container Restarts
 
@@ -201,6 +219,8 @@ $ docker-compose up --build 			# 'Rebuild' the container
   - (b) always         -- If this container stops 'for any reason' always attempt to restart it
   - (c) on-failure     -- Only restart if the container stops with an error code
   - (d) unless-stopped -- Always restart unless we (the developers) forcibly stop it
+
+***
 
 ## 57: Container status with Docker Compose
 
@@ -211,3 +231,5 @@ $ docker ps
 $ docker-compose up
 $ docker-compose ps 				# Note: Run this command from the folder containing docker-compose.yml
 ```
+
+***
