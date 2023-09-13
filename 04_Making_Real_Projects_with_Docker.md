@@ -24,8 +24,11 @@ $ mkdir simpleweb
 $ cd simpleweb
 ```
 
-* (a) create a file named `package.json` with the following content:
+* Create a file named `package.json` with the following content:
+
 ```
+$ touch package.json
+
 {
   "dependencies": {
     "express": "*"
@@ -36,8 +39,11 @@ $ cd simpleweb
 }
 ```
 
-* (b) crate a file named `index.js` with the following content:
+* Create a file named `index.js` with the following content:
+
 ```
+$ touch index.js
+
 const express = require('express');
 
 const app = express();
