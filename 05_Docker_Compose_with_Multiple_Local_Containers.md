@@ -99,9 +99,9 @@ $ docker run redis 				        	# Ready to accept connections
 
 ## 51: Docker Compose Files
 
-* Docker Container `NodeApp` and Docker Container `Redis` don't have a communication channel between them.
+* Docker Container`NodeApp` <--> `Redis` don't have a COMMUNICATION-CHANNEL between them.
 
-* We need a networking infrastructure and there are two options: 
+* We need a **networking infrastructure* and there are two options: 
   - 1) Docker CLI
   - 2) Docker Compose
 
@@ -111,10 +111,8 @@ $ docker run redis 				        	# Ready to accept connections
   - Used to start-up multiple Docker containers at the same time and connect them in an automated way
   - Automates some of the long-winded arguments we were passing to 'docker run'
 
-```
-$ docker-compose
 
-$ Create a file docker-compose.yml
+```
 $ touch docker-compose.yml
 $ vim docker-compose.yml
 
@@ -126,8 +124,8 @@ $ docker run -p 8080:8080 marshad1/visits
 version: '3' 						# Version of docker-compose
 services:
 	redis-server: 					# Container
-    		image: 'redis'				# -- Make it using the 'redis' image
-  	node-app: 					# Container
+    		image: 'redis'			# -- Make it usE the 'redis' image
+  	node-app: 					    # Container
     		build: . 				# -- Make it using the Dockerfile in current directory
     		ports: 					# -- Map port 4001 to 8081
       		- "4001:8081" 				# '-' in a yml file is used to specify an arry; or one port here 
@@ -135,7 +133,7 @@ services:
 
 ***
 
-## 52: Networking with Docker Compose
+## 52: Networking with `Docker-Compose`
 
 Update `index.js`
 
@@ -164,7 +162,7 @@ app.listen(8081, () => {
 
 ***
 
-## 53: Docker Compose Commands
+## 53: `Docker-Compose` Commands
 
 ```
 $ docker run myimage                  <==> docker-compose up
@@ -184,7 +182,7 @@ $ docker-compose up --build
 
 ***
 
-## 54: Stopping Docker Compose Containers
+## 54: Stopping `Docker-Compose` Containers
 
 ```
 $ docker run -d redis
