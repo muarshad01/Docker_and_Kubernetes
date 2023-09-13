@@ -72,15 +72,20 @@ CMD ["npm", "start"]
 $ docker build . 				# '.' is the build context
 ```
 
-* We should see the following: 
-  - `/bin/sh: npm` not found
-  - The command `/bin/sh -c npm install` returned a non-zero code: 127
+```
+ => ERROR [2/2] RUN npm install                                            0.2s
+------
+ > [2/2] RUN npm install:
+#6 0.154 /bin/sh: npm: not found
+------
+executor failed running [/bin/sh -c npm install]: exit code: 127
+```
 
 ***
 
 ## 40: Base Image Issues
 
-* Update Dockerfile file
+* Update `Dockerfile` file
 
 ```
 # Specify a base image
@@ -117,7 +122,7 @@ $ docker build .
 
 ## 42: Copying Build Files
 
-* Update Dockerfile file
+* Update `Dockerfile` file
 
 ```
 # Specify a base image
@@ -153,7 +158,7 @@ $ docker run marshad1/simpleweb
 >> Listening on port 8080
 ```
 
-`localhost:8080` 						# The sige can't be reached
+`localhost:8080` 						# The site can't be reached
 
 ***
 
