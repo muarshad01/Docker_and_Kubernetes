@@ -192,12 +192,10 @@ $ docker-compose up --build
 $ docker run -d redis
 $ docker ps
 $ docker stop CONTAINER_ID
+```
 
+```
 $ docker-compose up -d 				# Launch in background
-						# Creating network "visits_default" with the default driver
-						# Creating visits_redis-server_1 ... done
-						# Creating visits_node-app_a     ... done
-$ docker ps
 $ docker-compose down
 ```
 
@@ -214,10 +212,10 @@ $ docker-compose up --build 			# 'Rebuild' the container
 ## 56: Automatic Container Restarts
 
 * Four types of Restart Policies:
-  - (a) "no"           -- Never attempt to restart this container if it stops or crashes
-  - (b) always         -- If this container stops 'for any reason' always attempt to restart it
-  - (c) on-failure     -- Only restart if the container stops with an error code
-  - (d) unless-stopped -- Always restart unless we (the developers) forcibly stop it
+  - "no"           -- Never attempt to restart this container if it stops or crashes
+  - always         -- If this container stops 'for any reason' always attempt to restart it
+  - on-failure     -- Only restart if the container stops with an error code
+  - unless-stopped -- Always restart unless we (the developers) forcibly stop it
 
 ***
 
@@ -226,7 +224,9 @@ $ docker-compose up --build 			# 'Rebuild' the container
 ```
 $ dockr run redis
 $ docker ps
+```
 
+```
 $ docker-compose up
 $ docker-compose ps 				# Note: Run this command from the folder containing docker-compose.yml
 ```
