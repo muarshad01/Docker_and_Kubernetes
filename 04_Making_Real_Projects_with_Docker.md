@@ -64,7 +64,7 @@ app.listen(8080, () => {
 * Create a file named `Dockerfile`
 
 ```
-# Specify a base image
+# Specify a base-image
 FROM alpine
 
 # Install some dependencies
@@ -75,7 +75,7 @@ CMD ["npm", "start"]
 ```
 
 ```
-$ docker build . 				# '.' is the build context
+$ docker build .            # '.' is the build context
 ```
 
 ```
@@ -95,10 +95,10 @@ executor failed running [/bin/sh -c npm install]: exit code: 127
 
 ```
 # Specify a base image
-FROM node:14-alpine 				# Notice: We're now using node:alpine and not alpine
+FROM node:14-alpine 			# Notice: We're now using node:alpine and not alpine
 
 # Install some dependencies
-RUN npm install 				# Install deps by running 'npm install'. Node Package Manager (npm)
+RUN npm install 				# Install dependencies by running 'npm install'. Node Package Manager (npm)
 
 # Default command
 CMD ["npm", "start"] 				# Start server by running 'npm start'
