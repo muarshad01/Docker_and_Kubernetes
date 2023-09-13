@@ -10,10 +10,10 @@
 
 * Steps:
   - Crete a `Node.js WebApp`
-  - Create a Dockerfile
-  - Build image from Dockerfile (`$ docker build .`)
-  - Run image as container (`$ docker run IMAGE_ID`)
-  - Connect to WebApp from a browser
+  - Create a `Dockerfile`
+  - Build image from `Dockerfile` (`$ docker build .`)
+  - Run image as a container (`$ docker run IMAGE_ID`)
+  - Connect to `WebApp` from a browser
 
 ***
 
