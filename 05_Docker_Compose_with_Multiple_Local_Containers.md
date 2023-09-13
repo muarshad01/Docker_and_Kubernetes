@@ -2,8 +2,7 @@
 
 * A WebApp that simply displays the number of times this page (`https://localhost:4001`) has been visited.
 
-* Docker Container - `NodeApp` 
-* Docker Container - `RedisServer`
+* `https://localhost:4001` --> Docker Container - `NodeApp` --> Docker Container - `RedisServer`
 
 ***
 
@@ -102,14 +101,19 @@ $ docker run redis 				        	# Ready to accept connections
 * Docker Container`NodeApp` <--> `Redis` don't have a COMMUNICATION-CHANNEL between them.
 
 * We need a **networking infrastructure* and there are two options: 
-  - 1) Docker CLI
+  - 1) Docker CLI's Network Features
   - 2) Docker Compose
 
 * What is Docker Compose?
   - A tool that gets installed along with Docker
   - Separate CLI
-  - Used to start-up multiple Docker containers at the same time and connect them in an automated way
+  - Used to start-up multiple Docker containers at the same time and CONNECT them in an AUTOMATED way
   - Automates some of the long-winded arguments we were passing to 'docker run'
+
+
+```
+$ docker-compose
+```
 
 
 ```
