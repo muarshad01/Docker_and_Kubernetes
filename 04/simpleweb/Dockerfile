@@ -1,4 +1,4 @@
-# Specify a base image
+# Specify a BASE image
 FROM node:14-alpine
 
 WORKDIR /usr/app
