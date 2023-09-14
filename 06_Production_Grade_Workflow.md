@@ -1,4 +1,4 @@
-## 61: Development Workflow
+## 59: Development Workflow
 
 * Author and publish an application using Docker
 
@@ -6,7 +6,7 @@
 
 ***
 
-## 62: Flow Specifics
+## 60: Flow Specifics
 
 * GitHub repo with two branches: 
   - `feature`, and 
@@ -14,10 +14,12 @@
 
 * `feature-branch` is our development-branch and `master-branch` is a very-clean-copy of our working-code-base.
 
-* We're only pulling/pushing code to the `feature-branch`. 
+* Dev Phase: We're only pulling/pushing code to the `feature-branch`. 
 * We're never going to push code directly to `master-branch`. 
-* `Pull Request` merges the code to the `master-branch`.
-* `Travis CI` service pulls code from `master-branch` and runs tests and then automatically pushes-the-code to AWS hosting.
+
+* `Pull Request (PR)` merges the code from `feature-branch` to the `master-branch`.
+
+* Test-and-PROD Phase: `Travis CI` service (Continuous Integration Provider) pulls code from `master-branch` and runs TESTS and then merges PR with `master-branch` before automatically pushing-the-code to AWS hosting.
 
 Steps: 
 1. Push code to `feature-branch`
