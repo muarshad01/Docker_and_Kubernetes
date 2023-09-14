@@ -28,7 +28,8 @@ Steps:
 
 ## 63: Docker's Purpose
 
-* Docker is a took in a normal development flow. Docker makes some of these tasks a lot easier.
+* Docker is a **tool** in a normal development flow. 
+* Docker makes some of these tasks a lot easier.
 
 ***
 
@@ -43,7 +44,7 @@ $ node -v
 
 ***
 
-## 65: Create-React-App Generation
+## 65: CreateReactApp Generation
 
 ```
 $ npm install -g create-react-app
@@ -58,7 +59,7 @@ wrap that project inside a container.
 
 ```
 $ npm install -g create-react-app
-$ create-react-app frontend # create a react project named frontend
+$ create-react-app frontend             # create a react project named frontend
 ```
 
 ***
