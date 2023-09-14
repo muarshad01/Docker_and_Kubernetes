@@ -131,26 +131,26 @@ $ docker run -it -p 3000:3000 CONTAINER_ID          # (localhost-port):(containe
 
 ***
 
-## 72: Docker Volumes
+## 68: Docker Volumes
 
 * With Docker Volume, we essentially set-up a place-holder of sorts inside our docker container. 
 * Instead of copying the local-files, we can create a reference inside the docker that points to local-files on host-machines. 
 * This can be though of as a kind of port- mapping we did earlier, where we map a port-inside-a-container to a port-outside-a-container. 
-* Similarly, here we map a file/directory inside a container to a file or directory outside a container.
-* Allows us to access files in local machine
+* Similarly, here we map a file-or-directory inside-a-container to a file-or-directory outside-a-container.
+* Allows us to access files in local-machine
 
 ```
 $ docker build -f Dockerfile.dev .
-$ docker run -p 3000:3000 -v $(pwd):/app image-id       # sh: react-scripts: not found
+$ docker run -p 3000:3000 -v $(pwd):/app IMAGE_ID                   # sh: react-scripts: not found
 ```
 
 ***
 
-## 73: Windows not Detecting Changes - Update
+## 69: WSL &  Windows Users Must Read Before Next Lecture
 
 ***
 
-## 74: Bookmarking Volumes
+## 70: Bookmarking Volumes
 
 ```
 $ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app IMAGE-ID
@@ -158,11 +158,7 @@ $ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app IMAGE-ID
 
 ***
 
-## 75: ReactApp Exited With Code 0
-
-***
-
-## 76: Shorthand with Docker Compose
+## 71: Shorthand with `docker-compose`
 
 Create a file `docker-compose.yml`
 
@@ -184,7 +180,7 @@ $ docker-compose up                     # ERROR: Cannot locate specified Dockerf
 
 ***
 
-## 77: Overriding `Dockerfile` Selection
+## 72: Overriding `Dockerfile` Selection
 
 Update `docker-compose.yml`
 
@@ -208,15 +204,11 @@ $ docker-compose up
 
 ***
 
-## 78: Windows not Detecting Changes - Docker Compose
+## 73: Do We Need Copy?
 
 ***
 
-## 79: Do We Need Copy?
-
-***
-
-## 80: Executing Tests
+## 74: Executing Tests
 
 ```
 $ npm run start                     # Starts up a development server. For development use only
@@ -232,7 +224,7 @@ press Enter
 
 ***
 
-## 81: Live Updating Tests
+## 75: Live Updating Tests
 
 Edit the file `App.test.js` and duplicate the test
 
@@ -244,7 +236,7 @@ $ docker exec -it CONTAINER-ID npm run test
 
 ***
 
-## 82: Docker Compose for Running Tests
+## 76: Docker Compose for Running Tests
 
 Update `docker-compose.yml` file
 
@@ -276,11 +268,7 @@ $ docker-compose up --build
 
 ***
 
-## 83. Tests Not Re-running on Windows
-
-***
-
-## 84: Shortcomings on Testing
+## 77: Shortcomings on Testing
 
 ```
 $ npm run test                              # start a test container
@@ -294,7 +282,7 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 
 ***
 
-## 85: Need for `nginx` (WebServer)
+## 78: Need for `nginx` (WebServer)
 
 * `nginx`: Takes incoming traffic and
   - routes it and 
@@ -302,7 +290,7 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 
 ***
 
-## 86: Multi-Step Docker Builds
+## 79: Multi-Step Docker Builds
 
 * Build Phase
   - Use node:alpine
@@ -317,7 +305,7 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 
 ***
 
-## 87: Implementing Multi-Step Builds
+## 80: Implementing Multi-Step Builds
 
 Create `Dockerfile`
 
@@ -341,7 +329,7 @@ COPY --from=builder /app/build /user/share/nginx/html # /app/build <-- all the s
 
 ***
 
-## 88: Running `nginx`
+## 81: Running `nginx`
 
 ```
 $ docker build .
