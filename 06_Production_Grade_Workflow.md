@@ -7,6 +7,8 @@
   - Testing
   - Deployment
 
+***
+
 ## 62: Flow Specifics
 
 * Github Repo with two branckes: 
@@ -19,9 +21,13 @@
 
 You --> push code to feature branch --> Pull request to merge code to 'master' branch --> Travis CI --> AWS Hosting (Elastic Beanstalk)
 
+***
+
 ## 63: Docker's Purpose
 
 * Docker is a took in a normal development flow. Docker makes some of these tasks a lot easier.
+
+***
 
 ## 64: Project Generation
 
@@ -32,11 +38,15 @@ You --> push code to feature branch --> Pull request to merge code to 'master' b
 $ node -v
 ```
 
+***
+
 ## 65: Create React App Generation
 
 ```
 $ npm install -g create-react-app
 ```
+
+***
 
 ## 66: More on Project Generation
 
@@ -47,6 +57,8 @@ wrap that project inside a container.
 $ npm install -g create-react-app
 $ create-react-app frontend # create a react project named frontend
 ```
+
+***
 
 ## 67: Necessary Commands
 
@@ -71,6 +83,8 @@ $ npm run build
 $ npm run start # a default react application is launched in your browser http://localhost:3000/
 ```
 
+***
+
 ## 68: Creating the Dev Dockerfile
 
 Create Dockerfile.dev
@@ -92,6 +106,8 @@ $ docker build . # Error: Dockerfile: no such file or directory
 $ docker build -f Dockerfile.dev . 
 ```
 
+***
+
 ## 69: Duplicating Dependencies
 
 delete node_modules folder within the frontend project 
@@ -100,7 +116,11 @@ delete node_modules folder within the frontend project
 $ docker build -f Dockerfile.dev .
 ```
 
+***
+
 ## 70: React App Exits Immediately with Docker Run Command
+
+***
 
 ## 71: Starting the Container
 
@@ -108,6 +128,8 @@ $ docker build -f Dockerfile.dev .
 $ docker run IMAGE_ID
 $ docker run -it -p 3000:3000 CONTAINER_ID # (localhost port):(container port)
 ```
+
+***
 
 ## 72: Docker Volumes
 
@@ -122,7 +144,11 @@ $ docker build -f Dockerfile.dev .
 $ docker run -p 3000:3000 -v $(pwd):/app image-id # sh: react-scripts: not found
 ```
 
+***
+
 ## 73: Windows not Detecting Changes - Update
+
+***
 
 ## 74: Bookmarking Volumes
 
@@ -130,7 +156,11 @@ $ docker run -p 3000:3000 -v $(pwd):/app image-id # sh: react-scripts: not found
 $ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app IMAGE-ID
 ```
 
+***
+
 ## 75: React App Exited With Code 0
+
+***
 
 ## 76: Shorthand with Docker Compose
 
@@ -151,6 +181,8 @@ services: # All service of containers
 ```
 $ docker-compose up # ERROR: Cannot locate specified Dockerfile: Dockerfile
 ```
+
+***
 
 ## 77: Overriding Dockerfile Selection
 
@@ -174,9 +206,15 @@ services:
 $ docker-compose up
 ```
 
+***
+
 ## 78: Windows not Detecting Changes - Docker Compose
 
+***
+
 ## 79: Do We Need Copy?
+
+***
 
 ## 80: Executing Tests
 
@@ -192,6 +230,8 @@ $ docker run -it CONTAINER_ID npm run test
 press Enter
 ```
 
+***
+
 ## 81: Live Updating Tests
 
 Edit the file App.test.js and duplicate the test
@@ -201,6 +241,8 @@ $ docker-compose up
 $ docker ps # container-id
 $ docker exec -it CONTAINER-ID npm run test
 ```
+
+***
 
 ## 82: Docker Compose for Running Tests
 
@@ -232,7 +274,11 @@ services:
 $ docker-compose up --build
 ```
 
+***
+
 ## 83. Tests Not Re-running on Windows
+
+***
 
 ## 84: Shortcomings on Testing
 
@@ -246,11 +292,15 @@ $ docker attach CONTAINER-ID # Attached our terminal (cmd line) to stdin, stdout
 $ docker exec -it CONTAINER-ID sh # attach terminal to STDIN of primary process of container
 ```
 
+***
+
 ## 85: Need for Nginx (Webserver)
 
 * Nginx: Takes incoming traffic and
   - a) routes it and 
   - b) responds with static files.
+
+***
 
 ## 86: Multi-Step Docker Builds
 
@@ -264,6 +314,8 @@ $ docker exec -it CONTAINER-ID sh # attach terminal to STDIN of primary process 
   - Use nginx
   - Copy over the result of 'npm run build'
   - Start nginx
+
+***
 
 ## 87: Implementing Multi-Step Builds
 
@@ -280,6 +332,8 @@ RUN npm run build
 FROM nginx # 2nd phase
 COPY --from=builder /app/build /user/share/nginx/html # /app/build <-- all the stuff
 ```
+
+***
 
 ## 88: Running Nginx
 
