@@ -14,76 +14,65 @@
 
 * `feature-branch` is our development-branch and `master-branch` is a very-clean-copy of our working-code-base.
 
-* Dev Phase: We're only pulling/pushing code to the `feature-branch`. 
+* **Dev Phase**: We're only pulling/pushing code to the `feature-branch`. 
 * We're never going to push code directly to `master-branch`. 
 
 * `Pull Request (PR)` merges the code from `feature-branch` to the `master-branch`.
 
-* Test-and-PROD Phase: `Travis CI` service (Continuous Integration Provider) pulls code from `master-branch` and runs TESTS and then merges PR with `master-branch` before automatically pushing-the-code to AWS hosting.
+* **Test-and-PROD Phase**: `Travis CI` service (Continuous Integration Provider) pulls code from `master-branch` and runs TESTS and then merges PR with `master-branch` before automatically pushing-the-code to AWS hosting.
 
 Steps: 
 1. Push code to `feature-branch`
 2. `Pull Request (PR)` to merge code to `master-branch`
-3. `Travis CI` --> AWS Hosting (Elastic Beanstalk)
+3. `Travis CI` --> Testing & AWS Hosting (Elastic Beanstalk)
 
 ***
 
-## 63: Docker's Purpose
+## 61: Docker's Purpose
 
 * Docker is a **tool** in a normal development flow. 
 * Docker makes some of these tasks a lot easier.
 
 ***
 
-## 64: Project Generation
+## 62: Project Generation
 
-* Generate a project and wrap that up within a docker container.
-* React application/Recat front-end/React framework
+Check to see if you've `node.js` installed locally
 
 ```
 $ node -v
 ```
 
-***
+* Generate a project and wrap that up within a docker container.
 
-## 65: CreateReactApp Generation
+## 63. More on Project Generation
 
-```
-$ npm install -g create-react-app
-```
-
-***
-
-## 66: More on Project Generation
-
-Now that `node.js` is installed. We'll install a little tool that crwates an `empty-react-project` and then we'll 
-wrap that project inside a container.
+Now that `node.js` is installed. We'll install a little **tool** that creates an `empty-react-project` and then we'll wrap that project inside a container.
 
 ```
-$ npm install -g create-react-app
-$ create-react-app frontend             # create a react project named frontend
+npx create-react-app frontend               # create-react-app inside a new-folder frontend
 ```
 
 ***
 
-## 67: Necessary Commands
+## 64: Necessary Commands
 
 How this container will interact with outside world.
 
 ```
+$ cd ~/frontend
+
 $ npm run start         # Starts up a development server. For development use only
 $ npm run test          # Runs tests associated with the project
-$ npm run build         # Builds a production version of the application
-
-$ npm run test
 $ q                     # quit
-
-$ npm run build
-# Creating an optimized production build...
+$ npm run build         # Builds a production version of the application
+                        # Creating an optimized production build...
 ```
 
-~/frontend/build/index.html
-~/fontend/build/static/js/main.9ff6fae3.chunk.js
+```
+$ vim ~/frontend/build/index.html
+$ vim ~/fontend/build/static/js/main.9ff6fae3.chunk.js
+```
 
 ```
 $ npm run start         # A default react application is launched in your browser `http://localhost:3000/`
