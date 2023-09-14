@@ -12,16 +12,17 @@
   - `feature`, and 
   - `master`
 
-`feature` branch is our development-branch and `master` branch is a very-clean-copy of our working-code-base.
+* `feature-branch` is our development-branch and `master-branch` is a very-clean-copy of our working-code-base.
 
-* We're only pulling/pushing code to the `feature` branch. We're never going to push code directly to `master`. `Pull Request` merges the code to the master branch.
-
-* `Travis CI` service pulls code from `master` branch and runs tests and then automatically pushes the code to AWS hosting.
+* We're only pulling/pushing code to the `feature-branch`. 
+* We're never going to push code directly to `master-branch`. 
+* `Pull Request` merges the code to the `master-branch`.
+* `Travis CI` service pulls code from `master-branch` and runs tests and then automatically pushes-the-code to AWS hosting.
 
 Steps: 
-1. Push code to `feature` branch 
-2. `Pull Request (PR)` to merge code to `master` branch
-3. Travis CI --> AWS Hosting (Elastic Beanstalk)
+1. Push code to `feature-branch`
+2. `Pull Request (PR)` to merge code to `master-branch`
+3. `Travis CI` --> AWS Hosting (Elastic Beanstalk)
 
 ***
 
