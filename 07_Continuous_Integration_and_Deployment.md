@@ -1,30 +1,42 @@
-## 89: Services Overview
+## 82: Services Overview
 
 ```
-$ npm run start # Starts up a development server.
-$ npm run test # Runs tests associated with the project.
-$ npm run build # Builds a production version of the application.
+$ npm run start             # Starts up a development server.
+$ npm run test              # Runs tests associated with the project.
+$ npm run build             # Builds a production version of the application.
 ```
+
+***
 
 * Github / Travis CI (Run tests automatically) / AWS
 
-## 90: Github Setup
+***
+
+## 83: GitHub Setup
 
 ```
 $ git remote add origin git@github.com:<user-id>/<repo-name>.git
 $ git push origin master
 ```
 
-## 91: Travis CI Setup
+***
+
+## 84:
+
+***
+
+## 85: Travis CI Setup
 
 * Your Laptop 
 * push to GitHub 
 * Travis (Run tests)
 * Travis (Automatically deploy the code to AWS)
 
-https://travis-ci.org/ (Sign in with GitHub) --> Authorize travis-ci
+`https://travis-ci.org/` (Sign in with GitHub) --> Authorize travis-ci
 
-## 92: Travis YML File Configuration
+***
+
+## 86: Travis YML File Configuration
 
 * Flow
   - Tell Travis we need a copy of docker running  
@@ -45,9 +57,10 @@ before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev . # Build our image using Dockerfile.dev
 ```
 
-## 93: Required Travis Updates
 
-## 94: A Touch More Travis Setup
+***
+
+## 87: A Touch More Travis Setup
 
 Update `.travis.yml`
 
@@ -64,7 +77,9 @@ script:
                                                                   # command to exit automatically
 ```
 
-## 95: Automatic Build Creation
+***
+
+## 88: Automatic Build Creation
 
 ```
 $ git add .
@@ -72,11 +87,21 @@ $ git commit -m "added travis file"
 $ git push origin master
 ```
 
-## 96: AWS Elastic Beanstalk
+***
 
-## 97: More on Elastic Beanstalk
+## 89: Required AWS Elastic Beanstalk Environment Setup Updates
 
-## 98: Travis Config for Deployment
+***
+
+## 90: AWS Elastic Beanstalk
+
+***
+
+## 91: More on Elastic Beanstalk
+
+***
+
+## 92: Travis Config for Deployment
 
 ```
 sudo: required
@@ -101,12 +126,16 @@ deploy:
     branch: master
 ```
 
+***
+
 ## 99: Travis Keys Update
 
 ```
 access_key_id: $AWS_ACCESS_KEY
 secret_access_key: $AWS_SECRET_KEY
 ```
+
+***
 
 ## 100: Automated Deployments
 
@@ -138,6 +167,8 @@ deploy:
 
 access_key_id: $AWS_ACCESS_KEY
 
+***
+
 ## 101: Exposing Ports Through the Dockerfile
 
 ```
@@ -153,7 +184,11 @@ EXPOSE 80 # elasticbeanstalk will look at EXPOSE
 COPY --from=builder /app/build /usr/share/nginx/html
 ```
 
+***
+
 ## 102: AWS Build Still Failing
+
+***
 
 ## 103: Workflod With Github
 
@@ -168,8 +203,14 @@ $ git push origin feature # push changes to feature branch
 pull/merge branch
 ```
 
+***
+
 ## 104: Redeploy on Pull Request Merge
 
+***
+
 ## 105: Deployment Wrapup
+
+***
 
 ## 106: Environment Cleanup

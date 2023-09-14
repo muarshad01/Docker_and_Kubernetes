@@ -166,12 +166,12 @@ Create a file `docker-compose.yml`
 version: '3'
 services:                               # All service of containers
 	web:
-		build: .                        # '.' means dockerfile
+		build: .                        # '.' means Dockerfile
         	ports:
           		- "3000":"3000"         # '-' means a list
         	volumes:
           		- /app/node_modules
-          		- .:/app                # map the current folder outside the container to /app folder inside the container
+          		- .:/app                # Map the current folder-outside-the-container to /app folder-inside-the-container
 ```
 
 ```
@@ -216,8 +216,12 @@ $ npm run test                      # Runs tests associated with the project
 $ npm run build                     # Builds a production version of the application
 
 $ docker build -f Dockerfile.dev .
-$ docker run CMD ["npm", "run", "start"]
-$ docker run npm CONTAINER_ID npm run test
+
+$ docker run IMAGE_ID CMD
+
+$ docker run IMAGE_ID     npm run test
+$ docker run CONTAINER_ID npm run test
+
 $ docker run -it CONTAINER_ID npm run test
 press Enter
 ```
