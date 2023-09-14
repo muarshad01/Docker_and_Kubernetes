@@ -50,7 +50,7 @@ $ node -v
 Now that `node.js` is installed. We'll install a little **tool** that creates an `empty-react-project` and then we'll wrap that project inside a container.
 
 ```
-npx create-react-app frontend               # create-react-app inside a new-folder frontend
+$ npx create-react-app frontend               # create-react-app inside a new-folder frontend
 ```
 
 ***
@@ -80,12 +80,14 @@ $ npm run start         # A default react application is launched in your browse
 
 ***
 
-## 68: Creating the `Dev Dockerfile`
-
-Create `Dockerfile.dev`
+## 65: Creating the `Dev Dockerfile`
 
 ```
-FROM node:alpine
+$ touch `Dockerfile.dev`
+```
+
+```
+FROM node:16-alpine             # we need a specific version of Node to avoid bugs!
 
 WORKDIR '/app'
 
@@ -99,15 +101,20 @@ CMD ["npm", "run", "start"]
 ```
 
 ```
-$ docker build .                    # Error: Dockerfile: no such file or directory
+$ docker build .                        # Error: Dockerfile: no such file or directory
 $ docker build -f Dockerfile.dev . 
 ```
 
 ***
 
-## 69: Duplicating Dependencies
+## 66: Duplicating Dependencies
 
-delete node_modules folder within the frontend project 
+delete `node_modules` folder within the frontend project
+
+```
+$ cd ~/frontend
+$ rm -rf node_modules
+``` 
 
 ```
 $ docker build -f Dockerfile.dev .
@@ -115,11 +122,7 @@ $ docker build -f Dockerfile.dev .
 
 ***
 
-## 70: ReactApp Exits Immediately with Docker Run Command
-
-***
-
-## 71: Starting the Container
+## 67: Starting the Container
 
 ```
 $ docker run IMAGE_ID
