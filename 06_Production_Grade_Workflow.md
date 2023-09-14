@@ -134,9 +134,9 @@ $ docker run -it -p 3000:3000 CONTAINER_ID          # (localhost-port):(containe
 ## 68: Docker Volumes
 
 * With Docker Volume, we essentially set-up a place-holder of sorts inside our docker container. 
-* Instead of copying the local-files, we can create a reference inside the docker that points to local-files on host-machines. 
-* This can be though of as a kind of port- mapping we did earlier, where we map a port-inside-a-container to a port-outside-a-container. 
-* Similarly, here we map a file-or-directory inside-a-container to a file-or-directory outside-a-container.
+* Instead of copying the local-files, we can create a REFERENCE inside the docker that points to local-files on host-machines. 
+* This can be though of as a kind of port- mapping we did earlier, where we map a `port-inside-a-container` to a `port-outside-a-container`. 
+* Similarly, here we map a `file-or-directory-inside-a-container` to a `file-or-directory-outside-a-container`.
 * Allows us to access files in local-machine
 
 ```
