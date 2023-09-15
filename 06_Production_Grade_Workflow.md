@@ -296,13 +296,18 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 
 ## 79: Multi-Step Docker Builds
 
-* Build Phase
+* Two different BSE images
+* `Dockerfile` with multi-step build process
+* Two different blocks of configuration
+* From RUN-Phase we'll reach to BUILD-Phase and copy over to RUN-Phase
+
+* **1. BUILD-Phase**
   - Use `node:alpine`    -- `FROM node:alpine`
   - `package.json` file  -- `COPY package.json .`
   - Install dependencies -- `RUN npm install`
   - Run `npm run build`  -- `CMD ["npm", "run", "build"]`
 
-* Run Phase
+* **2. RUN-Phase**
   - Use `nginx`
   - Copy over the result of `npm run build`
   - Start `nginx`
