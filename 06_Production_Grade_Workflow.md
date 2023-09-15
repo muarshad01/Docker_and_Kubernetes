@@ -234,8 +234,8 @@ Edit the file `App.test.js` and duplicate the test
 
 ```
 $ docker-compose up
-$ docker ps                                     # container-id
-$ docker exec -it CONTAINER-ID npm run test
+$ docker ps                                         # CONTAINER_ID
+$ docker exec -it CONTAINER_ID npm run test
 ```
 
 ***
