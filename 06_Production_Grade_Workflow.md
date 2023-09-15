@@ -297,10 +297,10 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 ## 79: Multi-Step Docker Builds
 
 * Build Phase
-  - Use node:alpine
-  - Copy the `package.json` file
-  - Install dependencies
-  - Run `npm run build`
+  - Use `node:alpine`    -- `FROM node:alpine`
+  - `package.json` file  -- `COPY package.json .`
+  - Install dependencies -- `RUN npm install`
+  - Run `npm run build`  -- `CMD ["npm", "run", "build"]`
 
 * Run Phase
   - Use `nginx`
