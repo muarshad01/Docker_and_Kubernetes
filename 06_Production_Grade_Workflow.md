@@ -319,7 +319,7 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 Create `Dockerfile`
 
 ```
-FROM node:alpine as builder             # BUILD-Phase: Tag the phase/stage as 'builder'
+FROM node:16-alpine as builder             # BUILD-Phase: Tag the phase/stage as 'builder'
 
 WORKDIR '/app'
 
@@ -335,7 +335,7 @@ RUN npm run build
 
 FROM nginx                              # RUN-Phase
 
-COPY --from=builder /app/build /user/share/nginx/html           # /app/build <-- all the stuff
+COPY --from=builder /app/build /user/share/nginx/html           # COPY --from=<phase> <src> <dest:nginx-folder-for-static-content>
 ```
 
 ***
