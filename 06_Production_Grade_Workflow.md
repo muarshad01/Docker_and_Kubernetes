@@ -331,6 +331,8 @@ COPY . .
 
 RUN npm run build
 
+#---
+
 FROM nginx                              # RUN-Phase
 
 COPY --from=builder /app/build /user/share/nginx/html           # /app/build <-- all the stuff
