@@ -6,9 +6,7 @@ $ npm run test              # Runs tests associated with the project.
 $ npm run build             # Builds a production version of the application.
 ```
 
-***
-
-* Github / Travis CI (Run tests automatically) / AWS
+* `GitHub` -> `Travis CI` (Run tests automatically) -> `AWS`
 
 ***
 
@@ -21,7 +19,7 @@ $ git push origin master
 
 ***
 
-## 84:
+## 84: Travis and Account Registration
 
 ***
 
@@ -39,24 +37,23 @@ $ git push origin master
 ## 86: Travis YML File Configuration
 
 * Flow
-  - Tell Travis we need a copy of docker running  
-  - Build our image using Dockerfile.dev
-  - Tell Travis how to run our test suite
-  - Tell Travis how to deploy our code to AWS
+  - Tell Travis, we need a copy of docker running  
+  - Build our image using `Dockerfile.dev`
+  - Tell Travis, how to run our test suite?
+  - Tell Travis, how to deploy our code to AWS?
 
-* Run tests --> If all tests pass --> Deploy to AWS
+* Run tests -> If all tests pass -> Deploy to AWS
 
 * Create a file `.travis.yml`           # Notice there is a leading '.'
 
 ```
-sudo: required # super user level permission
+sudo: required          # super user level permission
 services:
-  - docker # Tell Travis we need a copy of docker running
+  - docker              # Tell Travis, we need a copy of docker running
 
 before_install:
-  - docker build -t muarshad01/docker-react -f Dockerfile.dev . # Build our image using Dockerfile.dev
+  - docker build -t muarshad01/docker-react -f Dockerfile.dev .         # Build our image using Dockerfile.dev
 ```
-
 
 ***
 
@@ -73,8 +70,8 @@ before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run muarshad01/docker-react npm run test -- --coverage # -- --coverage is for 'npm run test' 
-                                                                  # command to exit automatically
+  - docker run muarshad01/docker-react npm run test -- --coverage           # -- --coverage is for 'npm run test' 
+                                                                            # command to exit automatically
 ```
 
 ***
@@ -112,23 +109,23 @@ before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run muarshad01/docker-react npm run test -- --coverage # -- --coverage is for 'npm run test' 
-                                                                  # command to exit automatically
+  - docker run muarshad01/docker-react npm run test -- --coverage               # -- --coverage is for 'npm run test' 
+                                                                                # command to exit automatically
 
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"
   app: docker-react
   env: "Docker-env"
-  bucket_name: elasticbeanstalk-us-west-2-123456789 # S3 bucket_id
-  bucket_path: "docker-react" # same as app name
+  bucket_name: elasticbeanstalk-us-west-2-123456789                 # S3 bucket_id
+  bucket_path: "docker-react"                                       # same as app name
   on:
     branch: master
 ```
 
 ***
 
-## 99: Travis Keys Update
+## 93: Required Update for IAM User and Keys
 
 ```
 access_key_id: $AWS_ACCESS_KEY
@@ -137,7 +134,7 @@ secret_access_key: $AWS_SECRET_KEY
 
 ***
 
-## 100: Automated Deployments
+## 94: Automated Deployments
 
 ```
 sudo: required
@@ -148,16 +145,16 @@ before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run muarshad01/docker-react npm run test -- --coverage # -- --coverage is for 'npm run test' 
-                                                                  # command to exit automatically
+  - docker run muarshad01/docker-react npm run test -- --coverage           # -- --coverage is for 'npm run test' 
+                                                                             # command to exit automatically
 
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"
   app: docker-react
   env: "Docker-env"
-  bucket_name: elasticbeanstalk-us-west-2-123456789 # S3 bucket_id
-  bucket_path: "docker-react" # same as app name
+  bucket_name: elasticbeanstalk-us-west-2-123456789                 # S3 bucket_id
+  bucket_path: "docker-react"                                       # same as app name
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
@@ -169,7 +166,7 @@ access_key_id: $AWS_ACCESS_KEY
 
 ***
 
-## 101: Exposing Ports Through the Dockerfile
+## 95: Exposing Ports Through the `Dockerfile`
 
 ```
 FROM node:alpine as builder
@@ -180,37 +177,42 @@ COPY . .
 RUN npm run build
 
 FROM nginx
-EXPOSE 80 # elasticbeanstalk will look at EXPOSE
-COPY --from=builder /app/build /usr/share/nginx/html
+EXPOSE 80                                               # elasticbeanstalk will look at EXPOSE
+COPY --from=builder /app/build /usr/share/nginx/html    # COPY --from=<phase> <src> <dst-on-ngix>
 ```
-
 ***
 
-## 102: AWS Build Still Failing
-
-***
-
-## 103: Workflod With Github
+## 96: Workflod With Github
 
 ```
-$ git checkout -b feature # switched to a new branch 'feature'
+$ git checkout -b feature               # switched to a new branch 'feature'
 
 $ git status
 $ git add . 
 $ git commit -m "updated app.js"
-$ git push origin feature # push changes to feature branch
+$ git push origin feature               # push changes to feature branch
 
 pull/merge branch
 ```
 
 ***
 
-## 104: Redeploy on Pull Request Merge
+## 97: Redeploy on `Pull Request Merge`
 
 ***
 
-## 105: Deployment Wrapup
+## 98: Deployment Wrapup
 
 ***
 
-## 106: Environment Cleanup
+## 99: Environment Cleanup
+
+***
+
+## 100: AWS Configuration Cheat Sheet
+
+***
+
+## 101: Finished Project Code with Updates Applied
+
+***
