@@ -308,7 +308,7 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
   - Run `npm run build`  -- `CMD ["npm", "run", "build"]`
 
 * **2. RUN-Phase**
-  - Use `nginx`
+  - Use `nginx` -- `FROM nginx`
   - Copy over the result of `npm run build`
   - Start `nginx`
 
@@ -319,21 +319,21 @@ $ docker exec -it CONTAINER-ID sh           # attach terminal to STDIN of primar
 Create `Dockerfile`
 
 ```
-FROM node:alpine as builder             # tag the phase/stage as 'builder'
+FROM node:alpine as builder             # BUILD-Phase: Tag the phase/stage as 'builder'
 
 WORKDIR '/app'
 
 COPY package.json .
 
-RUN npm install                         # Deps only needed to execute 'npm run build'!
+RUN npm install                         # Dependencies only needed to execute `npm run build`
 
 COPY . .
 
 RUN npm run build
 
-FROM nginx                              # 2nd phase
+FROM nginx                              # RUN-Phase
 
-COPY --from=builder /app/build /user/share/nginx/html # /app/build <-- all the stuff
+COPY --from=builder /app/build /user/share/nginx/html           # /app/build <-- all the stuff
 ```
 
 ***
