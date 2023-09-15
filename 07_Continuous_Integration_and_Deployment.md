@@ -25,34 +25,31 @@ $ git push origin master
 
 ## 85: Travis CI Setup
 
-* Your Laptop 
-* push to GitHub 
-* Travis (Run tests)
-* Travis (Automatically deploy the code to AWS)
+* 1. Your Laptop -> 2. push to `GitHub` -> 3. `Travis` (Run tests) -> 4. Travis (Automatically deploy the code to `AWS`)
 
-`https://travis-ci.org/` (Sign in with GitHub) --> Authorize travis-ci
+* `https://travis-ci.org/` -> (Sign in with GitHub) --> Authorize `travis-ci`
 
 ***
 
-## 86: Travis YML File Configuration
+## 86: `Travis YML` File Configuration
 
 * Flow
-  - Tell Travis, we need a copy of docker running  
+  - Tell Travis, we need a copy of docker-running  
   - Build our image using `Dockerfile.dev`
-  - Tell Travis, how to run our test suite?
-  - Tell Travis, how to deploy our code to AWS?
+  - Tell Travis, how to run our test-suite?
+  - Tell Travis, how to deploy our-code-to-AWS?
 
-* Run tests -> If all tests pass -> Deploy to AWS
+* Run tests -> If all tests PASS -> Deploy to AWS
 
 * Create a file `.travis.yml`           # Notice there is a leading '.'
 
 ```
-sudo: required          # super user level permission
+sudo: required              # super-user-level permission
 services:
-  - docker              # Tell Travis, we need a copy of docker running
+  - docker                  # Tell Travis, we need a copy of docker-running
 
 before_install:
-  - docker build -t muarshad01/docker-react -f Dockerfile.dev .         # Build our image using Dockerfile.dev
+  - docker build -t muarshad01/docker-react -f Dockerfile.dev .             # Build our image using Dockerfile.dev
 ```
 
 ***
@@ -86,15 +83,15 @@ $ git push origin master
 
 ***
 
-## 89: Required AWS Elastic Beanstalk Environment Setup Updates
+## 89: Required `AWS Elastic Beanstalk` Environment Setup Updates
 
 ***
 
-## 90: AWS Elastic Beanstalk
+## 90: `AWS Elastic Beanstalk`
 
 ***
 
-## 91: More on Elastic Beanstalk
+## 91: More on `Elastic Beanstalk`
 
 ***
 
@@ -125,7 +122,7 @@ deploy:
 
 ***
 
-## 93: Required Update for IAM User and Keys
+## 93: Required Update for `IAM` User and Keys
 
 ```
 access_key_id: $AWS_ACCESS_KEY
@@ -146,7 +143,7 @@ before_install:
 
 script:
   - docker run muarshad01/docker-react npm run test -- --coverage           # -- --coverage is for 'npm run test' 
-                                                                             # command to exit automatically
+                                                                            # command to exit automatically
 
 deploy:
   provider: elasticbeanstalk
@@ -162,8 +159,6 @@ deploy:
     secure: "$AWS_SECRET_KEY"
 ```
 
-access_key_id: $AWS_ACCESS_KEY
-
 ***
 
 ## 95: Exposing Ports Through the `Dockerfile`
@@ -176,28 +171,31 @@ RUN npm before_install
 COPY . .
 RUN npm run build
 
+#---
+
 FROM nginx
-EXPOSE 80                                               # elasticbeanstalk will look at EXPOSE
-COPY --from=builder /app/build /usr/share/nginx/html    # COPY --from=<phase> <src> <dst-on-ngix>
+EXPOSE 80                                                   # elasticbeanstalk will look at EXPOSE
+COPY --from=builder /app/build /usr/share/nginx/html        # COPY --from=<phase> <src> <dst-on-ngix>
 ```
 ***
 
-## 96: Workflod With Github
+## 96: Workflow With GitHub
 
 ```
-$ git checkout -b feature               # switched to a new branch 'feature'
+$ git checkout -b feature                       # switched to a new branch 'feature'
 
 $ git status
 $ git add . 
 $ git commit -m "updated app.js"
-$ git push origin feature               # push changes to feature branch
+$ git push origin feature                       # push changes to feature branch
 
-pull/merge branch
 ```
+
+PR/merge branch
 
 ***
 
-## 97: Redeploy on `Pull Request Merge`
+## 97: Redeploy on `Pull Request (PR) Merge`
 
 ***
 
@@ -209,7 +207,7 @@ pull/merge branch
 
 ***
 
-## 100: AWS Configuration Cheat Sheet
+## 100: AWS Configuration Cheat-Sheet
 
 ***
 
