@@ -11,6 +11,7 @@
   - nginx
   - server
   - worker
+***
 
 ## 140. Production Dockerfiles
 
@@ -52,10 +53,14 @@ FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 ```
 
+***
+
 ## 141. Multiple Nginx Instances
 
 * One nginx server a routing job
 * Another ngix serving the react
+
+***
 
 ## 142. Altering Nginx's Listen Port
 
@@ -95,9 +100,15 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html # copy from previous build
 ```
 
+***
+
 ## 143: Nginx fix for react Router
 
+***
+
 ## 144. Cleaning Up Tests
+
+***
 
 ## 145. Github and Travis CI Setup
 
@@ -130,6 +141,8 @@ Next step is to create a link b/w github and Travis-cs
 
 http://travis-ci.org --> profile --> sync account --> 
 
+***
+
 ## 146. Fix for Failing Travis Builds
 
 script:
@@ -139,6 +152,8 @@ instead should be:
 
 script:
   - docker run -e CI=true USERNAME/react-test npm test
+
+***
 
 ## 147: Travis Configuration Setup
 
@@ -165,6 +180,8 @@ after_success:
   - docker build -t marshad1/multi-server ./server
   - docker build -t marshad1/multi-worker ./worker
 ```
+
+***
 
 ## 148. Pushing Images to Docker Hub
 
@@ -204,5 +221,7 @@ after_success:
   - docker push marshad1/multi-server
   - docker push marshad1/multi-worker
 ```
+
+***
 
 ## 149. Successful Image Building
