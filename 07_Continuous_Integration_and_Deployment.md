@@ -345,8 +345,9 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80                                                   # elasticbeanstalk will look at EXPOSE
-COPY --from=builder /app/build /usr/share/nginx/html        # COPY --from=<phase> <src> <dst-on-ngix>
+COPY --from=builder /app/build /usr/share/nginx/html        # COPY --from=<phase> <src> <dst-on-nginx>
 ```
+
 ***
 
 ## 96: Workflow With GitHub
