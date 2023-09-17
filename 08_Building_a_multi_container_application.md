@@ -236,14 +236,6 @@ $ node index.js
 
 ## 111: Generating the ReactApp
 
-Instead of this:
-```
-$ npm install -g create-react-app
-$ craete-react-app client
-```
-
-Just do this:
-
 ```
 $ npx create-react-app client
 ```
