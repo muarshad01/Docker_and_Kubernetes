@@ -228,7 +228,6 @@ git push origin main
 
 * Application Code -> Sample application
 
-
 ***
 
 ## 91: More on `Elastic Beanstalk`
@@ -251,14 +250,16 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2"
-  app: docker-react
+  region: "us-east-1"
+  app: docker-react-1
   env: "Docker-env"
-  bucket_name: elasticbeanstalk-us-west-2-123456789                 # S3 bucket_id
-  bucket_path: "docker-react"                                       # same as app name
+  bucket_name: elasticbeanstalk-us-east-1-826770578246              # S3 bucket_id
+  bucket_path: "docker-react"                                       # `bucket_path:` name should be same as `app:`
   on:
-    branch: master
+    branch: master                                                  # `deploy:` once we push to branch `master`
 ```
+
+NOTE: `app:` and `bucket_name:` names should be same
 
 ***
 
