@@ -2,7 +2,7 @@
 
 * The app was simple - no outside dependencies
 * Our image was built multiple times
-* How do we connect to a database from a a container?
+* How do we connect to a database from a container?
 
 ***
 
@@ -33,12 +33,12 @@ $ cd complex
 $ mkdir worker
 ```
 
-Create file package.json
+Create file `package.json`
 
 ```
 {
     "dependencies": {
-        "nodemon" : "1.18.3", # live reload of code anytime we change the src of our project
+        "nodemon" : "1.18.3",       # live reload of code anytime we change the src of our project
         "redis" : "2.8.0"
     },
     "scripts": {
@@ -48,7 +48,7 @@ Create file package.json
 }
 ```
 
-create a file index.js # all primary logic for connecting to Redix
+Create a file `index.js`            # all primary logic for connecting to Redix
 
 ```
 const keys = require('./keys');
@@ -59,15 +59,15 @@ const redisClient = redis.createClient({
     port: keys.redisPort,
     retry_strategy: () => 1000
 });
-const sub = redisClient.duplicate(); # sub stands for subscription
+const sub = redisClient.duplicate();        # sub stands for subscription
 
 function fib(index) {
     if (index < 2) return 1;
     return fib(index - 1) + fix(index - 2);
 }
 
-sub.on('message', (channel, message) => { # anythime we get a new 'message' run this callback function
-    redisClient.hset('values', message, fib(parseInt(message))); # hashset key:value pair
+sub.on('message', (channel, message) => {                   # anythime we get a new 'message' run this callback function
+    redisClient.hset('values', message, fib(parseInt(message)));        # hashset key:value pair
 });
 sub.subscribe('insert');
 ```
@@ -95,13 +95,13 @@ $ mkdir server
 $ cd server
 ```
 
-create file package.json
+Create file `package.json`
 
 ```
 {
     "dependencies": {
         "express": "4.16.4",
-        "pg": "7.4.3", # postgres client
+        "pg": "7.4.3",              # postgres client
         "redis": "2.8.0",
         "cors": "2.8.5",
         "nodemon": "1.18.11",
@@ -114,7 +114,7 @@ create file package.json
 }
 ```
 
-create keys.js
+Create `keys.js` 
 
 ```
 module.exports = {
@@ -132,7 +132,7 @@ module.exports = {
 
 ## 113: Connecting to Postgres
 
-Update index.js
+Update `index.js`
 
 ```
 const keys = require('./keys');
@@ -140,14 +140,14 @@ const keys = require('./keys');
 // Express App Setup
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); # CORS: cross origin resource sharing
+const cors = require('cors');                   # CORS: cross origin resource sharing
 
 const app = express(); # make a new express application that will receive and respont to any http request
 app.use(cors());
 app.use(bodyParser.json());
 
 // Postgres Client Setup
-const { Pool } = require('pg'); # Pool module from pg
+const { Pool } = require('pg');                 # Pool module from pg
 const pgClient = new Pool({
     user: keys.pgUser,
     host: keys.pgHost,
@@ -172,7 +172,7 @@ const redis = require('redis');
 const redisClient = redis.createClient({
     host: keys.redisHost;
     port: keys.redisPort,
-    retry_strategy: () => 1000 # try every 1 second if connection is disconnected
+    retry_strategy: () => 1000                  # try every 1 second if connection is disconnected
 });
 const redisPublisher = redisClient.duplicate();
 
@@ -248,7 +248,7 @@ $ create-react-app client
 
 ## 117: Rendering Logic in the App
 
-create file OtherPage.js
+create file `OtherPage.js` 
 
 ```
 import React from 'react';
@@ -264,7 +264,8 @@ export default () => {
 };
 ```
 
-create file Fib.js
+create file `Fib.js`
+
 ```
 import React, { Component } from 'react';
 import axios from 'axios';
