@@ -193,8 +193,10 @@ app.get('/', (req, res) => {
     res.send('Hi');
 });
 
+
+
 app.get('/values/all', async (req, res) => {
-    const values = await pgClient.query('SELECT * from values');
+    const values = await pgClient.query('SELECT * from values');        # PROMISE: async / await
 
     res.send(values.rows);
 });
@@ -216,7 +218,7 @@ app.post('/values', async (req, res) => {
     redisPublisher.publish('insert', index);
     pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
-    res.dend({ working: true });
+    res.send({ working: true });
 
 });
 
