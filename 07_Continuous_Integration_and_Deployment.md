@@ -353,20 +353,22 @@ COPY --from=builder /app/build /usr/share/nginx/html        # COPY --from=<phase
 ## 96: Workflow With GitHub
 
 ```
-$ git checkout -b feature                       # switched to a new branch 'feature'
+$ git checkout -b feature                       # switched to a new branch `feature`
 
 $ git status
 $ git add . 
-$ git commit -m "updated app.js"
-$ git push origin feature                       # push changes to feature branch
+$ git commit -m "updated App.js"
+$ git push origin feature                       # push changes to `feature` branch
 
 ```
 
-PR/merge branch
+* `PR/merge branch`
 
 ***
 
 ## 97: Redeploy on `Pull Request (PR) Merge`
+
+`Merge pull request` -> `Confirm merge`
 
 ***
 
