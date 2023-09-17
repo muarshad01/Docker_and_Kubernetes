@@ -16,7 +16,12 @@
 
 ## 110: Application Architecture
 
-Browser<-- Nginx --> React Server (Frontend: html of javascitips )
+* Browser
+    * Nginx
+        * React Server
+        * Express Server
+
+*Browser -->Nginx --> React Server (Frontend: html of javascitips )
           |              |
           |              V
            --------> Express Server (Backend API: read/write/submit request)--> Redis (Inmemory datastore) <--> Worker
