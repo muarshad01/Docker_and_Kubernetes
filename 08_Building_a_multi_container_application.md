@@ -1,4 +1,4 @@
-## 107: Single Container Deployment Issues
+## 102: Single Container Deployment Issues
 
 * The app was simple - no outside dependencies
 * Our image was built multiple times
@@ -6,15 +6,15 @@
 
 ***
 
-## 108: Application Overview
+## 103: Application Overview
 
 ***
 
-## 109: A Quick Note
+## 104: A Quick Note
 
 ***
 
-## 110: Application Architecture
+## 105: Application Architecture
 
 * Browser
     * `Nginx` (Nginx is a WebServer that can also be used as a `reverse proxy`, `load balancer`, `mail proxy` and `HTTP cache`)
@@ -35,7 +35,7 @@
 
 ***
 
-## 111: Worker process Setup
+## 106: Worker Process Setup
 
 ```
 $ mkdir complex
@@ -98,7 +98,7 @@ $ node index.js
 
 ***
 
-## 112: Express API Setup
+## 107: Express API Setup
 
 ```
 $ mkdir server
@@ -140,7 +140,7 @@ module.exports = {
 
 ***
 
-## 113: Connecting to `Postgres`
+## 109: Connecting to `Postgres`
 
 Update `index.js`
 
@@ -174,7 +174,7 @@ pgClient
 
 ***
 
-## 114: More Express API Setup
+## 110: More Express API Setup
 
 ```
 // Redis Client Setup
@@ -231,7 +231,7 @@ $ node index.js
 
 ***
 
-## 115: Generating the ReactApp
+## 111: Generating the ReactApp
 
 Instead of this:
 ```
@@ -247,7 +247,7 @@ $ npx create-react-app client
 
 ***
 
-## 116: Fetching Data in the ReactApp
+## 112: Fetching Data in the ReactApp
 
 ```
 $ cd complex
@@ -359,12 +359,12 @@ export default Fib;
 
 ***
 
-## 118: Rendering Logic in the App
+## 113: Rendering Logic in the App
 
 ***
 
-## 119: Exporting the Fib Class
+## 114: Exporting the Fib Class
 
 ***
 
-## 120: Routing in the React App
+## 115: Routing in the React App
