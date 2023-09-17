@@ -269,29 +269,30 @@ NOTE: `app:` and `bucket_name:` names should be same
 ```
 Required Update for IAM User and Keys
 -------------------------------------
-In the upcoming lecture, we will be creating an `IAM` user and then generating a key-pair for deployment. 
-There is a minor required change to this flow. Instead of being prompted to create a key-pair during the `IAM` 
-user creation, you **must** first create the `IAM` user, then, create a key-pair associated with that user. 
+In the upcoming lecture, we will be creating an `IAM-user` and then generating a `key-pair` for deployment. 
+There is a minor required change to this flow. Instead of being prompted to create a `key-pair` during the 
+`IAM-user` creation, you **must** first create the `IAM-user`, then, create a `key-pair` associated with that user. 
 AWS has also changed the terminology from Programmatic Access, to Command Line Interface (CLI).
 
 Full updated instructions can be found below:
 --------------------------------------------
 1. Search for "IAM"
-2. Click "Create Individual IAM Users" and click "Manage Users"
+2. Click "Create Individual IAM-Users" and click "Manage Users"
 3. Click "Add User"
 4. Enter any name you’d like in the "User Name" field.
 5. Click "Next"
-6. Click "Attach Policies Directly"
+6. ->Click "Attach Policies Directly"
 7. Use the search bar to find and tick the box next to "AdministratorAccess-AWSElasticBeanstalk"
 8. Click "Next"
 9. Click "Create user"
-10. Select the IAM user that was just created from the list of users
-11. Click "Security Credentials"
-12. Scroll down to find "Access Keys"
-13. Click "Create access key"
+---
+10. Select the `IAM-user` that was just created from the list-of-users
+11. -> Click "Security Credentials"
+12. -> Scroll down to find "Access Keys"
+13. -> Click "Create access key"
 14. Select "Command Line Interface (CLI)"
 15. Scroll down and tick the "I understand..." check box and click "Next"
-16. Copy and/or download the Access Key ID and Secret Access Key to use for deployment.
+16. -> Copy and/or download the Access_Key_ID and Secret_Access_Key to use for deployment.
 ```
 
 ```
@@ -321,12 +322,11 @@ deploy:
   app: docker-react
   env: "Docker-env"
   bucket_name: elasticbeanstalk-us-west-2-123456789                 # S3 bucket_id
-  bucket_path: "docker-react"                                       # same as app name
+  bucket_path: "docker-react"                                       # `bucket_path:` is same as `app:` name
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
 ```
 
 ***
