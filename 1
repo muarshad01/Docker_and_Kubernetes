@@ -67,7 +67,6 @@ module.exports = {
 };
 ```
 
-
 Create a file `index.js`                # all primary logic for connecting to `redix`
 
 ```
@@ -90,6 +89,15 @@ sub.on('message', (channel, message) => {                   # anythime we get a 
     redisClient.hset('values', message, fib(parseInt(message)));        # hashset key:value pair
 });
 sub.subscribe('insert');
+```
+
+Create file `keys.js`
+
+```
+module.exports = {
+    redisHost: process.env.REDIS_HOST,
+    redisPort: process.env.REDIS_PORT
+};
 ```
 
 ```
