@@ -17,7 +17,7 @@
 ## 110: Application Architecture
 
 * Browser
-    * Nginx
+    * `Nginx` (Nginx is a WebServer that can also be used as a `reverse proxy`, `load balancer`, `mail proxy` and `HTTP cache`)
         * React Server (Frontend)
         * Express Server (Backend API)
             * Redis
