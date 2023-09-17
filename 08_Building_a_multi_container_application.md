@@ -4,9 +4,15 @@
 * Our image was built multiple times
 * How do we connect to a database from a a container?
 
+***
+
 ## 108: Application Overview
 
+***
+
 ## 109: A Quick Note
+
+***
 
 ## 110: Application Architecture
 
@@ -16,6 +22,8 @@ Browser<-- Nginx --> React Server (Frontend: html of javascitips )
            --------> Express Server (Backend API: read/write/submit request)--> Redis (Inmemory datastore) <--> Worker
                              |
                              --> Postgres    
+
+***
 
 ## 111: Worker process Setup
 
@@ -78,6 +86,8 @@ $ cd workder
 $ node index.js
 ```
 
+***
+
 ## 112: Express API Setup
 
 ```
@@ -118,6 +128,8 @@ module.exports = {
 }
 ```
 
+***
+
 ## 113: Connecting to Postgres
 
 Update index.js
@@ -149,6 +161,8 @@ pgClient
     .query('CREATE TABLE IF NOT EXISTS values (number INT)')
     .catch(err => console.log(err));
 ```
+
+***
 
 ## 114: More Express API Setup
 
@@ -205,6 +219,8 @@ $ cd server
 $ node index.js
 ```
 
+***
+
 ## 115: Generating the React App
 
 Instead of this:
@@ -218,6 +234,8 @@ Just do this:
 $ npx create-react-app client
 ```
 
+***
+
 ## 116: Fetching Data in the React App
 
 ```
@@ -225,6 +243,8 @@ $ cd complex
 $ create-react-app
 $ create-react-app client
 ```
+
+***
 
 ## 117: Rendering Logic in the App
 
@@ -325,8 +345,14 @@ render(){
 export default Fib;
 ```
 
+***
+
 ## 118: Rendering Logic in the App
 
+***
+
 ## 119: Exporting the Fib Class
+
+***
 
 ## 120: Routing in the React App
