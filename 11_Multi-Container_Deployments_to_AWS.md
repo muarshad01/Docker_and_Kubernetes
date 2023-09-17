@@ -1,5 +1,7 @@
 ##  150. Multi-Container Definition Files
 
+***
+
 ##  151. Finding Docs on Container Definitions
 
 Google search: 
@@ -7,6 +9,7 @@ Google search:
 * Task Definition Parameters (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 * Container Definitions (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions)
 
+***
 
 ##  152. Adding Container Definitions to DockerRun
 
@@ -24,6 +27,8 @@ create Dockerrun.aws.json
     ]
 }
 ```
+
+***
 
 ##  153. More Container Definitions
 
@@ -52,6 +57,8 @@ create Dockerrun.aws.json
     ]
 }
 ```
+
+***
 
 ##  154. Forming Container Links
 
@@ -96,38 +103,74 @@ create Dockerrun.aws.json
 
 Google Search: JSON validator
 
+***
+
 ## 155. Creating the EB Environment
+
+***
 
 ## 156. Managed Data Service Providers
 
+***
+
 ## 157. Overview of AWS VPC's and Security Groups
+
+***
 
 ## 158. RDS Database Creation
 
+***
+
 ## 159. ElastiCache Redis Creation
+
+***
 
 ## 160. Creating a Custom Security Group
 
+***
+
 ## 161. Applying Security Groups to Resources
+
+***
 
 ## 162. Setting Environment Variables
 
+***
+
 ## 163. IAM Keys for Deployment
+
+***
 
 ## 164. Travis Keys Update
 
+***
+
 ##  165: Fix the missing bucket_name error
+
+***
 
 ##  166: Travis Deploy Script
 
+***
+
 ##  167. Container Memory Allocations
+
+***
 
 ##  168. Verifying Deployment
 
+***
+
 ##  169. A Quick App Change
+
+***
 
 ## 170. Making Changes
 
+***
+
 ## 171. Cleaning Up AWS Resources
+
+***
 
 ##  172. AWS Configuration Cheat Sheet
