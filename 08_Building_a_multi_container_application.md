@@ -24,10 +24,12 @@
                 * Worker
             * Postgres
 
-*Browser -->Nginx --> React Server (Frontend: html of javascitips )
-          |              |
-          |              V
-           --------> Express Server (Backend API: read/write/submit request)--> Redis (Inmemory datastore) <--> Worker
+# ---
+
+* Browser --> Nginx --> ReactServer (Frontend)
+              |              |
+              |              V
+              --------> ExpressServer (Backend API) --> Redis <--> Worker
                              |
                              --> Postgres    
 
@@ -46,7 +48,7 @@ Create file `package.json`
 ```
 {
     "dependencies": {
-        "nodemon" : "1.18.3",       # live reload of code anytime we change the src of our project
+        "nodemon" : "1.18.3",           # Live reload of code anytime we change the src of our project
         "redis" : "2.8.0"
     },
     "scripts": {
@@ -56,7 +58,7 @@ Create file `package.json`
 }
 ```
 
-Create a file `index.js`            # all primary logic for connecting to Redix
+Create a file `index.js`                # all primary logic for connecting to `redix`
 
 ```
 const keys = require('./keys');
@@ -80,7 +82,7 @@ sub.on('message', (channel, message) => {                   # anythime we get a 
 sub.subscribe('insert');
 ```
 
-Create file keys.js
+Create file `keys.js`
 
 ```
 module.exports = {
@@ -109,7 +111,7 @@ Create file `package.json`
 {
     "dependencies": {
         "express": "4.16.4",
-        "pg": "7.4.3",              # postgres client
+        "pg": "7.4.3",                  # postgres client
         "redis": "2.8.0",
         "cors": "2.8.5",
         "nodemon": "1.18.11",
@@ -138,7 +140,7 @@ module.exports = {
 
 ***
 
-## 113: Connecting to Postgres
+## 113: Connecting to `Postgres`
 
 Update `index.js`
 
@@ -148,14 +150,14 @@ const keys = require('./keys');
 // Express App Setup
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');                   # CORS: cross origin resource sharing
+const cors = require('cors');                       # CORS: cross-origin resource sharing
 
-const app = express(); # make a new express application that will receive and respont to any http request
+const app = express();              # make a new express application that will receive and response to any http request
 app.use(cors());
 app.use(bodyParser.json());
 
 // Postgres Client Setup
-const { Pool } = require('pg');                 # Pool module from pg
+const { Pool } = require('pg');                     # Pool module from pg
 const pgClient = new Pool({
     user: keys.pgUser,
     host: keys.pgHost,
@@ -180,7 +182,7 @@ const redis = require('redis');
 const redisClient = redis.createClient({
     host: keys.redisHost;
     port: keys.redisPort,
-    retry_strategy: () => 1000                  # try every 1 second if connection is disconnected
+    retry_strategy: () => 1000                  # try every 1 second, if connection is disconnected
 });
 const redisPublisher = redisClient.duplicate();
 
@@ -229,7 +231,7 @@ $ node index.js
 
 ***
 
-## 115: Generating the React App
+## 115: Generating the ReactApp
 
 Instead of this:
 ```
@@ -238,13 +240,14 @@ $ craete-react-app client
 ```
 
 Just do this:
+
 ```
 $ npx create-react-app client
 ```
 
 ***
 
-## 116: Fetching Data in the React App
+## 116: Fetching Data in the ReactApp
 
 ```
 $ cd complex
