@@ -70,12 +70,6 @@ script:
   - docker run -e CI=true muarshad01/docker-react npm run test              # updated script
 ```
 
-```
-script OLD:
-#  - docker run muarshad01/docker-react npm run test -- --coverage      # -- --coverage is for 'npm run test' 
-                                                                        # command to exit automatically
-```
-
 ***
 
 ## 88: Automatic Build Creation
