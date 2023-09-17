@@ -18,8 +18,10 @@
 
 * Browser
     * Nginx
-        * React Server
-        * Express Server
+        * React Server (Frontend: html or javascript)
+        * Express Server (Backend API: read/write/submit request)
+            * Redis (In-memory Datastore)
+            * Postgres
 
 *Browser -->Nginx --> React Server (Frontend: html of javascitips )
           |              |
