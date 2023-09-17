@@ -1,6 +1,10 @@
 ## 121: Checkpoint Files
 
+***
+
 ## 122: Checkpoint Catchup
+
+***
 
 ## 123: Dockerizing a React App - Again!
 
@@ -28,6 +32,8 @@ CMD ["npm", "run", "start"]
 $ docker build -f Dockerfile.dev . # '.' is build context
 $ docker run CONTAINER_ID
 ```
+
+***
 
 ## 124: Dockerizing Generic Node Apps
 
@@ -71,6 +77,8 @@ $ docker build -f Dockerfile.dev .
 $ docker run CONTAINER_ID
 ```
 
+***
+
 ## 125: Adding Postgres as a Service
 
 Create a file docker-compose.yml
@@ -88,6 +96,8 @@ http://hub.docker.com --> Explore --> postgres
 $ cd complex # docker-compose.yml file is present here
 $ docker-compose up
 ```
+
+***
 
 ## 126: Docker-compose Config
 
@@ -116,7 +126,11 @@ services:
       - ./server:/app # look at the server directory and copy everything there into the app folder in the container
 ```
 
+***
+
 ## 127: Postgres Database is uninitialized or getaddrinfo NOTFOUND Fix
+
+***
 
 ## 128: Environment Variables with Docker Compose
 
@@ -147,6 +161,8 @@ services:
 ```
 $ docker-compose up
 ```
+
+***
 
 ## 129: The Worker and Client Services
 
@@ -188,6 +204,8 @@ services:
       - ./client:/app # Everything in the client directroy should be shared with the app folder inside the container
 ```
 
+***
+
 ## 130: Nginx Path Routing
 
 Two Servers:
@@ -208,6 +226,8 @@ Files:
   - What's the req start with?          # Looks at request path
   - /api/                               # Route to Express Server
   - /                                   # Route to React Server
+
+***
 
 ## 131: Routing with Nginx
 
@@ -244,6 +264,8 @@ server {
     }
 }
 ```
+
+***
 
 ## 132: Building a Custom Nginx Image
 
@@ -304,6 +326,8 @@ services:
       - ./client:/app
 ```
 
+***
+
 ## 133: React App Exited With Code 0
 
 ```
@@ -311,13 +335,19 @@ $ cd complex
 $ docker-compose up --build # Force a build of everything
 ```
 
+***
+
 ## 134: Starting Up Docker Compose
 
 ```
 $ docker-compose up --build
 ```
 
+***
+
 ## 135: Nginx connect() failed - Connection refused while connectin...
+
+***
 
 ## 136: Fix for "I Calculated Nothing Yet" message
 
@@ -326,7 +356,11 @@ $ docker-compose down
 $ docker-compose up --build
 ```
 
+***
+
 ## 137: Troubleshooting Startup Bugs
+
+***
 
 ## 138: Opening WebSocket Connections
 
@@ -359,4 +393,3 @@ server {
     }
 }
 ```
-
