@@ -269,7 +269,10 @@ NOTE: `app:` and `bucket_name:` names should be same
 ```
 Required Update for IAM User and Keys
 -------------------------------------
-In the upcoming lecture, we will be creating an IAM user and then generating a key pair for deployment. There is a minor required change to this flow. Instead of being prompted to create a key pair during the IAM user creation, you must first create the IAM user, then, create a key pair associated with that user. AWS has also changed the terminology from Programmatic Access, to Command Line Interface (CLI).
+In the upcoming lecture, we will be creating an `IAM` user and then generating a key-pair for deployment. 
+There is a minor required change to this flow. Instead of being prompted to create a key-pair during the `IAM` 
+user creation, you **must** first create the `IAM` user, then, create a key-pair associated with that user. 
+AWS has also changed the terminology from Programmatic Access, to Command Line Interface (CLI).
 
 Full updated instructions can be found below:
 --------------------------------------------
