@@ -218,6 +218,17 @@ git push origin main
 
 ## 90: `AWS Elastic Beanstalk`
 
+`https://aws.amazon.com`
+
+*My Account -> AWS Management Console
+
+* AWS services -> `Elastic Beanstalk` -> Create application (docker-react-1) -> Web server env (workspace)
+
+* Platform -> Docker
+
+* Application Code -> Sample application
+
+
 ***
 
 ## 91: More on `Elastic Beanstalk`
