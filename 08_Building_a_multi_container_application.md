@@ -244,16 +244,6 @@ $ npx create-react-app client
 
 ## 112: Fetching Data in the ReactApp
 
-```
-$ cd complex
-$ create-react-app
-$ create-react-app client
-```
-
-***
-
-## 117: Rendering Logic in the App
-
 create file `OtherPage.js` 
 
 ```
