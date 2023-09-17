@@ -34,7 +34,7 @@ $ git push origin master
 ## 86: `Travis YML` File Configuration
 
 * Flow
-  - Tell Travis, we need a copy of docker-running  
+  - Tell Travis, we need a copy of `docker` running  
   - Build our image using `Dockerfile.dev`
   - Tell Travis, how to run our test-suite?
   - Tell Travis, how to deploy our-code-to-AWS?
@@ -44,12 +44,12 @@ $ git push origin master
 * Create a file `.travis.yml`           # Notice there is a leading '.'
 
 ```
-sudo: required              # super-user-level permission
+sudo: required              # superuser-level permission
 services:
-  - docker                  # Tell Travis, we need a copy of docker-running
+  - docker                  # Tell Travis, we need a copy of `docker` running
 
 before_install:
-  - docker build -t muarshad01/docker-react -f Dockerfile.dev .             # Build our image using Dockerfile.dev
+  - docker build -t muarshad01/docker-react -f Dockerfile.dev .             # Build our image using `Dockerfile.dev`
 ```
 
 ***
@@ -67,8 +67,13 @@ before_install:
   - docker build -t muarshad01/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run muarshad01/docker-react npm run test -- --coverage           # -- --coverage is for 'npm run test' 
-                                                                            # command to exit automatically
+  - docker run -e CI=true muarshad01/docker-react npm run test              # updated script
+```
+
+```
+script OLD:
+#  - docker run muarshad01/docker-react npm run test -- --coverage      # -- --coverage is for 'npm run test' 
+                                                                        # command to exit automatically
 ```
 
 ***
