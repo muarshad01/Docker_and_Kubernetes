@@ -109,11 +109,11 @@ $ docker-compose up
 
 ## 123: Docker-compose Config
 
-postgres
-  What image to use?
-redis
-  What image to use?
-server
+* `postgres`
+    - What image to use?
+* `redis`
+    - What image to use?
+* server
   - Specify build
   - Specify volumes
   - Specify env variables
