@@ -13,8 +13,8 @@
 ## 119: Dockerizing a React App - Again!
 
 * We need to make `Dockerfile.dev` for each:
-  - ReactApp
-  - ExpressServerAPI
+  - React App
+  - Express Server API
   - Worker
 
 ```
@@ -24,7 +24,7 @@ $ cd complex/client
 Create a file `Dockerfile.dev`
 
 ```
-FROM node:alpine
+FROM node:16-alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
@@ -48,12 +48,12 @@ $ cd complex/server
 Create a file `Docker.dev` 
 
 ```
-FROM node:alpine
+FROM node:14.14.0-alpine
 WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 COPY . .
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]           # Note `dev`
 ```
 
 ```
