@@ -206,30 +206,30 @@ services:
 
 ***
 
-## 130: Nginx Path Routing
+## 130: `Nginx` Path Routing
 
-Two Servers:
-  - React Server
-  - Express Server
+*Two Servers:
+  - ReactServer
+  - ExpressServer
 
 Files:
   - `/index.html`--------> React Server
                    |
   - `main.js`---------
 
-  - /values/all ---------> Express Server
+  - `/values/all` ---------> Express Server
                      |
-  - /vales/current ---
+  - `/vales/current` ---
 
 
-* Nginx
-  - What's the req start with?          # Looks at request path
-  - /api/                               # Route to Express Server
-  - /                                   # Route to React Server
+* `Nginx`
+  - What's the `req` start with?          # Looks at request path
+  - `/api/`                               # Route to Express Server
+  - `/`                                   # Route to React Server
 
 ***
 
-## 131: Routing with Nginx
+## 131: Routing with `Nginx`
 
 ```
 $ mkdir nginx
@@ -252,22 +252,22 @@ upstream api {
 }
 
 server {
-    listen 80; # Nginx server listen on port 80
+    listen 80;                          # Nginx server listen on port 80
 
-    location / { # Routing Rule
-        proxy_pass http://client; # Name of upstream 'client' above
+    location / {                        # Routing Rule
+        proxy_pass http://client;       # Name of upstream 'client' above
     }
 
-    location /api { # Routing Rule
-        rewrite /api/(.*) /$1 break; # $1 is ref to whatever is matched by (.*) regex
-        proxy_pass http://api; # Name of upstream server 'api' above
+    location /api {                     # Routing Rule
+        rewrite /api/(.*) /$1 break;    # $1 is ref to whatever is matched by (.*) regex
+        proxy_pass http://api;          # Name of upstream server 'api' above
     }
 }
 ```
 
 ***
 
-## 132: Building a Custom Nginx Image
+## 132: Building a Custom `Nginx` Image
 
 ```
 $ cd nginx
@@ -279,7 +279,7 @@ FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 ```
 
-Now add nginx as a service to our docker-compose.yml file
+Now add `nginx` as a service to our `docker-compose.yml` file
 
 ```
 version: '3'
@@ -292,9 +292,9 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./nginx # Context is nginx directory
+      context: ./nginx                  # Context is nginx directory
     ports:
-      - '3050:80' # maps port 3050 on local machine to port 80 on container
+      - '3050:80'                       # maps port 3050 on local machine to port 80 on container
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -332,7 +332,7 @@ services:
 
 ```
 $ cd complex
-$ docker-compose up --build # Force a build of everything
+$ docker-compose up --build                 # Force a build of everything
 ```
 
 ***
