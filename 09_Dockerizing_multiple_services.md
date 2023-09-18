@@ -1,12 +1,16 @@
-## 121: Checkpoint Files
+## 116: Checkpoint Files
 
 ***
 
-## 122: Checkpoint Catchup
+## 117: Checkpoint Catchup
 
 ***
 
-## 123: Dockerizing a React App - Again!
+## 118: Expected Output for Latest Create React App Versions
+
+***
+
+## 119: Dockerizing a React App - Again!
 
 * We need to make `Dockerfile.dev` for each:
   - ReactApp
@@ -35,7 +39,7 @@ $ docker run CONTAINER_ID
 
 ***
 
-## 124: Dockerizing Generic Node Apps
+## 120: Dockerizing Generic Node Apps
 
 ```
 $ cd complex/server
@@ -79,7 +83,11 @@ $ docker run CONTAINER_ID
 
 ***
 
-## 125: Adding `Postgres` as a Service
+## 121: Postgres Database Required Fixed and Updates
+
+***
+
+## 122: Adding `Postgres` as a Service
 
 Create a file `docker-compose.yml`
 
@@ -99,7 +107,7 @@ $ docker-compose up
 
 ***
 
-## 126: Docker-compose Config
+## 123: Docker-compose Config
 
 postgres
   What image to use?
@@ -206,7 +214,7 @@ services:
 
 ***
 
-## 130: `Nginx` Path Routing
+## 127: `Nginx` Path Routing
 
 *Two Servers:
   - ReactServer
@@ -229,7 +237,7 @@ Files:
 
 ***
 
-## 131: Routing with `Nginx`
+## 128: Routing with `Nginx`
 
 ```
 $ mkdir nginx
@@ -267,7 +275,7 @@ server {
 
 ***
 
-## 132: Building a Custom `Nginx` Image
+## 129: Building a Custom `Nginx` Image
 
 ```
 $ cd nginx
@@ -325,10 +333,8 @@ services:
       - /app/node_modules
       - ./client:/app
 ```
-
 ***
 
-## 133: React App Exited With Code 0
 
 ```
 $ cd complex
@@ -337,7 +343,7 @@ $ docker-compose up --build                 # Force a build of everything
 
 ***
 
-## 134: Starting Up Docker Compose
+## 130: Starting Up Docker Compose
 
 ```
 $ docker-compose up --build
@@ -345,11 +351,15 @@ $ docker-compose up --build
 
 ***
 
-## 135: Nginx connect() failed - Connection refused while connectin...
+## 131: Nginx connect() failed - Connection refused while connectin...
 
 ***
 
-## 136: Fix for "I Calculated Nothing Yet" message
+## 132: Troubleshooting Startup Bugs
+
+***
+
+## 133: WebSocket connection t `ws://localhost:3000/ws` failed
 
 ```
 $ docker-compose down
@@ -358,11 +368,7 @@ $ docker-compose up --build
 
 ***
 
-## 137: Troubleshooting Startup Bugs
-
-***
-
-## 138: Opening WebSocket Connections
+## 134: Opening Websocket Connections
 
 ```
 upstream client {
