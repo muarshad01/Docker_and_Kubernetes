@@ -212,24 +212,18 @@ services:
 
 ## 127: `Nginx` Path Routing
 
-*Two Servers:
-  - ReactServer
-  - ExpressServer
+* Two Servers:
+  - React Server
+  - Express Server
 
-Files:
-  - `/index.html`--------> React Server
-                   |
-  - `main.js`---------
-
-  - `/values/all` ---------> Express Server
-                     |
-  - `/vales/current` ---
-
+* Files:
+  - `/index.html` and `main.js` -> React Server
+  - `/api/values/all` and `/api/values/current` -> Express Server
 
 * `Nginx`
-  - What's the `req` start with?          # Looks at request path
-  - `/api/`                               # Route to Express Server
-  - `/`                                   # Route to React Server
+  - What's the `req` start with?                    # Looks at request path
+  - `/`                                             # Route to React Server
+  - `/api/`                                         # Route to Express Server
 
 ***
 
