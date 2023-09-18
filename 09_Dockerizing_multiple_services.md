@@ -98,7 +98,7 @@ services:
     image: 'postgres:latest'
 ```
 
-`http://hub.docker.com` --> Explore --> `postgres`
+`http://hub.docker.com` --> Explore --> `postgres:latest`
 
 ```
 $ cd complex                    # `docker-compose.yml` file is present here
@@ -130,17 +130,13 @@ services:
       dockerfile: Dockerfile.dev
       context: ./server                     # look into this path or folder
     volumes:
-      - /app/node_modules
-      - ./server:/app                       # look at the server directory and copy everything there into the app folder in the container
+      - /app/node_modules                   # inside the container don't try to override `/app/node_modules`; Leave folder as is
+      - ./server:/app                       # <src: server directory on local>:<dst: app directory in container>
 ```
 
 ***
 
-## 127: Postgres Database is uninitialized or getaddrinfo NOTFOUND Fix
-
-***
-
-## 128: Environment Variables with Docker Compose
+## 124: Environment Variables with Docker Compose
 
 ```
 version: '3'
@@ -172,7 +168,7 @@ $ docker-compose up
 
 ***
 
-## 129: The Worker and Client Services
+## 126: The Worker and Client Services
 
 ```
 version: '3'
