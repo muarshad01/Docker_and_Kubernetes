@@ -114,9 +114,9 @@ $ docker-compose up
 * `redis`
     - What image to use?
 * server
-  - Specify build
-  - Specify volumes
-  - Specify env variables
+  - Specify `build`
+  - Specify `volumes`
+  - Specify `environment` vars
 
 ```
 version: '3'
@@ -128,7 +128,7 @@ services:
   server:
     build:
       dockerfile: Dockerfile.dev
-      context: ./server                     # look into this path or folder
+      context: ./server                     # look into this path-or-folder
     volumes:
       - /app/node_modules                   # inside the container don't try to override `/app/node_modules`; Leave folder as is
       - ./server:/app                       # <src: server directory on local>:<dst: app directory in container>
