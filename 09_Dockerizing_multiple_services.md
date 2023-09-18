@@ -8,16 +8,16 @@
 
 ## 123: Dockerizing a React App - Again!
 
-* We need to make dev Dockerfile for each:
-  - React App
-  - Express Server API
+* We need to make `Dockerfile.dev` for each:
+  - ReactApp
+  - ExpressServerAPI
   - Worker
 
 ```
 $ cd complex/client
 ```
 
-Create a file Dockerfile.dev
+Create a file `Dockerfile.dev`
 
 ```
 FROM node:alpine
@@ -29,7 +29,7 @@ CMD ["npm", "run", "start"]
 ```
 
 ```
-$ docker build -f Dockerfile.dev . # '.' is build context
+$ docker build -f Dockerfile.dev .          # '.' is build context
 $ docker run CONTAINER_ID
 ```
 
@@ -41,7 +41,7 @@ $ docker run CONTAINER_ID
 $ cd complex/server
 ```
 
-Create a file Docker.dev 
+Create a file `Docker.dev` 
 
 ```
 FROM node:alpine
@@ -61,7 +61,7 @@ $ docker run CONTAINER_ID
 $ cd complex/worker
 ```
 
-Create a file Docker.dev
+Create a file `Docker.dev`
 
 ```
 FROM node:alpine
@@ -79,9 +79,9 @@ $ docker run CONTAINER_ID
 
 ***
 
-## 125: Adding Postgres as a Service
+## 125: Adding `Postgres` as a Service
 
-Create a file docker-compose.yml
+Create a file `docker-compose.yml`
 
 ```
 version: '3'
@@ -90,10 +90,10 @@ services:
     image: 'postgres:latest'
 ```
 
-http://hub.docker.com --> Explore --> postgres
+`http://hub.docker.com` --> Explore --> `postgres`
 
 ```
-$ cd complex # docker-compose.yml file is present here
+$ cd complex                    # `docker-compose.yml` file is present here
 $ docker-compose up
 ```
 
@@ -120,10 +120,10 @@ services:
   server:
     build:
       dockerfile: Dockerfile.dev
-      context: ./server # look into this path or folder
+      context: ./server                     # look into this path or folder
     volumes:
       - /app/node_modules
-      - ./server:/app # look at the server directory and copy everything there into the app folder in the container
+      - ./server:/app                       # look at the server directory and copy everything there into the app folder in the container
 ```
 
 ***
@@ -147,14 +147,14 @@ services:
       context: ./server
     volumes:
       - /app/node_modules
-      - ./server:/app
+      - ./server:/app                       # <src: server folder on local>:<dst: app folder on docker>
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres # default user
-      - PGHOST=postgres # default host
-      - PGDATABASE=postgres # default database
-      - PGPASSWORD=postgres_password # The default password for postgres is postgres_password
+      - PGUSER=postgres                     # default user
+      - PGHOST=postgres                     # default host
+      - PGDATABASE=postgres                 # default database
+      - PGPASSWORD=postgres_password        # The default password for `postgres` is `postgres_password`
       - PGPORT=5432
 ```
 
@@ -169,11 +169,11 @@ $ docker-compose up
 ```
 version: '3'
 services:
-  postgres:
+  postgres:                             # service
     image: 'postgres:latest'
-  redis:
+  redis:                                # service
     image: 'redis:latest'
-  server:
+  server:                               # service
     build:
       dockerfile: Dockerfile.dev
       context: ./server
@@ -188,20 +188,20 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
-  worker: # service
+  worker:                               # service
     build:
       dockerfile: Dockerfile.dev
       context: ./worker
     volumes:
       - /app/node_modules
       - ./worker:/app
-  client: # service
+  client:                               # service
     build:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
       - /app/node_modules
-      - ./client:/app # Everything in the client directroy should be shared with the app folder inside the container
+      - ./client:/app                   # <src: client directory>:<dst: app folder inside container>
 ```
 
 ***
