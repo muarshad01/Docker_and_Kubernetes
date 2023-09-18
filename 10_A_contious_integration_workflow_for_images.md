@@ -38,7 +38,7 @@ $ touch Dockerfile
 ```
 
 ```
-FROM node:alpine
+FROM node:14.4.0-alpine
 WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
@@ -60,8 +60,7 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 ## 137. Multiple `Nginx` Instances
 
-* One `nginx` server is doing routing-traffic job
-* Another `nginx` server is for React Server (frontend)
+* `nginx` ROUTING: 1. React Server (port 3000) & 2. Express Server (port 5000)
 
 ***
 
