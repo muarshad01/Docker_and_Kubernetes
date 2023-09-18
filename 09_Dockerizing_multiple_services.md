@@ -234,11 +234,11 @@ $ mkdir nginx
 $ touch default.conf
 ```
 
-* Tell Nginx that there is an 'upstream' server at client:3000
-* Tell Nginx that there is an 'upstream' server at server:5000     
+* Tell `Nginx` that there is an `upstream' server` at `client:3000`
+* Tell `Nginx` that there is an `upstream' server` at `server:5000`     
 * Listen on port 80
-* If anyone comes to '/' send them to client upstream
-* If anyone comes to '/api' send them to server upstream
+* If anyone comes to `/` send them to `client upstream`
+* If anyone comes to `/api` send them to `server upstream`
 
 ```
 upstream client {
