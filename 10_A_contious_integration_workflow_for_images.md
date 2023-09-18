@@ -1,9 +1,12 @@
 ## 135. Production Multi-Container Deployments
 
 * Push code to `GitHub`
-* `Travis` automatically pulls repo
-* `Trais` builds an image, tests code
-* `Travis` pushed deployment code to `AWS EB`
+* `Travis` automatically PULLS repo
+* `Travis` builds an **test** image, tests code
+* `Travis` builds **prod** images
+* `Travis` pushed build **prod** images to Docker Hub
+* `Travis` pushes project to `AWS EB`
+* `EB` pulls images from Docker Hub, deploys
 
 * Services:
   - nginx (Routing Traffic)
