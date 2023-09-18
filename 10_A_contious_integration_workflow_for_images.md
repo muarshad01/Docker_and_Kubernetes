@@ -165,9 +165,9 @@ script:
 
 ***
 
-## 147: Travis Configuration Setup
+## 141: Travis Configuration Setup
 
-creat file .travis.yml
+Create a file `.travis.yml`
 
 ```
 $ touch .travis.yml
@@ -179,17 +179,33 @@ services:
   - docker
 
 before_install:
-  - docker build -t marshad1/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t muarshad01/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run marshad1/react-test npm test -- --coverage
+  - docker run muarshad01/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t marshad1/multi-client ./client
-  - docker build -t marshad1/multi-nginx ./nginx
-  - docker build -t marshad1/multi-server ./server
-  - docker build -t marshad1/multi-worker ./worker
+  - docker build -t muarshad01/multi-client ./client
+  - docker build -t muarshad01/multi-nginx  ./nginx
+  - docker build -t muarshad01/multi-server ./server
+  - docker build -t muarshad01/multi-worker ./worker
 ```
+
+***
+
+## 142. Fix for Failing Travis Builds
+
+```
+script:
+  - docker run USERNAME/react-test npm test -- --coverage
+instead should be:
+
+script:
+  - docker run -e CI=true USERNAME/react-test npm test
+```
+***
+
+### 143. Github and Travis CI Setup
 
 ***
 
@@ -201,16 +217,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t muarshad01/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run marshad/react-test npm test -- --coverage
+  - docker run muarshad01/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t marshad/multi-client ./client
-  - docker build -t marshad/multi-nginx ./nginx
-  - docker build -t marshad/multi-server ./server
-  - docker build -t marshad/multi-worker ./worker
+  - docker build -t muarshad01/multi-client ./client
+  - docker build -t muarshad01/multi-nginx  ./nginx
+  - docker build -t muarshad01/multi-server ./server
+  - docker build -t muarshad01/multi-worker ./worker
   
   # push to docker hub
   # Log in to the docker CLI
