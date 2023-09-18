@@ -105,6 +105,14 @@ Google Search: JSON validator
 
 ***
 
+## 151. Required AWS Elastic Beanstalk Environment Setup Updates
+
+***
+
+## 152. AWS Configuration Cheat Sheet - Updated for new UI
+
+***
+
 ## 153. Creating the Elastic Beanstalk Environment
 
 ***
