@@ -45,7 +45,7 @@ $ docker run CONTAINER_ID
 $ cd complex/server
 ```
 
-Create a file `Docker.dev` 
+Create a file `Dockerfile.dev` 
 
 ```
 FROM node:14.14.0-alpine
@@ -65,7 +65,7 @@ $ docker run CONTAINER_ID
 $ cd complex/worker
 ```
 
-Create a file `Docker.dev`
+Create a file `Dockerfile.dev`
 
 ```
 FROM node:alpine
