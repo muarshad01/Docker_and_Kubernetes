@@ -325,6 +325,7 @@ services:
 ```
 ***
 
+## 130: Starting Up Docker Compose
 
 ```
 $ cd complex
@@ -333,15 +334,7 @@ $ docker-compose up --build                 # Force a build of everything
 
 ***
 
-## 130: Starting Up Docker Compose
-
-```
-$ docker-compose up --build
-```
-
-***
-
-## 131: Nginx connect() failed - Connection refused while connectin...
+## 131: `Nginx connect()` failed - Connection refused while connectin...
 
 ***
 
@@ -349,12 +342,7 @@ $ docker-compose up --build
 
 ***
 
-## 133: WebSocket connection t `ws://localhost:3000/ws` failed
-
-```
-$ docker-compose down
-$ docker-compose up --build
-```
+## 133: WebSocket connection to `ws://localhost:3000/ws` failed
 
 ***
 
@@ -380,7 +368,7 @@ server {
         proxy_pass http://client;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection Upgrade;
+        proxy_set_header Connection "upgrade";
     }
 
     location /api {
@@ -389,3 +377,10 @@ server {
     }
 }
 ```
+
+```
+$ docker-compose down
+$ docker-compose up --build
+```
+
+***
