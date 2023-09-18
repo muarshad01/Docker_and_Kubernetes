@@ -217,7 +217,7 @@ services:
   - Express Server
 
 * Files:
-  - `/index.html` and `main.js` -> React Server
+  - `/index.html` and `/main.js` -> React Server
   - `/api/values/all` and `/api/values/current` -> Express Server
 
 * `Nginx`
