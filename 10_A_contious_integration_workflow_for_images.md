@@ -112,59 +112,6 @@ COPY --from=builder /app/build /usr/share/nginx/html # copy from previous build
 
 ***
 
-## 141. Travis Configuration Setup
-
-***
-
-## 142. Fix for Failing Travis Builds
-
-***
-
-## 143. Github and Travis CI Setup
-
-Steps:
-  - push code to github
-  - Travis automatically pulls repo
-  - Travis builds a test image, tests code
-  - Travis build prod images
-  - Travis pushed build prod images to Docker Hub
-  - Travis pushed project to AWS EB
-  - EB pulls images from Docker Hub, deploys
-
-```
-$ cd complex
-$ git init
-$ git add .
-$ git commit -m "initial commit"
-```
-
-Before this, we need to create a repo on github.com and then
-
-```
-$ git remote add origin git@github.com:muarshad01/<repo-name>.git
-$ git remote add origin git@github.com/muarshad01/multi-docker.git
-$ git remote -v 
-$ git push origin master
-```
-
-Next step is to create a link b/w github and Travis-cs
-
-`http://travis-ci.org` --> profile --> sync account --> 
-
-***
-
-## 146. Fix for Failing Travis Builds
-
-script:
-  - docker run USERNAME/react-test npm test -- --coverage
-
-instead should be:
-
-script:
-  - docker run -e CI=true USERNAME/react-test npm test
-
-***
-
 ## 141: Travis Configuration Setup
 
 Create a file `.travis.yml`
@@ -203,9 +150,51 @@ instead should be:
 script:
   - docker run -e CI=true USERNAME/react-test npm test
 ```
+
 ***
 
-### 143. Github and Travis CI Setup
+## 143. Github and Travis CI Setup
+
+Steps:
+  - push code to `github`
+  - `Travis` automatically pulls repo
+  - `Travis` builds a **test** image, tests code
+  - `Travis` build **prod** images
+  - `Travis` pushed build prod images to Docker Hub
+  - `Travis` pushed project to `AWS EB`
+  - EB pulls images from Docker Hub, deploys
+
+```
+$ cd complex
+$ git init
+$ git add .
+$ git commit -m "initial commit"
+```
+
+Before this, we need to create a repo on github.com and then
+
+```
+$ git remote add origin git@github.com:muarshad01/<repo-name>.git
+$ git remote add origin git@github.com:muarshad01/multi-docker.git
+$ git remote -v 
+$ git push origin master
+```
+
+Next step is to create a link b/w github and Travis-cs
+
+`http://travis-ci.org` --> profile --> sync account --> 
+
+***
+
+## 146. Fix for Failing Travis Builds
+
+script:
+  - docker run USERNAME/react-test npm test -- --coverage
+
+instead should be:
+
+script:
+  - docker run -e CI=true USERNAME/react-test npm test
 
 ***
 
