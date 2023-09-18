@@ -282,18 +282,18 @@ Now add `nginx` as a service to our `docker-compose.yml` file
 ```
 version: '3'
 services:
-  postgres:
+  postgres:                             # service
     image: 'postgres:latest'
-  redis:
-    image: 'redis:latest'
-  nginx:
+  redis:                                # service
+    image: 'redis:latest'           
+  nginx:                                # service
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./nginx                  # Context is nginx directory
+      context: ./nginx                  # Context is `nginx` directory
     ports:
-      - '3050:80'                       # maps port 3050 on local machine to port 80 on container
-  api:
+      - '3050:80'                       # <port 3050 on local machine>:<port 80 on container>
+  api:                                  # service (server renamed to api)
     build:
       dockerfile: Dockerfile.dev
       context: ./server
@@ -308,14 +308,14 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
-  worker:
+  worker:                               # service
     build:
       dockerfile: Dockerfile.dev
       context: ./worker
     volumes:
       - /app/node_modules
       - ./worker:/app
-  client:
+  client:                               # service
     build:
       dockerfile: Dockerfile.dev
       context: ./client
