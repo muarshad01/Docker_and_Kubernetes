@@ -1,19 +1,19 @@
-## 139. Production Multi-Container Deployments
+## 135. Production Multi-Container Deployments
 
-* Push code to github
-* Travis automatically pulls repo
-* Trais builds an image, test code
-* Travis pushed code to AWS EB
-* EB builds image, deploys it
+* Push code to `GitHub`
+* `Travis` automatically pulls repo
+* `Trais` builds an image, tests code
+* `Travis` pushed deployment code to `AWS EB`
 
 * Services:
-  - client
   - nginx
+  - client
   - server
   - worker
+
 ***
 
-## 140. Production Dockerfiles
+## 136. Production Dockerfiles
 
 ```
 $ cd worker
@@ -26,7 +26,7 @@ WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
 COPY . .
-CMD ["npm", "run", "start"] # "dev" is for devlopment mode; "start" is for production mode
+CMD ["npm", "run", "start"]             # "dev" is for development mode; "start" is for production mode
 ```
 
 ```
@@ -40,7 +40,7 @@ WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
 COPY . .
-CMD ["npm", "run", "start"] # "dev" is for devlopment mode; "start" is for production mode
+CMD ["npm", "run", "start"]             # "dev" is for development mode; "start" is for production mode
 ```
 
 ```
@@ -55,14 +55,18 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 ***
 
-## 141. Multiple Nginx Instances
+## 137. Multiple `Nginx` Instances
 
 * One nginx server a routing job
-* Another ngix serving the react
+* Another nginx serving the react
 
 ***
 
-## 142. Altering Nginx's Listen Port
+## 138. Nginx fix for React Router
+
+***
+
+## 139. Altering Nginx's Listen Port
 
 ```
 $ cd client
@@ -102,24 +106,28 @@ COPY --from=builder /app/build /usr/share/nginx/html # copy from previous build
 
 ***
 
-## 143: Nginx fix for react Router
+## 140. Cleaning Up Tests
 
 ***
 
-## 144. Cleaning Up Tests
+## 141. Travis Configuration Setup
 
 ***
 
-## 145. Github and Travis CI Setup
+## 142. Fix for Failing Travis Builds
+
+***
+
+## 143. Github and Travis CI Setup
 
 Steps:
-  push code to github
-  Travis automatically pulls repo
-  Travis builds a test image, tests code
-  Travis build prod images
-  Travis pushed build prod images to Docker Hub
-  Travis pushed project to AWS EB
-  EB pulls images from Docker Hub, deploys
+  - push code to github
+  - Travis automatically pulls repo
+  - Travis builds a test image, tests code
+  - Travis build prod images
+  - Travis pushed build prod images to Docker Hub
+  - Travis pushed project to AWS EB
+  - EB pulls images from Docker Hub, deploys
 
 ```
 $ cd complex
@@ -139,7 +147,7 @@ $ git push origin master
 
 Next step is to create a link b/w github and Travis-cs
 
-http://travis-ci.org --> profile --> sync account --> 
+`http://travis-ci.org` --> profile --> sync account --> 
 
 ***
 
@@ -183,7 +191,7 @@ after_success:
 
 ***
 
-## 148. Pushing Images to Docker Hub
+## 144. Pushing Images to Docker Hub
 
 ```
 sudo: required
@@ -224,4 +232,6 @@ after_success:
 
 ***
 
-## 149. Successful Image Building
+## 145. Successful Image Building
+
+***
