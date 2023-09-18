@@ -2,7 +2,7 @@
 
 * [Docker and Kubernetes: The Complete Guide](https://www.udemy.com/docker-and-kubernetes-the-complete-guide/)
 
-## Lectures
+***
 
 ### Docker
 
@@ -13,10 +13,10 @@
 * [05: Docker Compose with Multiple Local Containers](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/05_Docker_Compose_with_Multiple_Local_Containers.md)
 * [06: Production Grade Workflow](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/06_Production_Grade_Workflow.md)
 * [07: Continuous Integration and Deployment](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/07_Continuous_Integration_and_Deployment.md)
-* [08: Building a Multi Container Application](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/08_Building_a_multi_container_application.md)
+* [08: Building a Multi-Container Application](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/08_Building_a_multi_container_application.md)
 * [09: Dockerizing Multiple Services](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/09_Dockerizing_multiple_services.md)
 * [10: A Continuous Integration Workflow for Images](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/10_A_contious_integration_workflow_for_images.md)
-* [11: Multi Container Deployments to AWS](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/11_Multi-Container_Deployments_to_AWS.md)
+* [11: Multi-Container Deployments to AWS](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/11_Multi-Container_Deployments_to_AWS.md)
 
 ***
 
