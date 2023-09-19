@@ -158,6 +158,7 @@ $ minikube status
 
 ```
 $ minikube status
+```
 
 - minikube
 - type: Control Plane
@@ -166,7 +167,9 @@ $ minikube status
 - apiserver: Running
 - kubeconfig: Configured
 
+```
 $ kubectl cluster-info
+```
 
 - Kubernetes master is running at https://192.168.64.2:8443
 - KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
