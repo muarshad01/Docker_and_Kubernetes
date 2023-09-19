@@ -354,7 +354,12 @@ $ kubectl get pods
 
 NAME        READY   STATUS    RESTARTS    AGE
                                  1           
-* Note: Deployment file goes to Master and not Nodes
+* **Note**: Deployment file goes to `Master` and not `Nodes`
+
+```
+$ kubectl apply -f client-node-port.yaml
+```
+
 
 ***
 
