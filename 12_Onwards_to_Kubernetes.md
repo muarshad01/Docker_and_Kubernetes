@@ -51,9 +51,9 @@
 
 ***
 
-## 179: Docker Desktop's Kubernetes Setup and Installation - macOS
+## 179: Docker Desktop's `Kubernetes` Setup and Installation - `macOS`
 
-* Docker Icon --> Preferences --> Kubernetes --> Apply & Restart
+* Docker Desktop -> Settings -> `Kubernetes` -> Enable Kubernetes -> Apply & Restart
 
 ***
 
