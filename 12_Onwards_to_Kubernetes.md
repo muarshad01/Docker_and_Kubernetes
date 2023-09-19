@@ -342,14 +342,14 @@ https://<VM ip-address>:port
 
 ***
 
-## 192: The Entire Deployment Flow
+## 186: The Entire Deployment Flow
 
 ```
 $ kubectl get pods
 $ docker ps
 $ docker kill CONTAINER_ID
 $ docker ps
-$ kubect get pods
+$ kubectl get pods
 ```
 
 NAME        READY   STATUS    RESTARTS    AGE
@@ -358,13 +358,13 @@ NAME        READY   STATUS    RESTARTS    AGE
 
 ***
 
-## 193: Imperative vs Declarative Deployments
+## 187: Imperative vs Declarative Deployments
 
-* Kubernetes is a system to deploy containerized apps
-* Nodes are individual machines (or vm's) that run containers
-* Masters are machines (or vm's) with a set of programs to manage Nodes
-* Kubernetes didn't build our imgages - it got them from somewhere else
-* Kubernetes (the master) decided where to run each container - each node 
+* `Kubernetes` is a system to deploy containerized apps
+* `Nodes` are individual machines (or VM's) that run containers: Node{C1, C1, ...}
+* `Masters` are machines (or VM's) with a set of programs to manage Nodes
+* `Kubernetes` didn't build our imgages - it got them from somewhere else
+* `Kubernetes` (the master) decides where to run each container - each Node 
   can run a dissimilar set of containers
 * To deploy something, we update the desired state of the master with a config file
 * The master works constantly to meet your desired state
