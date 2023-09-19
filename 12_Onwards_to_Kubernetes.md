@@ -65,7 +65,7 @@ $ kubectl version
 
 ***
 
-## 181: Updated `minikube` Install and Setup -- `MacOS`
+## 175: Updated `minikube` Install and Setup -- `MacOS`
 
 ```
 $ which brew
@@ -95,7 +95,7 @@ $ kubectl version
 
 ***
 
-## 182: `minikube` Setup on MacOS
+## 176: `minikube` Setup on MacOS
 
 ```
 * 1. Make sure `brew` is installed			# https://brew.sh	
@@ -136,15 +136,15 @@ $ minikube status
 
 ***
 
-## 183: `minikube` Setup on Windows
+## 177: `minikube` Setup on Windows
 
 ***
 
-## 184: `minikube` Setup on Linux
+## 178: `minikube` Setup on Linux
 
 ***
 
-## 185: Mapping Existing Knowledge
+## 179: Mapping Existing Knowledge
 
 ```
 $ minikube status
@@ -166,7 +166,7 @@ $ kubectl cluster-info
 
 ***
 
-## 186: Quick Note to prevent an Error
+## 180: Quick Note to prevent an Error
 
 ***
 
