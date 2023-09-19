@@ -263,7 +263,7 @@ Node{
 
 ***
 
-## 190: Service Config Files in Depth
+## 184: Service Config Files in Depth
 
 Object Types:
 
@@ -308,7 +308,7 @@ selector:
 
 ***
 
-## 191: Connecting to Running Containers
+## 185: Connecting to Running Containers
 
 ```
 $ cd simplek8s
