@@ -67,6 +67,8 @@ $ kubectl version
 
 ## 175: Updated `minikube` Install and Setup -- `MacOS`
 
+* If you are already using Docker Desktop's `Kubernetes`, you do not need `Minikube` and these instructions can be skipped.
+
 ```
 $ which brew
 /usr/local/bin/brew
@@ -79,17 +81,24 @@ $ which minikube
 /usr/local/bin/minikube
 ```
 
-* Starting `minikube` and Testing Installation
-* Start with VM driver
+### Starting `minikube` and Testing Installation
+
+#### Start with VM driver
 
 ```
 $ minikube start --driver=hyperkit
 $ brew install hyperkit
+```
 
-2. Check Minikube Status
+#### Check `Minikube` Status
+
+```
 $ minikube status
+```
 
-3. Check kubectl
+#### Check `kubectl`
+
+```
 $ kubectl version
 ```
 
