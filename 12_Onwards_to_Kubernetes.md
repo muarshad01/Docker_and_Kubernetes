@@ -25,15 +25,15 @@
 
 * Kubernetes:
     - Development:
-	- `minikube` (CMT line tool: sets up a tiny-little-cluster on local computer)
+	- `minikube` (sets up a tiny-little-cluster on local computer)
 * Production (Managed solutions):
-    - EKS: Amazon Elastic Container Service for Kubernetes (EKS)
-    - GKE: Google Cloud Kubernetes Engine
+    - `EKS`: Amazon Elastic Container Service for Kubernetes (EKS)
+    - `GKE`: Google Cloud Kubernetes Engine
  
-minikube (Used for managing VM itself)               --> Virtual Machine {Node {Container_1, ..., Container_N}}
--- local only
-kubectl  (Used for managing containers in the Node)  --> Virtual Machine {Node {Container_1, ..., Container_N}}
--- local/production Env
+* `minikube` (Used for managing VM itself)
+    - VM {Node {Container_1, ..., Container_N}} -- local only
+* `kubectl`  (Used for managing containers in the Node)
+    - VM {Node {Container_1, ..., Container_N}} -- local/production Env
 
 * Local Kubernetes Development:
     - Install `kubectl`
@@ -52,7 +52,7 @@ kubectl  (Used for managing containers in the Node)  --> Virtual Machine {Node {
 
 ***
 
-## 181: Updated Minikube Install and Setup -- MacOS
+## 181: Updated `minikube` Install and Setup -- MacOS
 
 ```
 $ which brew
@@ -66,10 +66,10 @@ $ which minikube
 /usr/local/bin/minikube
 ```
 
-Starting Minikube and Testing Installation:
-------------------------------------------
-1. Start with VM driver
+* Starting `minikube` and Testing Installation
+* Start with VM driver
 
+```
 $ minikube start --driver=hyperkit
 $ brew install hyperkit
 
@@ -78,18 +78,20 @@ $ minikube status
 
 3. Check kubectl
 $ kubectl version
+```
 
 ***
 
-## 182: Minikube Setup on MacOS
-
-* 1. Make sure Brew is installed			# https://brew.sh	
-* 2. Install Kubecel				# brew install kubectl
-* 3. Install a VM driver virtualbox		# Download VirtualBox @virtualbox.org
-* 4. Install minikube				# brew cast install minikube
-* 5. Start minikube				# minikube start
+## 182: `minikube` Setup on MacOS
 
 ```
+* 1. Make sure `brew` is installed			# https://brew.sh	
+* 2. Install `kubectl`				        # brew install kubectl
+* 3. Install a VM driver `virtualbox`		# Download VirtualBox @virtualbox.org
+* 4. Install `minikube`				        # brew cast install minikube
+* 5. Start `minikube`                       # minikube start
+```
+
 1.
 $ which brew
 /usr/local/bin/brew
@@ -114,11 +116,11 @@ Start minikube --> $ minikube start
 
 ***
 
-## 183: Minikube Stup on Windows
+## 183: `minikube` Setup on Windows
 
 ***
 
-## 184: Minikube Stup on Linux
+## 184: `minikube` Setup on Linux
 
 ***
 
