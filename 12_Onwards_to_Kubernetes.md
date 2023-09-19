@@ -1,23 +1,29 @@
 ## 177: The Why's and What's of Kubernetes
 
-* `AWS Elastic Beanstalk (EBS)` has following 4 servers / containers:
+* `AWS Elastic Beanstalk (EBS)` application has following 4 servers / containers:
   - nginx
   - client
   - server
   - worker
 
-* Q: How would we **SCALE-UP** this application?
+* Question: How would we **Scale-up** this application?
+    - a lot of users
+    - a lot of traffic coming in
 
-* Q: What is Kubernetes? 
-  - System for running many different-containers over multiple-different machines
+* Question: What is `Kubernetes`? 
+  - System for running many different containers over multiple different machines
 
-* Q: Why use Kubernetes? 
-  - When you need to run many different-containers with different-images
+* Q: Why use `Kubernetes`? 
+  - When you need to run many different containers with different images
 
+* A **Cluster** in k8s world is: 
+    - 1 set of master `Master` and  
+    - 1 or more `Nodes`
+    - A `Node` is a VM-or-Physical-machine that runs one or more containers
 
-* A CLUSTER in k8s world is ONE set of MASTER and a bunch of other NODES {A VM or Physical machine that runs one or more containers!}
+* Load Balancer --> `Master` --> {Node1, Node2, ...}
 
-* Load Balancer --> Master --> {Node1, Node2, ...}
+`dockerrun.aws.json` spins-up an entire set of containers, i.e., EB
 
 ***
 
