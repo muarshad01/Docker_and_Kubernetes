@@ -160,21 +160,17 @@ $ minikube status
 $ minikube status
 ```
 
-- minikube
-- type: Control Plane
-- host: Running
-- kubelet: Running
-- apiserver: Running
-- kubeconfig: Configured
+- minikube: Running
+- cluster: Running
+- kubectl: Correctly Configured: pointing to ...
 
 ```
 $ kubectl cluster-info
 ```
 
-- Kubernetes master is running at https://192.168.64.2:8443
-- KubeDNS is running at https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+- `Kubernetes master` is running at `https://192.168.64.2:8443`
+- `KubeDNS` is running at `https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy`
 
-- To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 ***
@@ -183,7 +179,7 @@ $ kubectl cluster-info
 
 ***
 
-## 187: Adding Configuration Files
+## 181: Adding Configuration Files
 
 `https://hub.docker.com`
 
