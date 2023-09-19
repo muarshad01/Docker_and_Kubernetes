@@ -60,7 +60,9 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 ## 137. Multiple `Nginx` Instances
 
-* `nginx` ROUTING: 1. React Server (port 3000) & 2. Express Server (port 5000)
+* `nginx` ROUTING
+    - 1. React Server (port 3000)
+    - 2. Express Server (port 5000)
 
 ***
 
@@ -71,7 +73,6 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 ## 139. Altering Nginx's Listen Port
 
 ```
-$ cd client
 $ mkdir nginx
 $ cd nginx
 $ default.conf
@@ -81,7 +82,7 @@ $ default.conf
 server {
   listen 3000;
 
-  location / { # routing rule
+  location / {                          # routing rule
     root /usr/share/nginx/html;
     index index.html index.htm;
   }
@@ -103,7 +104,7 @@ RUN npm run build
 FROM nginx
 EXPOSE 3000
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/build /usr/share/nginx/html # copy from previous build
+COPY --from=builder /app/build /usr/share/nginx/html            # copy from previous build
 ```
 
 ***
@@ -171,7 +172,7 @@ $ git add .
 $ git commit -m "initial commit"
 ```
 
-Before this, we need to create a repo on github.com and then
+Before this, we need to create a repo on `github.com` and then
 
 ```
 $ git remote add origin git@github.com:muarshad01/<repo-name>.git
@@ -182,19 +183,7 @@ $ git push origin master
 
 Next step is to create a link b/w github and Travis-cs
 
-`http://travis-ci.org` --> profile --> sync account --> 
-
-***
-
-## 146. Fix for Failing Travis Builds
-
-script:
-  - docker run USERNAME/react-test npm test -- --coverage
-
-instead should be:
-
-script:
-  - docker run -e CI=true USERNAME/react-test npm test
+`http://travis-ci.org` --> profile --> `sync account` 
 
 ***
 
@@ -216,25 +205,13 @@ after_success:
   - docker build -t muarshad01/multi-nginx  ./nginx
   - docker build -t muarshad01/multi-server ./server
   - docker build -t muarshad01/multi-worker ./worker
-  
-  # push to docker hub
   # Log in to the docker CLI
-  $ docker login
-    - Username:
-    - Password:
-
-  Travis --> marshad1/multi-docker project --> More options
-                                  --> settings --> Environment Variables
-                                  --> DOCKER_ID
-                                  --> DOCKER_PASSWORD
-
-  $ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push marshad1/multi-client
-  - docker push marshad1/multi-nginx
-  - docker push marshad1/multi-server
-  - docker push marshad1/multi-worker
+  - docker push muarshad01/multi-client
+  - docker push muarshad01/multi-nginx
+  - docker push muarshad01/multi-server
+  - docker push muarshad01/multi-worker
 ```
 
 ***
