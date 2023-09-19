@@ -171,8 +171,6 @@ $ kubectl cluster-info
 - `Kubernetes master` is running at `https://192.168.64.2:8443`
 - `KubeDNS` is running at `https://192.168.64.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy`
 
-```
-
 ***
 
 ## 180: Quick Note to prevent an Error
