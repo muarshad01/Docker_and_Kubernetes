@@ -92,26 +92,33 @@ $ kubectl version
 * 5. Start `minikube`                       # minikube start
 ```
 
+```
 1.
 $ which brew
 /usr/local/bin/brew
-
+```
 2.
+```
 $ brew install kubectl
 $ which kubectl
 /usr/local/bin/kubectl
+```
 
 3.
-https://www.virtualbox.org/ (Downloads --> OS X hosts)
+`https://www.virtualbox.org/` (Downloads --> OS X hosts)
 
 4.
+```
 $ brew cask install minikube
 $ which minikube
 /usr/local/bin/minikube
+```
 
-5. 
-Start minikube --> $ minikube start
-                      $ minikube status
+```
+# 5. Start minikube
+$ minikube start
+$ minikube status
+
 ```
 
 ***
