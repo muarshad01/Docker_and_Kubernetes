@@ -1,12 +1,12 @@
 ## 177: The Why's and What's of Kubernetes
 
-* AWS Elastic Bean Stalk (EBS) has following 4 servers / containers:
+* `AWS Elastic Beanstalk (EBS)` has following 4 servers / containers:
   - nginx
-  - server
   - client
+  - server
   - worker
 
-* Q: How would we SCALE-UP this application?
+* Q: How would we **SCALE-UP** this application?
 
 * Q: What is Kubernetes? 
   - System for running many different-containers over multiple-different machines
@@ -21,24 +21,24 @@
 
 ***
 
-## 178: Kubernetes in Development and Production
+## 178: `Kubernetes` in Development and Production
 
-Kubernetes:
--- Development:
-	MiniKube (CMT line tool: sets up a tiny-little-cluster on local computer)
--- Production (Managed solutions):
-	EKS: Amazon Elastic Container Service for Kubernetes (EKS)
-    	GKE: Google Cloud Kubernetes Engine
+* Kubernetes:
+    - Development:
+	- `minikube` (CMT line tool: sets up a tiny-little-cluster on local computer)
+* Production (Managed solutions):
+    - EKS: Amazon Elastic Container Service for Kubernetes (EKS)
+    - GKE: Google Cloud Kubernetes Engine
  
 minikube (Used for managing VM itself)               --> Virtual Machine {Node {Container_1, ..., Container_N}}
 -- local only
 kubectl  (Used for managing containers in the Node)  --> Virtual Machine {Node {Container_1, ..., Container_N}}
 -- local/production Env
 
-Local Kubernetes Development:
-- Install kubectl
-- Install a VM driver virtualbox
-- Install minikube
+* Local Kubernetes Development:
+    - Install `kubectl`
+    - Install a VM driver `virtualbox`
+    - Install `minikube`
 
 ***
 
