@@ -31,17 +31,17 @@
 
 * `Kubernetes`:
     - **Development**:
-	    - `minikube` (sets up a tiny-little-cluster on local computer)
-    - **Production** (Managed solutions):
+	    - `minikube` (a program that sets up `k8s` on local computer)
+    - **Production (Managed solutions)**:
         - `EKS`: Amazon Elastic Container Service for `Kubernetes`
         - `GKE`: Google Cloud `Kubernetes` Engine
  
 * `minikube` 
-    - (Used for managing VM itself)
-    - VM {Node {C1, C2, ..., CN}} -- local only
+    - Creates a `K8s` cluster locally (single `Node`)
+    - VM {Node {C1, C2, ..., CN}}
 * `kubectl`  
-    - (Used for managing containers in the Node)
-    -  Node {C1, C2, ..., CN} -- local/production Env
+    - Used for managing containers in the Node on both local / prod environments
+    -  VM {Node {C1, C2, ..., CN}}
 
 * Local `Kubernetes` Development:
     - Install `kubectl`
