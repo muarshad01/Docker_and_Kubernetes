@@ -107,37 +107,42 @@ $ kubectl version
 ## 176: `minikube` Setup on MacOS
 
 ```
-* 1. Make sure `brew` is installed			# https://brew.sh	
-* 2. Install `kubectl`				        # brew install kubectl
-* 3. Install a VM driver `virtualbox`		# Download VirtualBox @virtualbox.org
-* 4. Install `minikube`				        # brew cast install minikube
 * 5. Start `minikube`                       # minikube start
 ```
 
+### 1. Make sure `brew` is installed
+
+`https://brew.sh`	
+
 ```
-1.
 $ which brew
-/usr/local/bin/brew
+/opt/homebrew/bin/brew
 ```
-2.
+
+### 2. Install `kubectl`
+
 ```
 $ brew install kubectl
 $ which kubectl
-/usr/local/bin/kubectl
+# /usr/local/bin/kubectl
+/Users/marshad/.docker/bin/kubectl
 ```
 
-3.
-`https://www.virtualbox.org/` (Downloads --> OS X hosts)
+### 3. Install a VM driver `virtualbox`
 
-4.
+`https://www.virtualbox.org/` -> (Downloads --> OS X hosts)
+
+### 4. Install `minikube`
+
 ```
 $ brew cask install minikube
 $ which minikube
 /usr/local/bin/minikube
 ```
 
+### 5. Start minikube
+
 ```
-# 5. Start minikube
 $ minikube start
 $ minikube status
 
