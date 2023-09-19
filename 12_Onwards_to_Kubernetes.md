@@ -31,10 +31,10 @@
 
 * `Kubernetes`:
     - **Development**:
-	- `minikube` (sets up a tiny-little-cluster on local computer)
+	    - `minikube` (sets up a tiny-little-cluster on local computer)
     - **Production** (Managed solutions):
-    - `EKS`: Amazon Elastic Container Service for `Kubernetes`
-    - `GKE`: Google Cloud `Kubernetes` Engine
+        - `EKS`: Amazon Elastic Container Service for `Kubernetes`
+        - `GKE`: Google Cloud `Kubernetes` Engine
  
 * `minikube` (Used for managing VM itself)
     - VM {Node {Container_1, ..., Container_N}} -- local only
