@@ -267,13 +267,15 @@ Node{
 
 Object Types:
 
-Kind: Pod {C1, ...CN}: Runs one or more closely related containers
-
-Kind: Services: Sets up networking in a Kubernetes cluster. There are 4 subtypes:
-	-- ClusterIP
-	-- NodePort: Exposes a container to the outside world (only good for 'dev' purposes!!!)
-	-- LoadBalancer
-	-- Ingres
+* Kind
+    - `Pod`{C1, C2, ..., CN}
+        - Runs one or more closely-related-containers
+    - `Services`: Sets up **networking** in a k8s cluster. 
+    - There are 4 subtypes:
+	    -- `ClusterIP`
+	    -- `NodePort`: Exposes a container to the outside world (only good for 'dev' purposes!)
+	    -- `LoadBalancer`
+	    -- `Ingres`
 
 ```
 apiVersion: v1
@@ -293,17 +295,17 @@ spec:
 Port Forwarding: "label" and "selector" with key:value approach. labels and selectors are used to connect objects.
 
 ```
-labels:
-    component: web
-selector:
-    component: web
+* labels:
+    - component: web
+* selector:
+    - component: web
 
 OR
 
-labels:
-    tier: frontend
-selector:
-    tier: frontend
+* labels:
+    - tier: frontend
+* selector:
+    - tier: frontend
 ```
 
 ***
@@ -325,9 +327,11 @@ $ kubectl get pods
 NAME        READY   STATUS    RESTARTS    AGE
 client-pod  1/1     Running   0           1h
 
-READY x/y = READY Number-pods/Number of copies runnies
+READY x/y = READY <Number-pods>/<Number-of-copies-running>
 
+```
 $ kubectl get services
+```
 
 NAME              TYPE        CLUSTER-IP      EXTERNAL-IP     PORTS(S)        AGE
 client-node-port  NodePort    a.b.c.d         <none>          3050:31515/TCP  1h
@@ -335,10 +339,11 @@ kubernetes        ClusterIP   p.q.r.s         <none>          443/TCP         4d
 
 PORTS port:NodePort
 
-$ minikube ip 					# prints the ip address of that VM
-
-https://<VM ip-address>:port
 ```
+$ minikube ip 					# prints the ip address of that VM
+```
+
+`https://<VM ip-address>:port`
 
 ***
 
