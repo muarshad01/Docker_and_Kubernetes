@@ -29,19 +29,19 @@
 
 ## 178: `Kubernetes` in Development and Production
 
-* Kubernetes:
-    - Development:
+* `Kubernetes`:
+    - **Development**:
 	- `minikube` (sets up a tiny-little-cluster on local computer)
-* Production (Managed solutions):
-    - `EKS`: Amazon Elastic Container Service for Kubernetes (EKS)
-    - `GKE`: Google Cloud Kubernetes Engine
+    - **Production** (Managed solutions):
+    - `EKS`: Amazon Elastic Container Service for `Kubernetes`
+    - `GKE`: Google Cloud `Kubernetes` Engine
  
 * `minikube` (Used for managing VM itself)
     - VM {Node {Container_1, ..., Container_N}} -- local only
 * `kubectl`  (Used for managing containers in the Node)
     - VM {Node {Container_1, ..., Container_N}} -- local/production Env
 
-* Local Kubernetes Development:
+* Local `Kubernetes` Development:
     - Install `kubectl`
     - Install a VM driver `virtualbox`
     - Install `minikube`
