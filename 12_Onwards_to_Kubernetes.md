@@ -179,15 +179,20 @@ $ kubectl cluster-info
 
 ## 181: Adding Configuration Files
 
-`https://hub.docker.com`
+* `https://hub.docker.com`
+* `Kubernetes` expects ALL images to already be built
 
-Kubernetes expects ALL images to already be built
+* Kind
+    - service
+    - pod
 
 ```
 $ mkdir simpleK8s
 $ cd simpleK8s
-$ touch client-pod.yaml 		# create a file
 ```
+
+Create file `client-pod.yaml`
+
 
 ```
 apiVersion: v1			 	# Scopes or limits the type of 'objects' we can create with any given configuration
@@ -195,18 +200,17 @@ kind: Pod
 metadata:
   name: client-pod
   labels:
-    component: web 			# related or tied to other config file we will write down
+    component: web 			# related or tied to other config file that we will write down
 spec:
   containers:
     - name: client
-      image: marshad1/multi-client 	# image on docker hub
+      image: muarshad01/multi-client 	    # image on docker hub
       ports:
         - containerPort: 3000
 ```
 
-```
-$ touch client-node-port.yaml 		# create a file
-```
+
+Create `client-node-port.yaml`
 
 ```
 apiVersion: v1
@@ -225,28 +229,31 @@ spec:
 
 ***
 
-## 188: Object Types and API Versions
+## 182: Object Types and API Versions
 
-In kubernetes, config files are used to crate 'Objects' (or specific types of objects), 
+In `kubernetes`, config files are used to create `Objects` (or specific types of objects), 
 a thing that exists inside our kubernetes cluter.
 
-Example object types:
-1. StatefulSet
-2. ReplicaController
-3. kind: Pod - A Pod object is used to "run a container".
-4. kind: Service - A Service object is used to "set up some kind of networking".
+* Example Object types:
+    - `StatefulSet`
+    - `ReplicaController`
+    - `kind`
+        - `Pod`: A Pod object is used to "run a container".
+        - Service: A Service object is used to "set up some-kind-of-networking".
 
 Each API version defines a different set of 'objects' we can use
 
 ***
 
-## 189: Running Containers in Pods
+## 183: Running Containers in Pods
 
 ```
 $ minikube start 			# Create a VM referred to as 'Node'; 
                    			# Node runs various types of 'objects' such as Pod
                    			# Pod is a "grouping of containers" with similar purpose
+```
 
+```
 Node{
   Pod {
     nginx: container
