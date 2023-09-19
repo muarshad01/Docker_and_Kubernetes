@@ -36,15 +36,18 @@
         - `EKS`: Amazon Elastic Container Service for `Kubernetes`
         - `GKE`: Google Cloud `Kubernetes` Engine
  
-* `minikube` (Used for managing VM itself)
-    - VM {Node {Container_1, ..., Container_N}} -- local only
-* `kubectl`  (Used for managing containers in the Node)
-    - VM {Node {Container_1, ..., Container_N}} -- local/production Env
+* `minikube` 
+    - (Used for managing VM itself)
+    - VM {Node {C1, C2, ..., CN}} -- local only
+* `kubectl`  
+    - (Used for managing containers in the Node)
+    -  Node {C1, C2, ..., CN} -- local/production Env
 
 * Local `Kubernetes` Development:
     - Install `kubectl`
     - Install a VM driver `virtualbox`
     - Install `minikube`
+
 
 ***
 
