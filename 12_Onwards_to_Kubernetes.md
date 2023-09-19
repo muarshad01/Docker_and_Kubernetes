@@ -19,6 +19,8 @@
 
 * Load Balancer --> Master --> {Node1, Node2, ...}
 
+***
+
 ## 178: Kubernetes in Development and Production
 
 Kubernetes:
@@ -38,11 +40,17 @@ Local Kubernetes Development:
 - Install a VM driver virtualbox
 - Install minikube
 
+***
+
 ## 179: Docker Desktop's Kubernetes Setup and Installation - macOS
 
 * Docker Icon --> Preferences --> Kubernetes --> Apply & Restart
 
+***
+
 ## 180: Docker Desktop's Kubernetes Setup and Installation - Windows
+
+***
 
 ## 181: Updated Minikube Install and Setup -- MacOS
 
@@ -70,6 +78,8 @@ $ minikube status
 
 3. Check kubectl
 $ kubectl version
+
+***
 
 ## 182: Minikube Setup on MacOS
 
@@ -102,9 +112,15 @@ Start minikube --> $ minikube start
                       $ minikube status
 ```
 
+***
+
 ## 183: Minikube Stup on Windows
 
+***
+
 ## 184: Minikube Stup on Linux
+
+***
 
 ## 185: Mapping Existing Knowledge
 
@@ -126,7 +142,11 @@ $ kubectl cluster-info
 - To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
+***
+
 ## 186: Quick Note to prevent an Error
+
+***
 
 ## 187: Adding Configuration Files
 
@@ -174,6 +194,8 @@ spec:
     component: web
 ```
 
+***
+
 ## 188: Object Types and API Versions
 
 In kubernetes, config files are used to crate 'Objects' (or specific types of objects), 
@@ -186,6 +208,8 @@ Example object types:
 4. kind: Service - A Service object is used to "set up some kind of networking".
 
 Each API version defines a different set of 'objects' we can use
+
+***
 
 ## 189: Running Containers in Pods
 
@@ -200,6 +224,8 @@ Node{
   }
 }
 ```
+
+***
 
 ## 190: Service Config Files in Depth
 
@@ -244,6 +270,8 @@ selector:
     tier: frontend
 ```
 
+***
+
 ## 191: Connecting to Running Containers
 
 ```
@@ -276,6 +304,8 @@ $ minikube ip 					# prints the ip address of that VM
 https://<VM ip-address>:port
 ```
 
+***
+
 ## 192: The Entire Deployment Flow
 
 ```
@@ -289,6 +319,8 @@ $ kubect get pods
 NAME        READY   STATUS    RESTARTS    AGE
                                  1           
 * Note: Deployment file goes to Master and not Nodes
+
+***
 
 ## 193: Imperative vs Declarative Deployments
 
