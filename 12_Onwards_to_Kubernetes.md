@@ -1,4 +1,4 @@
-## 177: The Why's and What's of Kubernetes
+## 171: The Why's and What's of `Kubernetes`
 
 * `AWS Elastic Beanstalk (EBS)` application has following 4 servers / containers:
   - nginx
@@ -27,7 +27,7 @@
 
 ***
 
-## 178: `Kubernetes` in Development and Production
+## 172: `Kubernetes` in Development and Production
 
 * `Kubernetes`:
     - **Development**:
@@ -51,17 +51,21 @@
 
 ***
 
-## 179: Docker Desktop's `Kubernetes` Setup and Installation - `macOS`
+## 173: Docker Desktop's `Kubernetes` Setup and Installation - `macOS`
 
 * Docker Desktop -> Settings -> `Kubernetes` -> Enable Kubernetes -> Apply & Restart
 
+```
+$ kubectl version
+```
+
 ***
 
-## 180: Docker Desktop's Kubernetes Setup and Installation - Windows
+## 174: Docker Desktop's `Kubernetes` Setup and Installation - Windows
 
 ***
 
-## 181: Updated `minikube` Install and Setup -- MacOS
+## 181: Updated `minikube` Install and Setup -- `MacOS`
 
 ```
 $ which brew
