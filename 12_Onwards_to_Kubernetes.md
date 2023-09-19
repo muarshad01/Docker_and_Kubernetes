@@ -373,3 +373,14 @@ $ kubectl apply -f client-node-port.yaml
   can run a dissimilar set of containers
 * To deploy something, we update the desired state of the master with a config file
 * The master works constantly to meet your desired state
+
+***
+
+
+
+
+
+
+
+
+
