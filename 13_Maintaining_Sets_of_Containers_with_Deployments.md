@@ -140,7 +140,9 @@ $ kubectl get pods
 $ kubectl get deployments
 ```
 
+```
 NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
+```
 
 ***
 
@@ -178,6 +180,7 @@ $ kubectl get pods
 ```
 --image: stephengrider/multi-worker
 
+```
 $ kubectl apply -f client-deployment.yaml
 $ kubectl get pods
 ```
