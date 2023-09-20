@@ -1,4 +1,4 @@
-## 256: The Deployment Process
+## 250: The Deployment Process
 
 1. Create a Github Repo
 2. Tie repo to 'Travis CI Service'
@@ -10,7 +10,7 @@
 
 ***
 
-## 257: Google Cloud vs AWS for Kubernetes
+## 251: Google Cloud vs AWS for Kubernetes
 
 Why Google Cloud?
 1. Google created Kubernetes!
@@ -20,7 +20,7 @@ Why Google Cloud?
 
 ***
 
-## 258: Creating a Git Repo
+## 252: Creating a Git Repo
 
 $ git remote -v
 origin ... (fetch)
@@ -37,17 +37,17 @@ $ git push origin master
 
 ***
 
-## 259: Linking the Github Repo to Travis
+## 253: Linking the Github Repo to Travis
 
 `https://travis-ci.org`
 
 ***
 
-## 260: Free Google Cloud Credits
+## 254: Free Google Cloud Credits
 
 ***
 
-## 261: Creating a Google Cloud Project
+## 255: Creating a Google Cloud Project
 
 `https://console.cloud.google.com`
 
@@ -55,33 +55,33 @@ Select a project --> New Project --> Project Name --> multi-k8s --> Create
 
 ***
 
-## 262: Linking a Billing Account
+## 256: Linking a Billing Account
 
 ***
 
-## 263: Updated GKE creation steps for new Google Cloud UI
+## 257: Updated GKE creation steps for new Google Cloud UI
 
 ***
 
-## 264: Kubernetes Engine Init
+## 258: Kubernetes Engine Init
 
 ***
 
-## 265: Creating a Cluster with Google Cloud
+## 259: Creating a Cluster with Google Cloud
 
 ***
 
-## 266: Don't Forget to Cleanup!
+## 260: Don't Forget to Cleanup!
 
 `https://www.udemy.com/docker-and-kubernetes-the-complete-guide/learn/v4/t/lecture/11684242?start=0`
 
 ***
 
-## 267: Kubernetes Dashboard on Google Cloud
+## 261: Kubernetes Dashboard on Google Cloud
 
 ***
 
-## 268: Travis Deployment Overview
+## 262: Travis Deployment Overview
 
 * 1. Install Google Cloud SDK CLI
 * 2. Configure the SDK without Googld Cloud auth info
@@ -95,7 +95,7 @@ Select a project --> New Project --> Project Name --> multi-k8s --> Create
 
 ***
 
-## 269: Installing the Google Cloud SDK
+## 263: Installing the Google Cloud SDK
 
 $ touch .travis.yaml
 
@@ -112,11 +112,11 @@ before_install:
 
 ***
 
-## 270: Updated Service Account steps for new GCP UI
+## 264: Updated Service Account steps for new GCP UI
 
 ***
 
-## 271: Generating a Service Account
+## 265: Generating a Service Account
 
 * Create a Service Account
 * Download service account credentials in a <file-name>.json file
@@ -126,7 +126,7 @@ before_install:
 
 ***
 
-## 272: Ruby Version Fix
+## 266: Ruby Version Fix
 
 ```
 $ docker run -it -v $(pwd):/app ruby:2.4 sh
@@ -135,7 +135,7 @@ $ gem install travis
 
 ***
 
-## 273: Running Travis CLI in a Container
+## 267: Running Travis CLI in a Container
 
 `https://github.com/travis-ci/travis.rb`
 
@@ -158,11 +158,11 @@ $ travis encrypt-file service-account.json -r muarshad01/multi-k8s  --com
 
 ***
 
-## 274: Travis Login Issues, "iv undefined" or "repository not known"
+## 268: Travis Login Issues, "iv undefined" or "repository not known"
 
 ***
 
-## 275: Encrypting a Service Account File
+## 269: Encrypting a Service Account File
 
 ```
 # travis login
@@ -180,7 +180,7 @@ $ rm -f service-account.json
 
 ***
 
-## 276: More Google Cloud CLI Config
+## 270: More Google Cloud CLI Config
 
 ```
 sudo: required 								# Because we're making use of docker
@@ -203,17 +203,17 @@ script:
 
 ***
 
-## 277: Fix For Failing Travis Builds
+## 271: Fix For Failing Travis Builds
 
 ***
 
-## 278: Running Testes with Travis
+## 272: Running Testes with Travis
 
 ***
 
-## 279: Custom Deployment Providers
+## 273: Custom Deployment Providers
 
-In .travis.yaml file add the following:
+In `.travis.yaml` file add the following:
 
 ```
 deploy:
@@ -227,7 +227,7 @@ $ touch deploy.sh
 
 ***
 
-## 280: Unique Deployment Images
+## 274: Unique Deployment Images
 
 deploy.sh
 
@@ -246,7 +246,7 @@ $ kubectl set image deployments/server-deployment server=muarshad01/multi-server
 
 ***
 
-## 281: Unique Tags for Built Images
+## 275: Unique Tags for Built Images
 
 ```
 $ docker buid 
@@ -257,7 +257,7 @@ $ docker buid
 
 ***
 
-## 282: Updating the Deployment Script
+## 276: Updating the Deployment Script
 
 In .travis.yaml
 
@@ -272,7 +272,7 @@ env:
 
 ***
 
-## 283: Configuring the GCloud CLI on Cloud Console
+## 277: Configuring the GCloud CLI on Cloud Console
 
 ```
 $ gcloud config set project <ID>
@@ -282,7 +282,7 @@ $ gcloud container clusters get-credentials multi-cluster
 
 ***
 
-## 284: Creating a Secret on Google Cloud
+## 278: Creating a Secret on Google Cloud
 
 ```
 $ kubectl get pods 
@@ -293,11 +293,11 @@ $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpasswor
 
 ***
 
-## 285: Helm v3 Update
+## 279: Helm v3 Update
 
 ***
 
-## 286: Helm Setup
+## 280: Helm Setup
 
 ```
 $ github.com/helm/helm 
@@ -307,7 +307,7 @@ Helm Client --> Tiller Server           # runs inside a kubernetes server; Tille
 
 ***
 
-## 287: Kubernetes Security with RBAC
+## 281: Kubernetes Security with RBAC
 
 * RBAC
   - Limits who can access and modify objects in our cluster
@@ -320,7 +320,7 @@ $ kubectl get namespces
 
 ***
 
-## 288: Assigning Tiller a Service Account
+## 282: Assigning Tiller a Service Account
 
 ```
 $ kubectl create serviceaccount --namespace kube-system tiller 
@@ -331,31 +331,31 @@ $ helm --service-account tiller --upgrade
 
 ***
 
-## 289: Ingress-Nginx with Helm
+## 283: Ingress-Nginx with Helm
 
 $ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
 ***
 
-## 291: The Result of Ingress-Nginx
+## 285: The Result of Ingress-Nginx
 
 ***
 
-## 292: Finally - Deployment
+## 286: Finally - Deployment
 
 `https://github.com/StephenGrider/DockerCasts`
 
 ***
 
-## 293: Did I really Type That?
+## 287: Did I really Type That?
 
 ***
 
-## 294: Verifying Deployment
+## 288: Verifying Deployment
 
 ***
 
-## 295: A Workflow for Chaining in Prod
+## 289: A Workflow for Chaining in Prod
 
 * Check out a branch 
 * Make changes 
@@ -378,12 +378,12 @@ Create a pull-request manually
 
 ***
 
-## 296: Merging a PR (Pull Request) for Deployment
+## 290: Merging a PR (Pull Request) for Deployment
 
 ***
 
-## 297: That's It! What's Next?
+## 291: That's It! What's Next?
 
 ***
 
-## 298: Completed Code For Google Cloud Deployment
+## 292: Completed Code For Google Cloud Deployment
