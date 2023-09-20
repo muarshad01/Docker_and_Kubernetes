@@ -24,24 +24,24 @@
 
 ```
 $ git remote -v
-```
 -- origin ... (fetch)
 -- origin ... (push)
+```
 
 ```
 $ git remote remove origin
+$ git remote -v 
 ```
 
 ```
-$ git remote -v 
 $ git remote add origin git@github.com:muarshad01/multi-k8s.git
 ```
 
 ```
 $ git remote -v
-```
 -- origin ... (fetch)
 -- origin ... (push)
+```
 
 ```
 $ git add .
