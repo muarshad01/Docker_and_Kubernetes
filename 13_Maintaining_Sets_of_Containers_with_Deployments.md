@@ -15,6 +15,8 @@ kubectl -> Master -> Virtual Machine (Node) {
                                             } 
 ```
 
+***
+
 ## 195: Declarative Updates in Action
 
 update client-pod.yaml
@@ -46,6 +48,8 @@ How to get detailed info about an object
 $ kubectl describe pod client-pod
 ```
 
+***
+
 ## 196: Limitations in Config Updates
 
 ```
@@ -54,6 +58,8 @@ ports:
  
 $ kubectl apply -f client-pod.yaml
 ```
+
+***
 
 ## 197: Running Containers with Deployments
 
@@ -64,7 +70,11 @@ $ kubectl apply -f client-pod.yaml
 
 * Deployment object has a Pod Template
 
+***
+
 ## 198: Quick Note to Prevent an Error
+
+***
 
 ## 199: Deployment Configuration Files
 
@@ -92,7 +102,11 @@ spec:
             - containerPort: 3000
 ```
 
+***
+
 ## 200: Walking Through the Deployment Config
+
+***
 
 ## 201: Applying a Deployment
 
@@ -113,12 +127,16 @@ $ kubectl get deployments
 NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
 ```
 
+***
+
 ## 202: Why Use Services?
 
 ```
 $ minikube ip						# VM IP adress
 $ kubectl get pods -o wide				# Every pod is assigned its own IP address
 ```
+
+***
 
 ## 203: Scaling and Changing Deployments
 
@@ -144,12 +162,16 @@ $ kubectl apply -f client-deployment.yaml
 $ kubectl get pods
 ```
 
+***
+
 ## 204: Updating Deployment Images
 
 ```
 $ kubectl apply -f client-deployment.yaml
 $ minikube ip
 ```
+
+***
 
 ## 205: Rebuilding the Client Image
 
@@ -163,6 +185,8 @@ $ docker buid -t muarshad01/multi-client . 		# '.' is build context
 $ docker push muarshad01/multi-client
 ```
 
+***
+
 ## 206: Triggering Deployment Updates
 
 ```
@@ -174,6 +198,8 @@ deployment.apps/client-deployment unchanged 		# Notice 'unchanged', it means new
 $ kubectl get pods
 $ kubectl get deployments
 ```
+
+***
 
 ## 207: Imperatively Updating a Deployment's Image
 
@@ -196,13 +222,19 @@ $ kubect get pods
 $ minikube ip
 ```
 
+***
+
 ## 208: Reminder for Docker Desktop's Kubernetes Users
+
+***
 
 ## 209: Multiple Docker Installations
 
 ```
 $ docker ps
 ```
+
+***
 
 ## 210: Reconfiguring Docker CLI
 
@@ -213,6 +245,8 @@ $ eval $(minikube docker-env) 			# Temprarily, reconfigures local copy of docker
                                 		# connect to the docker server inside the kubernetes node
 $ docker ps
 ```
+
+***
 
 ## 211: Why Mess with Docker in the Node?
 
