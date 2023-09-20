@@ -1,4 +1,4 @@
-## 194: Updating Existing Objects
+## 188: Updating Existing Objects
 
 *Find an existing Pod and update the image that it is using
 
@@ -17,7 +17,7 @@ kubectl -> Master -> Virtual Machine (Node) {
 
 ***
 
-## 195: Declarative Updates in Action
+## 189: Declarative Updates in Action
 
 update client-pod.yaml
 
@@ -50,7 +50,7 @@ $ kubectl describe pod client-pod
 
 ***
 
-## 196: Limitations in Config Updates
+## 190: Limitations in Config Updates
 
 ```
 ports:
@@ -61,7 +61,7 @@ $ kubectl apply -f client-pod.yaml
 
 ***
 
-## 197: Running Containers with Deployments
+## 191: Running Containers with Deployments
 
 
 * Pods 		-> Runs a single set of containers
@@ -72,11 +72,11 @@ $ kubectl apply -f client-pod.yaml
 
 ***
 
-## 198: Quick Note to Prevent an Error
+## 192: Quick Note to Prevent an Error
 
 ***
 
-## 199: Deployment Configuration Files
+## 193: Deployment Configuration Files
 
 $ touch client-deployment.yaml 				
 
@@ -104,11 +104,11 @@ spec:
 
 ***
 
-## 200: Walking Through the Deployment Config
+## 194: Walking Through the Deployment Config
 
 ***
 
-## 201: Applying a Deployment
+## 195: Applying a Deployment
 
 ```
 $ kubectl get pods
@@ -129,7 +129,7 @@ NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
 
 ***
 
-## 202: Why Use Services?
+## 196: Why Use Services?
 
 ```
 $ minikube ip						# VM IP adress
@@ -138,7 +138,7 @@ $ kubectl get pods -o wide				# Every pod is assigned its own IP address
 
 ***
 
-## 203: Scaling and Changing Deployments
+## 197: Scaling and Changing Deployments
 
 ```
 ports:
@@ -164,7 +164,7 @@ $ kubectl get pods
 
 ***
 
-## 204: Updating Deployment Images
+## 198: Updating Deployment Images
 
 ```
 $ kubectl apply -f client-deployment.yaml
@@ -173,7 +173,7 @@ $ minikube ip
 
 ***
 
-## 205: Rebuilding the Client Image
+## 199: Rebuilding the Client Image
 
 ```
 $ cd complex/client
@@ -187,7 +187,7 @@ $ docker push muarshad01/multi-client
 
 ***
 
-## 206: Triggering Deployment Updates
+## 200: Triggering Deployment Updates
 
 ```
 https://github.com/kubernetes/kubernetes/issues/33664
@@ -201,7 +201,7 @@ $ kubectl get deployments
 
 ***
 
-## 207: Imperatively Updating a Deployment's Image
+## 201: Imperatively Updating a Deployment's Image
 
 * Update the multi-client image
 * Tag the image with a version number, push to docker hub
@@ -224,11 +224,11 @@ $ minikube ip
 
 ***
 
-## 208: Reminder for Docker Desktop's Kubernetes Users
+## 202: Reminder for Docker Desktop's Kubernetes Users
 
 ***
 
-## 209: Multiple Docker Installations
+## 203: Multiple Docker Installations
 
 ```
 $ docker ps
@@ -236,7 +236,7 @@ $ docker ps
 
 ***
 
-## 210: Reconfiguring Docker CLI
+## 204: Reconfiguring Docker CLI
 
 ```
 $ cd simplek8s
@@ -248,7 +248,7 @@ $ docker ps
 
 ***
 
-## 211: Why Mess with Docker in the Node?
+## 205: Why Mess with Docker in the Node?
 
 * Use all the same debugging techniques we learned with Docker CLI
 * Manually kill containers to test Kubernetes ability to 'self-heal'
