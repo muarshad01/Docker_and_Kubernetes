@@ -203,6 +203,7 @@ $ cd complex/client
 ```
 
 * Crate a new Image
+
 ```
 $ docker buid -t muarshad01/multi-client . 		# '.' is build context
 ```
@@ -216,12 +217,14 @@ $ docker push muarshad01/multi-client
 
 ## 200: Triggering Deployment Updates
 
+`https://github.com/kubernetes/kubernetes/issues/33664`
+
 ```
-https://github.com/kubernetes/kubernetes/issues/33664
-
 $ kubectl apply -f client-deployment.yaml
-deployment.apps/client-deployment unchanged 		# Notice 'unchanged', it means new config file is same as previous
+```
+-- deployment.apps/client-deployment unchanged 		# Notice 'unchanged', it means new config file is same as previous
 
+```
 $ kubectl get pods
 $ kubectl get deployments
 ```
@@ -232,30 +235,32 @@ $ kubectl get deployments
 
 * Update the multi-client image
 * Tag the image with a version number, push to docker hub
-* Run a 'kubectl' command forcing the deployment to user the new image version
+* Run a `kubectl` command forcing the deployment to user the new image version
 
 ```
 $ cd complex/client
 
-$ docker build -t marshad1/multi-client:v5 .
+$ docker build -t muarshad01/multi-client:v5 .
 $ docker push <tag-name>
-$ docker push marshad1/multi-client:v5
+$ docker push muarshad01/multi-client:v5
 
 $ kubectl set image <object_type>/<object_name> <container_name>=<new image to use>
-$ kubectl set image deployment/client-deployment client=marshad1/multi-client:v5
-deployment.extensions/client-deployment image updated
+$ kubectl set image deployment/client-deployment client=muarshad01/multi-client:v5
+```
+--deployment.extensions/client-deployment image updated
 
+```
 $ kubect get pods
 $ minikube ip
 ```
 
 ***
 
-## 202: Reminder for Docker Desktop's Kubernetes Users
+## 202: Reminder for Docker Desktop's `Kubernetes` Users
 
 ***
 
-## 203: Multiple Docker Installations
+## 203: Multiple-Docker Installations
 
 ```
 $ docker ps
@@ -278,7 +283,7 @@ $ docker ps
 ## 205: Why Mess with Docker in the Node?
 
 * Use all the same debugging techniques we learned with Docker CLI
-* Manually kill containers to test Kubernetes ability to 'self-heal'
+* Manually kill containers to test `Kubernetes` ability to 'self-heal'
 * Deleted cached images in the node
 
 ```
