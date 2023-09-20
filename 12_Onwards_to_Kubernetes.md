@@ -314,20 +314,26 @@ OR
 
 ```
 $ cd simplek8s
+```
 
-$ kubectl apply -f <file-name>
+```
 $ kubectl apply -f client-pod.yaml 
+```
 -- pod/client-pod configured
 
+```
 $ kubectl apply -f client-node-port.yaml
+```
 -- service/client-node-port configured
 
+```
 $ kubectl get pods
+```
 
 NAME        READY   STATUS    RESTARTS    AGE
 client-pod  1/1     Running   0           1h
 
-READY x/y = READY <Number-pods>/<Number-of-copies-running>
+READY x/y = READY
 
 ```
 $ kubectl get services
@@ -377,15 +383,6 @@ $ kubectl apply -f client-node-port.yaml
 * `Kubernetes` (the master) decides where to run each container - each Node 
   can run a dissimilar set of containers
 * To deploy something, we update the desired state of the master with a config file
-* The master works constantly to meet your desired state
+* The `master` works constantly to meet your desired state
 
 ***
-
-
-
-
-
-
-
-
-
