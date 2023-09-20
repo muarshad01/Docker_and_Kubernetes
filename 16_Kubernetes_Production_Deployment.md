@@ -1,39 +1,53 @@
 ## 250: The Deployment Process
 
 * Create a `GitHub` Repo
-* Tie Repo to `Travis CI Service`
-    - Travis CI will be in-charge of building our images and pushing them off to `DockerHub`; 
-    - To also deploy our application to Kubernetes cluster 
+* Tie Repo to `Travis CI` Service
+    - `Travis CI` will be in-charge of building our images and pushing them off to `DockerHub`; 
+    - To also deploy our application to `Kubernetes` cluster 
 * Create Google Cloud project
 * Enable billing for the project
 * Add deployment scripts to the Repo
 
 ***
 
-## 251: Google Cloud vs AWS for Kubernetes
+## 251: `Google Cloud` vs `AWS` for Kubernetes
 
-Why Google Cloud?
-1. Google created Kubernetes!
-2. AWS only "recently" got Kubernetes support
-3. Far, far easire to poke around Kubernetes on Google Cloud
-4. Excellent documentation for beginners
+* Why Google Cloud?
+    - Google created `Kubernetes`
+    - `AWS` only "recently" got `Kubernetes` support
+    - Far, far easier to poke around `Kubernetes` on Google Cloud
+    - Excellent documentation for beginners
 
 ***
 
 ## 252: Creating a Git Repo
 
+```
 $ git remote -v
-origin ... (fetch)
-origin ... (push)
+```
+-- origin ... (fetch)
+-- origin ... (push)
+
+```
 $ git remote remove origin
+```
+
+```
 $ git remote -v 
 $ git remote add origin git@github.com:muarshad01/multi-k8s.git
+```
+
+```
 $ git remote -v
-origin ... (fetch)
-origin ... (push)
+```
+-- origin ... (fetch)
+-- origin ... (push)
+
+```
 $ git add .
 $ git commit -m "added files"
 $ git push origin master
+```
 
 ***
 
