@@ -287,9 +287,8 @@ spec:
                     - containerPort: 6379
 ```
 
-```
-$ touch redis-cluster-ip-service.yaml
-```
+Create `redis-cluster-ip-service.yaml`
+
 
 ```
 apiVersion: v1
@@ -321,9 +320,8 @@ $ kubectl get services
 
 ## 220: Last Set of Boring Config
 
-```
-$ postgres-deployment.yaml
-```
+Create `postgres-deployment.yaml`
+
 
 ```
 apiVersion: apps/v1
@@ -347,9 +345,7 @@ spec:
                 - containerPort: 5432
 ```
 
-```
-$ touch postgres-cluster-ip-service.yaml
-```
+Create `postgres-cluster-ip-service.yaml`
 
 ```
 apiVersion: v1
@@ -376,39 +372,36 @@ $ kubectl get service
 
 ## 221: The Need for Volumes with Databases
 
-Persistent Volume Claim (PVC)
+`Persistent Volume Claim (PVC)`
 
 ***
 
 ## 222: Kubernetes Volumes
 
-* Persistent Volume Claims
-* Persistent Volume
 * Volume
+* Persistent Volume
+* Persistent Volume Claims (PVC)
 
-Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
+* Volume is Tied-to-Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
 Volume will, however, survive the container restarts.
 
 ***
 
 ## 223: Volumes vs Persistent Volumes
 
-Persistent volume is not tied to any 'pod' or 'container'
+* Persistent volume is NOT-tied to any pod-or-container
 
-Pod {
-    Container{...}
-}
+`Pod {C1, C2, ..., CN}`
 
-Persistent volume is outside the pod.
+Persistent volume is outside-the-pod.
 
 ***
 
-## 224: Persistent Volumes vs Persistent Volume Claims
+## 224: Persistent Volumes vs Persistent Volume Claims (PVC)
 
-Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
-
-Statistically provisioed Persistent Volume
-Dynamically provisioned Persistent Volume
+* PVC is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
+    - Statistically provisioned Persistent Volume
+    - Dynamically   provisioned Persistent Volume
 
 ***
 
@@ -416,8 +409,9 @@ Dynamically provisioned Persistent Volume
 
 ```
 $ cd k8s
-$ touch database-persistent-volume-claim.yaml
 ```
+
+Create `database-persistent-volume-claim.yaml`
 
 ```
 apiVersion: v1
@@ -436,9 +430,9 @@ spec:
 
 ## 226: Persistent Volume Access Modes
 
-* ReadWriteOnce			# Can be used by a single node.
-* ReadOnlyMany			# Multiple nodes can read from this.
-* ReadWriteMany			# Can be read and written to by many nodes.
+* `ReadWriteOnce`			# Can be used by a single node.
+* `ReadOnlyMany`			# Multiple nodes can read from this.
+* `ReadWriteMany`			# Can be read and written to by many nodes.
 
 ***
 
@@ -454,7 +448,7 @@ $ kubectl describe storageclass
 
 ***
 
-## 228: Designating a PVC in a Pod Template
+## 228: Designating a PVC in a Pod-Template
 
 ```
 apiVersion: apps/v1
@@ -488,7 +482,7 @@ spec:
 
 ***
 
-## 229: Applyng a PVC
+## 229: Applying a `PVC`
 
 ```
 $ cd k8s
@@ -567,33 +561,37 @@ spec:
 
 ## 232: Creating an Encoded Secret
 
-1. Pods 					# Runs one or more closely related containers
+1. `Pods` 					        # Runs one-or-more closely related containers
 
-2. Deployments 					# Administers and manages a set of pods
+2. `Deployments` 					# Administers and manages a set-of-pods
 
-3. Services 					# Sets up networking in a Kubernetes Cluster
-    - ClusterIP: Exposes a set of pods to other objects in the cluster
-    - NodePort: Exposes a set of pods to the outside world (only good for dev purposes!!!)
-    - LoadBalancer
-    - Ingress
+3. `Services` 					    # Sets up networking in a `Kubernetes` Cluster
+    - `ClusterIP`                   # Exposes a set of pods to other-objects-in-the-cluster
+    - `NodePort`                    # Exposes a set of pods to the outside-world
+    - `LoadBalancer`
+    - `Ingress`
 
 4. Secrets 					# Securely stores a piece of information in the cluster, such as a database password
 
-Creating a Secret
-------------------
+### Creating a Secret
+
+```
 $ kubectl create secret generic <secret_name> --from-literal key=value
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
-secret/pgpassword created
+```
+--secret/pgpassword created
 
+```
 $ kubectl get secrets
+```
 
-Type of secret:
-- docker-registry
-- TLS
+* Type of secret:
+    - docker-registry
+    - TLS
 
 ***
 
-## 233: Postgres Environment Variable Fix
+## 233: `Postgres` Environment Variable Fix
 
 ***
 
@@ -601,7 +599,9 @@ Type of secret:
 
 ```
 $ kubectl get secret
+```
 
+```
 - name: PGPASSWORD
     valueFrom:
         secretKeyRef:
@@ -613,8 +613,3 @@ $ kubectl apply -f k8s
 
 ***
 ## 235: Environment Variables as Strings
-
-
-
-
-
