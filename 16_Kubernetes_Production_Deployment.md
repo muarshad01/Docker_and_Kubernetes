@@ -8,6 +8,8 @@
 4. Enable billing for the project
 5. Add deployment scripts to the repo
 
+***
+
 ## 257: Google Cloud vs AWS for Kubernetes
 
 Why Google Cloud?
