@@ -51,7 +51,7 @@ $ git push origin master
 
 ***
 
-## 253: Linking the Github Repo to Travis
+## 253: Linking the `GitHub` Repo to `Travis`
 
 `https://travis-ci.org`
 
@@ -65,7 +65,7 @@ $ git push origin master
 
 `https://console.cloud.google.com`
 
-Select a project --> New Project --> Project Name --> multi-k8s --> Create
+* Select a project -> New Project -> Project Name -> multi-k8s --> Create
 
 ***
 
@@ -73,11 +73,11 @@ Select a project --> New Project --> Project Name --> multi-k8s --> Create
 
 ***
 
-## 257: Updated GKE creation steps for new Google Cloud UI
+## 257: Updated GKE Creation Steps for new Google Cloud UI
 
 ***
 
-## 258: Kubernetes Engine Init
+## 258: `Kubernetes` Engine Init
 
 ***
 
@@ -91,30 +91,30 @@ Select a project --> New Project --> Project Name --> multi-k8s --> Create
 
 ***
 
-## 261: Kubernetes Dashboard on Google Cloud
+## 261: `Kubernetes` Dashboard on Google Cloud
 
 ***
 
-## 262: Travis Deployment Overview
+## 262: `Travis` Deployment Overview
 
 * 1. Install Google Cloud SDK CLI
-* 2. Configure the SDK without Googld Cloud auth info
+* 2. Configure the SDK without Googld Cloud `Auth Info`
 * 3. Login to Docker CLI
-* 4. Build the 'test' version of multi-client
-* 5. Run tests 
-* 6. If tests are successful, run a script to deploy newest images 
-* 7. Build all our images, tag each one, push each to docker hub 
-* 8. Apply all configs in the 'k8s' folder 
+* 4. Build the `Test-version` of multi-client
+* 5. Run Tests 
+* 6. If Tests are SUCCESSFUL, run a script to deploy newest images 
+* 7. Build all our images, `Tag` each one, PUSH each to docker-hub 
+* 8. Apply all configs in the `k8s` folder 
 * 9. Imperatively set latest images on each deployment 
 
 ***
 
 ## 263: Installing the Google Cloud SDK
 
-$ touch .travis.yaml
+Create `.travis.yaml`
 
 ```
-sudo: required 						# Because we're making use of docker
+sudo: required
 services:
     - docker 						# We need docker to be pre-installed to run our images
 before_install:
@@ -126,17 +126,17 @@ before_install:
 
 ***
 
-## 264: Updated Service Account steps for new GCP UI
+## 264: Updated Service Account steps for new `GCP UI`
 
 ***
 
-## 265: Generating a Service Account
+## 265: Generating a `Service Account`
 
-* Create a Service Account
-* Download service account credentials in a <file-name>.json file
-* Download and install the Travis CLI
-* Encrypt and upload the json file to our Travis account
-* In travia.yml, add code to unencrypt the json file and load it into GCloud SDK
+* Create a `Service Account`
+* Download `service-account-credentials` in a `<file-name>.json` file
+* Download and install the `Travis CLI`
+* Encrypt and upload the `json` file to our `Travis` account
+* In `travia.yaml`, add code to un-encrypt the json file and load it into `GCloud SDK`
 
 ***
 
@@ -149,12 +149,12 @@ $ gem install travis
 
 ***
 
-## 267: Running Travis CLI in a Container
+## 267: Running `Travis CLI` in a Container
 
 `https://github.com/travis-ci/travis.rb`
 
-Installing Ruby is a pain!
-Let's get a Docker image that has Ruby pre-installed, then we can install travis CLI in there!
+* Installing Ruby is a pain!
+* Let's get a Docker image that has Ruby pre-installed, then we can install Travis CLI in there!
 
 ```
 $ docker run -it -v $(pwd):/app ruby:2.3 sh 				# '-v' volume
@@ -164,7 +164,8 @@ $ travis login
 $ travis login --github-token GIT_HUB_TOKEN --com
 ```
 
-Copy json file into the 'volume' directory so we can use it in the container 
+*Copy json file into the `volume` directory, so that we can use it in the container 
+
 ```
 $ travis encrypt-file <file-name> -r muarshad01/multi-k8s  --com 			# '-r' repository 
 $ travis encrypt-file service-account.json -r muarshad01/multi-k8s  --com
@@ -181,13 +182,18 @@ $ travis encrypt-file service-account.json -r muarshad01/multi-k8s  --com
 ```
 # travis login
 
-Username: muarshad01
-Pasword: Github-password
+-- Username: muarshad01
+-- Pasword: Github-password
+```
 
+```
 $ travis encrypt-file <file-name> -r muarshad01/multi-k8s 			# '-r' repository 
 $ travis encrypt-file service-account.json -r muarshad01/multi-k8s --com
+```
 
-service-account.json.enc
+`service-account.json.enc`
+
+```
 $ rm -f service-account.json 
 # exit 
 ```
