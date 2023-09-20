@@ -88,22 +88,23 @@ spec:
 
 ## 210: `NodePort` vs `ClusterIP` Services
 
-* Pods:			# Runs one or more closeley related containers 
-
-* Services: 		# Sets up 'networking' in a Kubernetes Cluster
-  - ClusterIP 		# Exposes a set of pods to other objects in the cluster
-  - NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
-  - LoadBalancer
-  - Ingress
-
+* `Pods`                # Runs one or more closeley related containers 
+* `Services` 		    # Sets up 'networking' in a Kubernetes Cluster
+    - `ClusterIP`
+    - Exposes a set of pods to other objects in the cluster
+    - `NodePort`
+        - Expose a set of pods to the outside world
+    - LoadBalancer
+    - Ingress
 ***
 
 ## 211: The `ClusterIP` Config
 
 ```
 $ cd k8s
-$ touch client-cluster-ip-service.yaml
 ```
+
+Create `client-cluster-ip-service.yaml` file
 
 ```
 apiVersion: v1
@@ -121,14 +122,13 @@ spec:
 
 ***
 
-## 212: Applying Multiple Files with Kubectl
+## 212: Applying Multiple Files with `Kubectl`
 
 ```
 $ kubectl get deployments
 $ kubectl deleted deployment client-deployment
 $ kubectl get deployments
 ```
-
 -- No resources found.
 
 ```
@@ -137,7 +137,7 @@ $ kubectl delete service client-node-port
 $ kubectl get services
 
 $ kubectl apply -f k8s/client-deployment.yaml
-$ kubectl apply -f k8s # applies every config file
+$ kubectl apply -f k8s                          # applies every config file
 
 $ kubectl get deployments
 $ kubectl get services
@@ -149,8 +149,9 @@ $ kubectl get services
 
 ```
 $ cd k8s
-$ touch server-deployment.yaml
 ```
+
+Create `server-deployment.yaml`
 
 ```
 apiVersion: app/v1
@@ -169,19 +170,20 @@ spec:
         spec:
             containers:
                 - name: server
-                  image: marshad1/multi-server
+                  image: muarshad01/multi-server
                   ports:
                     - containerPort: 5000
 ```
 
 ***
 
-## 214: `Cluter IP` for Express API
+## 214: `CluterIP` for Express API
 
 ```
 $ cd k8s
-$ touch server-cluster-ip-service.yaml
 ```
+
+Create `server-cluster-ip-service.yaml`
 
 ```
 apiVersion: v1
@@ -209,8 +211,9 @@ spec:
 
 ```
 $ cd k8s
-$ touch workder-deployment.yaml
 ```
+
+Create `workder-deployment.yaml`
 
 ```
 apiVersion: apps/v1
@@ -229,7 +232,7 @@ spec:
         spec:
             containers:
                 - name: worker
-                  image: marshad1/multi-worker
+                  image: muarshad01/multi-worker
 ```
 
 ***
@@ -237,16 +240,15 @@ spec:
 ## 217: Reapplyig a Batch of Config Files
 
 ```
-$ cd complex
-$ cd k8s
+$ cd complex/k8s
 $ ls k8s
 ```
 
-* client-deployment.yaml
-* server-deployment.yaml
-* worker-deployment.yaml
-* client-cluster-ip-service.yaml
-* server-cluster-ip-service.yaml
+* `client-deployment.yaml`
+* `server-deployment.yaml`
+* `worker-deployment.yaml`
+* `client-cluster-ip-service.yaml`
+* `server-cluster-ip-service.yaml`
 
 ```
 $ kubectl apply -f k8s/
