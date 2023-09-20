@@ -285,11 +285,11 @@ metadata:
 spec:
   type: NodePort 		        # Subtype of `Service` object
   ports:
-    - port: 3050  		        # OTHER Pod that needs multi-client Pod
-      targetPort: 3000 		    # same as containerPort in kind=Pod definition
+    - port: 3050  		        # Other Pod that needs to communicate with multi-client Pod
+      targetPort: 3000 		    # Same as `containerPort` in Pod definition
       nodePort: 31515 		    # We type this into our browser URL [30,000 -- 32,767]
   selector:
-    component: web 		        # Note the relationship with label in other service. How they are connected together.
+    component: web 		        # Note the relationship with `label` in other service.
 ```
 
 * `Port Forwarding`: `label` and `selector` with key:value approach. 
