@@ -11,8 +11,8 @@ image: multi-worker
 ```
 
 * `kubectl`
-    - Master
-    - Virtual Machine (Node) {Pod Name: client-pod; multi-client container} 
+    - `Master`
+    - VM (`Node`) {`Kind: Pod`; `name`: client-pod; `image`: <github-id>/multi-client} 
 
 ***
 
@@ -58,8 +58,10 @@ $ kubectl describe pod           client-pod
 
 ```
 ports:
-  - containerPort: 9999 # update port number from 3000 to 9999
- 
+    - containerPort: 9999                   # Update port number from 3000 to 9999
+```
+
+``` 
 $ kubectl apply -f client-pod.yaml
 ```
 
@@ -67,12 +69,13 @@ $ kubectl apply -f client-pod.yaml
 
 ## 191: Running Containers with Deployments
 
-
-* Pods 		-> Runs a single set of containers
-* Services 	-> Setups up 'networking' in a Kubernetes Cluster
-* Deployment 	-> Runs a set of identical pods (one or more)
-
-* Deployment object has a Pod Template
+* `Pods`
+    - Runs a single set of containers
+* `Services`
+    - Setups up 'networking' in a `Kubernetes` Cluster
+* `Deployment`
+    - Runs a set of identical `Pods` (one or more)
+    - `Deployment` object has a `Pod Template`
 
 ***
 
@@ -82,11 +85,11 @@ $ kubectl apply -f client-pod.yaml
 
 ## 193: Deployment Configuration Files
 
-$ touch client-deployment.yaml 				
+$ touch `client-deployment.yaml`
 
 ```
 apiVersion: apps/v1
-kind: Deployment 					# Obejct typeRuns a set of identical pods
+kind: Deployment 					# Obejct type: Runs a set of identical Pods
 metadata:
   name: client-deployment
 spec:
@@ -94,14 +97,14 @@ spec:
   selector:
     matchlabels:
       component: web
-  template: 						# Configuration for every single pod using this deployment
+  template: 						# Configuration for every single Pod using this deployment
     metadata:
       labels:
         component: web
     spec:
       containers:
         - name: client
-          image: marshad1/multi-client
+          image: muarshad01/multi-client
           ports:
             - containerPort: 3000
 ```
@@ -116,20 +119,28 @@ spec:
 
 ```
 $ kubectl get pods
-
-Remove an object
-$ kubectl delete -f <config file>
-$ kubectl delete -f client-pod.yaml
-pod "client-pod" deleted
-
-$ kubectl apply -f client-deployment.yaml
-deployment.apps/client-deployment created
-
-$ kubectl get pods
-
-$ kubectl get deployments
-NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
 ```
+
+* Remove an object
+```
+$ kubectl delete -f client-pod.yaml
+```
+-- pod "client-pod" deleted
+
+```
+$ kubectl apply -f client-deployment.yaml
+```
+-- deployment.apps/client-deployment created
+
+```
+$ kubectl get pods
+```
+
+```
+$ kubectl get deployments
+```
+
+NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
 
 ***
 
