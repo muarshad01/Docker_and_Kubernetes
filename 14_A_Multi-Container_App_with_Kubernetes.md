@@ -22,7 +22,11 @@ $ cd simplek8s
 
 Postgres Persistent Volume Claim: PVC
 
+***
+
 ## 213: Checkpoint Files
+
+***
 
 ## 214: A Quick Checkpoint
 
@@ -36,6 +40,8 @@ localhost:3050
 ```
 
 Next: Take all images and migrate them in the world of kubernetes
+
+***
 
 ## 215: Recreating the Deployment
 
@@ -76,6 +82,8 @@ spec:
 			- containerPort: 3000
 ```
 
+***
+
 Lecutre 216: NodePort vs ClusterIP Services
 
 * Pods:			# Runs one or more closeley related containers 
@@ -85,6 +93,8 @@ Lecutre 216: NodePort vs ClusterIP Services
   - NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
   - LoadBalancer
   - Ingress
+
+***
 
 ## 217: The ClusterIP Config
 
@@ -107,6 +117,8 @@ spec:
           targetPort: 3000
 ```
 
+***
+
 ## 218: Applying Multiple Files with Kubectl
 
 ```
@@ -128,6 +140,8 @@ $ kubectl apply -f k8s # applies every config file
 $ kubectl get deployments
 $ kubectl get services
 ```
+
+***
 
 ## 219: Express API Deployment Config
 
@@ -158,6 +172,8 @@ spec:
                     - containerPort: 5000
 ```
 
+***
+
 ## 220: Cluter IP for Express API
 
 ```
@@ -179,9 +195,13 @@ spec:
           targetPort: 5000
 ```
 
+***
+
 ## 221: Combining Config Into Single Files
 
 * Combine all configuration files together and seperate them with '---'
+
+***
 
 ## 222: The Worker Deployment
 
@@ -210,6 +230,8 @@ spec:
                   image: marshad1/multi-worker
 ```
 
+***
+
 ## 223: Reapplyig a Batch of Config Files
 
 ```
@@ -229,6 +251,8 @@ $ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl logs <name-of-pod>
 ```
+
+***
 
 ## 224: Creating and Applying Redis Config
 
@@ -285,7 +309,11 @@ $ kubectl get pods
 $ kubectl get services
 ```
 
+***
+
 ## 225: Important Note about Expected Postgres Error
+
+***
 
 ## 226: Last Set of Boring Config
 
@@ -339,9 +367,14 @@ $ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl get service
 ```
+
+***
+
 ## 227: The Need for Volumes with Databases
 
 Persistent Volume Claim (PVC)
+
+***
 
 ## 228: Kubernetes Volumes
 
@@ -351,6 +384,8 @@ Persistent Volume Claim (PVC)
 
 Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
 Volume will, however, survive the container restarts.
+
+***
 
 ## 229: Volumes vs Persistent Volumes
 
@@ -362,12 +397,16 @@ Pod {
 
 Persistent volume is outside the pod.
 
+***
+
 ## 230: Persistent Volumes vs Persistent Volume Claims
 
 Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
 
 Statistically provisioed Persistent Volume
 Dynamically provisioned Persistent Volume
+
+***
 
 ## 231:  Claim Config Files
 
@@ -389,13 +428,15 @@ spec:
             storage: 2Gi
 ```
 
-==
+***
+
 ## 232: Persistent Volume Access Modes
-==
 
 * ReadWriteOnce			# Can be used by a single node.
 * ReadOnlyMany			# Multiple nodes can read from this.
 * ReadWriteMany			# Can be read and written to by many nodes.
+
+***
 
 ## 233: Where Does Kubernetes Allocate Persistent Volumes
 
@@ -406,6 +447,8 @@ NAME    PROVISIONER     AGE
 
 $ kubectl describe storageclass
 ```
+
+***
 
 ## 234: Designating a PVC in a Pod Template
 
@@ -439,6 +482,8 @@ spec:
                   subPath: postgres 
 ```
 
+***
+
 ## 235: Applyng a PVC
 
 ```
@@ -448,7 +493,11 @@ $ kubectl get pods
 $ kubectl get pv 						# pv: persistent volume
 ```
 
+***
+
 ## 236: Defining Environment Variables
+
+***
 
 ## 237: Adding Environment Variables to Config
 
@@ -510,9 +559,9 @@ spec:
                       value: postgres
 ```
 
-=======================================
+***
+
 ## 238: Creating an Encoded Secret
-=======================================
 
 1. Pods 					# Runs one or more closely related containers
 
@@ -538,7 +587,11 @@ Type of secret:
 - docker-registry
 - TLS
 
+***
+
 ## 239: Postgres Environment Variable Fix
+
+***
 
 ## 240: Passing Secrets as Environment Variables
 
@@ -554,15 +607,8 @@ $ kubectl get secret
 $ kubectl apply -f k8s
 ```
 
+***
 ## 241: Environment Variables as Strings
-
-
-
-
-
-
-
-
 
 
 
