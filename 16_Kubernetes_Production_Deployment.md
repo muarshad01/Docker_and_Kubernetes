@@ -399,7 +399,7 @@ $ git push origin devel
 
 ***
 
-## 290: Merging a PR (Pull Request) for Deployment
+## 290: Merging a `Pull Request(PR)` for Deployment
 
 ***
 
