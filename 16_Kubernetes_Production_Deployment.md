@@ -18,6 +18,8 @@ Why Google Cloud?
 3. Far, far easire to poke around Kubernetes on Google Cloud
 4. Excellent documentation for beginners
 
+***
+
 ## 258: Creating a Git Repo
 
 $ git remote -v
@@ -33,11 +35,17 @@ $ git add .
 $ git commit -m "added files"
 $ git push origin master
 
+***
+
 ## 259: Linking the Github Repo to Travis
 
 `https://travis-ci.org`
 
+***
+
 ## 260: Free Google Cloud Credits
+
+***
 
 ## 261: Creating a Google Cloud Project
 
@@ -45,19 +53,33 @@ $ git push origin master
 
 Select a project --> New Project --> Project Name --> multi-k8s --> Create
 
+***
+
 ## 262: Linking a Billing Account
+
+***
 
 ## 263: Updated GKE creation steps for new Google Cloud UI
 
+***
+
 ## 264: Kubernetes Engine Init
 
+***
+
 ## 265: Creating a Cluster with Google Cloud
+
+***
 
 ## 266: Don't Forget to Cleanup!
 
 `https://www.udemy.com/docker-and-kubernetes-the-complete-guide/learn/v4/t/lecture/11684242?start=0`
 
+***
+
 ## 267: Kubernetes Dashboard on Google Cloud
+
+***
 
 ## 268: Travis Deployment Overview
 
@@ -70,6 +92,8 @@ Select a project --> New Project --> Project Name --> multi-k8s --> Create
 * 7. Build all our images, tag each one, push each to docker hub 
 * 8. Apply all configs in the 'k8s' folder 
 * 9. Imperatively set latest images on each deployment 
+
+***
 
 ## 269: Installing the Google Cloud SDK
 
@@ -86,7 +110,11 @@ before_install:
     - gcloud auth activate-service-account --key-file service-account.json
 ```
 
+***
+
 ## 270: Updated Service Account steps for new GCP UI
+
+***
 
 ## 271: Generating a Service Account
 
@@ -96,12 +124,16 @@ before_install:
 * Encrypt and upload the json file to our Travis account
 * In travia.yml, add code to unencrypt the json file and load it into GCloud SDK
 
+***
+
 ## 272: Ruby Version Fix
 
 ```
 $ docker run -it -v $(pwd):/app ruby:2.4 sh
 $ gem install travis
 ```
+
+***
 
 ## 273: Running Travis CLI in a Container
 
@@ -124,7 +156,11 @@ $ travis encrypt-file <file-name> -r muarshad01/multi-k8s  --com 			# '-r' repos
 $ travis encrypt-file service-account.json -r muarshad01/multi-k8s  --com
 ```
 
+***
+
 ## 274: Travis Login Issues, "iv undefined" or "repository not known"
+
+***
 
 ## 275: Encrypting a Service Account File
 
@@ -141,6 +177,8 @@ service-account.json.enc
 $ rm -f service-account.json 
 # exit 
 ```
+
+***
 
 ## 276: More Google Cloud CLI Config
 
@@ -163,9 +201,15 @@ script:
     - docker run CI=true muarshad01/react-test npm test
 ```
 
+***
+
 ## 277: Fix For Failing Travis Builds
 
+***
+
 ## 278: Running Testes with Travis
+
+***
 
 ## 279: Custom Deployment Providers
 
@@ -180,6 +224,8 @@ deploy:
 ```
 
 $ touch deploy.sh 
+
+***
 
 ## 280: Unique Deployment Images
 
@@ -198,6 +244,8 @@ $ kubectl apply -f k8s
 $ kubectl set image deployments/server-deployment server=muarshad01/multi-server 
 ```
 
+***
+
 ## 281: Unique Tags for Built Images
 
 ```
@@ -206,6 +254,8 @@ $ docker buid
 -t docker_id/multi-client:$GIT_SHA
 -f ./client/Dockerfile ./client
 ```
+
+***
 
 ## 282: Updating the Deployment Script
 
@@ -220,6 +270,8 @@ env:
         - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 ```
 
+***
+
 ## 283: Configuring the GCloud CLI on Cloud Console
 
 ```
@@ -227,6 +279,8 @@ $ gcloud config set project <ID>
 $ gcloud config set compute/zone us-central-account
 $ gcloud container clusters get-credentials multi-cluster 
 ```
+
+***
 
 ## 284: Creating a Secret on Google Cloud
 
@@ -237,7 +291,11 @@ $ kubectl create secret generic <secret_name> --from-literal PGPASSWORD=password
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpassword123 
 ```
 
+***
+
 ## 285: Helm v3 Update
+
+***
 
 ## 286: Helm Setup
 
@@ -246,6 +304,8 @@ $ github.com/helm/helm
 ```
 
 Helm Client --> Tiller Server           # runs inside a kubernetes server; Tiller is a pod 
+
+***
 
 ## 287: Kubernetes Security with RBAC
 
@@ -258,6 +318,8 @@ Helm Client --> Tiller Server           # runs inside a kubernetes server; Tille
 $ kubectl get namespces 
 ```
 
+***
+
 ## 288: Assigning Tiller a Service Account
 
 ```
@@ -267,19 +329,31 @@ $ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-ad
 
 $ helm --service-account tiller --upgrade
 
+***
+
 ## 289: Ingress-Nginx with Helm
 
 $ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
+***
+
 ## 291: The Result of Ingress-Nginx
+
+***
 
 ## 292: Finally - Deployment
 
 `https://github.com/StephenGrider/DockerCasts`
 
+***
+
 ## 293: Did I really Type That?
 
+***
+
 ## 294: Verifying Deployment
+
+***
 
 ## 295: A Workflow for Chaining in Prod
 
@@ -302,8 +376,14 @@ $ git push origin devel
 
 Create a pull-request manually 
 
+***
+
 ## 296: Merging a PR (Pull Request) for Deployment
 
+***
+
 ## 297: That's It! What's Next?
+
+***
 
 ## 298: Completed Code For Google Cloud Deployment
