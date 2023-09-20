@@ -239,7 +239,7 @@ a thing that exists inside our kubernetes cluter.
     - `ReplicaController`
     - `kind`
         - `Pod`: A Pod object is used to "run a container".
-        - Service: A Service object is used to "set up some-kind-of-networking".
+        - `Service`: A Service object is used to "set up some-kind-of-networking".
 
 Each API version defines a different set of 'objects' we can use
 
@@ -273,26 +273,27 @@ Object Types:
     - `Services`: Sets up **networking** in a k8s cluster. 
     - There are 4 subtypes:
 	    -- `ClusterIP`
-	    -- `NodePort`: Exposes a container to the outside world (only good for 'dev' purposes!)
+	    -- `NodePort`: Exposes a container to the outside world
 	    -- `LoadBalancer`
 	    -- `Ingres`
 
 ```
 apiVersion: v1
-kind: Service 			# 'Kind' represents the type of object that we want to make e.g., Kind=Service or kind=Pod
+kind: Service 			        # 'Kind' represents the type of `object` that we want to make
 metadata:
   name: client-node-port
 spec:
-  type: NodePort 		# Subtype of Service object; exposes a container to the outside world
+  type: NodePort 		        # Subtype of `Service` object
   ports:
-    - port: 3050  		# OTHER Pod that needs multi-client Pod
-      targetPort: 3000 		# same as containerPort in kind=Pod definition
-      nodePort: 31515 		# We type this into our browser URL [30,000 -- 32,767]
+    - port: 3050  		        # OTHER Pod that needs multi-client Pod
+      targetPort: 3000 		    # same as containerPort in kind=Pod definition
+      nodePort: 31515 		    # We type this into our browser URL [30,000 -- 32,767]
   selector:
-    component: web 		# Note the relationship with label in other service. How they are connected together.
+    component: web 		        # Note the relationship with label in other service. How they are connected together.
 ```
 
-Port Forwarding: "label" and "selector" with key:value approach. labels and selectors are used to connect objects.
+* `Port Forwarding`: `label` and `selector` with key:value approach. 
+    - labels and selectors are used to connect objects.
 
 ```
 * labels:
