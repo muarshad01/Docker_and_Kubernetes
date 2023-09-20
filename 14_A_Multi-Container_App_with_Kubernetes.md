@@ -1,4 +1,4 @@
-## 212: The Path to Production
+## 206: The Path to Production
 
 ```
 $ cd simplek8s
@@ -24,11 +24,11 @@ Postgres Persistent Volume Claim: PVC
 
 ***
 
-## 213: Checkpoint Files
+## 207: Checkpoint Files
 
 ***
 
-## 214: A Quick Checkpoint
+## 208: A Quick Checkpoint
 
 ```
 $ cd complex
@@ -43,7 +43,7 @@ Next: Take all images and migrate them in the world of kubernetes
 
 ***
 
-## 215: Recreating the Deployment
+## 209: Recreating the Deployment
 
 ```
 $ cd complex
@@ -84,7 +84,7 @@ spec:
 
 ***
 
-Lecutre 216: NodePort vs ClusterIP Services
+Lecutre 210: `NodePort` vs `ClusterIP` Services
 
 * Pods:			# Runs one or more closeley related containers 
 
@@ -96,7 +96,7 @@ Lecutre 216: NodePort vs ClusterIP Services
 
 ***
 
-## 217: The ClusterIP Config
+## 211: The `ClusterIP` Config
 
 ```
 $ cd k8s
@@ -119,7 +119,7 @@ spec:
 
 ***
 
-## 218: Applying Multiple Files with Kubectl
+## 212: Applying Multiple Files with Kubectl
 
 ```
 $ kubectl get deployments
@@ -143,7 +143,7 @@ $ kubectl get services
 
 ***
 
-## 219: Express API Deployment Config
+## 213: Express API Deployment Config
 
 ```
 $ cd k8s
@@ -174,7 +174,7 @@ spec:
 
 ***
 
-## 220: Cluter IP for Express API
+## 214: `Cluter IP` for Express API
 
 ```
 $ cd k8s
@@ -197,13 +197,13 @@ spec:
 
 ***
 
-## 221: Combining Config Into Single Files
+## 215: Combining Config Into Single Files
 
 * Combine all configuration files together and seperate them with '---'
 
 ***
 
-## 222: The Worker Deployment
+## 216: The Worker Deployment
 
 ```
 $ cd k8s
@@ -232,7 +232,7 @@ spec:
 
 ***
 
-## 223: Reapplyig a Batch of Config Files
+## 217: Reapplyig a Batch of Config Files
 
 ```
 $ cd complex
@@ -254,7 +254,7 @@ $ kubectl logs <name-of-pod>
 
 ***
 
-## 224: Creating and Applying Redis Config
+## 218: Creating and Applying Redis Config
 
 ```
 $ cd k8s
@@ -311,11 +311,11 @@ $ kubectl get services
 
 ***
 
-## 225: Important Note about Expected Postgres Error
+## 219: Important Note about Expected Postgres Error
 
 ***
 
-## 226: Last Set of Boring Config
+## 220: Last Set of Boring Config
 
 ```
 $ postgres-deployment.yaml
@@ -370,13 +370,13 @@ $ kubectl get service
 
 ***
 
-## 227: The Need for Volumes with Databases
+## 221: The Need for Volumes with Databases
 
 Persistent Volume Claim (PVC)
 
 ***
 
-## 228: Kubernetes Volumes
+## 222: Kubernetes Volumes
 
 * Persistent Volume Claims
 * Persistent Volume
@@ -387,7 +387,7 @@ Volume will, however, survive the container restarts.
 
 ***
 
-## 229: Volumes vs Persistent Volumes
+## 223: Volumes vs Persistent Volumes
 
 Persistent volume is not tied to any 'pod' or 'container'
 
@@ -399,7 +399,7 @@ Persistent volume is outside the pod.
 
 ***
 
-## 230: Persistent Volumes vs Persistent Volume Claims
+## 224: Persistent Volumes vs Persistent Volume Claims
 
 Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
 
@@ -408,7 +408,7 @@ Dynamically provisioned Persistent Volume
 
 ***
 
-## 231:  Claim Config Files
+## 225:  Claim Config Files
 
 ```
 $ cd k8s
@@ -430,7 +430,7 @@ spec:
 
 ***
 
-## 232: Persistent Volume Access Modes
+## 226: Persistent Volume Access Modes
 
 * ReadWriteOnce			# Can be used by a single node.
 * ReadOnlyMany			# Multiple nodes can read from this.
@@ -438,7 +438,7 @@ spec:
 
 ***
 
-## 233: Where Does Kubernetes Allocate Persistent Volumes
+## 227: Where Does `Kubernetes` Allocate Persistent Volumes
 
 ```
 $ kubectl get storageclass
@@ -450,7 +450,7 @@ $ kubectl describe storageclass
 
 ***
 
-## 234: Designating a PVC in a Pod Template
+## 228: Designating a PVC in a Pod Template
 
 ```
 apiVersion: apps/v1
@@ -484,7 +484,7 @@ spec:
 
 ***
 
-## 235: Applyng a PVC
+## 229: Applyng a PVC
 
 ```
 $ cd k8s
@@ -495,11 +495,11 @@ $ kubectl get pv 						# pv: persistent volume
 
 ***
 
-## 236: Defining Environment Variables
+## 230: Defining Environment Variables
 
 ***
 
-## 237: Adding Environment Variables to Config
+## 231: Adding Environment Variables to Config
 
 ```
 apiVersion: apps/v1
@@ -561,7 +561,7 @@ spec:
 
 ***
 
-## 238: Creating an Encoded Secret
+## 232: Creating an Encoded Secret
 
 1. Pods 					# Runs one or more closely related containers
 
@@ -589,11 +589,11 @@ Type of secret:
 
 ***
 
-## 239: Postgres Environment Variable Fix
+## 233: Postgres Environment Variable Fix
 
 ***
 
-## 240: Passing Secrets as Environment Variables
+## 234: Passing Secrets as Environment Variables
 
 ```
 $ kubectl get secret
@@ -608,7 +608,7 @@ $ kubectl apply -f k8s
 ```
 
 ***
-## 241: Environment Variables as Strings
+## 235: Environment Variables as Strings
 
 
 
