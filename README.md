@@ -87,13 +87,11 @@ $ eval $(minikube docker-env)
 
 ## Notes
 
-* Kind
-    - Pod
-    - Service
-        - ClusterIP
-        - NodePort
-        - LoadBalancer
-        - ExternalName
-
+* Kind: `Pod`
+* Kind: `Service`
+    - `ClusterIP`
+    - `NodePort`
+    - `LoadBalancer`
+    - `ExternalName`
 
 * `labels` vs `selectors`
