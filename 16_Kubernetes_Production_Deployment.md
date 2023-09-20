@@ -1,12 +1,12 @@
 ## 250: The Deployment Process
 
-1. Create a Github Repo
-2. Tie repo to 'Travis CI Service'
--- Travis CI will be incharge of building our images and pushing them off to DockerHub; 
-   To also deploy our application to Kubernetes cluster 
-3. Create Google Cloud project
-4. Enable billing for the project
-5. Add deployment scripts to the repo
+* Create a `GitHub` Repo
+* Tie Repo to `Travis CI Service`
+    - Travis CI will be in-charge of building our images and pushing them off to `DockerHub`; 
+    - To also deploy our application to Kubernetes cluster 
+* Create Google Cloud project
+* Enable billing for the project
+* Add deployment scripts to the Repo
 
 ***
 
