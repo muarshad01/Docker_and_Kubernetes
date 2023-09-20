@@ -324,37 +324,41 @@ $ kubectl create secret generic pgpassword    --from-literal PGPASSWORD=mypgpass
 
 ***
 
-## 281: Kubernetes Security with RBAC
+## 281: `Kubernetes` Security with `RBAC`
 
 * RBAC
-  - Limits who can access and modify objects in our cluster
-  - Enabled on Google Cloud by default
-  - Tiller wants to make changes to our cluater, so it needs to get some permissions set
+    - Limits who can access-and-modify objects in our cluster
+    - Enabled on Google Cloud by default
+    - `Tiller` wants to make changes to our cluster, so it needs to get some `permissions-set`
 
 ```
-$ kubectl get namespces 
+$ kubectl get namespaces 
 ```
 
 ***
 
-## 282: Assigning Tiller a Service Account
+## 282: Assigning `Tiller` a Service Account
 
 ```
 $ kubectl create serviceaccount --namespace kube-system tiller 
 $ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 ```
 
+```
 $ helm --service-account tiller --upgrade
+```
 
 ***
 
-## 283: Ingress-Nginx with Helm
+## 283: `Ingress-Nginx` with `Helm`
 
+```
 $ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
+```
 
 ***
 
-## 285: The Result of Ingress-Nginx
+## 285: The Result of `Ingress-Nginx`
 
 ***
 
@@ -374,13 +378,13 @@ $ helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
 ## 289: A Workflow for Chaining in Prod
 
-* Check out a branch 
+* checkout a branch (`$ git checkout -b <new-test-branch>`) 
 * Make changes 
-* Commit changes 
-* Push to github branch 
-* Create a PR (Pull Request)
-* Wait for tests to show up 'green' 
-* Merge the PR (Pull Request)
+* Commit changes (`$ git commit -m "updates"`)
+* Push to github branch (`$ git push origin <new-test-branch>`) 
+* Create a `Pull Request (PR)`
+* Wait for tests to show up `GREEN` 
+* Merge the PR
 * See changes appear on prod 
 
 ```
@@ -391,7 +395,7 @@ $ git commit -m "updated header"
 $ git push origin devel 
 ```
 
-Create a pull-request manually 
+* Create a PR manually 
 
 ***
 
