@@ -4,23 +4,23 @@
 $ cd simplek8s
 ```
 
-* Crate config files for each Service and Deployment
-* Test locally on minikube
-* Create a Github/Travis flow to build images and deploy 
+* Crate config files for each `Service` and `Deployment`
+* Test locally on `minikube`
+* Create a `GitHub/Travis` flow to build images and deploy 
 * Deploy app to a cloud provider
 
-* Services:
-  - Ingress Service
-  - ClusterIP Service
+* `Services`:
+  - `Ingress`
+  - `ClusterIP`
 
-* Deployment:
+* `Deployment`:
   - multi-client
   - multi-server
   - multi-Worker
   - Redis pod 
   - Postgres pod 
 
-Postgres Persistent Volume Claim: PVC
+* Postgres `Persistent Volume Claim: PVC`
 
 ***
 
@@ -35,11 +35,13 @@ $ cd complex
 $ docker ps 
 $ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
+```
 
+```
 localhost:3050
 ```
 
-Next: Take all images and migrate them in the world of kubernetes
+* Take all images and migrate them in the world of `kubernetes`
 
 ***
 
@@ -50,10 +52,10 @@ $ cd complex
 ```
 
 * delete:
-  - .travis.yml
-  - docker-compose.yml
-  - Dockerrun.aws.json
-  - nginx foldr and we'll be usign IngresServer for routing
+    - `.travis.yml`
+    - `docker-compose.yml`
+    - `dockerrun.aws.json`
+    - `nginx` foldr and we'll be using `IngresServer` for routing
 
 ```
 $ mkdir k8s
@@ -78,13 +80,13 @@ spec:
         spec:
             containers:
                 - name: client
-                  image: marshad1/multi-client
+                  image: muarshad01/multi-client
 			- containerPort: 3000
 ```
 
 ***
 
-Lecutre 210: `NodePort` vs `ClusterIP` Services
+## 210: `NodePort` vs `ClusterIP` Services
 
 * Pods:			# Runs one or more closeley related containers 
 
