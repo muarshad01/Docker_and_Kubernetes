@@ -147,8 +147,8 @@ NAME    DESIRED   CURRENT   UP-TO-DATE    AVAILABLE   AGE
 ## 196: Why Use Services?
 
 ```
-$ minikube ip						# VM IP adress
-$ kubectl get pods -o wide				# Every pod is assigned its own IP address
+$ minikube ip						    # VM IP adress
+$ kubectl get pods -o wide				# Every Pod is assigned its own IP address
 ```
 
 ***
@@ -157,21 +157,26 @@ $ kubectl get pods -o wide				# Every pod is assigned its own IP address
 
 ```
 ports:
-  - containerPort: 9999 # change port from 3000 to 9999
+  - containerPort: 9999                 # Change port from 3000 to 9999
+```
 
+```
 $ kubectl apply -f client.deployment.yaml
-deployment.apps/client-deployment configured 		# Notice 'configured' vs 'created'
+```
+-- deployment.apps/client-deployment configured 		# Notice 'configured' vs 'created'
 
+```
 $ kubectl get deployments
 $ kubectl get pods
 $ kubectl describe pods
+```
+--replicas: 5
 
-replicas: 5
-
+```
 $ kubectl apply -f client-deployment.yaml
 $ kubectl get pods
-
-image: stephengrider/multi-worker
+```
+--image: stephengrider/multi-worker
 
 $ kubectl apply -f client-deployment.yaml
 $ kubectl get pods
@@ -192,11 +197,15 @@ $ minikube ip
 
 ```
 $ cd complex/client
+```
 
-# Crate a new Image
+* Crate a new Image
+```
 $ docker buid -t muarshad01/multi-client . 		# '.' is build context
+```
 
-# Push to docker hub
+```
+* Push to docker hub
 $ docker push muarshad01/multi-client
 ```
 
