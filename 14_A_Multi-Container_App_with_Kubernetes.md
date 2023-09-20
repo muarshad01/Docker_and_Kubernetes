@@ -1,53 +1,61 @@
-## 212: The Path to Production
+## 206: The Path to Production
 
 ```
 $ cd simplek8s
 ```
 
-* Crate config files for each Service and Deployment
-* Test locally on minikube
-* Create a Github/Travis flow to build images and deploy 
+* Crate config files for each `Service` and `Deployment`
+* Test locally on `minikube`
+* Create a `GitHub/Travis` flow to build images and deploy 
 * Deploy app to a cloud provider
 
-* Services:
-  - Ingress Service
-  - ClusterIP Service
+* `Services`:
+  - `Ingress`
+  - `ClusterIP`
 
-* Deployment:
+* `Deployment`:
   - multi-client
   - multi-server
   - multi-Worker
   - Redis pod 
   - Postgres pod 
 
-Postgres Persistent Volume Claim: PVC
+* Postgres `Persistent Volume Claim: PVC`
 
-## 213: Checkpoint Files
+***
 
-## 214: A Quick Checkpoint
+## 207: Checkpoint Files
+
+***
+
+## 208: A Quick Checkpoint
 
 ```
 $ cd complex
 $ docker ps 
 $ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
+```
 
+```
 localhost:3050
 ```
 
-Next: Take all images and migrate them in the world of kubernetes
+* Take all images and migrate them in the world of `kubernetes`
 
-## 215: Recreating the Deployment
+***
+
+## 209: Recreating the Deployment
 
 ```
 $ cd complex
 ```
 
 * delete:
-  - .travis.yml
-  - docker-compose.yml
-  - Dockerrun.aws.json
-  - nginx foldr and we'll be usign IngresServer for routing
+    - `.travis.yml`
+    - `docker-compose.yml`
+    - `dockerrun.aws.json`
+    - `nginx` foldr and we'll be using `IngresServer` for routing
 
 ```
 $ mkdir k8s
@@ -72,26 +80,31 @@ spec:
         spec:
             containers:
                 - name: client
-                  image: marshad1/multi-client
+                  image: muarshad01/multi-client
 			- containerPort: 3000
 ```
 
-Lecutre 216: NodePort vs ClusterIP Services
+***
 
-* Pods:			# Runs one or more closeley related containers 
+## 210: `NodePort` vs `ClusterIP` Services
 
-* Services: 		# Sets up 'networking' in a Kubernetes Cluster
-  - ClusterIP 		# Exposes a set of pods to other objects in the cluster
-  - NodePort 		# Expose a set of pods to the outside world (only good for dev purposes!!!)
-  - LoadBalancer
-  - Ingress
+* `Pods`                # Runs one or more closeley related containers 
+* `Services` 		    # Sets up 'networking' in a Kubernetes Cluster
+    - `ClusterIP`
+    - Exposes a set of pods to other objects in the cluster
+    - `NodePort`
+        - Expose a set of pods to the outside world
+    - LoadBalancer
+    - Ingress
+***
 
-## 217: The ClusterIP Config
+## 211: The `ClusterIP` Config
 
 ```
 $ cd k8s
-$ touch client-cluster-ip-service.yaml
 ```
+
+Create `client-cluster-ip-service.yaml` file
 
 ```
 apiVersion: v1
@@ -107,14 +120,15 @@ spec:
           targetPort: 3000
 ```
 
-## 218: Applying Multiple Files with Kubectl
+***
+
+## 212: Applying Multiple Files with `Kubectl`
 
 ```
 $ kubectl get deployments
 $ kubectl deleted deployment client-deployment
 $ kubectl get deployments
 ```
-
 -- No resources found.
 
 ```
@@ -123,18 +137,21 @@ $ kubectl delete service client-node-port
 $ kubectl get services
 
 $ kubectl apply -f k8s/client-deployment.yaml
-$ kubectl apply -f k8s # applies every config file
+$ kubectl apply -f k8s                          # applies every config file
 
 $ kubectl get deployments
 $ kubectl get services
 ```
 
-## 219: Express API Deployment Config
+***
+
+## 213: Express API Deployment Config
 
 ```
 $ cd k8s
-$ touch server-deployment.yaml
 ```
+
+Create `server-deployment.yaml`
 
 ```
 apiVersion: app/v1
@@ -153,17 +170,20 @@ spec:
         spec:
             containers:
                 - name: server
-                  image: marshad1/multi-server
+                  image: muarshad01/multi-server
                   ports:
                     - containerPort: 5000
 ```
 
-## 220: Cluter IP for Express API
+***
+
+## 214: `CluterIP` for Express API
 
 ```
 $ cd k8s
-$ touch server-cluster-ip-service.yaml
 ```
+
+Create `server-cluster-ip-service.yaml`
 
 ```
 apiVersion: v1
@@ -179,16 +199,21 @@ spec:
           targetPort: 5000
 ```
 
-## 221: Combining Config Into Single Files
+***
+
+## 215: Combining Config Into Single Files
 
 * Combine all configuration files together and seperate them with '---'
 
-## 222: The Worker Deployment
+***
+
+## 216: The Worker Deployment
 
 ```
 $ cd k8s
-$ touch workder-deployment.yaml
 ```
+
+Create `workder-deployment.yaml`
 
 ```
 apiVersion: apps/v1
@@ -207,22 +232,23 @@ spec:
         spec:
             containers:
                 - name: worker
-                  image: marshad1/multi-worker
+                  image: muarshad01/multi-worker
 ```
 
-## 223: Reapplyig a Batch of Config Files
+***
+
+## 217: Reapplyig a Batch of Config Files
 
 ```
-$ cd complex
-$ cd k8s
+$ cd complex/k8s
 $ ls k8s
 ```
 
-* client-deployment.yaml
-* server-deployment.yaml
-* worker-deployment.yaml
-* client-cluster-ip-service.yaml
-* server-cluster-ip-service.yaml
+* `client-deployment.yaml`
+* `server-deployment.yaml`
+* `worker-deployment.yaml`
+* `client-cluster-ip-service.yaml`
+* `server-cluster-ip-service.yaml`
 
 ```
 $ kubectl apply -f k8s/
@@ -230,7 +256,9 @@ $ kubectl get pods
 $ kubectl logs <name-of-pod>
 ```
 
-## 224: Creating and Applying Redis Config
+***
+
+## 218: Creating and Applying Redis Config
 
 ```
 $ cd k8s
@@ -259,9 +287,8 @@ spec:
                     - containerPort: 6379
 ```
 
-```
-$ touch redis-cluster-ip-service.yaml
-```
+Create `redis-cluster-ip-service.yaml`
+
 
 ```
 apiVersion: v1
@@ -285,13 +312,16 @@ $ kubectl get pods
 $ kubectl get services
 ```
 
-## 225: Important Note about Expected Postgres Error
+***
 
-## 226: Last Set of Boring Config
+## 219: Important Note about Expected Postgres Error
 
-```
-$ postgres-deployment.yaml
-```
+***
+
+## 220: Last Set of Boring Config
+
+Create `postgres-deployment.yaml`
+
 
 ```
 apiVersion: apps/v1
@@ -315,9 +345,7 @@ spec:
                 - containerPort: 5432
 ```
 
-```
-$ touch postgres-cluster-ip-service.yaml
-```
+Create `postgres-cluster-ip-service.yaml`
 
 ```
 apiVersion: v1
@@ -339,42 +367,51 @@ $ kubectl apply -f k8s/
 $ kubectl get pods
 $ kubectl get service
 ```
-## 227: The Need for Volumes with Databases
 
-Persistent Volume Claim (PVC)
+***
 
-## 228: Kubernetes Volumes
+## 221: The Need for Volumes with Databases
 
-* Persistent Volume Claims
-* Persistent Volume
+`Persistent Volume Claim (PVC)`
+
+***
+
+## 222: Kubernetes Volumes
+
 * Volume
+* Persistent Volume
+* Persistent Volume Claims (PVC)
 
-Volume is tied to Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
+* Volume is Tied-to-Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
 Volume will, however, survive the container restarts.
 
-## 229: Volumes vs Persistent Volumes
+***
 
-Persistent volume is not tied to any 'pod' or 'container'
+## 223: Volumes vs Persistent Volumes
 
-Pod {
-    Container{...}
-}
+* Persistent volume is NOT-tied to any pod-or-container
 
-Persistent volume is outside the pod.
+`Pod {C1, C2, ..., CN}`
 
-## 230: Persistent Volumes vs Persistent Volume Claims
+Persistent volume is outside-the-pod.
 
-Persistent Volume Claim (PVC) is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
+***
 
-Statistically provisioed Persistent Volume
-Dynamically provisioned Persistent Volume
+## 224: Persistent Volumes vs Persistent Volume Claims (PVC)
 
-## 231:  Claim Config Files
+* PVC is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
+    - Statistically provisioned Persistent Volume
+    - Dynamically   provisioned Persistent Volume
+
+***
+
+## 225:  Claim Config Files
 
 ```
 $ cd k8s
-$ touch database-persistent-volume-claim.yaml
 ```
+
+Create `database-persistent-volume-claim.yaml`
 
 ```
 apiVersion: v1
@@ -389,15 +426,17 @@ spec:
             storage: 2Gi
 ```
 
-==
-## 232: Persistent Volume Access Modes
-==
+***
 
-* ReadWriteOnce			# Can be used by a single node.
-* ReadOnlyMany			# Multiple nodes can read from this.
-* ReadWriteMany			# Can be read and written to by many nodes.
+## 226: Persistent Volume Access Modes
 
-## 233: Where Does Kubernetes Allocate Persistent Volumes
+* `ReadWriteOnce`			# Can be used by a single node.
+* `ReadOnlyMany`			# Multiple nodes can read from this.
+* `ReadWriteMany`			# Can be read and written to by many nodes.
+
+***
+
+## 227: Where Does `Kubernetes` Allocate Persistent Volumes
 
 ```
 $ kubectl get storageclass
@@ -407,7 +446,9 @@ NAME    PROVISIONER     AGE
 $ kubectl describe storageclass
 ```
 
-## 234: Designating a PVC in a Pod Template
+***
+
+## 228: Designating a PVC in a Pod-Template
 
 ```
 apiVersion: apps/v1
@@ -439,7 +480,9 @@ spec:
                   subPath: postgres 
 ```
 
-## 235: Applyng a PVC
+***
+
+## 229: Applying a `PVC`
 
 ```
 $ cd k8s
@@ -448,9 +491,13 @@ $ kubectl get pods
 $ kubectl get pv 						# pv: persistent volume
 ```
 
-## 236: Defining Environment Variables
+***
 
-## 237: Adding Environment Variables to Config
+## 230: Defining Environment Variables
+
+***
+
+## 231: Adding Environment Variables to Config
 
 ```
 apiVersion: apps/v1
@@ -510,41 +557,51 @@ spec:
                       value: postgres
 ```
 
-=======================================
-## 238: Creating an Encoded Secret
-=======================================
+***
 
-1. Pods 					# Runs one or more closely related containers
+## 232: Creating an Encoded Secret
 
-2. Deployments 					# Administers and manages a set of pods
+1. `Pods` 					        # Runs one-or-more closely related containers
 
-3. Services 					# Sets up networking in a Kubernetes Cluster
-    - ClusterIP: Exposes a set of pods to other objects in the cluster
-    - NodePort: Exposes a set of pods to the outside world (only good for dev purposes!!!)
-    - LoadBalancer
-    - Ingress
+2. `Deployments` 					# Administers and manages a set-of-pods
+
+3. `Services` 					    # Sets up networking in a `Kubernetes` Cluster
+    - `ClusterIP`                   # Exposes a set of pods to other-objects-in-the-cluster
+    - `NodePort`                    # Exposes a set of pods to the outside-world
+    - `LoadBalancer`
+    - `Ingress`
 
 4. Secrets 					# Securely stores a piece of information in the cluster, such as a database password
 
-Creating a Secret
-------------------
+### Creating a Secret
+
+```
 $ kubectl create secret generic <secret_name> --from-literal key=value
 $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
-secret/pgpassword created
+```
+--secret/pgpassword created
 
+```
 $ kubectl get secrets
+```
 
-Type of secret:
-- docker-registry
-- TLS
+* Type of secret:
+    - docker-registry
+    - TLS
 
-## 239: Postgres Environment Variable Fix
+***
 
-## 240: Passing Secrets as Environment Variables
+## 233: `Postgres` Environment Variable Fix
+
+***
+
+## 234: Passing Secrets as Environment Variables
 
 ```
 $ kubectl get secret
+```
 
+```
 - name: PGPASSWORD
     valueFrom:
         secretKeyRef:
@@ -554,17 +611,5 @@ $ kubectl get secret
 $ kubectl apply -f k8s
 ```
 
-## 241: Environment Variables as Strings
-
-
-
-
-
-
-
-
-
-
-
-
-
+***
+## 235: Environment Variables as Strings
