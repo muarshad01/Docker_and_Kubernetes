@@ -203,7 +203,7 @@ $ rm -f service-account.json
 ## 270: More Google Cloud CLI Config
 
 ```
-sudo: required 								# Because we're making use of docker
+sudo: required
 services:
     - docker 								# We need docker to be pre-installed to run our images
 before_install:
@@ -243,13 +243,13 @@ deploy:
         branch: master
 ```
 
-$ touch deploy.sh 
+Create `deploy.sh` 
 
 ***
 
 ## 274: Unique Deployment Images
 
-deploy.sh
+File `deploy.sh`
 
 ```
 $ docker build -t muarshad01/multi-client -f ./client/Dockerfile ./client
@@ -269,24 +269,21 @@ $ kubectl set image deployments/server-deployment server=muarshad01/multi-server
 ## 275: Unique Tags for Built Images
 
 ```
-$ docker buid 
--t docker_id/multi-client:latest
--t docker_id/multi-client:$GIT_SHA
--f ./client/Dockerfile ./client
+$ docker build -t <docker_id>/multi-client:latest -t <docker_id>/multi-client:$GIT_SHA -f ./client/Dockerfile ./client
 ```
 
 ***
 
 ## 276: Updating the Deployment Script
 
-In .travis.yaml
+File `.travis.yaml`
 
 ```
 services:
     - docker
 env:
     global:
-        - SHA=$(git rev-parse HEAD) # get the latest revision or commit id
+        - SHA=$(git rev-parse HEAD)                 # get the latest revision or commit id
         - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 ```
 
@@ -306,9 +303,11 @@ $ gcloud container clusters get-credentials multi-cluster
 
 ```
 $ kubectl get pods 
+```
 
+```
 $ kubectl create secret generic <secret_name> --from-literal PGPASSWORD=password123
-$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpassword123 
+$ kubectl create secret generic pgpassword    --from-literal PGPASSWORD=mypgpassword123 
 ```
 
 ***
@@ -319,11 +318,9 @@ $ kubectl create secret generic pgpassword --from-literal PGPASSWORD=mypgpasswor
 
 ## 280: Helm Setup
 
-```
-$ github.com/helm/helm 
-```
+`https://github.com/helm/helm`
 
-Helm Client --> Tiller Server           # runs inside a kubernetes server; Tiller is a pod 
+* `Helm Client` -> `Tiller Server`           # runs inside a kubernetes server; Tiller is a pod 
 
 ***
 
