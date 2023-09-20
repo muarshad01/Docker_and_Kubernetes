@@ -333,8 +333,6 @@ $ kubectl get pods
 NAME        READY   STATUS    RESTARTS    AGE
 client-pod  1/1     Running   0           1h
 
-READY x/y = READY
-
 ```
 $ kubectl get services
 ```
@@ -343,13 +341,11 @@ NAME              TYPE        CLUSTER-IP      EXTERNAL-IP     PORTS(S)        AG
 client-node-port  NodePort    a.b.c.d         <none>          3050:31515/TCP  1h
 kubernetes        ClusterIP   p.q.r.s         <none>          443/TCP         4d
 
-PORTS port:NodePort
-
 ```
 $ minikube ip 					# prints the ip address of that VM
 ```
 
-`https://<VM ip-address>:port`
+`https://<VM ip-address>:nodePort`
 
 ***
 
