@@ -25,9 +25,9 @@
 * [12: Onwards to Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/12_Onwards_to_Kubernetes.md)
 * [13: Maintaining Sets of Containers with Deployments](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/13_Maintaining_Sets_of_Containers_with_Deployments.md)
 * [14: A Multi-Container App with Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/14_A_Multi-Container_App_with_Kubernetes.md)
-* [15: Handling Traffic with Ingress Controllers](...)
+* [->15: Handling Traffic with Ingress Controllers](...)
 * [16: Kubernetes Production Deployment](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/16_Kubernetes_Production_Deployment.md)
-* [17: HTTPS Setup with Kubernetes](...)
+* [->17: HTTPS Setup with Kubernetes](...)
 * [18: Local Development with Skaffold](..)
 
 ***
