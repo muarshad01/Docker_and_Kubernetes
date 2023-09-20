@@ -82,3 +82,18 @@ $ kubectl set image deployment/client-deployment client=marshad1/multi-client:v5
 ```
 $ eval $(minikube docker-env)
 ```
+
+***
+
+## Notes
+
+* Kind
+    - Pod
+    - Service
+        - ClusterIP
+        - NodePort
+        - LoadBalancer
+        - ExternalName
+
+
+* `labels` vs `selectors`
