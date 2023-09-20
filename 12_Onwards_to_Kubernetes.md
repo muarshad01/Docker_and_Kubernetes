@@ -272,10 +272,10 @@ Object Types:
         - Runs one or more closely-related-containers
     - `Services`: Sets up **networking** in a k8s cluster. 
     - There are 4 subtypes:
-	    -- `ClusterIP`
-	    -- `NodePort`: Exposes a container to the outside world
-	    -- `LoadBalancer`
-	    -- `Ingres`
+	    - `ClusterIP`
+	    - `NodePort`: Exposes a container to the outside world
+	    - `LoadBalancer`
+	    - `Ingres`
 
 ```
 apiVersion: v1
