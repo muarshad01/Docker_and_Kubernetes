@@ -1,25 +1,24 @@
 ## 188: Updating Existing Objects
 
-*Find an existing Pod and update the image that it is using
+* Find an existing `Pod` and update the image that it is using
+
+* Update `client-pod.yaml` file
 
 ```
-Update the Config file
-
-- Name: client-pod
-- Kind: Pod
-- image: multi-worker
-
-kubectl -> Master -> Virtual Machine (Node) {
-                                            	Pod Name: client-pod
-                                              	multi-client container
-                                            } 
+Name: client-pod
+Kind: Pod
+image: multi-worker
 ```
+
+* `kubectl`
+    - Master
+    - Virtual Machine (Node) {Pod Name: client-pod; multi-client container} 
 
 ***
 
 ## 189: Declarative Updates in Action
 
-update client-pod.yaml
+* Update `client-pod.yaml`
 
 ```
 apiVersion: v1
@@ -27,25 +26,30 @@ kind: Pod
 metadata:
   name: client-pod
   labels:
-    component: web
+  component: web
 spec:
   containers:
     - name: client
-      image: marshad1/multi-worker 			# update multi-client to multi-worker image
+      image: muarshad01/multi-worker 			# Update multi-client to multi-worker image
       ports:
-        - containerPort: 3000
+      - containerPort: 3000
 ```
 
 ```
 $ kubectl apply -f client-pod.yaml
-pod/client-pod "configured"
+```
+-- pod/client-pod "configured"
 
+```
 $ kubectl get pods
+```
 NAME    READY     STATUS      RESTARTS      AGE
 
-How to get detailed info about an object
-# kubectl describe <object type> <object name>
-$ kubectl describe pod client-pod
+* How to get detailed info about an object?
+
+```
+$ kubectl describe <object type> <object name>
+$ kubectl describe pod           client-pod
 ```
 
 ***
