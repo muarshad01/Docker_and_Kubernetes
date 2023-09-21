@@ -4,27 +4,33 @@
 $ cd simplek8s
 ```
 
-* Crate config files for each `Service` and `Deployment`
+* Crate config files for each of `kind:Pod`, `kind:Service`, and `kind:Deployment`
 * Test locally on `minikube`
 * Create a `GitHub/Travis` flow to build images and deploy 
 * Deploy app to a cloud provider
 
-* `Services`:
-  - `Ingress`
-  - `ClusterIP`
+* `kind:Service`:
+  - `type: Ingress`
+  - `type: ClusterIP` # previously we used `NodePorts`
 
-* `Deployment`:
+* `kind:Deployment`:
   - multi-client
   - multi-server
   - multi-Worker
-  - Redis pod 
-  - Postgres pod 
+  - `Redis` pod 
+  - `Postgres` pod 
 
-* Postgres `Persistent Volume Claim: PVC`
+* Postgres `Persistent Volume Claim (PVC)`
 
 ***
 
 ## 207: Checkpoint Files
+
+```
+$ docker-compose -f docker-compose-dev.yml up
+$ docker-compose -f docker-compose-dev.yml up --build
+$ docker-compose -f docker-compose-dev.yml down
+```
 
 ***
 
@@ -32,6 +38,7 @@ $ cd simplek8s
 
 ```
 $ cd complex
+
 $ docker ps 
 $ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
@@ -55,7 +62,7 @@ $ cd complex
     - `.travis.yml`
     - `docker-compose.yml`
     - `dockerrun.aws.json`
-    - `nginx` foldr and we'll be using `IngresServer` for routing
+    - `nginx`                       # folder and we'll be using `Ingres` Service for routing
 
 ```
 $ mkdir k8s
@@ -88,14 +95,12 @@ spec:
 
 ## 210: `NodePort` vs `ClusterIP` Services
 
-* `Pods`                # Runs one or more closeley related containers 
-* `Services` 		    # Sets up 'networking' in a Kubernetes Cluster
-    - `ClusterIP`
-    - Exposes a set of pods to other objects in the cluster
-    - `NodePort`
-        - Expose a set of pods to the outside world
-    - LoadBalancer
-    - Ingress
+* `Kind: Pods`                # Runs one or more closely related containers 
+* `Kind: Services` 		      # Sets up `networking` in a `Kubernetes` Cluster
+    - `type: ClusterIP`       # Exposes a set of pods to other-objects in the cluster
+    - `type: NodePort`        # Expose a set of pods to the outside-world
+    - `type: LoadBalancer`
+    - `type: Ingress`
 ***
 
 ## 211: The `ClusterIP` Config
@@ -203,7 +208,7 @@ spec:
 
 ## 215: Combining Config Into Single Files
 
-* Combine all configuration files together and seperate them with '---'
+* Combine all configuration files together and separate them with `---`
 
 ***
 
@@ -213,7 +218,7 @@ spec:
 $ cd k8s
 ```
 
-Create `workder-deployment.yaml`
+Create `worker-deployment.yaml`
 
 ```
 apiVersion: apps/v1
@@ -226,7 +231,7 @@ spec:
         matchLabels:
             component: worker
     template:
-        metadate:
+        metadata:
             labels:
                 component: worker
         spec:
@@ -237,7 +242,7 @@ spec:
 
 ***
 
-## 217: Reapplyig a Batch of Config Files
+## 217: Reapplying a Batch of Config Files
 
 ```
 $ cd complex/k8s
@@ -262,13 +267,14 @@ $ kubectl logs <name-of-pod>
 
 ```
 $ cd k8s
-$ touch redis-deployment.yaml
 ```
+
+Create `redis-deployment.yaml`
 
 ```
 apiVersion: app/v1
 kind: Deployment
-metadate:
+metadata:
     name: redis-deployment
 spec:
     replicas: 1
@@ -314,7 +320,7 @@ $ kubectl get services
 
 ***
 
-## 219: Important Note about Expected Postgres Error
+## 219: Important Note about Expected `Postgres` Error
 
 ***
 
@@ -378,26 +384,24 @@ $ kubectl get service
 
 ## 222: Kubernetes Volumes
 
-* Volume
-* Persistent Volume
-* Persistent Volume Claims (PVC)
+* `Volume`
+* `Persistent Volume`
+* `Persistent Volume Claims (PVC)`
 
-* Volume is Tied-to-Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
-Volume will, however, survive the container restarts.
-
-***
-
-## 223: Volumes vs Persistent Volumes
-
-* Persistent volume is NOT-tied to any pod-or-container
-
-`Pod {C1, C2, ..., CN}`
-
-Persistent volume is outside-the-pod.
+* `Volume is Tied-to-Pod`. 
+    - So, if a Pod itself ever DIES the `Volume` DIES and goes away as well. 
+    - Volume will, however, survive the container restarts.
 
 ***
 
-## 224: Persistent Volumes vs Persistent Volume Claims (PVC)
+## 223: `Volumes` vs `Persistent Volumes`
+
+* Persistent volume is NOT-tied to any pod-or-container: `Pod {C1, C2, ..., CN}`
+    - Persistent volume is outside-the-pod.
+
+***
+
+## 224: `Persistent Volumes` vs `Persistent Volume Claims (PVC)`
 
 * PVC is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
     - Statistically provisioned Persistent Volume
@@ -430,9 +434,9 @@ spec:
 
 ## 226: Persistent Volume Access Modes
 
-* `ReadWriteOnce`			# Can be used by a single node.
-* `ReadOnlyMany`			# Multiple nodes can read from this.
-* `ReadWriteMany`			# Can be read and written to by many nodes.
+* `ReadWriteOnce`			# Can be used by a single-node.
+* `ReadOnlyMany`			# Multiple-nodes can read from this.
+* `ReadWriteMany`			# Can be read-and-written to by many nodes.
 
 ***
 
@@ -561,33 +565,29 @@ spec:
 
 ## 232: Creating an Encoded Secret
 
-1. `Pods` 					        # Runs one-or-more closely related containers
+1. `kind: Pods` 					        # Runs one-or-more closely related containers
 
-2. `Deployments` 					# Administers and manages a set-of-pods
+2. `kind: Deployments` 					    # Administers and manages a set-of-pods
 
-3. `Services` 					    # Sets up networking in a `Kubernetes` Cluster
-    - `ClusterIP`                   # Exposes a set of pods to other-objects-in-the-cluster
-    - `NodePort`                    # Exposes a set of pods to the outside-world
-    - `LoadBalancer`
-    - `Ingress`
+3. `Kind: Services` 					    # Sets up `networking` in a `Kubernetes` Cluster
+    - `type: ClusterIP`                     # Exposes a set of pods to other-objects-in-the-cluster
+    - `type: NodePort`                      # Exposes a set of pods to the outside-world
+    - `type: LoadBalancer`
+    - `type: Ingress`
 
-4. Secrets 					# Securely stores a piece of information in the cluster, such as a database password
+4.`kind:Secrets` 					        # Securely stores a piece of information in the cluster, such as a database password
 
 ### Creating a Secret
 
 ```
 $ kubectl create secret generic <secret_name> --from-literal key=value
-$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
+$ kubectl create secret generic pgpassword    --from-literal PGPASSWORD=abcd1234
 ```
 --secret/pgpassword created
 
 ```
 $ kubectl get secrets
 ```
-
-* Type of secret:
-    - docker-registry
-    - TLS
 
 ***
 
