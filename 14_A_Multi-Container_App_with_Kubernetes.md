@@ -62,7 +62,7 @@ $ cd complex
     - `.travis.yml`
     - `docker-compose.yml`
     - `dockerrun.aws.json`
-    - `nginx`                       foldr and we'll be using `IngresServer` for routing
+    - `nginx`                       # folder and we'll be using `Ingres` Service for routing
 
 ```
 $ mkdir k8s
@@ -95,14 +95,12 @@ spec:
 
 ## 210: `NodePort` vs `ClusterIP` Services
 
-* `Pods`                # Runs one or more closeley related containers 
-* `Services` 		    # Sets up 'networking' in a Kubernetes Cluster
-    - `ClusterIP`
-    - Exposes a set of pods to other objects in the cluster
-    - `NodePort`
-        - Expose a set of pods to the outside world
-    - LoadBalancer
-    - Ingress
+* `Kind: Pods`                # Runs one or more closely related containers 
+* `Kind: Services` 		      # Sets up `networking` in a `Kubernetes` Cluster
+    - `type: ClusterIP`       # Exposes a set of pods to other-objects in the cluster
+    - `type: NodePort`        # Expose a set of pods to the outside-world
+    - `type: LoadBalancer`
+    - `type: Ingress`
 ***
 
 ## 211: The `ClusterIP` Config
@@ -210,7 +208,7 @@ spec:
 
 ## 215: Combining Config Into Single Files
 
-* Combine all configuration files together and seperate them with '---'
+* Combine all configuration files together and separate them with `---`
 
 ***
 
@@ -220,7 +218,7 @@ spec:
 $ cd k8s
 ```
 
-Create `workder-deployment.yaml`
+Create `worker-deployment.yaml`
 
 ```
 apiVersion: apps/v1
@@ -233,7 +231,7 @@ spec:
         matchLabels:
             component: worker
     template:
-        metadate:
+        metadata:
             labels:
                 component: worker
         spec:
@@ -244,7 +242,7 @@ spec:
 
 ***
 
-## 217: Reapplyig a Batch of Config Files
+## 217: Reapplying a Batch of Config Files
 
 ```
 $ cd complex/k8s
@@ -269,13 +267,14 @@ $ kubectl logs <name-of-pod>
 
 ```
 $ cd k8s
-$ touch redis-deployment.yaml
 ```
+
+Create `redis-deployment.yaml`
 
 ```
 apiVersion: app/v1
 kind: Deployment
-metadate:
+metadata:
     name: redis-deployment
 spec:
     replicas: 1
@@ -321,7 +320,7 @@ $ kubectl get services
 
 ***
 
-## 219: Important Note about Expected Postgres Error
+## 219: Important Note about Expected `Postgres` Error
 
 ***
 
