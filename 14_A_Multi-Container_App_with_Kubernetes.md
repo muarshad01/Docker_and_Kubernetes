@@ -11,20 +11,26 @@ $ cd simplek8s
 
 * `kind:Service`:
   - `type: Ingress`
-  - `tupe: ClusterIP`
+  - `type: ClusterIP` # previously we used `NodePorts`
 
 * `kind:Deployment`:
   - multi-client
   - multi-server
   - multi-Worker
-  - Redis pod 
-  - Postgres pod 
+  - `Redis` pod 
+  - `Postgres` pod 
 
-* Postgres `Persistent Volume Claim: PVC`
+* Postgres `Persistent Volume Claim (PVC)`
 
 ***
 
 ## 207: Checkpoint Files
+
+```
+$ docker-compose -f docker-compose-dev.yml up
+$ docker-compose -f docker-compose-dev.yml up --build
+$ docker-compose -f docker-compose-dev.yml down
+```
 
 ***
 
@@ -32,6 +38,7 @@ $ cd simplek8s
 
 ```
 $ cd complex
+
 $ docker ps 
 $ docker-compose up --build 				# rebuild all images
 $ docker-compose up 
@@ -55,7 +62,7 @@ $ cd complex
     - `.travis.yml`
     - `docker-compose.yml`
     - `dockerrun.aws.json`
-    - `nginx` foldr and we'll be using `IngresServer` for routing
+    - `nginx`                       foldr and we'll be using `IngresServer` for routing
 
 ```
 $ mkdir k8s
