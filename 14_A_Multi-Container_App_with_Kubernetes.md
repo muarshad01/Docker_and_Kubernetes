@@ -565,33 +565,29 @@ spec:
 
 ## 232: Creating an Encoded Secret
 
-1. `Pods` 					        # Runs one-or-more closely related containers
+1. `kind: Pods` 					        # Runs one-or-more closely related containers
 
-2. `Deployments` 					# Administers and manages a set-of-pods
+2. `kind: Deployments` 					    # Administers and manages a set-of-pods
 
-3. `Services` 					    # Sets up networking in a `Kubernetes` Cluster
-    - `ClusterIP`                   # Exposes a set of pods to other-objects-in-the-cluster
-    - `NodePort`                    # Exposes a set of pods to the outside-world
-    - `LoadBalancer`
-    - `Ingress`
+3. `Kind: Services` 					    # Sets up `networking` in a `Kubernetes` Cluster
+    - `type: ClusterIP`                     # Exposes a set of pods to other-objects-in-the-cluster
+    - `type: NodePort`                      # Exposes a set of pods to the outside-world
+    - `type: LoadBalancer`
+    - `type: Ingress`
 
-4. Secrets 					# Securely stores a piece of information in the cluster, such as a database password
+4.`kind:Secrets` 					        # Securely stores a piece of information in the cluster, such as a database password
 
 ### Creating a Secret
 
 ```
 $ kubectl create secret generic <secret_name> --from-literal key=value
-$ kubectl create secret generic pgpassword --from-literal PGPASSWORD=abcd1234
+$ kubectl create secret generic pgpassword    --from-literal PGPASSWORD=abcd1234
 ```
 --secret/pgpassword created
 
 ```
 $ kubectl get secrets
 ```
-
-* Type of secret:
-    - docker-registry
-    - TLS
 
 ***
 
