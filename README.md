@@ -91,16 +91,14 @@ $ eval $(minikube docker-env)
 * Kind: `Pod`                   # Runs one-or-more closely related containers
 * Kind: `Deployment`            # Administers and manages a set-of-pods
 * Kind: `Service`               # Sets up networking in a Kubernetes Cluster
-    - `ClusterIP`               # Exposes a set of pods to other-objects-in-the-cluster
-    - `NodePort`                # Exposes a set of pods to the outside-world
-    - `LoadBalancer`
-    - `Ingress`
+    - `type: ClusterIP`               # Exposes a set of pods to other-objects-in-the-cluster
+    - `type: NodePort`                # Exposes a set of pods to the outside-world
+    - `type: LoadBalancer`
+    - `type: Ingress`
+* kind: `Secrets`
 ```
 
-
-
-
-
+* `label` vs `selector`
 
 
 
