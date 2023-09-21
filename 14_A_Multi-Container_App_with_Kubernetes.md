@@ -4,16 +4,16 @@
 $ cd simplek8s
 ```
 
-* Crate config files for each `Service` and `Deployment`
+* Crate config files for each of `kind:Pod`, `kind:Service`, and `kind:Deployment`
 * Test locally on `minikube`
 * Create a `GitHub/Travis` flow to build images and deploy 
 * Deploy app to a cloud provider
 
-* `Services`:
-  - `Ingress`
-  - `ClusterIP`
+* `kind:Service`:
+  - `type: Ingress`
+  - `tupe: ClusterIP`
 
-* `Deployment`:
+* `kind:Deployment`:
   - multi-client
   - multi-server
   - multi-Worker
