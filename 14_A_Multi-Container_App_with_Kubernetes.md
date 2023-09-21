@@ -384,26 +384,24 @@ $ kubectl get service
 
 ## 222: Kubernetes Volumes
 
-* Volume
-* Persistent Volume
-* Persistent Volume Claims (PVC)
+* `Volume`
+* `Persistent Volume`
+* `Persistent Volume Claims (PVC)`
 
-* Volume is Tied-to-Pod. So, if a Pod itself ever dies the volume dies and goes away as well. 
-Volume will, however, survive the container restarts.
-
-***
-
-## 223: Volumes vs Persistent Volumes
-
-* Persistent volume is NOT-tied to any pod-or-container
-
-`Pod {C1, C2, ..., CN}`
-
-Persistent volume is outside-the-pod.
+* `Volume is Tied-to-Pod`. 
+    - So, if a Pod itself ever DIES the `Volume` DIES and goes away as well. 
+    - Volume will, however, survive the container restarts.
 
 ***
 
-## 224: Persistent Volumes vs Persistent Volume Claims (PVC)
+## 223: `Volumes` vs `Persistent Volumes`
+
+* Persistent volume is NOT-tied to any pod-or-container: `Pod {C1, C2, ..., CN}`
+    - Persistent volume is outside-the-pod.
+
+***
+
+## 224: `Persistent Volumes` vs `Persistent Volume Claims (PVC)`
 
 * PVC is like a 'Billboard' for advertisement of options you ask for in 'pod' config.
     - Statistically provisioned Persistent Volume
@@ -436,9 +434,9 @@ spec:
 
 ## 226: Persistent Volume Access Modes
 
-* `ReadWriteOnce`			# Can be used by a single node.
-* `ReadOnlyMany`			# Multiple nodes can read from this.
-* `ReadWriteMany`			# Can be read and written to by many nodes.
+* `ReadWriteOnce`			# Can be used by a single-node.
+* `ReadOnlyMany`			# Multiple-nodes can read from this.
+* `ReadWriteMany`			# Can be read-and-written to by many nodes.
 
 ***
 
