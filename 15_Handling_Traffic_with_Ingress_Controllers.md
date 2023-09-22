@@ -48,7 +48,7 @@
 
 ## 248. The Minikube Dashboard
 
-**
+***
 
 ## 249. Docker Desktop's Kubernetes Dashboard
 
