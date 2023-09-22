@@ -61,6 +61,12 @@ $ minikube addons enable ingress
 
 ## 244. Setting up Ingress Locally with Minikube
 
+`https://kubernetes.github.io/ingress-nginx/deploy/#minikube` -> Deployment -> Installation Guide ...??
+
+```
+$ minikube addons enable ingress
+```
+
 ***
 
 ## 245. Ingress v1 API Update+
@@ -68,6 +74,8 @@ $ minikube addons enable ingress
 ***
 
 ## 246. Creating the Ingress Configuration
+
+
 
 ***
 
