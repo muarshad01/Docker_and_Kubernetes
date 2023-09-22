@@ -27,7 +27,7 @@
 * [14: A Multi-Container App with Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/14_A_Multi-Container_App_with_Kubernetes.md)
 * [15: Handling Traffic with Ingress Controllers](https://github.com/muarshad01/Docker-and-Kubernetes/blob/ch15/15_Handling_Traffic_with_Ingress_Controllers.md)
 * [16: Kubernetes Production Deployment](https://github.com/muarshad01/Docker-and-Kubernetes/blob/master/16_Kubernetes_Production_Deployment.md)
-* [->17: HTTPS Setup with Kubernetes](...)
+* [17: HTTPS Setup with Kubernetes](https://github.com/muarshad01/Docker-and-Kubernetes/blob/chap17/17_HTTPS_Setup_with_Kubernetes.md)
 * [18: Local Development with Skaffold](..)
 
 ***
