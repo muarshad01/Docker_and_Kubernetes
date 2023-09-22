@@ -70,6 +70,10 @@ helm install \
 
 ## 304. No Resources Found?
 
+```
+$ kubectl get certificates
+```
+
 ***
 
 ## 305. Verifying the Certificate
@@ -80,19 +84,38 @@ helm install \
 
 ***
 
-## 307. Ingress Config for HTTPS
+## 307. `Ingress` Config for HTTPS
+
 
 ***
 
 ## 308. It Worked!
 
+
 ***
 
 ## 309. Google Cloud Cleanup
 
+
 ***
 
-## Local Environment Cleanup
+## 310. Local Environment Cleanup
+
+```
+$ kubectl delete -f k8s/
+```
+
+```
+$ minikube stop
+$ minikube start
+$ minikube delete
+```
+
+```
+$ docker ps
+$ docker stop <container_id>
+$ docker system prune
+```
 
 ***
  
