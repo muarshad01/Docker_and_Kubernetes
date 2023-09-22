@@ -1,8 +1,16 @@
 ## 236. Load Balancer Services
 
+`Ingress`: Exposes a set of services to the outside world
+
 ***
 
 ## 237. A Quick Node on Ingress
+
+* We're using **ingress-nginx**
+    - `github.com/kubernetes/ingress-nginx`
+
+* We're not using **kubernetes-ingress**
+    - `github.com/nginxinc/kubernetes-ingress`
 
 ***
 
@@ -12,9 +20,14 @@
 
 ## 239. Behind the Scenes of Ingress
 
+* `Ingress Controller`
+* `Ingress Config`
+
 ***
 
 ## 240. More Behind the Scenes of Ingress
+
+* Sticky Sessions
 
 ***
 
@@ -24,9 +37,25 @@
 
 ## 242. Docker Driver and Ingress- IMPORTANT
 
+Delete your cluster:
+```
+$ minikube delete
+```
+
+Restart with a different driver, macOS:
+```
+$ minikube start --driver=hyperkit
+```
+
 ***
 
 ## 243. Important - DO NOT SKIP - Ingress Nginx Installation Info
+
+```
+$ minikube addons enable ingress
+```
+
+`https://kubernetes.github.io/ingress-nginx/deploy/#minikube`
 
 ***
 
