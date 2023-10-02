@@ -352,62 +352,61 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 ### Add AWS configuration details to `.travis.yml` file's deploy script
 
-Set the region. The region code can be found by clicking the region in the toolbar next to your username.
+1. *Set the region*. The region code can be found by clicking the region in the toolbar next to your username.
 eg: 'us-east-1'
 
-app should be set to the Elastic Beanstalk Application Name
-eg: 'multi-docker'
+2. `app` should be set to the Elastic Beanstalk Application Name
+eg: `multi-docker`
 
-env should be set to your Elastic Beanstalk Environment name.
-eg: 'MultiDocker-env'
+3. `env` should be set to your Elastic Beanstalk Environment name.
+eg: `MultiDocker-env`
 
-Set the bucket_name. This can be found by searching for the S3 Storage service. Click the link for the elasticbeanstalk bucket that matches your region code and copy the name.
-
+4. Set the `bucket_name`. This can be found by searching for the `S3` Storage service. Click the link for the `elasticbeanstalk` bucket that matches your region code and copy the name.
 eg: 'elasticbeanstalk-us-east-1-923445599289'
 
-Set the bucket_path to 'docker-multi'
+5. Set the `bucket_path` to `docker-multi`
 
-Set access_key_id to $AWS_ACCESS_KEY
+6. Set `access_key_id` to `$AWS_ACCESS_KEY`
 
-Set secret_access_key to $AWS_SECRET_KEY
+7. Set `secret_access_key` to `$AWS_SECRET_KEY`
 
-Setting Environment Variables
+### Setting Environment Variables
 
-Go to AWS Management Console and use Find Services to search for Elastic Beanstalk
+1. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
 
-Click Environments in the left sidebar.
+2. Click `Environments` in the left sidebar.
 
-Click MultiDocker-env
+3. Click `MultiDocker-env`
 
-In the left sidebar click Configuration
+4. In the left sidebar click Configuration
 
-Scroll down to the Updates, monitoring, and logging section and click Edit.
+5. Scroll down to the Updates, monitoring, and logging section and click Edit.
 
-Scroll down to the Environment Properties section. Click Add environment property.
+6. Scroll down to the Environment Properties section. Click Add environment property.
 
-In another tab Open up ElastiCache, click Redis and check the box next to your cluster. Find the Primary Endpoint and copy that value but omit the :6379
+7. In another tab Open up `ElastiCache`, click `Redis` and check the box next to your cluster. Find the Primary Endpoint and copy that value but omit the :6379
 
-Set REDIS_HOST key to the primary endpoint listed above, remember to omit :6379
+8. Set `REDIS_HOST` key to the primary endpoint listed above, remember to omit :6379
 
-Set REDIS_PORT to 6379
+9. Set `REDIS_PORT` to `6379`
 
-Set PGUSER to postgres
+10 Set `PGUSER` to `postgres`
 
-Set PGPASSWORD to postgrespassword
+11. Set `PGPASSWORD` to `postgrespassword`
 
-In another tab, open up the RDS dashboard, click databases in the sidebar, click your instance and scroll to Connectivity and Security. Copy the endpoint.
+12. In another tab, open up the RDS dashboard, click databases in the sidebar, click your instance and scroll to Connectivity and Security. Copy the endpoint.
 
-Set the PGHOST key to the endpoint value listed above.
+13. Set the `PGHOST` key to the endpoint value listed above.
 
-Set PGDATABASE to fibvalues
+14. Set `PGDATABASE` to `fibvalues`
 
-Set PGPORT to 5432
+15. Set `PGPORT` to `5432`
 
-Click Apply button
+16. Click Apply button
 
-After all instances restart and go from No Data, to Severe, you should see a green checkmark under Health.
+17. After all instances restart and go from No Data, to Severe, you should see a green checkmark under Health.
 
-IAM Keys for Deployment
+### IAM Keys for Deployment
 
 You can use the same IAM User's access and secret keys from the single container app we created earlier, or, you can create a new IAM user for this application:
 
