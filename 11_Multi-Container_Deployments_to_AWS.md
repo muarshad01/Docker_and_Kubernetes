@@ -192,35 +192,35 @@ services:
 
 This lecture note is not intended to be a replacement for the videos, but to serve as a cheat sheet for students who want to quickly run thru the AWS configuration steps or easily see if they missed a step. It will also help navigate through the changes to the AWS UI since the course was recorded.
 
-Elastic Beanstalk Application Creation
+### Elastic Beanstalk Application Creation
 
-Make sure you have followed the guidance in this note.
+1. Make sure you have followed the guidance in this note.
 
-Go to AWS Management Console and use Find Services to search for Elastic Beanstalk
+2. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
 
-Click “Create Application”
+3. Click `Create Application`
 
-Set Application Name to 'multi-docker'
+4. Set `Application Name` to `multi-docker`
 
-Scroll down to Platform and select Docker
+5. Scroll down to `Platform` and select `Docker`
 
-Verify that "Single Instance (free tier eligible)" has been selected
+6. Verify that `Single Instance (free tier eligible)` has been selected
 
-Click the "Next" button.
+7. Click the `Next` button.
 
-In the "Service Role" section, verify that "Use an Existing service role" is selected.
+8. In the `Service Role` section, verify that `Use an Existing service role` is selected.
 
-Verify that aws-elasticbeanstalk-service-role has been auto-selected for the service role.
+9. Verify that `aws-elasticbeanstalk-service-role` has been `auto-selected` for the service role.
 
-Verify that aws-elasticbeanstalk-ec2-role has been auto-selected for the instance profile.
+10. Verify that `aws-elasticbeanstalk-ec2-role` has been `auto-selected` for the instance profile.
 
-Click "Skip to review" button.
+11. Click `Skip to review` button.
 
-Click the "Submit" button.
+12. Click the `Submit` button.
 
-You may need to refresh, but eventually, you should see a green checkmark underneath Health.
+13. You may need to refresh, but eventually, you should see a green checkmark underneath Health.
 
-RDS Database Creation
+### RDS Database Creation
 
 Go to AWS Management Console and use Find Services to search for RDS
 
