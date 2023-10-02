@@ -8,6 +8,8 @@ Project Directory -> `Dockerrun.aws.json` -> Container Definitions
 
 ##  147. Finding Docs on Container Definitions
 
+* `Elastic Beanstalk` calls -> `Amazon Elastic Container Service (ECS)` {task_def_1, task_def_2, ...}
+
 Google search: 
 * [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 * [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
