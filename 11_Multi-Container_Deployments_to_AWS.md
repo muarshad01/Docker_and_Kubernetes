@@ -117,19 +117,19 @@ Create `Dockerrun.aws.json`
 The process for creating an Elastic Beanstalk environment has changed (this is very common, as the AWS UI changes frequently). There is now a flow of 6 steps that you will be taken through.
 
 Step 1:
-
-You will need to select the Platform of Docker. You then must manually change from Docker running on 64bit Amazon Linux 2023 to Docker running on 64bit Amazon Linux 2. The 2023 platform was just released in early August and is currently not compatible with our CI/CD automation.
-
-
+-------
+You will need to select the Platform of Docker. 
+You then must manually change from Docker running on 64bit Amazon Linux 2023 to Docker running on 64bit Amazon Linux 2. 
+The 2023 platform was just released in early August and is currently not compatible with our CI/CD automation.
 Scroll down to the Presets section and make sure that free tier eligible has been selected:
 
 
 Click the Next button to move to Step #2.
 
 Step 2:
-
-You will be taken to a Service Access configuration form. Here, you should select Use an existing service role, which will auto-select the aws-elasticbeanstalk-service-role and auto-populate the aws-elasticbeanstalk-ec2-role as the instance profile:
-
+------
+You will be taken to a Service Access configuration form. 
+Here, you should select Use an existing service role, which will auto-select the aws-elasticbeanstalk-service-role and auto-populate the aws-elasticbeanstalk-ec2-role as the instance profile:
 
 You may now click the Skip to Review button as Steps 3-6 are not applicable.
 
@@ -139,10 +139,11 @@ Required Updates for Docker Compose
 1. Rename the current docker-compose file
 
 Rename the docker-compose.yml file to docker-compose-dev.yml. Going forward you will need to pass a flag to specify which compose file you want to build and run from:
+```
 docker-compose -f docker-compose-dev.yml up
 docker-compose -f docker-compose-dev.yml up --build
 docker-compose -f docker-compose-dev.yml down
-
+```
 2. Create a production-only docker-compose.yml file
 
 The production compose file will follow closely what was written in the Dockerrun.aws.json. There are two major differences:
@@ -154,7 +155,7 @@ Environment Variables: When using a compose file we will need to explicitly spec
 Note - You must not have a Dockerrun.aws.json file in your project directory. If AWS EBS sees this file the deployment will fail. If you have previously followed this course and deployed to the old Multi-container platform you will need to delete this file before moving to the new platform!!!
 
 Complete docker-compose.yml file:
-
+```
 version: "3"
 services:
   client:
@@ -187,7 +188,7 @@ services:
     ports:
       - "80:80"
 ```
-
+```
 ***
 
 ## 152. AWS Configuration Cheat Sheet - Updated for new UI
