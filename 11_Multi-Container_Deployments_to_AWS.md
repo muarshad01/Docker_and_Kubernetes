@@ -155,6 +155,7 @@ No Container Links: In the "Forming Container Links" lecture we add the client a
 Environment Variables: When using a compose file we will need to explicitly specify the environment variables each service will need access to. The value for each variable must match the corresponding variable names you have specified in the Elastic Beanstalk environment. The AWS variables are created in the "Setting Environment Variables" lecture.
 
 Note - You must not have a `Dockerrun.aws.json` file in your project directory. If AWS EBS sees this file the deployment will fail. If you have previously followed this course and deployed to the old Multi-container platform you will need to delete this file before moving to the new platform!!!
+```
 
 Complete `docker-compose.yml` file:
 
@@ -190,7 +191,6 @@ services:
     hostname: nginx
     ports:
       - "80:80"
-```
 ```
 ***
 
