@@ -74,27 +74,27 @@ Create `Dockerrun.aws.json`
     "containerDefinitions" : [
         {
             "name": "client",
-            "image": "marshad1/multi-client",
+            "image": "muarshad01/multi-client",
             "hostname": "client",
             "essential": false
         },
         {
             "name": "server",
-            "image": "marshad1/multi-server",
-            "hostname": "api",
+            "image": "muarshad01/multi-server",
+            "hostname": "api",                      # Notice: name and hostname are different here
             "essential": false
         },
         {
             "name": "worker",
-            "iamge": "marshad1/multi-worker",
+            "iamge": "muarshad01/multi-worker",
             "hostname": "worker",
             "essential": false
         },
         {
             "name": "nginx",
-            "image": "marshad1/multi-nginx",
+            "image": "muarshad01/multi-nginx",
             "hostname": "nginx",
-            "essential": true,
+            "essential": true,                      # essential `true`
             "portMappings": [
                 {
                     "hostPort": 80,
@@ -107,7 +107,7 @@ Create `Dockerrun.aws.json`
 }
 ```
 
-Google Search: JSON validator
+* Google Search: [JSON validator](https://jsonlint.com/)
 
 ***
 
