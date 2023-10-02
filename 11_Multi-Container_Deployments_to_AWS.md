@@ -276,31 +276,31 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 ### Creating a Custom Security Group
 
-Go to AWS Management Console and use Find Services to search for VPC
+1. Go to `AWS Management Console` and use Find `Services` to search for `VPC`
 
-Find the Security section in the left sidebar and click Security Groups
+2. Find the `Security` section in the left sidebar and click `Security Groups`
 
-Click Create Security Group button
+3. Click `Create Security Group` button
 
-Set Security group name to multi-docker
+4. Set `Security group name` to `multi-docker`
 
-Set Description to multi-docker
+5. Set `Description` to `multi-docker`
 
-Make sure VPC is set to your default VPC
+6. Make sure `VPC` is set to your `default VPC`
 
-Scroll down and click the Create Security Group button.
+7. Scroll down and click the `Create Security Group` button.
 
-After the security group has been created, find the Edit inbound rules button.
+8. After the security group has been created, find the Edit `inbound rules` button.
 
-Click Add Rule
+9. Click `Add Rule`
 
-Set Port Range to 5432-6379
+10. Set `Port Range` to 5432-6379
 
-Click in the box next to Source and start typing 'sg' into the box. Select the Security Group you just created.
+11. Click in the box next to Source and start typing `sg` into the box. Select the Security Group you just created.
 
-Click the Save rules button
+12. Click the Save rules button
 
-Applying Security Groups to ElastiCache
+### Applying Security Groups to ElastiCache
 
 Go to AWS Management Console and use Find Services to search for ElastiCache
 
