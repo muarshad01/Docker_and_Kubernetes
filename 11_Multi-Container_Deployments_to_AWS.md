@@ -81,7 +81,7 @@ Create `Dockerrun.aws.json`
         {
             "name": "server",
             "image": "muarshad01/multi-server",
-            "hostname": "api",                      # Notice: name and hostname are different here
+            "hostname": "api",                      # Notice: `name` and `hostname` are different here
             "essential": false
         },
         {
