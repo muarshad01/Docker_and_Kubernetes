@@ -222,31 +222,31 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 ### RDS Database Creation
 
-Go to AWS Management Console and use Find Services to search for RDS
+1. Go to `AWS Management Console` and use Find `Services` to search for `RDS`
 
-Click Create database button
+2. Click Create database button
 
-Select PostgreSQL
+3. Select `PostgreSQL`
 
-In Templates, check the Free tier box.
+4. In `Templates`, check the `Free tier box`.
 
-Scroll down to Settings.
+5. Scroll down to Settings.
 
-Set DB Instance identifier to multi-docker-postgres
+6. Set `DB Instance identifier` to `multi-docker-postgres`
 
-Set Master Username to postgres
+7. Set `Master Username` to `postgres`
 
-Set Master Password to postgrespassword and confirm.
+8. Set `Master Password` to `postgrespassword` and confirm.
 
-Scroll down to Connectivity. Make sure VPC is set to Default VPC
+9. Scroll down to Connectivity. Make sure `VPC` is set to `Default VPC`
 
-Scroll down to Additional Configuration and click to unhide.
+10. Scroll down to Additional Configuration and click to unhide.
 
-Set Initial database name to fibvalues
+11. Set Initial database name to `fibvalues`
 
-Scroll down and click Create Database button
+12. Scroll down and click Create Database button
 
-ElastiCache Redis Creation
+### `ElastiCache Redis` Creation
 
 Go to AWS Management Console and use Find Services to search for ElastiCache
 
