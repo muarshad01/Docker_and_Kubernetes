@@ -274,7 +274,7 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 13. Scroll down and click the `Create button`.
 
-### Creating a Custom Security Group
+### Creating a `Custom Security Group`
 
 1. Go to `AWS Management Console` and use Find `Services` to search for `VPC`
 
@@ -300,57 +300,57 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 12. Click the Save rules button
 
-### Applying Security Groups to ElastiCache
+### Applying `Security Groups` to `ElastiCache`
 
-Go to AWS Management Console and use Find Services to search for ElastiCache
+1. Go to `AWS Management Console` and use Find `Services` to search for `ElastiCache`
 
-Under Resources, click Redis clusters in Sidebar
+2. Under `Resources`, click `Redis clusters` in Sidebar
 
-Check the box next to your Redis cluster
+3. Check the box next to your `Redis cluster`
 
-Click Actions and click Modify
+4. Click `Actions` and click `Modify`
 
-Scroll down to find Selected security groups and click Manage
+5. Scroll down to find Selected security groups and click Manage
 
-Tick the box next to the new multi-docker group and click Choose
+6. Tick the box next to the new `multi-docker` group and click Choose
 
-Scroll down and click Preview Changes
+7. Scroll down and click Preview Changes
 
-Click the Modify button.
+8. Click the Modify button.
 
-Applying Security Groups to RDS
+### Applying `Security Groups` to `RDS`
 
-Go to AWS Management Console and use Find Services to search for RDS
+1. Go to `AWS Management Console` and use Find `Services` to search for `RDS`
 
-Click Databases in Sidebar and check the box next to your instance
+2. Click `Databases` in Sidebar and check the box next to your instance
 
-Click Modify button
+3. Click Modify button
 
-Scroll down to Connectivity and add select the new multi-docker security group
+4. Scroll down to Connectivity and add select the new `multi-docker` security group
 
-Scroll down and click the Continue button
+5. Scroll down and click the Continue button
 
-Click Modify DB instance button
+6. Click Modify DB instance button
 
-Applying Security Groups to Elastic Beanstalk
+### Applying `Security Groups` to `Elastic Beanstalk`
 
-Go to AWS Management Console and use Find Services to search for Elastic Beanstalk
+1. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
 
-Click Environments in the left sidebar.
+2. Click `Environments` in the left sidebar.
 
-Click MultiDocker-env
+3. Click `MultiDocker-env`
 
-Click Configuration
+4. Click `Configuration`
 
-In the Instances row, click the Edit button.
+5. In the Instances row, click the Edit button.
 
-Scroll down to EC2 Security Groups and tick the box next to multi-docker
+6. Scroll down to `EC2 Security Groups` and tick the box next to `multi-docker`
 
-Click Apply and Click Confirm
+7. Click Apply and Click Confirm
 
-After all the instances restart and go from No Data to Severe, you should see a green checkmark under Health.
+8. After all the instances restart and go from No Data to Severe, you should see a green checkmark under Health.
 
-Add AWS configuration details to .travis.yml file's deploy script
+### Add AWS configuration details to `.travis.yml` file's deploy script
 
 Set the region. The region code can be found by clicking the region in the toolbar next to your username.
 eg: 'us-east-1'
