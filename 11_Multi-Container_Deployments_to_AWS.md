@@ -23,11 +23,11 @@ Create `Dockerrun.aws.json`
 
 ```
 {
-    "AWSEBDockerrunVersion" : 2,
-    "containerDefinitions" : [
+    "AWSEBDockerrunVersion" : 2,                    # AWS eb Docker run Version
+    "containerDefinitions" : [                      # Notice plural
         {
             "name": "client",
-            "image": "marshad1/multi-client",
+            "image": "muarshad01/multi-client",
             "hostname": "client"
         }
     ]
