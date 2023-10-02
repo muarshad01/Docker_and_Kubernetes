@@ -248,33 +248,33 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 ### `ElastiCache Redis` Creation
 
-Go to AWS Management Console and use Find Services to search for ElastiCache
+1. Go to `AWS Management Console` and use Find `Services` to search for `ElastiCache`
 
-In the sidebar under Resources, click Redis Clusters
+2. In the sidebar under `Resources`, click `Redis Clusters`
 
-Click the Create Redis cluster button
+3. Click the `Create Redis` cluster button
 
-Select Configure and create a new cluster
+4. Select `Configure and create a new cluster`
 
-Make sure Cluster Mode is DISABLED.
+5. Make sure `Cluster Mode is DISABLED`.
 
-Scroll down to Cluster info and set Name to multi-docker-redis
+6. Scroll down to Cluster info and set Name to `multi-docker-redis`
 
-Scroll down to Cluster settings and change Node type to cache.t2.micro
+7. Scroll down to Cluster settings and change Node type to `cache.t2.micro`
 
-Change Number of Replicas to 0 (Ignore the warning about Multi-AZ)
+8. Change Number of Replicas to `0` (Ignore the warning about Multi-AZ)
 
-Scroll down to Subnet group. Select Create a new subnet group if not already selected.
+9. Scroll down to Subnet group. Select `Create a new subnet` group if not already selected.
 
-Enter a name for the Subnet Group such as redis.
+10. Enter a name for the Subnet Group such as `redis`.
 
-Scroll down and click the Next button
+11. Scroll down and click the `Next` button
 
-Scroll down and click the Next button again.
+12. Scroll down and click the `Next` button again.
 
-Scroll down and click the Create button.
+13. Scroll down and click the `Create button`.
 
-Creating a Custom Security Group
+### Creating a Custom Security Group
 
 Go to AWS Management Console and use Find Services to search for VPC
 
