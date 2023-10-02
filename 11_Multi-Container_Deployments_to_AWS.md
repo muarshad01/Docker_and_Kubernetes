@@ -1,5 +1,9 @@
 ##  146. Multi-Container Definition Files
 
+Project Directory -> `Dockerrun.aws.json` -> Container Definitions
+
+* `Dockerrun.aws.json`: Already build the image, no build required
+
 ***
 
 ##  147. Finding Docs on Container Definitions
