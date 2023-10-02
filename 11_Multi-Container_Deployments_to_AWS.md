@@ -130,14 +130,12 @@ Step 2:
 ------
 You will be taken to a Service Access configuration form. 
 Here, you should select Use an existing service role, which will auto-select the aws-elasticbeanstalk-service-role and auto-populate the aws-elasticbeanstalk-ec2-role as the instance profile:
-
 You may now click the Skip to Review button as Steps 3-6 are not applicable.
-
 Click the Submit button and wait for your new EBS application and environment to be created and launch.
 
-Required Updates for Docker Compose
-1. Rename the current docker-compose file
+Required Updates for Docker Compose:
 
+1. Rename the current docker-compose file
 Rename the `docker-compose.yml` file to `docker-compose-dev.yml`. 
 Going forward you will need to pass a flag to specify which compose file you want to build and run from:
 
@@ -146,15 +144,11 @@ $ docker-compose -f docker-compose-dev.yml up --build
 $ docker-compose -f docker-compose-dev.yml down
 
 2. Create a production-only `docker-compose.yml` file
-
 The production compose file will follow closely what was written in the `Dockerrun.aws.json`. 
 There are two major differences:
-
-No Container Links: In the "Forming Container Links" lecture we add the client and server services to the links array of the nginx service. Docker Compose will handle this container communication automatically for us.
-
-Environment Variables: When using a compose file we will need to explicitly specify the environment variables each service will need access to. The value for each variable must match the corresponding variable names you have specified in the Elastic Beanstalk environment. The AWS variables are created in the "Setting Environment Variables" lecture.
-
-Note - You must not have a `Dockerrun.aws.json` file in your project directory. If AWS EBS sees this file the deployment will fail. If you have previously followed this course and deployed to the old Multi-container platform you will need to delete this file before moving to the new platform!!!
+-- No Container Links: In the "Forming Container Links" lecture we add the client and server services to the links array of the nginx service. Docker Compose will handle this container communication automatically for us.
+-- Environment Variables: When using a compose file we will need to explicitly specify the environment variables each service will need access to. The value for each variable must match the corresponding variable names you have specified in the Elastic Beanstalk environment. The AWS variables are created in the "Setting Environment Variables" lecture.
+-- Note - You must not have a `Dockerrun.aws.json` file in your project directory. If AWS EBS sees this file the deployment will fail. If you have previously followed this course and deployed to the old Multi-container platform you will need to delete this file before moving to the new platform!!!
 ```
 
 Complete `docker-compose.yml` file:
