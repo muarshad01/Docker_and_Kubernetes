@@ -446,34 +446,37 @@ eg: docker-multi-travis-ci
 
 Copy and/or download the Access Key ID and Secret Access Key to use in the Travis Variable Setup.
 
-AWS Keys in Travis
+### AWS Keys in Travis
 
-Go to your Travis Dashboard and find the project repository for the application we are working on.
+1. Go to your `Travis Dashboard` and find the `project repository` for the application we are working on.
 
-On the repository page, click "More Options" and then "Settings"
+2. On the repository page, click `More Options` and then `Settings`
 
-Create an AWS_ACCESS_KEY variable and paste your IAM access key
+3. Create an `AWS_ACCESS_KEY` variable and paste your `IAM access key`
 
-Create an AWS_SECRET_KEY variable and paste your IAM secret key
+4. Create an `AWS_SECRET_KEY` variable and paste your `IAM secret key`
 
-Deploying App
+### Deploying App
 
-Make a small change to your src/App.js file in the greeting text.
+1. Make a small change to your `src/App.js` file in the greeting text.
 
-In the project root, in your terminal run:
+2. In the project root, in your terminal run:
 
-git add.
-git commit -m “testing deployment"
-git push origin main
-Go to your Travis Dashboard and check the status of your build.
+```
+$ git add.
+$ git commit -m “testing deployment"
+$ git push origin main
+```
 
-The status should eventually return with a green checkmark and show "build passing"
+3. Go to your `Travis Dashboard` and check the status of your build.
 
-Go to your AWS Elastic Beanstalk application
+4. The status should eventually return with a green checkmark and show "build passing"
 
-It should say "Elastic Beanstalk is updating your environment"
+5. Go to your `AWS Elastic Beanstalk` application
 
-It should eventually show a green checkmark under "Health". You will now be able to access your application at the external URL provided under the environment name.
+6. It should say "Elastic Beanstalk is updating your environment"
+
+7. It should eventually show a green checkmark under "Health". You will now be able to access your application at the external URL provided under the environment name.
 
 ***
 
