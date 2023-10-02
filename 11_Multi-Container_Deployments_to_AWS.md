@@ -44,19 +44,19 @@ Create `Dockerrun.aws.json`
     "containerDefinitions" : [
         {
             "name": "client",
-            "image": "marshad1/multi-client",
+            "image": "muarshad01/multi-client",
             "hostname": "client",
-            "essential": false
+            "essential": false                      # essential `true` means that this must be up
         },
         {
             "name": "server",
-            "image": "marshad1/multi-server",
+            "image": "muarshad01/multi-server",
             "hostname": "api",
             "essential": false
         },
         {
             "name": "worker",
-            "iamge": "marshad1/multi-worker",
+            "iamge": "muarshad01/multi-worker",
             "hostname": "worker",
             "essential": false
         }
