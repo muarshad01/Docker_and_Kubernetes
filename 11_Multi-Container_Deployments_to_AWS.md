@@ -254,17 +254,17 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 3. Click the `Create Redis` cluster button
 
-4. Select `Configure and create a new cluster`
+4. Select `Configure` and `create a new cluster`
 
 5. Make sure `Cluster Mode is DISABLED`.
 
-6. Scroll down to Cluster info and set Name to `multi-docker-redis`
+6. Scroll down to `Cluster info` and set Name to `multi-docker-redis`
 
-7. Scroll down to Cluster settings and change Node type to `cache.t2.micro`
+7. Scroll down to `Cluster settings` and change Node type to `cache.t2.micro`
 
 8. Change Number of Replicas to `0` (Ignore the warning about Multi-AZ)
 
-9. Scroll down to Subnet group. Select `Create a new subnet` group if not already selected.
+9. Scroll down to `Subnet group`. Select `Create a new subnet` group if not already selected.
 
 10. Enter a name for the Subnet Group such as `redis`.
 
@@ -546,10 +546,6 @@ $ git push origin main
 
 ## 156. `RDS` Database Creation
 
-***
-
-## 157. ElastiCache Redis Creation
-
 1. Go to `AWS Management Console` and use Find `Services` to search for `RDS`
 
 2. Click `Create database` button
@@ -558,21 +554,51 @@ $ git push origin main
 
 4. In `Templates`, check the `Free tier` box
 
-5. Scroll down to `Settings`
+5. Scroll down to `Settings`.
 
-6. Set DB Instance identifier to `multi-docker-postgres`
+6. Set `DB Instance identifier` to `multi-docker-postgres`
 
-7. Set Master Username to `postgres`
+7. Set `Master Username` to `postgres`
 
-8. Set Master Password to `postgrespassword` and confirm
+8. Set `Master Password` to `postgrespassword` and confirm.
 
 9. Scroll down to Connectivity. Make sure `VPC` is set to `Default VPC`
 
 10. Scroll down to Additional Configuration and click to unhide.
 
-11. Set Initial database name to fibvalues
+11. Set Initial database name to `fibvalues`
 
-12. Scroll down and click `Create Database` button
+12. Scroll down and click Create Database button
+
+***
+
+## 157. ElastiCache Redis Creation
+
+1. Go to `AWS Management Console` and use Find `Services` to search for `ElastiCache`
+
+2. In the sidebar under `Resources`, click `Redis Clusters`
+
+3. Click the `Create Redis` cluster button
+
+4. Select `Configure` and `create a new cluster`
+
+5. Make sure `Cluster Mode is DISABLED`.
+
+6. Scroll down to `Cluster info` and set Name to `multi-docker-redis`
+
+7. Scroll down to `Cluster settings` and change Node type to `cache.t2.micro`
+
+8. Change Number of Replicas to `0` (Ignore the warning about Multi-AZ)
+
+9. Scroll down to `Subnet group`. Select `Create a new subnet` group if not already selected.
+
+10. Enter a name for the Subnet Group such as `redis`.
+
+11. Scroll down and click the `Next` button
+
+12. Scroll down and click the `Next` button again.
+
+13. Scroll down and click the `Create button`.
 
 ***
 
