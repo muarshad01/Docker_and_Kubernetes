@@ -370,19 +370,19 @@ eg: 'elasticbeanstalk-us-east-1-923445599289'
 
 7. Set `secret_access_key` to `$AWS_SECRET_KEY`
 
-### Setting Environment Variables
+### Setting `Environment Variables`
 
 1. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
 
-2. Click `Environments` in the left sidebar.
+2. Click `Environments` in the left-sidebar
 
 3. Click `MultiDocker-env`
 
-4. In the left sidebar click Configuration
+4. In the left-sidebar click `Configuration`
 
-5. Scroll down to the Updates, monitoring, and logging section and click Edit.
+5. Scroll down to the `Updates, monitoring, and logging` section and click Edit.
 
-6. Scroll down to the Environment Properties section. Click Add environment property.
+6. Scroll down to the `Environment Properties` section. Click Add environment property.
 
 7. In another tab Open up `ElastiCache`, click `Redis` and check the box next to your cluster. Find the Primary Endpoint and copy that value but omit the :6379
 
