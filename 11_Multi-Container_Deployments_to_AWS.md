@@ -482,17 +482,69 @@ $ git push origin main
 
 ## 153. Creating the Elastic Beanstalk Environment
 
+* `aws.amazon.com` -> `AWS Management Console` -> Login
+
+2. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
+
+3. Click `Create application`
+
+4. Set Application Name to `multi-docker`
+
+5. Scroll down to `Platform` and select `Docker`
+
+6. Verify that `Single Instance (free tier eligible)` has been selected
+
+7. Click the Next button.
+
+### Configure Service Access
+
+8. In the `Service Role` section, verify that `Use an Existing service role` is selected.
+
+9. Verify that `aws-elasticbeanstalk-service-role` has been `auto-selected` for the service role.
+
+10 Verify that `aws-elasticbeanstalk-ec2-role` has been `auto-selected` for the instance profile.
+
+11. Click Skip to review button.
+
+12. Click the Submit button.
+
+* You may need to refresh, but eventually, you should see a green checkmark underneath Health.
+
 ***
 
 ## 154. Managed Data Service Providers
 
 ***
 
-## 155. Overview of AWS VPC's and Security Groups
+## 155. Overview of `AWS VPC's` and `Security Groups`
+
+1. Go to `AWS Management Console` and use Find `Services` to search for `VPC`
+
+2. Find the `Security` section in the left sidebar and click `Security Groups`
+
+3. Click `Create Security Group` button
+
+4. Set Security group name to `multi-docker`
+
+5. Set Description to `multi-docker`
+
+6. Make sure `VPC` is set to your `default VPC`
+
+7. Scroll down and click the `Create Security Group` button.
+
+8. After the security group has been created, find the `Edit inbound rules` button.
+
+9. Click Add Rule
+
+10. Set `Port Range` to `5432-6379`??
+
+11. Click in the box next to Source and start typing `sg` into the box. Select the Security Group you just created.
+
+12. Click the Save rules button
 
 ***
 
-## 156. RDS Database Creation
+## 156. `RDS` Database Creation
 
 ***
 
