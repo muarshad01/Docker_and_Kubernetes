@@ -1,0 +1,267 @@
+##  146. Multi-Container Definition Files
+
+Project Directory -> `Dockerrun.aws.json` -> Container Definitions
+
+* `Dockerrun.aws.json`: Already build the image, no build required
+
+***
+
+##  147. Finding Docs on Container Definitions
+
+* `Elastic Beanstalk` calls -> `Amazon Elastic Container Service (ECS)` {task_def_1, task_def_2, ...}
+
+Google search: 
+* [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+* [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+* [Container Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definitions)
+
+***
+
+## 148. Adding Container Definitions to DockerRun
+
+Create `Dockerrun.aws.json`
+
+```
+{
+    "AWSEBDockerrunVersion" : 2,                    # AWS eb Docker run Version
+    "containerDefinitions" : [                      # Notice plural
+        {
+            "name": "client",
+            "image": "muarshad01/multi-client",
+            "hostname": "client"
+        }
+    ]
+}
+```
+
+***
+
+## 149. More Container Definitions
+
+```
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name": "client",
+            "image": "muarshad01/multi-client",
+            "hostname": "client",
+            "essential": false                      # essential `true` means that this must be up
+        },
+        {
+            "name": "server",
+            "image": "muarshad01/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "iamge": "muarshad01/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        }
+    ]
+}
+```
+
+***
+
+## 150. Forming Container Links
+
+```
+{
+    "AWSEBDockerrunVersion" : 2,
+    "containerDefinitions" : [
+        {
+            "name": "client",
+            "image": "muarshad01/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "muarshad01/multi-server",
+            "hostname": "api",                      # Notice: `name` and `hostname` are different here
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "iamge": "muarshad01/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "muarshad01/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,                      # essential `true`
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
+```
+
+* Google Search: [JSON validator](https://jsonlint.com/)
+
+***
+
+## 151. Required `AWS Elastic Beanstalk` Environment Setup Updates
+
+```
+The process for creating an Elastic Beanstalk environment has changed (this is very common, as the AWS UI changes frequently). There is now a flow of 6 steps that you will be taken through.
+
+Step 1:
+
+You will need to select the Platform of Docker. You then must manually change from Docker running on 64bit Amazon Linux 2023 to Docker running on 64bit Amazon Linux 2. The 2023 platform was just released in early August and is currently not compatible with our CI/CD automation.
+
+
+Scroll down to the Presets section and make sure that free tier eligible has been selected:
+
+
+Click the Next button to move to Step #2.
+
+Step 2:
+
+You will be taken to a Service Access configuration form. Here, you should select Use an existing service role, which will auto-select the aws-elasticbeanstalk-service-role and auto-populate the aws-elasticbeanstalk-ec2-role as the instance profile:
+
+
+You may now click the Skip to Review button as Steps 3-6 are not applicable.
+
+Click the Submit button and wait for your new EBS application and environment to be created and launch.
+
+Required Updates for Docker Compose
+1. Rename the current docker-compose file
+
+Rename the docker-compose.yml file to docker-compose-dev.yml. Going forward you will need to pass a flag to specify which compose file you want to build and run from:
+docker-compose -f docker-compose-dev.yml up
+docker-compose -f docker-compose-dev.yml up --build
+docker-compose -f docker-compose-dev.yml down
+
+2. Create a production-only docker-compose.yml file
+
+The production compose file will follow closely what was written in the Dockerrun.aws.json. There are two major differences:
+
+No Container Links: In the "Forming Container Links" lecture we add the client and server services to the links array of the nginx service. Docker Compose will handle this container communication automatically for us.
+
+Environment Variables: When using a compose file we will need to explicitly specify the environment variables each service will need access to. The value for each variable must match the corresponding variable names you have specified in the Elastic Beanstalk environment. The AWS variables are created in the "Setting Environment Variables" lecture.
+
+Note - You must not have a Dockerrun.aws.json file in your project directory. If AWS EBS sees this file the deployment will fail. If you have previously followed this course and deployed to the old Multi-container platform you will need to delete this file before moving to the new platform!!!
+
+Complete docker-compose.yml file:
+
+version: "3"
+services:
+  client:
+    image: "cygnetops/multi-client-10-14"
+    mem_limit: 128m
+    hostname: client
+  server:
+    image: "cygnetops/multi-server-10-14"
+    mem_limit: 128m
+    hostname: api
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
+  worker:
+    image: "cygnetops/multi-worker-10-14"
+    mem_limit: 128m
+    hostname: worker
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+  nginx:
+    image: "cygnetops/multi-nginx-10-14"
+    mem_limit: 128m
+    hostname: nginx
+    ports:
+      - "80:80"
+```
+
+***
+
+## 152. AWS Configuration Cheat Sheet - Updated for new UI
+
+***
+
+## 153. Creating the Elastic Beanstalk Environment
+
+***
+
+## 154. Managed Data Service Providers
+
+***
+
+## 155. Overview of AWS VPC's and Security Groups
+
+***
+
+## 156. RDS Database Creation
+
+***
+
+## 157. ElastiCache Redis Creation
+
+***
+
+## 158. Creating a Custom Security Group
+
+***
+
+## 159. Applying Security Groups to Resources
+
+***
+
+## 160. Setting Environment Variables
+
+***
+
+## 161. IAM Keys for Deployment
+
+***
+
+## 162. Travis Keys Update
+
+***
+
+## 163: Travis Deploy Script
+
+***
+
+## 164. Container Memory Allocations
+
+***
+
+##  165. Verifying Deployment
+
+***
+
+##  166. A Quick App Change
+
+***
+
+## 167. Making Changes
+
+***
+
+## 168. Cleaning Up AWS Resources
+
+***
+
+## 169. AWS Configuration Cheat Sheet
+
+***
+
+## 170. Finished Project Code with Updated Applies
+
+***
