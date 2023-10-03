@@ -636,6 +636,40 @@ $ git push origin main
 
 ## 160. Setting Environment Variables
 
+1. Go to `AWS Management Console` and use Find `Services` to search for `Elastic Beanstalk`
+
+2. Click `Environments` in the left-sidebar
+
+3. Click `MultiDocker-env`
+
+4. In the left-sidebar click `Configuration`
+
+5. Scroll down to the `Updates, monitoring, and logging` section and click Edit.
+
+6. Scroll down to the `Environment Properties` section. Click Add environment property.
+
+7. In another tab Open up `ElastiCache`, click `Redis` and check the box next to your cluster. Find the Primary Endpoint and copy that value but omit the :6379
+
+8. Set `REDIS_HOST` key to the primary endpoint listed above, remember to omit :6379
+
+9. Set `REDIS_PORT` to `6379`
+
+10 Set `PGUSER` to `postgres`
+
+11. Set `PGPASSWORD` to `postgrespassword`
+
+12. In another tab, open up the RDS dashboard, click databases in the sidebar, click your instance and scroll to Connectivity and Security. Copy the endpoint.
+
+13. Set the `PGHOST` key to the endpoint value listed above.
+
+14. Set `PGDATABASE` to `fibvalues`
+
+15. Set `PGPORT` to `5432`
+
+16. Click Apply button
+
+17. After all instances restart and go from No Data, to Severe, you should see a green checkmark under Health.
+
 ***
 
 ## 161. IAM Keys for Deployment
