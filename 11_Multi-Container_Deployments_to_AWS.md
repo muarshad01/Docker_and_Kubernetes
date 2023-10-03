@@ -408,43 +408,42 @@ eg: 'elasticbeanstalk-us-east-1-923445599289'
 
 ### IAM Keys for Deployment
 
-You can use the same IAM User's access and secret keys from the single container app we created earlier, or, you can create a new IAM user for this application:
+You can use the same `IAM User's` `access_key` and `secret_key` from the single container app we created earlier, or, you can create a new IAM user for this application:
 
-1. Search for the "IAM Security, Identity & Compliance Service"
+1. Search for the `IAM Security, Identity & Compliance Service`
 
-2. Click "Create Individual IAM Users" and click "Manage Users"
+2. Click `Create Individual IAM Users` and click `Manage Users`
 
-3. Click "Add User"
+3. Click `Add User`
 
-4. Enter any name you’d like in the "User Name" field.
-
+4. Enter any name you’d like in the `User Name` field
 eg: docker-multi-travis-ci
 
-5. Click "Next"
+5. Click `Next`
 
-6. Click "Attach Policies Directly"
+6. Click `Attach Policies Directly`
 
-7. Search for "beanstalk"
+7. Search for `beanstalk`
 
-8. Tick the box next to "AdministratorAccess-AWSElasticBeanstalk"
+8. Tick the box next to `AdministratorAccess-AWSElasticBeanstalk`
 
-9. Click "Next"
+9. Click `Next`
 
-10. Click "Create user"
+10. Click `Create user`
 
-11. Select the IAM user that was just created from the list of users
+11. Select the `IAM user` that was just created from the list of users
 
-12. Click "Security Credentials"
+12. Click `Security Credentials`
 
-13. Scroll down to find "Access Keys"
+13. Scroll down to find `Access Keys`
 
-14. Click "Create access key"
+14. Click `Create access key`
 
-15. Select "Command Line Interface (CLI)"
+15. Select `Command Line Interface (CLI)`
 
 16. Scroll down and tick the "I understand..." check box and click "Next"
 
-Copy and/or download the Access Key ID and Secret Access Key to use in the Travis Variable Setup.
+Copy and/or download the `Access_Key_ID` and `Secret_Access_Key` to use in the Travis Variable Setup.
 
 ### AWS Keys in Travis
 
