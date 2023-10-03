@@ -701,6 +701,16 @@ $ git push origin main
 
 ## 168. Cleaning Up AWS Resources
 
+* `Services` -> `ElasticBeanstalk` -> select `Application name` -> Actions (`Delete application`)
+
+* `Services` -> `RDS` -> `DB Instances` -> select `DB Identifier` -> Actions (`Delete me`) 
+
+* `Services` -> `ElasticCache` ->
+
+* `Services` -> `VPC` -> `Security Groups` -> select ??? -> Actions (`Delete`)
+
+* `Services` -> `IAM` -> `Users` -> select ??? -> Actions (`Delete`)
+
 ***
 
 ## 169. AWS Configuration Cheat Sheet
