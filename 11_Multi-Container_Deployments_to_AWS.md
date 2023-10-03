@@ -224,13 +224,13 @@ This lecture note is not intended to be a replacement for the videos, but to ser
 
 1. Go to `AWS Management Console` and use Find `Services` to search for `RDS`
 
-2. Click Create database button
+2. Click `Create database` button
 
 3. Select `PostgreSQL`
 
-4. In `Templates`, check the `Free tier box`.
+4. In `Templates`, check the `Free tier` box
 
-5. Scroll down to Settings.
+5. Scroll down to `Settings`.
 
 6. Set `DB Instance identifier` to `multi-docker-postgres`
 
@@ -549,6 +549,30 @@ $ git push origin main
 ***
 
 ## 157. ElastiCache Redis Creation
+
+1. Go to `AWS Management Console` and use Find `Services` to search for `RDS`
+
+2. Click `Create database` button
+
+3. Select `PostgreSQL`
+
+4. In `Templates`, check the `Free tier` box
+
+5. Scroll down to `Settings`
+
+6. Set DB Instance identifier to `multi-docker-postgres`
+
+7. Set Master Username to `postgres`
+
+8. Set Master Password to `postgrespassword` and confirm
+
+9. Scroll down to Connectivity. Make sure `VPC` is set to `Default VPC`
+
+10. Scroll down to Additional Configuration and click to unhide.
+
+11. Set Initial database name to fibvalues
+
+12. Scroll down and click `Create Database` button
 
 ***
 
