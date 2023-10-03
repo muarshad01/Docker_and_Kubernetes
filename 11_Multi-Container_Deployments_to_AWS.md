@@ -604,6 +604,30 @@ $ git push origin main
 
 ## 158. Creating a Custom Security Group
 
+1. Go to `AWS Management Console` and use Find `Services` to search for `VPC`
+
+2. Find the `Security` section in the left sidebar and click `Security Groups`
+
+3. Click `Create Security` Group button
+
+4. Set Security group name to `multi-docker`
+
+5. Set Description to `multi-docker`
+
+6. Make sure `VPC` is set to your `default VPC`
+
+7. Scroll down and click the `Create Security Group` button
+
+8. After the security group has been created, find the `Edit inbound rules` button
+
+9. Click Add Rule
+
+10. Set `Port Range` to 5432-6379
+
+11. Click in the box next to Source and start typing `sg` into the box. Select the Security Group you just created.
+
+12. Click the Save rules button
+
 ***
 
 ## 159. Applying Security Groups to Resources
