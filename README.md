@@ -36,7 +36,7 @@
 
 * `http://www.docker.com/get-started` 
 * Get Started
-* Download for Mac 
+* Download for Mac - Apple Silicon
 * Install
 
 ```
