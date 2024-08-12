@@ -55,9 +55,8 @@ $ docker image ls -a | grep '^\<none\>' | awk '{print $3}' | xargs docker rmi
 ```
 ```
 
-## Kubernetes commands
-
-```
+## Kubernetes Commands
+```bash
 $ minikube start
 $ minikube status
 $ minikube ip
@@ -87,7 +86,7 @@ $ eval $(minikube docker-env)
 
 ## Notes
 
-```
+```bash
 * Kind: `Pod`                   # Runs one-or-more closely related containers
 * Kind: `Deployment`            # Administers and manages a set-of-pods
 * Kind: `Service`               # Sets up networking in a Kubernetes Cluster
